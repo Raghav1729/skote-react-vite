@@ -22,7 +22,7 @@ import logo from "../../assets/images/logo.svg";
 const Recoverpw = () => {
 
   //meta title
-  document.title="Recover Password | Skote - React Admin & Dashboard Template";
+  document.title="Recover Password | Skote - Vite React Admin & Dashboard Template";
 
   const validation = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed

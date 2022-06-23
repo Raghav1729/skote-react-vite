@@ -15,7 +15,7 @@ import logoImg from "../../assets/images/logo.svg";
 const Register = () => {
 
   //meta title
-  document.title="Register | Skote - React Admin & Dashboard Template";
+  document.title="Register | Skote - Vite React Admin & Dashboard Template";
 
   //form validation
   const validation = useFormik({

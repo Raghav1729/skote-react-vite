@@ -12,7 +12,7 @@ import {
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiTypography = () => {
-  document.title = "Typography | Skote - React Admin & Dashboard Template";
+  document.title = "Typography | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>

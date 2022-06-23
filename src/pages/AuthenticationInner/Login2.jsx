@@ -14,7 +14,7 @@ import CarouselPage from "./CarouselPage";
 const Login2 = () => {
 
   //meta title
-  document.title="Login 2 | Skote - React Admin & Dashboard Template";
+  document.title="Login 2 | Skote - Vite React Admin & Dashboard Template";
 
   // Form validation 
   const validation = useFormik({

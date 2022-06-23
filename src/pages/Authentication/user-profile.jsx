@@ -31,7 +31,7 @@ import { editProfile, resetProfileFlag } from "../../store/actions";
 
 const UserProfile = () => {
   
-  document.title="User Profile | Skote - React Admin & Dashboard Template";
+  document.title="User Profile | Skote - Vite React Admin & Dashboard Template";
   const dispatch = useDispatch();
 
   const [email, setemail] = useState("");

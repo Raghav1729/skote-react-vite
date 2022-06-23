@@ -17,7 +17,7 @@ import lightlogo from "../../assets/images/logo-light.svg";
 const Login = () => {
 
   //meta title
-  document.title="Login | Skote - React Admin & Dashboard Template";
+  document.title="Login | Skote - Vite React Admin & Dashboard Template";
 
 // Form validation 
   const validation = useFormik({

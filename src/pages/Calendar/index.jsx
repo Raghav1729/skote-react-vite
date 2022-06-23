@@ -48,7 +48,7 @@ import BootstrapTheme from "@fullcalendar/bootstrap";
 const Calender = props => {
 
   //meta title
-  document.title = "Calendar | Skote - React Admin & Dashboard Template";
+  document.title = "Calendar | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 

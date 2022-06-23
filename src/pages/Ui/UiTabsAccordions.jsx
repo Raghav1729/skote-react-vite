@@ -26,7 +26,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 import classnames from "classnames";
 function UiTabsAccordions(props) {
-  document.title = "Tabs & Accordions | Skote - React Admin & Dashboard Template";
+  document.title = "Tabs & Accordions | Skote - Vite React Admin & Dashboard Template";
 
   const [activeTab, setactiveTab] = useState("1");
   const [activeTab1, setactiveTab1] = useState("5");

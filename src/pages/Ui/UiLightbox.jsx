@@ -40,7 +40,7 @@ const imageZoom = [img3, img7];
 const UiLightbox = () => {
 
   //meta title
-  document.title = "Lightbox | Skote - React Admin & Dashboard Template";
+  document.title = "Lightbox | Skote - Vite React Admin & Dashboard Template";
 
   const [photoIndex, setphotoIndex] = useState(0);
   const [isFits, setisFits] = useState(false);

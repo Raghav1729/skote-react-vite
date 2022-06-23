@@ -9,7 +9,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiNotifications = () => {
    //meta title
-   document.title = "Notifications | Skote - React Admin & Dashboard Template";
+   document.title = "Notifications | Skote - Vite React Admin & Dashboard Template";
   const [showEasing, setshowEasing] = useState("swing");
   const [hideEasing, sethideEasing] = useState("linear");
   const [showMethod, setshowMethod] = useState("fadeIn");

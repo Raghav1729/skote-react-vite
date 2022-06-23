@@ -84,7 +84,7 @@ const index = props => {
   }
 
    //meta title
-   document.title="Blog Dashboard | Skote - React Admin & Dashboard Template";
+   document.title="Blog Dashboard | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>

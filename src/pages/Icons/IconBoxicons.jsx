@@ -52,7 +52,7 @@ const IconBoxicons = props => {
   })
 
   //meta title
-  document.title = "Boxicons | Skote - React Admin & Dashboard Template";
+  document.title = "Boxicons | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>

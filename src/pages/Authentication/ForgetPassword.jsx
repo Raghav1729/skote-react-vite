@@ -20,7 +20,7 @@ import logo from "../../assets/images/logo.svg";
 
 const ForgetPasswordPage = props => {
   //meta title
-  document.title="Forget Password | Skote - React Admin & Dashboard Template";
+  document.title="Forget Password | Skote - Vite React Admin & Dashboard Template";
   const dispatch = useDispatch();
 
   const validation = useFormik({

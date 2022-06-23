@@ -19,7 +19,7 @@ import EmailToolbar from "./email-toolbar";
 const EmailRead = () => {
 
    //meta title
-  document.title="Read Email | Skote - React Admin & Dashboard Template";
+  document.title="Read Email | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
