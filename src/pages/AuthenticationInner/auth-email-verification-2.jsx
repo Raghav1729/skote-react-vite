@@ -47,7 +47,7 @@ const EmailVerification2 = () => {
                           <h4>Verify your email</h4>
                           <p>
                             We have sent you verification email{" "}
-                            <span className="font-weight-semibold">
+                            <span className="fw-semibold">
                               example@abc.com
                               </span>
                               , Please check it

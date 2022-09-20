@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import { Row, Col, Card, CardBody, Container } from "reactstrap";
+import { Row, Col, Card, CardBody, Container, Badge } from "reactstrap";
 
 // Rating Plugin
 import Rating from "react-rating";
@@ -10,12 +10,12 @@ import RatingTooltip from "react-rating-tooltip";
 
 const UiRating = () => {
 
-   //meta title
-   document.title = "Rating | Skote - Vite React Admin & Dashboard Template";
+  //meta title
+  document.title = "Rating | Skote - Vite React Admin & Dashboard Template";
 
   const [def, setdef] = useState("");
   const [rate, setRate] = useState("");
-  const [stopRate, setStopRate] = useState("");
+  const [rating, setRating] = useState("")
   const [secondrate, setSecondRate] = useState("");
   const [startrate, setStartrate] = useState("");
   const [customize, setcustomize] = useState("");
@@ -23,7 +23,6 @@ const UiRating = () => {
 
   const tooltipContent = ["Rate 1", "Rate 2", "Rate 3", "Rate 4", "Rate 5"];
   const tooltipContentMore = ["1", "2", "3", "4", "5", "6", "7", "8"];
-  const tooltipContentHalf = ["6", "7", "8", "9", "10"];
   const tooltipContentMiddle = [
     "2",
     "3",
@@ -52,60 +51,42 @@ const UiRating = () => {
                   <Row>
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
-                        <h5 className="font-16 m-b-15">Default rating</h5>
-                        <RatingTooltip
-                          max={5}
-                          onChange={rate => {
-                            setdef(rate);
-                          }}
-                          ActiveComponent={
-                            <i
-                              className="mdi mdi-star text-primary"
-                              style={starStyle}
-                            />
-                          }
-                          InActiveComponent={
-                            <i
-                              className="mdi mdi-star-outline text-muted"
-                              style={starStyle}
-                            />
-                          }
-                        />{" "}
-                        <span>{def}</span>
+                        <h5 className="font-size-15">Default rating</h5>
+                        <div className="d-flex justify-content-center align-items-center">
+                          <Rating
+                            max={5}
+                            initialRating
+                            emptySymbol="mdi mdi-star-outline text-muted"
+                            fullSymbol="mdi mdi-star text-primary"
+                            className="rating-symbol-background"
+                          />
+                        </div>
                       </div>
                     </Col>
 
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
-                        <h5 className="font-size-15 mb-3">Half rating</h5>
-                        <RatingTooltip
-                          max={5}
-                          onChange={rate => {
-                            setRate(rate);
-                          }}
-                          ActiveComponent={
-                            <i
-                              className="mdi mdi-star text-primary"
-                              style={starStyle}
-                            />
-                          }
-                          InActiveComponent={
-                            <i
-                              className="mdi mdi-star-outline text-primary"
-                              style={starStyle}
-                            />
-                          }
-                        />
+                        <h5 className="font-size-15">Half rating</h5>
+                        <div className="d-flex justify-content-center align-items-center">
+                          <Rating
+                            max={5}
+                            initialRating={1.5}
+                            fractions={2}
+                            emptySymbol="mdi mdi-star-outline text-primary "
+                            fullSymbol="mdi mdi-star text-primary "
+                            className="rating-symbol-background"
+                          />
+                        </div>
                       </div>
                     </Col>
 
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
-                        <h5 className="font-16 m-b-15">Disabled rating</h5>
+                        <h5 className="font-size-15">Disabled rating</h5>
                         <Rating
                           ActiveComponent={
                             <i
-                              className="mdi mdi-star text-primary"
+                              className="mdi mdi-star text-primary rating-symbol-background"
                               style={starStyle}
                             />
                           }
@@ -122,24 +103,16 @@ const UiRating = () => {
 
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
-                        <h5 className="font-16 m-b-15">
+                        <h5 className="font-size-15">
                           Readonly rating with a value
                         </h5>
                         <Rating
-                          ActiveComponent={
-                            <i
-                              className="mdi mdi-star text-primary"
-                              style={starStyle}
-                            />
-                          }
-                          InActiveComponent={
-                            <i
-                              className="mdi mdi-star-outline text-muted"
-                              style={starStyle}
-                            />
-                          }
-                          readonly={true}
-                          initialRating={3}
+                          stop={5}
+                          emptySymbol="mdi mdi-star-outline text-primary "
+                          fullSymbol="mdi mdi-star text-primary "
+                          className="rating-symbol-background"
+                          initialRating={2.5}
+                          readonly
                         />
                       </div>
                     </Col>
@@ -149,25 +122,18 @@ const UiRating = () => {
                         <h5 className="font-16 m-b-15">
                           Customized heart rating
                         </h5>
-                        <RatingTooltip
-                          max={5}
-                          onChange={rate => {
-                            setcustomize(rate);
-                          }}
-                          ActiveComponent={
-                            <i
-                              className="mdi mdi-heart text-danger"
-                              style={starStyle}
-                            />
-                          }
-                          InActiveComponent={
-                            <i
-                              className="mdi mdi-heart-outline text-danger"
-                              style={starStyle}
-                            />
-                          }
-                        />
-                        <span>{customize}</span>
+                        <div className="d-flex justify-content-center align-items-center">
+                          <Rating
+                            max={5}
+                            onChange={(def) => {
+                              setdef(def);
+                            }}
+                            emptySymbol="mdi mdi-heart-outline text-danger "
+                            fullSymbol="mdi mdi-heart text-danger "
+                            className="rating-symbol-background"
+                          />
+                          <Badge color="info" className="ms-2">{def}</Badge>
+                        </div>
                       </div>
                     </Col>
 
@@ -195,7 +161,7 @@ const UiRating = () => {
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
                         <h5 className="font-16 m-b-15">Customize tooltips</h5>
-                        <RatingTooltip
+                        <Rating
                           max={5}
                           clearRating={false}
                           onChange={rate => {
@@ -221,7 +187,7 @@ const UiRating = () => {
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
                         <h5 className="font-16 m-b-15">Default rating</h5>
-                        <RatingTooltip
+                        <Rating
                           max={8}
                           clearRating={false}
                           tooltipContent={tooltipContentMore}
@@ -246,25 +212,14 @@ const UiRating = () => {
                         <h5 className="font-16 m-b-15">
                           Set start rate to 5 [6..10]
                         </h5>
-                        <RatingTooltip
+                        <Rating
                           max={5}
-                          clearRating={false}
                           onChange={() => {
                             setStartrate(!startrate);
                           }}
-                          tooltipContent={tooltipContentHalf}
-                          ActiveComponent={
-                            <i
-                              className="mdi mdi-star text-primary"
-                              style={starStyle}
-                            />
-                          }
-                          InActiveComponent={
-                            <i
-                              className="mdi mdi-star-outline text-muted"
-                              style={starStyle}
-                            />
-                          }
+                          emptySymbol="mdi mdi-star-outline text-primary "
+                          fullSymbol="mdi mdi-star text-primary "
+                          className="rating-symbol-background"
                         />
                       </div>
                     </Col>
@@ -274,7 +229,7 @@ const UiRating = () => {
                         <h5 className="font-16 m-b-15">
                           Set start and stop rate [2..10]
                         </h5>
-                        <RatingTooltip
+                        <Rating
                           max={11}
                           onChange={() => {
                             setSecondRate(!secondrate);
@@ -301,28 +256,18 @@ const UiRating = () => {
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
                         <h5 className="font-16 m-b-15">
-                          Set start and stop rate [2..10]
+                          On Hover Event
                         </h5>
-                        <RatingTooltip
-                          max={5}
-                          clearRating={false}
-                          onChange={() => {
-                            setStopRate(!stopRate);
-                          }}
-                          tooltipContent={tooltipContentStep}
-                          ActiveComponent={
-                            <i
-                              className="mdi mdi-star text-primary"
-                              style={starStyle}
-                            />
-                          }
-                          InActiveComponent={
-                            <i
-                              className="mdi mdi-star-outline text-muted"
-                              style={starStyle}
-                            />
-                          }
-                        />
+                        <div className="d-flex justify-content-center align-items-center">
+                          <Rating
+                            stop={5}
+                            emptySymbol="mdi mdi-star-outline text-primary "
+                            fullSymbol="mdi mdi-star text-primary "
+                            onChange={(customize) => setcustomize(customize)}
+                            className="rating-symbol-background"
+                          />
+                          <Badge color="info" className="ratingnum align-middle ms-2">{customize}</Badge>
+                        </div>
                       </div>
                     </Col>
 
@@ -366,8 +311,8 @@ const UiRating = () => {
                     <Col xl="3" md="4" sm="6">
                       <div className="p-4 text-center">
                         <h5 className="font-16 m-b-15">Custom CSS icons</h5>
-                        <Rating onChange={rate => {
-                          setdef(rate);
+                        <Rating onChange={(rating) => {
+                          setRating(rating);
                         }} fractions={2} />
                       </div>
                     </Col>

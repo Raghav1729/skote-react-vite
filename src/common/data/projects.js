@@ -1,3 +1,17 @@
+import avatar1 from "../../assets/images/users/avatar-1.jpg";
+import avatar2 from "../../assets/images/users/avatar-2.jpg";
+import avatar3 from "../../assets/images/users/avatar-3.jpg";
+import avatar4 from "../../assets/images/users/avatar-4.jpg";
+import avatar5 from "../../assets/images/users/avatar-5.jpg";
+import avatar6 from "../../assets/images/users/avatar-6.jpg";
+import avatar8 from "../../assets/images/users/avatar-8.jpg";
+import companies01 from "../../assets/images/companies/img-1.png";
+import companies02 from "../../assets/images/companies/img-2.png";
+import companies03 from "../../assets/images/companies/img-3.png";
+import companies04 from "../../assets/images/companies/img-4.png";
+import companies05 from "../../assets/images/companies/img-5.png";
+import companies06 from "../../assets/images/companies/img-6.png";
+
 const projects = [
   {
     id: 0,
@@ -6,7 +20,7 @@ const projects = [
     description: "It will be as simple as Occidental",
     status: "Completed",
     color: "success",
-    dueDate: "2019-10-15",
+    dueDate: "15 Oct, 19",
     commentsCount: 214,
     team: [
       {
@@ -28,12 +42,6 @@ const projects = [
         skills: [
           { id: 1, name: "Frontend" },
           { id: 2, name: "UI" },
-        ],
-      },
-      {
-        id: 5, img: "avatar6", fullname: "Steve Foster",
-        skills: [
-          { id: 1, name: "UI/UX" },
         ],
       },
     ],
@@ -84,7 +92,7 @@ const projects = [
     description: "To achieve it would be necessary",
     status: "Pending",
     color: "warning",
-    dueDate: "2019-10-22",
+    dueDate: "22 Oct, 19",
     commentsCount: 183,
     team: [
       { id: 1, img: "avatar8" },
@@ -137,7 +145,7 @@ const projects = [
     description: "For science, music, sport, etc",
     status: "Delay",
     color: "danger",
-    dueDate: "2019-10-13",
+    dueDate: "13 Oct, 19",
     commentsCount: 175,
     team: [
       { id: 1, img: "Null", name: "K", color: "info", fullname: "Kony Brafford" },
@@ -190,10 +198,12 @@ const projects = [
     description: "If several languages coalesce",
     status: "Completed",
     color: "success",
-    dueDate: "2019-10-14",
+    dueDate: "14 Oct, 19",
     commentsCount: 202,
     team: [
-      { id: 1, img: "avatar4", fullname: "Janice Cole" },
+      { id: 1, img: "avatar1", fullname: "Janice Cole" }, 
+      { id: 2, img: "avatar6", fullname: "Janice Cole" }, 
+      { id: 3, img: "avatar7", fullname: "Janice Cole" },     
     ],
     startDate: "08 Sept, 2019",
     projectDetails: {
@@ -242,7 +252,7 @@ const projects = [
     description: "Separate existence is a myth",
     status: "Completed",
     color: "success",
-    dueDate: "2019-10-13",
+    dueDate: "13 Oct, 19",
     commentsCount: 194,
     team: [
       { id: 1, img: "avatar1", fullname: "Jennifer Walker" },
@@ -296,8 +306,8 @@ const projects = [
     description: "For science, music, sport, etc",
     status: "Pending",
     color: "warning",
-    dueDate: "2019-10-24",
-    commentsCount: 222,
+    dueDate: "24 Oct, 19",
+    commentsCount: 122,
     team: [
       { id: 1, img: "avatar4", fullname: "Janice Cole" },
       { id: 2, img: "avatar5", fullname: "Steve Foster" },
@@ -349,7 +359,7 @@ const projects = [
     description: "It will be as simple as Occidental",
     status: "Delay",
     color: "danger",
-    dueDate: "2019-10-15",
+    dueDate: "15 Oct, 19",
     commentsCount: 214,
     team: [
       { id: 1, img: "avatar5", fullname: "Steve Foster" },
@@ -360,7 +370,7 @@ const projects = [
     id: 7,
     img: "img4",
     name: "App Landing UI",
-    description: "It will be as simple as Occidental",
+    description: "To achieve it would be necessary",    
     status: "Completed",
     color: "success",
     dueDate: "11 Oct, 19",
@@ -416,7 +426,7 @@ const projects = [
     description: "Their most common words.",
     status: "Completed",
     color: "success",
-    dueDate: "2019-10-12",
+    dueDate: "12 Oct, 19",
     commentsCount: 106,
     team: [
       { id: 1, img: "avatar4", fullname: "Janice Cole" },
@@ -520,4 +530,152 @@ const series = [
   },
 ]
 
-export { projects, options, series }
+const projectListData = [
+  {
+    id: 1,
+    img: companies01,
+    name: "New admin Design",
+    description: "It will be as simple as Occidental",
+    dueDate: "15 Oct, 19",
+    status: "Completed",
+    color: "success",
+    isProfile: true,
+
+    team: [
+      {
+        id: 1, img: avatar4
+      },
+      {
+        id: 2, img: avatar5
+      },
+      {
+        id: 3, profile: "A", profileColor: "success",
+      },
+      {
+        id: 4, img: avatar2
+      },
+    ],
+  },
+  {
+    id: 2,
+    img: companies02,
+    name: "Brand logo design",
+    description: "To achieve it would be necessary",
+    dueDate: "22 Oct, 19",
+    status: "Pending",
+    color: "warning",
+    team: [
+      { id: 1, img: avatar1 },
+      { id: 2, img: avatar3 },
+    ],
+  },
+  {
+    id: 3,
+    img: companies03,
+    name: "New Landing Design",
+    description: "For science, music, sport, etc",
+    dueDate: "13 Oct, 19",
+    status: "Delay",
+    color: "danger",
+    team: [
+      { id: 1, img: avatar3 },
+      { id: 2, img: avatar8 },
+      { id: 2, img: avatar6 },
+    ],
+  },
+  {
+    id: 4,
+    img: companies04,
+    name: "Redesign - Landing page",
+    description: "If several languages coalesce",
+    dueDate: "14 Oct, 19",
+    status: "Completed",
+    color: "success",
+    team: [
+      { id: 1, img: avatar5 },
+      {
+        id: 2, profile: "R", profileColor: "warning",
+      },
+      { id: 3, img: avatar2 },
+    ],
+  },
+  {
+    id: 5,
+    img: companies05,
+    name: "Skote Dashboard UI",
+    description: "Separate existence is a myth",
+    dueDate: "22 Oct, 19",
+    status: "Completed",
+    color: "success",
+    team: [
+      { id: 1, img: avatar4 },
+      { id: 2, img: avatar1 },
+    ],
+  },
+  {
+    id: 6,
+    img: companies06,
+    name: "Blog Template UI",
+    description: "For science, music, sport, etc",
+    dueDate: "24 Oct, 19",
+    status: "Pending",
+    color: "warning",
+    team: [
+      {
+        id: 1, profile: "A", profileColor: "danger",
+      },
+      { id: 2, img: avatar2 },
+    ],
+  },
+  {
+    id: 7,
+    img: companies03,
+    name: "Multipurpose Landing",
+    description: "It will be as simple as Occidental",
+    dueDate: "15 Oct, 19",
+    status: "Delay",
+    color: "danger",
+    team: [
+      { id: 1, img: avatar4 },
+      { id: 2, img: avatar5 },
+      { id: 3, img: avatar2 },
+    ],
+  },
+];
+
+const OverviewTeamMember = [
+  {
+    id: 1,
+    img: avatar2,
+    title: "Daniel Canales",
+    label_1: "Frontend",
+    label_2: "UI",
+  },
+  {
+    id: 2,
+    img: avatar1,
+    title: "Jennifer Walker",
+    label_1: "UI / UX",
+  },
+  {
+    id: 3,
+    title: "Carl Mackay",
+    label_1: "Backend",   
+    profile: "C", 
+  },
+  {
+    id: 4,
+    img: avatar4,
+    title: "Janice Cole",
+    label_1: "Frontend",
+    label_2: "UI",
+  },
+  {
+    id: 4,   
+    title: "Tony Brafford",
+    label_1: "Backend",  
+    profile: "T", 
+  },
+];
+
+export { projects, options, series, projectListData, OverviewTeamMember }

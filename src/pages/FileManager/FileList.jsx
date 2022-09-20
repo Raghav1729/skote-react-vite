@@ -4,6 +4,7 @@ import {
   Card,
   CardBody,
   Col,
+  DropdownItem,
   DropdownMenu,
   DropdownToggle,
   Form,
@@ -72,24 +73,24 @@ const FileList = () => {
                 </div>
               </div>
 
-              <UncontrolledDropdown className="mb-0" direction="right">
+              <UncontrolledDropdown className="mb-0">
                 <DropdownToggle
-                  color="white"
+                tag="a"
                   className="btn btn-link text-muted mt-n2"
                 >
                   <i className="mdi mdi-dots-vertical font-size-20"></i>
                 </DropdownToggle>
 
-                <DropdownMenu>
-                  <Link className="dropdown-item" to="#">
+                <DropdownMenu className="dropdown-menu-end">
+                  <DropdownItem to="#">
                     Share Files
-                  </Link>
-                  <Link className="dropdown-item" to="#">
+                  </DropdownItem>
+                  <DropdownItem to="#">
                     Share with me
-                  </Link>
-                  <Link className="dropdown-item" to="#">
+                  </DropdownItem>
+                  <DropdownItem to="#">
                     Other Actions
-                  </Link>
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Form>
@@ -104,28 +105,28 @@ const FileList = () => {
                 <CardBody className="p-3">
                   <div >
                     <div className="float-end ms-2">
-                      <UncontrolledDropdown className="mb-2" direction="left">
+                      <UncontrolledDropdown className="mb-2">
                         <DropdownToggle
-                          color="white"
-                          className="btn btn-link text-muted mt-n2"
+                          tag="a"
+                          className="font-size-16 text-muted"
                         >
                           <i className="mdi mdi-dots-horizontal"></i>
                         </DropdownToggle>
 
-                        <DropdownMenu>
-                          <Link className="dropdown-item" to="#">
+                        <DropdownMenu className="dropdown-menu-end">
+                          <DropdownItem to="#">
                             Open
-                          </Link>
-                          <Link className="dropdown-item" to="#">
+                          </DropdownItem>
+                          <DropdownItem to="#">
                             Edit
-                          </Link>
-                          <Link className="dropdown-item" to="#">
+                          </DropdownItem>
+                          <DropdownItem to="#">
                             Rename
-                          </Link>
+                          </DropdownItem>
                           <div className="dropdown-divider"></div>
-                          <Link className="dropdown-item" to="#">
+                          <DropdownItem to="#">
                             Remove
-                          </Link>
+                          </DropdownItem>
                         </DropdownMenu>
                       </UncontrolledDropdown>
                     </div>

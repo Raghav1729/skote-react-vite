@@ -8,6 +8,9 @@ import {
   CardTitle,
   Modal,
   Container,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
 } from "reactstrap";
 
 //Import Breadcrumb
@@ -15,8 +18,8 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiModal = () => {
 
-    //meta title
-    document.title = "Models | Skote - Vite React Admin & Dashboard Template";
+  //meta title
+  document.title = "Models | Skote - Vite React Admin & Dashboard Template";
 
   const [modal_standard, setmodal_standard] = useState(false);
   const [modal_large, setmodal_large] = useState(false);
@@ -26,6 +29,10 @@ const UiModal = () => {
   const [modal_scroll, setmodal_scroll] = useState(false);
   const [modal_fullscreen, setmodal_fullscreen] = useState(false);
   const [modal_backdrop, setmodal_backdrop] = useState(false);
+  const [togModal, setTogModal] = useState(false);
+  const [togModal1, setTogModal1] = useState(false);
+  const [varyingModal, setVaryingModal] = useState(false);  
+const [modal_1, setModal_1] = useState("varying");
 
   function tog_standard() {
     setmodal_standard(!modal_standard);
@@ -71,6 +78,23 @@ const UiModal = () => {
     removeBodyCss();
   }
 
+  function tog_toggleModal() {
+    setTogModal(!togModal);
+    setTogModal1(false)
+    removeBodyCss();
+  }
+
+  function tog_toggleModal1() {
+    setTogModal1(!togModal1);
+    setTogModal(false)
+    removeBodyCss();
+  }
+
+  function tog_varyingModal() {
+    setVaryingModal(!varyingModal);
+  }
+
+
   return (
     <React.Fragment>
       <div className="page-content">
@@ -92,7 +116,7 @@ const UiModal = () => {
 
                   <div
                     className="modal bs-example-modal"
-                    tabIndex="-1"
+
                     role="dialog"
                   >
                     <div className="modal-dialog" role="document">
@@ -208,6 +232,11 @@ const UiModal = () => {
                           nisl consectetur et. Donec sed odio dui. Donec
                           ullamcorper nulla non metus auctor fringilla.
                         </p>
+                        <p>Cras mattis consectetur purus sit amet fermentum.
+                          Cras justo odio, dapibus ac facilisis in,
+                          egestas eget quam. Morbi leo risus, porta ac
+                          consectetur ac, vestibulum at eros.
+                        </p>
                       </div>
                       <div className="modal-footer">
                         <button
@@ -239,7 +268,7 @@ const UiModal = () => {
                   <CardTitle className="h4">
                     Fullscreen Modal
                   </CardTitle>
-                  <p className="card-title-desc">Another override is the option to pop up a modal that covers the user viewport, available via modifier classes that are placed on a <code>.modal-dialog</code>.</p>
+                  <p className="card-title-desc">Another override is the option to pop up a modal that covers the user viewport, available via modifier classes that are placed on a <code>.modal-fullscreen</code>.</p>
                   <div>
                     <button
                       type="button"
@@ -518,7 +547,7 @@ const UiModal = () => {
                   <CardTitle className="h5">
                     Vertically Centered
                   </CardTitle>
-                  <p className="card-title-desc">Add <code>centered</code> to <code>Modal</code> to vertically center the modal.</p>
+                  <p className="card-title-desc">Add <code>.modal-dialog-centered</code> to <code>.modal-dialog</code> to vertically center the modal.</p>
                   <div>
                     <button
                       type="button"
@@ -581,7 +610,7 @@ const UiModal = () => {
                   <CardTitle className="h5">
                     Scrollable modal
                   </CardTitle>
-                  <p className="card-title-desc">Another override is the option to pop up a modal that covers the user viewport, available via modifier classes that are placed on a <code>.modal-dialog</code>.</p>
+                  <p className="card-title-desc">You can also create a scrollable modal that allows scroll the modal body by adding <code>.modal-dialog-scrollable</code> to <code>.modal-dialog</code>.</p>
                   <div>
                     <button
                       type="button"
@@ -784,6 +813,159 @@ const UiModal = () => {
 
                   </div>
 
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Toggle Between Modals</CardTitle>
+                  <p className="card-title-desc">Toggle between multiple modals with some clever placement of the <code>data-bs-target</code> and <code>data-bs-toggle</code> attributes.</p>
+
+                  <div>
+                    <button type="button"
+                      onClick={() => {
+                        tog_toggleModal();
+                      }}
+                      className="btn btn-primary waves-effect waves-light">Open First Modal</button>
+                    <Modal
+                      isOpen={togModal}
+                      toggle={() => {
+                        tog_toggleModal();
+                      }}
+                      centered
+                    >
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="staticBackdropLabel">Modal 1</h5>
+                        <button type="button" className="btn-close"
+                          onClick={() => {
+                            setTogModal(false);
+                          }} aria-label="Close"></button>
+                      </div>
+                      <ModalBody>
+                        <p>Show a second modal and hide this one with the button below.</p>
+                      </ModalBody>
+                      <ModalFooter>
+                        <button className="btn btn-primary"
+                          data-bs-target="#secondmodal"
+                          onClick={() => {
+                            tog_toggleModal1();
+                          }}
+                        >
+                          Open Second Modal</button>
+                      </ModalFooter>
+                    </Modal>
+
+                  </div>
+
+                  <Modal
+                    isOpen={togModal1}
+                    toggle={() => {
+                      tog_toggleModal1();
+                    }}
+                    centered
+                  >
+                    <div className="modal-header">
+                      <h5 className="modal-title" id="staticBackdropLabel">Modal 2</h5>
+                      <button type="button" className="btn-close"
+                        onClick={() => {
+                          setTogModal1(false);
+                        }} aria-label="Close"></button>
+                    </div>
+                    <ModalBody>
+                      <p>Hide this modal and show the first with the button below.</p>
+                    </ModalBody>
+                    <ModalFooter>
+                      <button className="btn btn-primary"
+                        data-bs-target="#firstmodal"
+                        onClick={() => {
+                          tog_toggleModal();
+                        }}
+                      >
+                        Back to First
+                      </button>
+                    </ModalFooter>
+                  </Modal>
+
+                </CardBody>
+              </Card>
+            </Col>
+
+
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Varying Modal Content</CardTitle>
+                  <p className="card-title-desc">Modal of buttons that all trigger the same modal with slightly different contents. Use <code>event.relatedTarget</code> and HTML <code>data-bs-target</code> attributes to vary the contents of the modal depending on which button was clicked.</p>
+
+                  <div>
+                    <div className="d-flex flex-wrap gap-3">
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() => {
+                          tog_varyingModal();
+                          setModal_1("@mdo")
+                        }}
+                      >
+                        Open modal for @mdo
+                      </button>
+                      <button 
+                      type="button" 
+                      className="btn btn-primary"
+                      onClick={() => {
+                          tog_varyingModal();
+                          setModal_1("@fat")
+                        }}
+                      >
+                      Open modal for @fat
+                      </button>
+                      <button 
+                      type="button" 
+                      className="btn btn-primary"
+                      onClick={() => {
+                          tog_varyingModal();
+                          setModal_1("@getbootstrap")
+                        }}
+                      >
+                      Open modal for @getbootstrap
+                      </button>
+                    </div>
+
+                    <Modal
+                      isOpen={varyingModal}
+                      toggle={() => {
+                        tog_varyingModal()
+                      }}
+                    >
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">New message {modal_1}</h5>
+                        <button type="button"
+                          onClick={() => {
+                            setVaryingModal(false);
+                          }} className="btn-close"></button>
+                      </div>
+                      <div className="modal-body">
+                        <form>
+                          <div className="mb-3">
+                            <label htmlFor="recipient-name" className="col-form-label">Recipient:</label>
+                            <input type="text" className="form-control" id="recipient-name" defaultValue={modal_1}/>
+                          </div>
+                          <div className="mb-3">
+                            <label htmlFor="message-text" className="col-form-label">Message:</label>
+                            <textarea className="form-control" id="message-text"></textarea>
+                          </div>
+                        </form>
+                      </div>
+                      <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary">Send message</button>
+                      </div>
+                    </Modal>
+                  </div>
                 </CardBody>
               </Card>
             </Col>

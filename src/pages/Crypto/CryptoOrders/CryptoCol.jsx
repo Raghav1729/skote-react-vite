@@ -1,4 +1,5 @@
 import React from 'react';
+import { Badge } from 'reactstrap';
 
 const Pdate = (cell) => {
     return cell.value ? cell.value : '';
@@ -17,7 +18,14 @@ const ValueinUSD = (cell) => {
 };
 
 const Status = (cell) => {
-    return cell.value ? cell.value : '';
+    switch (cell.value) {
+        case "Completed":
+            return <Badge className="bg-success font-size-10">Completed</Badge>
+        case "Pending":
+            return <Badge className="bg-warning font-size-10">Pending</Badge>
+        case "Failed":
+            return <Badge className="bg-danger font-size-10">Failed</Badge>
+    }
 };
 
 const Coin = (cell) => {

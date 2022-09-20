@@ -41,6 +41,8 @@ import {
   novEarningData,
   octEarningData,
   productComments,
+  jobs,
+  jobApply
 } from "../../common/data"
 
 let users = [
@@ -777,6 +779,84 @@ const fakeBackend = () => {
     })
   })
 
+  mock.onGet(url.GET_JOB_LIST).reply(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (jobs) {
+          // Passing fake JSON data as response
+          resolve([200, jobs]);
+        } else {
+          reject([400, "Cannot get jobs"]);
+        }
+      });
+    });
+  });
+
+  mock.onPost(url.ADD_NEW_JOB_LIST).reply(jobList => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (jobList && jobList.data) {
+          // Passing fake JSON data as response
+          resolve([200, jobList.data]);
+        } else {
+          reject([400, "Cannot add job List"]);
+        }
+      });
+    });
+  });
+
+  mock.onPut(url.UPDATE_JOB_LIST).reply(jobList => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (jobList && jobList.data) {
+          // Passing fake JSON data as response
+          resolve([200, jobList.data]);
+        } else {
+          reject([400, "Cannot update job List"]);
+        }
+      });
+    });
+  });
+
+  mock.onDelete(url.DELETE_JOB_LIST).reply(config => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (config && config.headers) {
+          // Passing fake JSON data as response
+          resolve([200, config.headers.job]);
+        } else {
+          reject([400, "Cannot delete Job List"]);
+        }
+      });
+    });
+  });
+  
+  mock.onGet(url.GET_APPLY_JOB).reply(() => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (jobApply) {
+          // Passing fake JSON data as response
+          resolve([200, jobApply]);
+        } else {
+          reject([400, "Cannot get jobsApply"]);
+        }
+      });
+    });
+  });
+
+  mock.onDelete(url.DELETE_APPLY_JOB).reply(config => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (config && config.headers) {
+          // Passing fake JSON data as response
+          resolve([200, config.headers.data]);
+        } else {
+          reject([400, "Cannot delete Job"]);
+        }
+      });
+    });
+  });
+  
   mock.onGet(new RegExp(`${url.GET_PROJECT_DETAIL}/*`)).reply(config => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {

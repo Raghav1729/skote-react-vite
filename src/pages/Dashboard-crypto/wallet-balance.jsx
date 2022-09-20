@@ -1,10 +1,15 @@
-import React from "react"
-import { Row, Col, Card, CardBody } from "reactstrap"
-import { Link } from "react-router-dom"
+import React from "react";
+import { Row, Col, Card, CardBody } from "reactstrap";
+import { Link } from "react-router-dom";
 
-import ReactApexChart from "react-apexcharts"
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const series = [76, 67, 61]
+
+const WalletBalance = ({ dataColors }) => {
+const apexwalletchartColors = getChartColorsArray(dataColors);
+
+const series = [76, 67, 61];
 const walletOptions = {
   plotOptions: {
     radialBar: {
@@ -45,7 +50,7 @@ const walletOptions = {
           fontSize: "14px",
           offsetY: 4,
           formatter: function (e) {
-            return e + "%"
+            return e + "%";
           },
         },
         total: {
@@ -58,9 +63,9 @@ const walletOptions = {
           formatter: function (e) {
             return (
               e.globals.seriesTotals.reduce(function (e, t) {
-                return e + t
+                return e + t;
               }, 0) + "%"
-            )
+            );
           },
         },
       },
@@ -69,19 +74,22 @@ const walletOptions = {
   stroke: {
     lineCap: "round",
   },
-  colors: ["#3452e1", "#f1b44c", "#50a5f1"],
+  colors: apexwalletchartColors,
   labels: ["Ethereum", "Bitcoin", "Ethereum"],
   legend: { show: !1 },
-}
+};
 
-const WalletBalance = () => {
+
   return (
     <React.Fragment>
       <Col xl="8">
         <Card>
           <CardBody>
             <div className="float-end">
-              <select  defaultValue="MA" className="form-select form-select-sm ms-2">
+              <select
+                defaultValue="MA"
+                className="form-select form-select-sm ms-2"
+              >
                 <option value="MA">March</option>
                 <option value="FE">February</option>
                 <option value="JA">January</option>
@@ -178,7 +186,7 @@ const WalletBalance = () => {
         </Card>
       </Col>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default WalletBalance
+export default WalletBalance;

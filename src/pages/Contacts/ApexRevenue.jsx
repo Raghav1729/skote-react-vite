@@ -1,7 +1,10 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const ApexRevenue = () => {
+const ApexRevenue = ({ dataColors }) => {
+  const apexprofileChartColors = getChartColorsArray(dataColors);
+
   const options = {
     chart: {
       height: 300,
@@ -55,18 +58,24 @@ const ApexRevenue = () => {
     fill: {
       opacity: 1,
     },
-    colors: ["#556ee6"],
-  }
+    colors: apexprofileChartColors,
+  };
   const series = [
     {
       name: "Revenue",
       data: [42, 85, 101, 56, 37, 105, 38, 58, 92, 82, 72, 32],
     },
-  ]
+  ];
 
   return (
-    <ReactApexChart options={options} series={series} type="bar" height="320" className="apex-charts" />
-  )
-}
+    <ReactApexChart
+      options={options}
+      series={series}
+      type="bar"
+      height="330"
+      className="apex-charts"
+    />
+  );
+};
 
-export default ApexRevenue
+export default ApexRevenue;

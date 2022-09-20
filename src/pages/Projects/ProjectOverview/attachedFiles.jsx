@@ -10,13 +10,13 @@ const AttachedFiles = ({ files }) => {
       <CardBody>
         <CardTitle className="mb-4">Attached Files</CardTitle>
         <div className="table-responsive">
-          <Table className="table table-nowrap table-centered table-hover mb-0">
+          <Table className="table-nowrap align-middle table-hover mb-0">
             <tbody>
               {map(files, (file, i) => (
                 <tr key={"_file_" + i}>
                   <td style={{ width: "45px" }}>
                     <div className="avatar-sm">
-                      <span className="avatar-title rounded-circle bg-soft bg-primary text-primary font-size-24">
+                      <span className="avatar-title rounded-circle bg-primary bg-soft text-primary font-size-24">
                         <i className="bx bxs-file-doc" />
                       </span>
                     </div>

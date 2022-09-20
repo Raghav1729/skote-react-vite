@@ -18,8 +18,8 @@
         width: 32px;
         height: 32px;
         border: 0;
-        color: $body-color;
-        border: 1px solid $border-color;;
+        color: var(--#{$prefix}body-color);
+        border: 1px solid var(--#{$prefix}border-color);
         background-color: $input-bg;
 
       }
@@ -27,10 +27,10 @@
   }
 
   &.dropdown-menu:after{
-    border-bottom-color: $gray-200;
+    border-bottom-color: var(--#{$prefix}gray-200);
   }
   &.timepicker-orient-bottom:after{
-    border-top-color: $gray-200;
+    border-top-color: var(--#{$prefix}gray-200);
   }
 }
 

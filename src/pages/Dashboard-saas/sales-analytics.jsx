@@ -1,12 +1,14 @@
 import React from "react";
 import { Row, Col, Card, CardBody } from "reactstrap";
 import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const SalesAnalytics = props => {
+const SalesAnalytics = ({ dataColors }) => {
+  const apexsaleschartColors = getChartColorsArray(dataColors);
   const series = [56, 38, 26];
   const options = {
     labels: ["Series A", "Series B", "Series C"],
-    colors: ["#556ee6", "#34c38f", "#f46a6a"],
+    colors: apexsaleschartColors,
     legend: { show: !1 },
     plotOptions: {
       pie: {

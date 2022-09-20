@@ -6,16 +6,25 @@ import { Card, CardBody, CardTitle, Col, Container, Row } from "reactstrap"
 //Import Breadcrumb
 import Breadcrumbs from "/src/components/Common/Breadcrumb"
 import ReactApexChart from "react-apexcharts"
+
 //Import Images
-import images from "/src/assets/images"
+//Import Images
+import avatar4 from "../../assets/images/users/avatar-4.jpg";
+import avatar5 from "../../assets/images/users/avatar-5.jpg";
+import avatar1 from "../../assets/images/users/avatar-1.jpg";
+import avatar2 from "../../assets/images/users/avatar-2.jpg";
+import avatar6 from "../../assets/images/users/avatar-6.jpg";
+import avatar3 from "../../assets/images/users/avatar-3.jpg";
+import avatar8 from "../../assets/images/users/avatar-8.jpg";
+import avatar7 from "../../assets/images/users/avatar-7.jpg";
 
 import { getTasks as onGetTasks } from "/src/store/tasks/actions"
-import { options, series, statusClasses } from "/src/common/data/tasks"
+import { options, series } from "/src/common/data/tasks"
 
 //redux
 import { useSelector, useDispatch } from "react-redux"
 
-const TasksList = props => {
+const TasksList = () => {
 
   //meta title
   document.title="Task List | Skote - Vite React Admin & Dashboard Template";
@@ -40,96 +49,345 @@ const TasksList = props => {
           {/* Render Breadcrumbs */}
           <Row>
             <Col lg={8}>
-              {map(tasks, (task, i) => (
-                <Card key={i}>
-                  <CardBody>
-                    <CardTitle className="mb-4">{task.title}</CardTitle>
-                    <div className="table-responsive">
-                      <table className="table table-nowrap align-middle mb-0">
-                        <tbody>
-                          {map(task.tasks, (item, i) => (
-                            <tr key={i}>
-                              <td style={{ width: "40px" }}>
-                                <div className="form-check font-size-16">
-                                  <input
-                                    type="checkbox"
-                                    className="form-check-input"
-                                    id={item.id}
-                                  />
-                                  <label
-                                    className="form-check-label"
-                                    htmlFor={item.id}
-                                  />
-                                </div>
-                              </td>
-                              <td>
-                                <h5 className="text-truncate font-size-14 m-0">
-                                  <Link to="#" className="text-dark">
-                                    {item.description}
-                                  </Link>
-                                </h5>
-                              </td>
-                              <td>
-                                <div className="team">
-                                  {map(
-                                    item.members,
-                                    (member, index) =>
-                                      index < 2 && (
-                                        <Link
-                                          to="#"
-                                          className="team-member d-inline-block me-1"
-                                          key={index}
-                                        >
-                                          {member.userImg ? (
-                                            <img
-                                              src={images[member.userImg]}
-                                              className="rounded-circle avatar-xs"
-                                              alt=""
-                                            />
-                                          ) : (
-                                            <div className="avatar-xs">
-                                              <span className="avatar-title rounded-circle bg-soft bg-primary text-primary font-size-16">
-                                                {member.username.charAt(0)}
-                                              </span>
-                                            </div>
-                                          )}
-                                        </Link>
-                                      )
-                                  )}
-                                  {size(item.members) > 2 && (
-                                    <Link
-                                      to="#"
-                                      className="d-inline-block me-1"
-                                    >
-                                      <div className="avatar-xs">
-                                        <span className="avatar-title rounded-circle bg-warning text-white font-size-16">
-                                          {size(item.members) - 2} +
-                                        </span>
-                                      </div>
-                                    </Link>
-                                  )}
-                                </div>
-                              </td>
-                              <td>
-                                <div className="text-center">
-                                  <span
-                                    className={classNames(
-                                      "badge badge-pill font-size-11",
-                                      statusClasses[item.status.toLowerCase()]
-                                    )}
-                                  >
-                                    {item.status}
-                                  </span>
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </CardBody>
-                </Card>
-              ))}
+              <Card>
+                <CardBody>
+                  <h4 className="card-title mb-4">Upcoming</h4>
+                  <div className="table-responsive">
+                    <table className="table table-nowrap align-middle mb-0">
+                      <tbody>
+                        <tr>
+                          <td style={{ width: "40px" }}>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="upcomingtaskCheck01" />
+                              <label className="form-check-label" htmlFor="upcomingtaskCheck01"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Create a Skote Dashboard UI</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar4} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar5} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-secondary font-size-11">Waiting</span>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="upcomingtaskCheck02" defaultChecked />
+                              <label className="form-check-label" htmlFor="upcomingtaskCheck02"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Create a New Landing UI</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar1} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar2} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-success text-white font-size-16">
+                                      A
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar6} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-primary font-size-11">Approved</span>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="upcomingtaskCheck03" />
+                              <label className="form-check-label" htmlFor="upcomingtaskCheck03"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Create a Skote Logo</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar3} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-warning text-white font-size-16">
+                                      R
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar5} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-secondary font-size-11">Waiting</span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardBody>
+              </Card>
+
+              <Card>
+                <CardBody>
+                  <h4 className="card-title mb-4">In Progress</h4>
+                  <div className="table-responsive">
+                    <table className="table table-nowrap align-middle mb-0">
+                      <tbody>
+                        <tr>
+                          <td style={{ width: "40px" }}>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="inprogresstaskCheck01" defaultChecked />
+                              <label className="form-check-label" htmlFor="inprogresstaskCheck01"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Brand logo design</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar4} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar5} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-success font-size-11">Complete</span>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="inprogresstaskCheck02" />
+                              <label className="form-check-label" htmlFor="inprogresstaskCheck02"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Create a Blog Template UI</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-success text-white font-size-16">
+                                      A
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar2} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-warning font-size-11">Pending</span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardBody>
+              </Card>
+
+              <Card>
+                <CardBody>
+                  <h4 className="card-title mb-4">Completed</h4>
+                  <div className="table-responsive">
+                    <table className="table table-nowrap align-middle mb-0">
+                      <tbody>
+                        <tr>
+                          <td style={{ width: "40px" }}>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="completedtaskCheck01" />
+                              <label className="form-check-label" htmlFor="completedtaskCheck01"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Redesign - Landing page</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar4} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar5} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-danger text-white font-size-16">
+                                      K
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar2} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-success font-size-11">Complete</span>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="completedtaskCheck02" defaultChecked />
+                              <label className="form-check-label" htmlFor="completedtaskCheck02"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Multipurpose Landing</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar8} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar6} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar4} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-success font-size-11">Complete</span>
+                            </div>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                            <div className="form-check font-size-16">
+                              <input className="form-check-input" type="checkbox" id="completedtaskCheck03" />
+                              <label className="form-check-label" htmlFor="completedtaskCheck03"></label>
+                            </div>
+                          </td>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Create a Blog Template UI</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar4} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar5} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar2} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-info text-white font-size-16">
+                                      D
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div className="text-center">
+                              <span className="badge rounded-pill badge-soft-success font-size-11">Complete</span>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardBody>
+              </Card>
             </Col>
 
             <Col lg={4}>
@@ -144,73 +402,101 @@ const TasksList = props => {
                     className="apex-charts"
                   />
                 </CardBody>
+              </Card>            
+
+              <Card>
+                <CardBody>
+                  <h4 className="card-title mb-4">Recent Tasks</h4>
+
+                  <div className="table-responsive">
+                    <table className="table table-nowrap align-middle mb-0">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Brand logo design</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar4} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar5} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Create a Blog Template UI</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar1} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar2} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar3} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-info text-white font-size-16">
+                                      D
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h5 className="text-truncate font-size-14 m-0"><Link to="#" className="text-dark">Redesign - Landing page</Link></h5>
+                          </td>
+                          <td>
+                            <div className="avatar-group">
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar8} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <img src={avatar7} alt="" className="rounded-circle avatar-xs" />
+                                </Link>
+                              </div>
+                              <div className="avatar-group-item">
+                                <Link to="#" className="d-inline-block">
+                                  <div className="avatar-xs">
+                                    <span className="avatar-title rounded-circle bg-danger text-white font-size-16">
+                                      P
+                                    </span>
+                                  </div>
+                                </Link>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardBody>
               </Card>
 
-              {!isEmpty(recentTasks) && (
-                <Card>
-                  <CardBody>
-                    <CardTitle className="mb-4">{recentTasks.title}</CardTitle>
-                    <div className="table-responsive">
-                      <table className="table table-nowrap align-middle mb-0">
-                        <tbody>
-                          {map(recentTasks.tasks, (item, i) => (
-                            <tr key={i}>
-                              <td>
-                                <h5 className="text-truncate font-size-14 m-0">
-                                  <Link to="#" className="text-dark">
-                                    {item.description}
-                                  </Link>
-                                </h5>
-                              </td>
-                              <td>
-                                <div className="team">
-                                  {map(
-                                    item.members,
-                                    (member, index) =>
-                                      index < 2 && (
-                                        <Link
-                                          to="#"
-                                          className="d-inline-block"
-                                          key={index}
-                                        >
-                                          {member.userImg ? (
-                                            <img
-                                              src={images[member.userImg]}
-                                              className="rounded-circle avatar-xs"
-                                              alt=""
-                                            />
-                                          ) : (
-                                            <div className="avatar-xs">
-                                              <span className="avatar-title rounded-circle bg-soft bg-primary text-primary font-size-16">
-                                                {member.username.charAt(0)}
-                                              </span>
-                                            </div>
-                                          )}
-                                        </Link>
-                                      )
-                                  )}
-                                  {size(item.members) > 2 && (
-                                    <Link
-                                      to="#"
-                                      className="team-member d-inline-block ms-1"
-                                    >
-                                      <div className="avatar-xs">
-                                        <span className="avatar-title rounded-circle bg-soft bg-primary text-primary">
-                                          {size(item.members) - 2} +
-                                        </span>
-                                      </div>
-                                    </Link>
-                                  )}
-                                </div>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  </CardBody>
-                </Card>
-              )}
             </Col>
           </Row>
         </Container>

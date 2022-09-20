@@ -141,6 +141,13 @@
           color: $white;
       }
   }
+
+    table.focus-on tbody tr.unfocused th,
+    table.focus-on tfoot tr.unfocused th,
+    table.focus-on tbody tr.unfocused td,
+    table.focus-on tfoot tr.unfocused td {
+      color: var(--#{$prefix}body-color);
+    }
 }
 
 body[data-layout="horizontal"] {

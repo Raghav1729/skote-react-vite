@@ -108,7 +108,7 @@ const ContactsList = props => {
       {
         Header: "#",
         Cell: () => {
-          return <input type="checkbox" />;
+          return <input type="checkbox" className="form-check-input" />;
         },
       },
       {

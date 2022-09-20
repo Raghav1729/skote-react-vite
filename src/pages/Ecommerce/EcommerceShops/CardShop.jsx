@@ -27,7 +27,7 @@ const CardShop = props => {
                     {nameIcon}
                   </span>
                 </div>
-                <h5 className="text-truncate">{shop.name}</h5>
+                <h5 className="text-truncate pb-1">{shop.name}</h5>
               </div>
             </Col>
 

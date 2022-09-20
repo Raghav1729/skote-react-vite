@@ -2,19 +2,27 @@
 // Forms.scss
 //
 
+
+
+
 [type="tel"],
 [type="url"],
 [type="email"],
 [type="number"] {
   &::placeholder {
-    text-align: left /*rtl: right*/;
+    text-align: left
+      /*rtl: right*/
+    ;
   }
 }
 
 .form-check {
   position: relative;
-  text-align: left /*rtl: right*/;
+  text-align: left
+    /*rtl: right*/
+  ;
 }
+
 
 // checkbox input right
 
@@ -22,6 +30,7 @@
   padding-left: 0;
   display: inline-block;
   padding-right: $form-check-padding-start;
+
   .form-check-input {
     float: right;
     margin-left: 0;
@@ -33,9 +42,12 @@
   }
 }
 
+
+
 // checkbox
 
 .form-checkbox-outline {
+
   .form-check-input {
     border-width: 2px;
     background-color: $card-bg;
@@ -45,18 +57,20 @@
     }
 
     &:checked {
-      background-color: $card-bg !important;
+      background-color: $card-bg  !important;
 
-      &[type="checkbox"] {
+      &[type=checkbox] {
         background-image: none;
+
       }
 
       &:after {
         position: absolute;
-        content: "\F012C";
+        content: '\F012C';
         font-family: "Material Design Icons";
         top: -4px !important;
-        left: 1px; /*rtl: -4px */
+        left: 1px;
+        /*rtl: -4px */
         font-size: 16px;
         color: $dark;
       }
@@ -76,18 +90,18 @@
     }
 
     &:checked {
-      background-color: $card-bg !important;
+      background-color: $card-bg  !important;
 
-      &[type="checkbox"] {
+      &[type=checkbox] {
         background-image: none;
+
       }
 
       &:after {
         position: absolute;
-        content: "";
+        content: '';
         top: 3px !important;
         left: 3px;
-        right: 3px;
         width: 5px;
         height: 5px;
         border-radius: 50%;
@@ -96,9 +110,12 @@
   }
 }
 
+
+
 // checkbox color
 
-@each $color, $value in $theme-colors {
+@each $color,
+$value in $theme-colors {
   .form-check-#{$color} {
     .form-check-input {
       &:checked {
@@ -113,6 +130,7 @@
       &:checked {
         border-color: $value;
         background-color: $value;
+
         &:after {
           background-color: $value;
         }
@@ -121,6 +139,8 @@
   }
 }
 
+.form-check,
+.form-check-input,
 .form-check-label {
   cursor: pointer;
   margin-bottom: 0;
@@ -132,6 +152,7 @@
   padding-left: 2.5rem;
   min-height: 24px;
   line-height: 24px;
+
   .form-check-input {
     width: 40px;
     height: 20px;
@@ -144,10 +165,12 @@
   }
 }
 
+
 .form-switch-lg {
   padding-left: 2.75rem;
   min-height: 28px;
   line-height: 28px;
+
   .form-check-input {
     width: 48px;
     height: 24px;
@@ -185,36 +208,9 @@
 }
 
 .rdl-move {
-  &:hover,
-  &:active,
-  &:focus {
-    &:not(:disabled) {
-      background-color: darken($light, 2%);
-      border-color: $border-color;
+
+    .form-check-input,
+    .form-check-input:focus {
+      background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$gray-400}'/></svg>"));
     }
   }
-}
-
-.css-1uccc91-singleValue {
-  color: $input-color !important;
-}
-.react-kanban-column {
-  background-color: $light !important;
-}
-
-
-.icon-tab li:first-child .nav-link{
-  border-top-left-radius: 21px;
-  border-bottom-left-radius: 21px;
-}
-.icon-tab li:last-child .nav-link{
-  border-top-right-radius: 21px;
-  border-bottom-right-radius: 21px;
-}
-
-// Form dropdown 
-.input-group{
-  .form-select{
-    background-position: right 0.75rem center !important;
-  }
-}

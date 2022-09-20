@@ -1,13 +1,16 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import "./dashboard.scss";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const ApexRadial = () => {
+const ApexRadial = ({ dataColors }) => {
+  const apexRadialColors = getChartColorsArray(dataColors);
+
   const series = [67];
   const options = {
     plotOptions: {
       radialBar: {
-        startAngle: -135, 
+        startAngle: -135,
         endAngle: 135,
         dataLabels: {
           name: {
@@ -26,7 +29,7 @@ const ApexRadial = () => {
         },
       },
     },
-    colors: ["#556ee6"],
+    colors: apexRadialColors,
     fill: {
       type: "gradient",
       gradient: {

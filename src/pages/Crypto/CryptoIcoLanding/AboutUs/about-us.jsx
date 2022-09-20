@@ -40,7 +40,7 @@ const AboutUs = () => {
                 </p>
 
                 <div className="d-flex flex-wrap gap-2">
-                  <Link to="#" className="btn btn-success me-1">
+                  <Link to="#" className="btn btn-success">
                     Read More
                   </Link>
                   <Link to="#" className="btn btn-outline-primary">

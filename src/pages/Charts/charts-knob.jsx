@@ -9,7 +9,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 const ChartsKnob = () => {
 
    //meta title
-  document.title = "Jquery Knob Charts | Skote - Vite React Admin & Dashboard Template"
+  document.title = "Jquery Knob Charts | Skote - React Admin & Dashboard Template"
 
   const [value, setvalue] = useState(35)
   const [value_cur, setvalue_cur] = useState(29)
@@ -55,7 +55,7 @@ const ChartsKnob = () => {
                           value={value}
                           height={200}
                           width={150}
-                          fgColor="#7a6fbe"
+                          fgColor="#556ee6"
                           displayCustom={() => {
                             return false
                           }}
@@ -88,7 +88,7 @@ const ChartsKnob = () => {
                           value={value_prev}
                           height={200}
                           width={150}
-                          fgColor="#ffbb44"
+                          fgColor="#50a5f1"
                           onChange={handleChangeprev}
                         />
                       </div>
@@ -101,7 +101,7 @@ const ChartsKnob = () => {
                         <h5 className="font-size-14 mb-3">Angle offset</h5>
                         <Knob
                           value={angle}
-                          fgColor="#ea553d"
+                          fgColor="#ffbb44"
                           lineCap="round"
                           height={200}
                           width={150}
@@ -136,7 +136,7 @@ const ChartsKnob = () => {
                         </h5>
                         <Knob
                           value={angleArc}
-                          fgColor="#f06292"
+                          fgColor="#f46a6a"
                           angleArc={360}
                           angleOffset={5}
                           cursor={true}
@@ -156,7 +156,7 @@ const ChartsKnob = () => {
                         <h5 className="font-size-14 mb-3">Readonly</h5>
                         <Knob
                           value={readonly}
-                          fgColor="#5468da"
+                          fgColor="#e83e8c"
                           thickness={0.12}
                           readOnly={true}
                           height={200}

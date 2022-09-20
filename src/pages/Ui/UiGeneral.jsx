@@ -25,7 +25,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiGeneral = () => {
 
-   //meta title
+  //meta title
   document.title = "General | Skote - Vite React Admin & Dashboard Template";
 
   const [popovertop, setpopovertop] = useState(false);
@@ -43,113 +43,119 @@ const UiGeneral = () => {
     <React.Fragment>
       <div className="page-content">
         <Container fluid={true}>
-          <Breadcrumbs title="UI Elements" breadcrumbItem="General" />
+          <Breadcrumbs title="UI Elements" breadcrumbItem="General UI" />
 
           <Row>
             <Col lg={12}>
               <Card>
                 <CardBody>
                   <Row>
-                    <Col lg={6}>
-                      <CardTitle>Badges</CardTitle>
-                      <CardSubtitle className="mb-3">
-                        Add any of the below mentioned modifier classes to
-                        change the appearance of a badge.
-                      </CardSubtitle>
+                    <Col xl={6}>
                       <div>
-                        <Badge className="me-2 bg-primary">
-                          Primary
-                        </Badge>
-                        <Badge className="me-2 bg-success">
-                          Success
-                        </Badge>
-                        <Badge className="me-2 bg-info">
-                          Info
-                        </Badge>
-                        <Badge className="me-2 bg-warning">
-                          Warning
-                        </Badge>
-                        <Badge className="me-2 bg-danger">
-                          Danger
-                        </Badge>
-                        <Badge className="me-2 bg-dark">
-                          Dark
-                        </Badge>
-                      </div>
+                        <CardTitle>Badges</CardTitle>
+                        <p className="card-title-desc">
+                          Add any of the below mentioned modifier classes to
+                          change the appearance of a badge.
+                        </p>
+                        <div>
+                          <Badge color="primary" className="me-1">
+                            Primary
+                          </Badge>
+                          <Badge color="success" className="me-1">
+                            Success
+                          </Badge>
+                          <Badge color="info" className="me-1">
+                            Info
+                          </Badge>
+                          <Badge color="warning" className="me-1">
+                            Warning
+                          </Badge>
+                          <Badge color="danger" className="me-1">
+                            Danger
+                          </Badge>
+                          <Badge color="dark" className="me-1">
+                            Dark
+                          </Badge>
+                        </div>
 
-                      <div className="mt-5">
-                        <h5 className="font-size-14">Soft Badge</h5>
-                        <Badge color="soft-primary" pill className="badge-soft-primary ms-1">
-                          Primary
-                        </Badge>
-                        <Badge pill color="soft-success" className="badge-soft-success me-1">
-                          Success
-                        </Badge>
-                        <Badge pill color="soft-info" className="badge-soft-info me-1">
-                          Info
-                        </Badge>
-                        <Badge pill color="soft-warning" className="badge-soft-warning me-1">
-                          Warning
-                        </Badge>
-                        <Badge pill color="soft-danger" className="badge-soft-danger me-1">
-                          Danger
-                        </Badge>
-                        <Badge pill color="soft-primary" className="badge-soft-dark me-1">
-                          Dark
-                        </Badge>
+                        <div className="mt-5">
+                          <h5 className="font-size-14">Soft Badge</h5>
+                          <div className="mt-1">
+                            <Badge className="badge-soft-primary me-1">
+                              Primary
+                            </Badge>
+                            <Badge className="badge-soft-success me-1">
+                              Success
+                            </Badge>
+                            <Badge className="badge-soft-info me-1">
+                              Info
+                            </Badge>
+                            <Badge className="badge-soft-warning me-1">
+                              Warning
+                            </Badge>
+                            <Badge className="badge-soft-danger me-1">
+                              Danger
+                            </Badge>
+                            <Badge className="badge-soft-dark me-1">
+                              Dark
+                            </Badge>
+                          </div>
+                        </div>
                       </div>
                     </Col>
                     <Col lg={6}>
                       <CardTitle>Pill badges</CardTitle>
-                      <CardSubtitle className="mb-3">
+                      <p className="card-title-desc">
                         Use the <code>.rounded-pill</code> modifier className to
                         make badges more rounded (with a larger{" "}
                         <code>border-radius</code>
                         and additional horizontal <code>padding</code>). Useful
                         if you miss the badges from v3.
-                      </CardSubtitle>
+                      </p>
 
                       <div>
-                        <Badge className="me-1 rounded-pill bg-primary">
+                        <Badge pill color="primary" className="me-1">
                           Primary
                         </Badge>
-                        <Badge className="me-1 rounded-pill bg-success">
+                        <Badge pill color="success" className="me-1">
                           Success
                         </Badge>
-                        <Badge className="me-1 rounded-pill bg-info">
+                        <Badge pill color="info" className="me-1">
                           Info
                         </Badge>
-                        <Badge className="me-1 rounded-pill bg-warning">
+                        <Badge pill color="warning" className="me-1">
                           Warning
                         </Badge>
-                        <Badge className="me-1 rounded-pill bg-danger">
+                        <Badge pill color="danger" className="me-1">
                           Danger
                         </Badge>
-                        <Badge className="me-1 rounded-pill bg-dark">
+                        <Badge pill color="dark" className="me-1">
                           Dark
                         </Badge>
                       </div>
 
                       <div className="mt-5">
                         <h5 className="font-size-14">Soft Badge</h5>
-                        <Badge color="soft-primary" pill className="rounded-pill badge-soft-primary ms-1">
-                          Primary
-                        </Badge>
-                        <Badge color="soft-success" pill className="rounded-pill badge-soft-success ms-1">
-                          Success
-                        </Badge>
-                        <Badge color="soft-info" pill className="rounded-pill badge-soft-info ms-1">
-                          Info
-                        </Badge>
-                        <Badge color="soft-warning" pill className="rounded-pill badge-soft-warning ms-1">
-                          Warning
-                        </Badge>
-                        <Badge color="soft-danger" pill className="rounded-pill badge-soft-danger ms-1">
-                          Danger
-                        </Badge>
-                        <Badge color="soft-dark" pill className="rounded-pill badge-soft-dark ms-1">
-                          Dark
-                        </Badge>
+                        <div className="mt-1">
+                          <Badge pill className="badge-soft-primary ms-1">
+                            Primary
+                          </Badge>
+                          <Badge pill className="badge-soft-success ms-1">
+                            Success
+                          </Badge>
+                          <Badge pill className="badge-soft-info ms-1">
+                            Info
+                          </Badge>
+                          <Badge pill className="badge-soft-warning ms-1">
+                            Warning
+                          </Badge>
+                          <Badge pill className="badge-soft-danger ms-1">
+                            Danger
+                          </Badge>
+                          <Badge pill className="badge-soft-dark ms-1">
+                            Dark
+                          </Badge>
+                        </div>
                       </div>
                     </Col>
                   </Row>
@@ -219,14 +225,14 @@ const UiGeneral = () => {
           </Row>
 
           <Row>
-            <Col lg={6}>
+            <Col xl={6}>
               <Card>
                 <CardBody>
                   <CardTitle>Popovers</CardTitle>
-                  <CardSubtitle className="mb-3">
-                    Add small overlay content, like those found in iOS, to any
-                    element for housing secondary information.
-                  </CardSubtitle>
+                  <p className="card-title-desc">
+                    Four options are available: top, right, bottom, and left aligned.
+                    Directions are mirrored when using Bootstrap in RTL.
+                  </p>
                   <div className="d-flex flex-wrap gap-2">
                     <Button
                       id="Popovertop"
@@ -247,12 +253,10 @@ const UiGeneral = () => {
                     >
                       <PopoverHeader>Popover Title</PopoverHeader>
                       <PopoverBody>
-                        Sed posuere consectetur est at lobortis. Aenean eu leo
-                        quam. Pellentesque ornare sem lacinia quam venenatis
-                        vestibulum.
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus
                       </PopoverBody>
-                    </Popover>{" "}
-                    &nbsp;
+                    </Popover>
+
                     <Button
                       id="Popoverright"
                       onClick={() => {
@@ -272,12 +276,10 @@ const UiGeneral = () => {
                     >
                       <PopoverHeader>Popover Title</PopoverHeader>
                       <PopoverBody>
-                        Sed posuere consectetur est at lobortis. Aenean eu leo
-                        quam. Pellentesque ornare sem lacinia quam venenatis
-                        vestibulum.
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus
                       </PopoverBody>
-                    </Popover>{" "}
-                    &nbsp;
+                    </Popover>
+                    
                     <Button
                       id="Popoverbottom"
                       onClick={() => {
@@ -297,12 +299,10 @@ const UiGeneral = () => {
                     >
                       <PopoverHeader>Popover Title</PopoverHeader>
                       <PopoverBody>
-                        Sed posuere consectetur est at lobortis. Aenean eu leo
-                        quam. Pellentesque ornare sem lacinia quam venenatis
-                        vestibulum.
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus
                       </PopoverBody>
-                    </Popover>{" "}
-                    &nbsp;
+                    </Popover>
+
                     <Button
                       id="Popoverleft"
                       onClick={() => {
@@ -322,12 +322,10 @@ const UiGeneral = () => {
                     >
                       <PopoverHeader>Popover Title</PopoverHeader>
                       <PopoverBody>
-                        Sed posuere consectetur est at lobortis. Aenean eu leo
-                        quam. Pellentesque ornare sem lacinia quam venenatis
-                        vestibulum.
+                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus
                       </PopoverBody>
-                    </Popover>{" "}
-                    &nbsp;
+                    </Popover>
+
                     <Button
                       id="Popoverdismiss"
                       className="btn btn-success"
@@ -344,7 +342,7 @@ const UiGeneral = () => {
                     >
                       <PopoverHeader>Dismissible popover</PopoverHeader>
                       <PopoverBody>
-                        Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+                        And here's some amazing content. It's very engaging. Right?
                       </PopoverBody>
                     </UncontrolledPopover>
                   </div>
@@ -413,6 +411,14 @@ const UiGeneral = () => {
                     <button
                       type="button"
                       className="btn btn-primary"
+                      id="TooltipRight"
+                    >
+                      {" "}
+                      Tooltip on Right
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
                       id="TooltipBottom"
                     >
                       {" "}
@@ -426,14 +432,7 @@ const UiGeneral = () => {
                       {" "}
                       Tooltip on Left
                     </button>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      id="TooltipRight"
-                    >
-                      {" "}
-                      Tooltip on Right
-                    </button>
+                   
                   </div>
                 </CardBody>
               </Card>

@@ -15,8 +15,8 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const UiGrid = () => {
 
-   //meta title
-   document.title = "Grid | Skote - Vite React Admin & Dashboard Template";
+  //meta title
+  document.title = "Grid | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
@@ -25,118 +25,91 @@ const UiGrid = () => {
           <Breadcrumbs title="UI Elements" breadcrumbItem="Grid" />
 
           <Row>
-            <Col>
+            <Col className="col-12">
               <Card>
                 <CardBody>
-                  <CardTitle>Grid options</CardTitle>
-                  <CardSubtitle className="mb-3">
-                    See how aspects of the Bootstrap grid system work across
-                    multiple devices with a handy table.
-                  </CardSubtitle>
+                  <CardTitle className="h4">Grid options</CardTitle>
+                  <p className="card-title-desc">See how aspects of the Bootstrap grid
+                    system work across multiple devices with a handy table.</p>
 
                   <div className="table-responsive">
                     <table className="table table-bordered table-striped table-nowrap mb-0">
                       <thead>
                         <tr>
-                          <th />
-                          <th className="text-center">
-                            Extra small
-                            <br />
-                            <small>&lt;576px</small>
+                          <th scope="col"></th>
+                          <th scope="col" className="text-center">
+                            xs<br />
+                            <span className="fw-normal">&lt;576px</span>
                           </th>
-                          <th className="text-center">
-                            Small
-                            <br />
-                            <small>≥576px</small>
+                          <th scope="col" className="text-center">
+                            sm<br />
+                            <span className="fw-normal">≥576px</span>
                           </th>
-                          <th className="text-center">
-                            Medium
-                            <br />
-                            <small>≥768px</small>
+                          <th scope="col" className="text-center">
+                            md<br />
+                            <span className="fw-normal">≥768px</span>
                           </th>
-                          <th className="text-center">
-                            Large
-                            <br />
-                            <small>≥992px</small>
+                          <th scope="col" className="text-center">
+                            lg<br />
+                            <span className="fw-normal">≥992px</span>
                           </th>
-                          <th className="text-center">
-                            Extra large
-                            <br />
-                            <small>≥1200px</small>
+                          <th scope="col" className="text-center">
+                            xl<br />
+                            <span className="fw-normal">≥1200px</span>
+                          </th>
+                          <th scope="col" className="text-center">
+                            xxl<br />
+                            <span className="fw-normal">≥1400px</span>
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            Grid behavior
-                          </th>
+                          <th className="text-nowrap" scope="row">Grid behavior</th>
                           <td>Horizontal at all times</td>
-                          <td colSpan="4">
-                            Collapsed to start, horizontal above breakpoints
-                          </td>
+                          <td colSpan="5">Collapsed to start, horizontal above breakpoints</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            Max container width
-                          </th>
+                          <th className="text-nowrap" scope="row">Max container width</th>
                           <td>None (auto)</td>
                           <td>540px</td>
                           <td>720px</td>
                           <td>960px</td>
                           <td>1140px</td>
+                          <td>1320px</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            class prefix
-                          </th>
-                          <td>
-                            <code>.col-</code>
-                          </td>
-                          <td>
-                            <code>.col-sm-</code>
-                          </td>
-                          <td>
-                            <code>.col-md-</code>
-                          </td>
-                          <td>
-                            <code>.col-lg-</code>
-                          </td>
-                          <td>
-                            <code>.col-xl-</code>
-                          </td>
+                          <th className="text-nowrap" scope="row">Class prefix</th>
+                          <td><code>.col-</code></td>
+                          <td><code>.col-sm-</code></td>
+                          <td><code>.col-md-</code></td>
+                          <td><code>.col-lg-</code></td>
+                          <td><code>.col-xl-</code></td>
+                          <td><code>.col-xxl-</code></td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            # of columns
-                          </th>
-                          <td colSpan="5">12</td>
+                          <th className="text-nowrap" scope="row"># of columns</th>
+                          <td colSpan="6">12</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            Gutter width
-                          </th>
-                          <td colSpan="5">
-                            24px (12px on each side of a column)
-                          </td>
+                          <th className="text-nowrap" scope="row">Gutter width</th>
+                          <td colSpan="6">24px (12px on each side of a column)</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            Nestable
-                          </th>
-                          <td colSpan="5">Yes</td>
+                          <th className="text-nowrap" scope="row">Custom gutters</th>
+                          <td colSpan="6">Yes</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            Offsets
-                          </th>
-                          <td colSpan="5">Yes</td>
+                          <th className="text-nowrap" scope="row">Nestable</th>
+                          <td colSpan="6">Yes</td>
                         </tr>
                         <tr>
-                          <th className="text-nowrap" scope="row">
-                            Column ordering
-                          </th>
-                          <td colSpan="5">Yes</td>
+                          <th className="text-nowrap" scope="row">Offsets</th>
+                          <td colSpan="6">Yes</td>
+                        </tr>
+                        <tr>
+                          <th className="text-nowrap" scope="row">Column ordering</th>
+                          <td colSpan="6">Yes</td>
                         </tr>
                       </tbody>
                     </table>

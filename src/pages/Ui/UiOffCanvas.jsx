@@ -20,7 +20,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 const UiDrawer = () => {
 
     //meta title
-    document.title = "Offcanvas | Skote - Vite React Admin & Dashboard Template";
+    document.title = "OffCanvas | Skote - Vite React Admin & Dashboard Template";
 
     const [open, setOpen] = useState(false);
     const [isTop, setIsTop] = useState(false);
@@ -58,20 +58,29 @@ const UiDrawer = () => {
             <div className="page-content">
                 <div className="container-fluid">
                     <Breadcrumbs title="Ui Elements" breadcrumbItem="Offcanvas" />
-                    <Row>
+                    <Row>   
                         <Col lg={6}>
                             <Card>
                                 <CardBody>
                                     <CardTitle className="h4">Demo</CardTitle>
                                     <p className="card-title-desc">
-                                        Offcanvas can toggle open or closed.
+                                        Use the buttons below to show and hide an offcanvas element via JavaScript that toggles the <code>.show</code>
+                                        class on an element with the <code>.offcanvas</code> class.
                                     </p>
                                     <div>
                                         <Button
                                             color="primary"
                                             onClick={toggleLeftCanvas}
+                                            className="me-2"
                                         >
-                                            Open
+                                            Link with href
+                                        </Button>
+                                        <Button
+                                            color="primary"
+                                            type="button"
+                                            onClick={toggleLeftCanvas}
+                                        >
+                                            Button with data-bs-target
                                         </Button>
                                         <Offcanvas isOpen={open} toggle={toggleLeftCanvas}>
                                             <OffcanvasHeader toggle={toggleLeftCanvas}>
@@ -82,7 +91,7 @@ const UiDrawer = () => {
                                                     Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
                                                 </div>
                                                 <UncontrolledDropdown className="mt-3">
-                                                    <DropdownToggle className="btn btn-primary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                                    <DropdownToggle color="primary" type="button" id="dropdownMenuButton">
                                                         Dropdown button <i className="mdi mdi-chevron-down"></i>
                                                     </DropdownToggle>
                                                     <DropdownMenu>
@@ -170,9 +179,46 @@ const UiDrawer = () => {
                         <Col lg={12}>
                             <Card>
                                 <CardBody>
+                                    <CardTitle className="h5">Responsive</CardTitle>
+                                    <p className="card-title-desc">Responsive offcanvas classes are available across for each breakpoint.</p>
+
+                                    <div className="d-flex flex-wrap gap-2">
+                                        <button className="btn btn-primary d-lg-none" type="button">Toggle offcanvas</button>
+                                    </div>
+                                    <div className="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>
+
+                                    <div className="offcanvas-lg offcanvas-end" id="offcanvasResponsive">
+                                        <div className="offcanvas-header">
+                                            <h5 className="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
+                                            <button type="button" className="btn-close"></button>
+                                        </div>
+                                        <div className="offcanvas-body">
+                                            <p className="mb-0">This is content within an <code>.offcanvas-lg</code>.</p>
+                                        </div>
+                                    </div>
+
+                                    <p className="card-title-desc mt-3 mb-2">Responsive offcanvas classes are available across for each breakpoint.</p>
+                                    <ul className="mb-0 list-inline">
+                                        <li className="list-inline-item"><code>.offcanvas</code>,</li> {" "}
+                                        <li className="list-inline-item"><code>.offcanvas-sm</code>,</li> {" "}
+                                        <li className="list-inline-item"><code>.offcanvas-md</code>,</li> {" "}
+                                        <li className="list-inline-item"><code>.offcanvas-lg</code>,</li> {" "}
+                                        <li className="list-inline-item"><code>.offcanvas-xl</code>,</li> {" "}
+                                        <li className="list-inline-item"><code>.offcanvas-xxl</code></li> {" "}
+                                    </ul>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col lg={12}>
+                            <Card>
+                                <CardBody>
                                     <CardTitle className="h4">Backdrop</CardTitle>
                                     <p className="card-title-desc">
-                                        Scrolling the <code>&lt;body&gt;</code> element is disabled when an offcanvas and its backdrop are visible. Use the <code>scrollable</code> attribute to toggle <code>&lt;body&gt;</code> scrolling and <code>backdrop</code> to toggle the backdrop.
+                                        Scrolling the <code>&lt;body&gt;</code> element is disabled when an offcanvas and its backdrop are visible. 
+                                        Use the <code>data-bs-scroll</code> attribute to toggle <code>&lt;body&gt;</code> scrolling and <code>backdrop</code> to toggle the backdrop.
                                     </p>
                                     <div className="d-flex flex-wrap gap-2">
                                         <Button
@@ -203,9 +249,9 @@ const UiDrawer = () => {
                                             Colored with scrolling
                                         </OffcanvasHeader>
                                         <OffcanvasBody>
-                                            <div>
+                                            <p>
                                                 Try scrolling the rest of the page to see this option in action.
-                                            </div>
+                                            </p>
                                         </OffcanvasBody>
                                     </Offcanvas>
 
@@ -216,9 +262,7 @@ const UiDrawer = () => {
                                             Offcanvas with backdrop
                                         </OffcanvasHeader>
                                         <OffcanvasBody>
-                                            <div>
-                                                Try scrolling the rest of the page to see this option in action.
-                                            </div>
+                                            <p>.....</p>
                                         </OffcanvasBody>
                                     </Offcanvas>
 
@@ -230,9 +274,9 @@ const UiDrawer = () => {
                                             Backdroped with scrolling
                                         </OffcanvasHeader>
                                         <OffcanvasBody>
-                                            <div>
+                                            <p>
                                                 Try scrolling the rest of the page to see this option in action.
-                                            </div>
+                                            </p>
                                         </OffcanvasBody>
                                     </Offcanvas>
                                 </CardBody>

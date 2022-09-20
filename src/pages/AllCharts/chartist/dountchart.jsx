@@ -1,11 +1,13 @@
-import React from "react"
-import ChartistGraph from "react-chartist"
+import React from "react";
+import ChartistGraph from "react-chartist";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const dountchart = () => {
+const dountchart = ({ dataColors }) => {
+  var dountchartColors = getChartColorsArray(dataColors);
   const dountChartData = {
     series: [10, 20, 50, 20, 5, 50, 15],
-    labels: [1, 2, 3, 4, 5, 6, 7]
-  }
+    labels: [1, 2, 3, 4, 5, 6, 7],
+  };
   const dountChartOptions = {
     donut: true,
     showLabel: false,
@@ -15,9 +17,10 @@ const dountchart = () => {
       // from: -pathLength + 'px',
       to: "0px",
       // easing: Chartist.Svg.Easing.easeOutQuint,
-      fill: "freeze"
-    }
-  }
+      fill: "freeze",
+    },
+    color: dountchartColors,
+  };
 
   return (
     <React.Fragment>
@@ -28,6 +31,6 @@ const dountchart = () => {
         type={"Pie"}
       />
     </React.Fragment>
-  )
-}
-export default dountchart
+  );
+};
+export default dountchart;

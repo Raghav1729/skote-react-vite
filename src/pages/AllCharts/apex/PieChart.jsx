@@ -1,11 +1,19 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const PieChart = () => {
-  const series = [44, 55, 41, 17, 15]
+const PieChart = ({ dataColors }) => {
+  const PieApexChartColors = getChartColorsArray(dataColors);
+
+  const series = [44, 55, 41, 17, 15];
   const options = {
+    chart: {
+      height: 320,
+      type: "pie",
+    },
+    series: [44, 55, 41, 17, 15],
     labels: ["Series 1", "Series 2", "Series 3", "Series 4", "Series 5"],
-    colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c"],
+    colors: PieApexChartColors,
     legend: {
       show: true,
       position: "bottom",
@@ -14,7 +22,6 @@ const PieChart = () => {
       floating: false,
       fontSize: "14px",
       offsetX: 0,
-      offsetY: -10,
     },
     responsive: [
       {
@@ -29,11 +36,11 @@ const PieChart = () => {
         },
       },
     ],
-  }
+  };
 
   return (
-    <ReactApexChart options={options} series={series} type="pie" height="380" />
-  )
-}
+    <ReactApexChart options={options} series={series} type="pie" height="320" />
+  );
+};
 
-export default PieChart
+export default PieChart;

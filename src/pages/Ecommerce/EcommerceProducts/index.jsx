@@ -180,7 +180,7 @@ const EcommerceProducts = props => {
         <Container fluid>
           <Breadcrumbs title="Ecommerce" breadcrumbItem="Products" />
           <Row>
-            <Col lg="3">
+          <Col lg="3">
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Filter</CardTitle>
@@ -191,7 +191,7 @@ const EcommerceProducts = props => {
                       {FilterClothes.map((cloth, key) => (
                         <li key={"_li_" + key}>
                           <Link to={cloth.link}>
-                            <i className="mdi mdi-chevron-right me-1" />
+                            <i className="mdi mdi-chevron-right me-2" />
                             {cloth.name}
                           </Link>
                         </li>
@@ -199,7 +199,7 @@ const EcommerceProducts = props => {
                     </ul>
                   </div>
                   <div className="mt-4 pt-3">
-                    <h5 className="font-size-14 mb-4">Price</h5>
+                    <h5 className="font-size-14 mb-3">Price</h5>
                     <br />
 
                     <Nouislider
@@ -384,7 +384,7 @@ const EcommerceProducts = props => {
                             {product.isOffer ? (
                               <div className="avatar-sm product-ribbon">
                                 <span className="avatar-title rounded-circle bg-primary">
-                                  {`-${product.offer}%`}
+                                  {`- ${product.offer} %`}
                                 </span>
                               </div>
                             ) : null}
@@ -408,11 +408,11 @@ const EcommerceProducts = props => {
                               <StarRatings
                                 rating={product.rating}
                                 starRatedColor="#F1B44C"
-                                starEmptyColor="#2D363F"
+                                starEmptyColor="#74788d"
                                 numberOfStars={5}
                                 name="rating"
                                 starDimension="14px"
-                                starSpacing="3px"
+                                starSpacing="1px"
                               />
                             </div>
                             <h5 className="my-0">
@@ -430,7 +430,7 @@ const EcommerceProducts = props => {
 
               <Row>
                 <Col lg="12">
-                  <Pagination className="pagination pagination-rounded justify-content-end mb-2">
+                  <Pagination className="pagination pagination-rounded justify-content-center mt-3 mb-4 pb-1">
                     <PaginationItem disabled={page === 1}>
                       <PaginationLink
                         previous

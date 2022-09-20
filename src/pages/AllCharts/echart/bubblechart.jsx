@@ -69,7 +69,7 @@ const Bubble = () => {
     },
     legend: {
       right: 10,
-      data: ["2017", "2019"],
+      data: ["2018", "2019"],
     },
     xAxis: {
       splitLine: {
@@ -79,7 +79,7 @@ const Bubble = () => {
       },
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
         },
       },
     },
@@ -92,13 +92,13 @@ const Bubble = () => {
       scale: true,
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
         },
       },
     },
     series: [
       {
-        name: "2017",
+        name: "2018",
         data: data[0],
         type: "scatter",
         symbolSize: function (data) {
@@ -116,16 +116,16 @@ const Bubble = () => {
         itemStyle: {
           normal: {
             shadowBlur: 10,
-            shadowColor: "rgba(60, 76, 207, 0.5)",
+            shadowColor: "rgba(85, 110, 230, 0.5)",
             shadowOffsetY: 5,
             color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
               {
                 offset: 0,
-                color: "rgb(145, 155, 236)",
+                color: "rgb(85, 110, 230, 0.1)",
               },
               {
                 offset: 1,
-                color: "rgb(60, 76, 207)",
+                color: "rgb(85, 110, 230)",
               },
             ]),
           },
@@ -150,16 +150,16 @@ const Bubble = () => {
         itemStyle: {
           normal: {
             shadowBlur: 10,
-            shadowColor: "rgba(2, 164, 153, 0.5)",
+            shadowColor: "rgba(116, 120, 141, 0.5)",
             shadowOffsetY: 5,
             color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [
               {
                 offset: 0,
-                color: "rgb(33, 222, 209)",
+                color: "rgb(111, 255, 203, 0.1)",
               },
               {
                 offset: 1,
-                color: "rgb(2, 164, 153)",
+                color: "rgb(52, 195, 143)",
               },
             ]),
           },
@@ -167,6 +167,7 @@ const Bubble = () => {
       },
     ],
   };
+
   return (
     <React.Fragment>
       <ReactEcharts style={{ height: "350px" }} option={optionsData} />

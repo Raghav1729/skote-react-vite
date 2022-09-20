@@ -1,9 +1,9 @@
-import React from "react"
+import React from "react";
 
-import { Row, Col, Card, CardBody, CardTitle } from "reactstrap"
-import { Link } from "react-router-dom"
+import { Row, Col, Card, CardBody, CardTitle } from "reactstrap";
+import { Link } from "react-router-dom";
 
-import ApexRadial from "./ApexRadial"
+import ApexRadial from "./ApexRadial";
 
 const MonthlyEarning = () => {
   return (
@@ -26,7 +26,7 @@ const MonthlyEarning = () => {
               <div className="mt-4">
                 <Link
                   to=""
-                  className="btn btn-primary  btn-sm"
+                  className="btn btn-primary waves-effect waves-light btn-sm"
                 >
                   View More <i className="mdi mdi-arrow-right ms-1"></i>
                 </Link>
@@ -34,7 +34,7 @@ const MonthlyEarning = () => {
             </Col>
             <Col sm="6">
               <div className="mt-4 mt-sm-0">
-                <ApexRadial />
+                <ApexRadial dataColors='["--bs-primary"]' />
               </div>
             </Col>
           </Row>
@@ -44,7 +44,7 @@ const MonthlyEarning = () => {
         </CardBody>
       </Card>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default MonthlyEarning
+export default MonthlyEarning;

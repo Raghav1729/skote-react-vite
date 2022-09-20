@@ -91,7 +91,7 @@ const CryptoKYCApplication = props => {
                   <div className="text-center">
                     <Row className="justify-content-center">
                       <Col lg="10">
-                        <h4 className="mt-4 font-weight-semibold">
+                        <h4 className="mt-4 fw-semibold">
                           KYC Verification
                         </h4>
                         <p className="text-muted mt-3">

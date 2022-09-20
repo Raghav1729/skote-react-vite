@@ -72,7 +72,7 @@ CommentBox.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.func,
   comment: PropTypes.any,
-  
+
   isCommentAdd: PropTypes.any,
   onCancelComment: PropTypes.func,
   onAdd: PropTypes.func,
@@ -104,21 +104,16 @@ const ReplyItem = ({ reply, replyIdx, comment, onLikeUnlikeReply }) => {
         <p className="text-muted">{reply.comment}</p>
         <ul className="list-inline float-sm-end mb-sm-0">
           <li className="list-inline-item">
+            <Link to="#">
+              <i className="far fa-thumbs-up me-1" /> Like
+            </Link>
+          </li>
+          <li className="list-inline-item">
             <Link
               to="#"
               onClick={() =>
-                onLikeUnlikeReply(comment.commentId, reply.replyId)
-              }
-            >
-              {reply.hasLiked ? (
-                <>
-                  <i className="fa fa-thumbs-up me-1" /> Like
-                </>
-              ) : (
-                <>
-                  <i className="far fa-thumbs-up me-1" /> Like
-                </>
-              )}
+                onLikeUnlikeReply(comment.commentId, reply.replyId)}            >
+              <i className="far fa-comment-dots me-1" /> Comment
             </Link>
           </li>
         </ul>
@@ -184,21 +179,13 @@ const CommentItem = ({
         <p className="text-muted">{comment.comment}</p>
         <ul className="list-inline float-sm-end mb-sm-0">
           <li className="list-inline-item">
-            <Link to="#" onClick={() => onLikeUnlikeComment(comment.commentId)}>
-              {comment.hasLiked ? (
-                <>
-                  <i className="fa fa-thumbs-up me-1" /> Like
-                </>
-              ) : (
-                <>
-                  <i className="far fa-thumbs-up me-1" /> Like
-                </>
-              )}
+            <Link to="#">
+              <i className="far fa-thumbs-up me-1" /> Like
             </Link>
           </li>
           <li className="list-inline-item">
             <Link to="#" onClick={() => onClickReply(comment.commentId)}>
-              <i className="far fa-comment-dots me-1" /> Reply
+              <i className="far fa-comment-dots me-1" /> Comment
             </Link>
           </li>
         </ul>
@@ -298,23 +285,7 @@ const Reviews = ({
             onAddReply={onAddReply}
           />
         );
-      })}
-
-      {isCommentAdd ? (
-        <CommentBox
-          isCommentAdd={true}
-          onCancelComment={onCancelComment}
-          value={commentText}
-          onChange={onChangeCommentText}
-          onAdd={onAddProductComment}
-        />
-      ) : (
-        <div className="w-100 text-end pt-3">
-          <Button color="primary" onClick={onClickAddComment}>
-            Add Comment
-          </Button>
-        </div>
-      )}
+      })}      
     </div>
   );
 };

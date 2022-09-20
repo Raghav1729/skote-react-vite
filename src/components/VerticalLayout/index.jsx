@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import {
   changeLayout,
+  changeLayoutMode,
   changeSidebarTheme,
   changeSidebarThemeImage,
   changeSidebarType,
@@ -32,8 +33,10 @@ const Layout = props => {
     topbarTheme,
     showRightSidebar,
     leftSideBarTheme,
+    layoutModeType
   } = useSelector(state => ({
     isPreloader: state.Layout.isPreloader,
+    layoutModeType : state.Layout.layoutModeType,
     leftSideBarThemeImage: state.Layout.leftSideBarThemeImage,
     leftSideBarType: state.Layout.leftSideBarType,
     layoutWidth: state.Layout.layoutWidth,
@@ -99,6 +102,12 @@ const Layout = props => {
       dispatch(changeSidebarTheme(leftSideBarTheme));
     }
   }, [leftSideBarTheme, dispatch]);
+
+  useEffect(() => {
+    if (layoutModeType) {
+      dispatch(changeLayoutMode(layoutModeType));
+    }
+  }, [layoutModeType, dispatch]);
 
   useEffect(() => {
     if (leftSideBarThemeImage) {

@@ -16,16 +16,17 @@ import SimpleBar from "simplebar-react"
 const Activity = props => {
   return (
     <React.Fragment>
-      <Col xl={4}>
+       <Col xl={4}>
         <Card>
           <CardBody>
-            <div className="d-flex">
+            <div className="d-flex align-items-start">
               <div className="me-2">
                 <h5 className="card-title mb-4">Activity</h5>
               </div>
               <UncontrolledDropdown className="ms-auto">
                 <DropdownToggle
                   className="text-muted font-size-16"
+                  tag="a"
                   color="white"
                   type="button"
                 >
@@ -48,118 +49,93 @@ const Activity = props => {
                 </DropdownMenu>
               </UncontrolledDropdown>
             </div>
-            <SimpleBar style={{ maxHeight: "280px" }}>
-              <div className="mt-2">
-                <ul className="verti-timeline list-unstyled">
-                  <li className="event-list active">
-                    <div className="event-timeline-dot">
-                      <i className="bx bxs-right-arrow-circle font-size-18 bx-fade-right"></i>
+            <SimpleBar className="mt-2" style={{ maxHeight: "280px" }}>
+              <ul className="verti-timeline list-unstyled">
+                <li className="event-list active">
+                  <div className="event-timeline-dot">
+                    <i className="bx bxs-right-arrow-circle font-size-18 bx-fade-right"></i>
+                  </div>
+                  <div className="d-flex">
+                    <div className="flex-shrink-0 me-3">
+                      <h5 className="font-size-14">10 Nov <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i></h5>
                     </div>
-                    <div className="d-flex">
-                      <div className="me-3">
-                        <h5 className="font-size-14">
-                          10 Nov{" "}
-                          <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i>
-                        </h5>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div>
-                          Posted{" "}
-                          <span className="font-weight-semibold">
-                            Beautiful Day with Friends
-                          </span>{" "}
-                          blog... <a href="#">View</a>
-                        </div>
+                    <div className="flex-grow-1">
+                      <div>
+                        Posted <span className="fw-semibold">Beautiful Day with Friends</span> blog... 
+                        <Link to="#">View</Link>
                       </div>
                     </div>
-                  </li>
-                  <li className="event-list">
-                    <div className="event-timeline-dot">
-                      <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                </li>
+                <li className="event-list">
+                  <div className="event-timeline-dot">
+                    <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                  <div className="d-flex">
+                    <div className="flex-shrink-0 me-3">
+                      <h5 className="font-size-14">08 Nov <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i></h5>
                     </div>
-                    <div className="d-flex">
-                      <div className="me-3">
-                        <h5 className="font-size-14">
-                          08 Nov{" "}
-                          <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i>
-                        </h5>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div>
-                          If several languages coalesce, the grammar of the
-                          resulting... <a href="#">Read</a>
-                        </div>
+                    <div className="flex-grow-1">
+                      <div>
+                        If several languages coalesce, the grammar of the resulting... <Link to="#">Read</Link>
                       </div>
                     </div>
-                  </li>
-                  <li className="event-list">
-                    <div className="event-timeline-dot">
-                      <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                </li>
+                <li className="event-list">
+                  <div className="event-timeline-dot">
+                    <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                  <div className="d-flex">
+                    <div className="flex-shrink-0 me-3">
+                      <h5 className="font-size-14">02 Nov <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i></h5>
                     </div>
-                    <div className="d-flex">
-                      <div className="me-3">
-                        <h5 className="font-size-14">
-                          02 Nov{" "}
-                          <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i>
-                        </h5>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div>
-                          Create{" "}
-                          <span className="font-weight-semibold">
-                            Drawing a sketch blog
-                          </span>
-                        </div>
+                    <div className="flex-grow-1">
+                      <div>
+                        Create <span className="fw-semibold">Drawing a sketch blog</span>
                       </div>
                     </div>
-                  </li>
-                  <li className="event-list">
-                    <div className="event-timeline-dot">
-                      <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                </li>
+                <li className="event-list">
+                  <div className="event-timeline-dot">
+                    <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                  <div className="d-flex">
+                    <div className="flex-shrink-0 me-3">
+                      <h5 className="font-size-14">24 Oct <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i></h5>
                     </div>
-                    <div className="d-flex">
-                      <div className="me-3">
-                        <h5 className="font-size-14">
-                          24 Oct{" "}
-                          <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i>
-                        </h5>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div>
-                          In enim justo, rhoncus ut, imperdiet a venenatis vitae
-                        </div>
+                    <div className="flex-grow-1">
+                      <div>
+                        In enim justo, rhoncus ut, imperdiet a venenatis vitae
                       </div>
                     </div>
-                  </li>
-                  <li className="event-list">
-                    <div className="event-timeline-dot">
-                      <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                </li>
+                <li className="event-list">
+                  <div className="event-timeline-dot">
+                    <i className="bx bx-right-arrow-circle font-size-18"></i>
+                  </div>
+                  <div className="d-flex">
+                    <div className="flex-shrink-0 me-3">
+                      <h5 className="font-size-14">21 Oct <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i></h5>
                     </div>
-                    <div className="d-flex">
-                      <div className="me-3">
-                        <h5 className="font-size-14">
-                          21 Oct{" "}
-                          <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2"></i>
-                        </h5>
-                      </div>
-                      <div className="flex-grow-1">
-                        <div>
-                          Nemo enim ipsam voluptatem quia voluptas sit
-                          aspernatur aut
-                        </div>
+                    <div className="flex-grow-1">
+                      <div>
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
                       </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                </li>
+              </ul>
             </SimpleBar>
             <div className="text-center mt-4">
-              <a
-                href=""
+              <Link
+                to="#"
                 className="btn btn-primary  btn-sm"
               >
                 View More <i className="mdi mdi-arrow-right ms-1"></i>
-              </a>
+              </Link>
             </div>
           </CardBody>
         </Card>

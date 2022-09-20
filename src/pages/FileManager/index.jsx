@@ -11,55 +11,9 @@ import RecentFile from "./RecentFile";
 import Storage from "./Storage";
 
 const Index = () => {
-
-   //meta title
-   document.title="File Manager | Skote - Vite React Admin & Dashboard Template";
-
-  const series = [76]
-  const options = {
-    chart: {
-      height: 150,
-      type: "radialBar",
-      sparkline: {
-        enabled: true,
-      },
-    },
-    colors: ["#556ee6"],
-    plotOptions: {
-      radialBar: {
-        startAngle: -90,
-        endAngle: 90,
-        track: {
-          background: "#e7e7e7",
-          strokeWidth: "97%",
-          margin: 5, // margin is in pixels
-        },
-
-        hollow: {
-          size: "60%",
-        },
-
-        dataLabels: {
-          name: {
-            show: false,
-          },
-          value: {
-            offsetY: -2,
-            fontSize: "16px",
-          },
-        },
-      },
-    },
-    grid: {
-      padding: {
-        top: -10,
-      },
-    },
-    stroke: {
-      dashArray: 3,
-    },
-    labels: ["Storage"],
-  }
+  //meta title
+  document.title =
+    "File Manager | Skote - Vite React Admin & Dashboard Template";
   return (
     <React.Fragment>
       <div className="page-content">
@@ -80,11 +34,11 @@ const Index = () => {
                 </div>
               </div>
             </div>
-            <Storage options={options} series={series} />
+            <Storage dataColors='["--bs-primary"]' />
           </div>
         </Container>
       </div>
     </React.Fragment>
-  )
-}
-export default Index
+  );
+};
+export default Index;

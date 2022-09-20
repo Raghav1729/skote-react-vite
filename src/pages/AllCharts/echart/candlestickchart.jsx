@@ -1,17 +1,10 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Candlestickchart = (props) => {
+const Candlestickchart = ({ dataColors }) => {
+  const candlestickEChartChartColors = getChartColorsArray(dataColors);
   const data = {
-    tooltip: {
-      trigger: "axis",
-    },
-    toolbox: {
-      show: false,
-      feature: {
-        saveAsImage: {},
-      },
-    },
     grid: {
       zlevel: 0,
       x: 50,
@@ -22,18 +15,29 @@ const Candlestickchart = (props) => {
       backgroundColor: "rgba(0,0,0,0)",
       borderColor: "rgba(0,0,0,0)",
     },
+    color: candlestickEChartChartColors,
     xAxis: {
       data: ["2017-10-24", "2017-10-25", "2017-10-26", "2017-10-27"],
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(166, 176, 207, 0.1)",
         },
       },
     },
     yAxis: {
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(166, 176, 207, 0.1)",
         },
       },
     },
@@ -49,15 +53,16 @@ const Candlestickchart = (props) => {
 
         itemStyle: {
           normal: {
-            color: "#3c4ccf",
-            color0: "#02a499",
-            borderColor: "#3c4ccf",
-            borderColor0: "#02a499",
+            color: "#556ee6",
+            color0: "#34c38f",
+            borderColor: "#556ee6",
+            borderColor0: "#34c38f",
           },
         },
       },
     ],
   };
+
   return (
     <React.Fragment>
       <ReactEcharts style={{ height: "350px" }} option={data} />

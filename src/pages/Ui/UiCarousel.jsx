@@ -15,6 +15,8 @@ import Slidewithcontrol from "./CarouselTypes/slidewithcontrol";
 import Slidewithindicator from "./CarouselTypes/slidewithindicator";
 import Slidewithcaption from "./CarouselTypes/slidewithcaption";
 import Slidewithfade from "./CarouselTypes/slidewithfade";
+import IndividualInterval from "./CarouselTypes/individualInterval";
+import SlideDark from "./CarouselTypes/slideDark";
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
@@ -93,6 +95,32 @@ const UiCarousel = () => {
                     slides with a fade transition instead of a slide.
                   </CardSubtitle>
                   <Slidewithfade />
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xl="6">
+              <Card>
+                <CardBody>
+                  <CardTitle>Individual <code>.carousel-item</code> interval</CardTitle>
+                  <p className="card-title-desc">Add <code>data-bs-interval=""</code> to a <code>.carousel-item</code>
+                    to change the amount of time to delay between automatically cycling to the next item.</p>
+                  <IndividualInterval />
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle>Dark variant</CardTitle>
+                  <p className="card-title-desc">Add <code>.carousel-dark</code> to the <code>.carousel </code>
+                    for darker controls, indicators, and captions. Controls have been inverted from their default white fill with the
+                    <code> filter </code> CSS property. Captions and controls have additional Sass variables that customize the
+                    <code> color </code> and <code>background-color</code>.</p>
+                  <SlideDark />
                 </CardBody>
               </Card>
             </Col>

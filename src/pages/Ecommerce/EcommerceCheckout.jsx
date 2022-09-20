@@ -17,7 +17,6 @@ import {
   Label,
   CardBody,
   CardTitle,
-  CardSubtitle,
 } from "reactstrap"
 import Select from "react-select"
 import { Link } from "react-router-dom"
@@ -92,7 +91,7 @@ const EcommerceCheckout = () => {
                       }}
                     >
                       <i className="bx bxs-truck d-block check-nav-icon mt-4 mb-2" />
-                      <p className="font-weight-bold mb-4">Shipping Info</p>
+                      <p className="fw-bold mb-4">Shipping Info</p>
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -103,7 +102,7 @@ const EcommerceCheckout = () => {
                       }}
                     >
                       <i className="bx bx-money d-block check-nav-icon mt-4 mb-2" />
-                      <p className="font-weight-bold mb-4">Payment Info</p>
+                      <p className="fw-bold mb-4">Payment Info</p>
                     </NavLink>
                   </NavItem>
                   <NavItem>
@@ -114,7 +113,7 @@ const EcommerceCheckout = () => {
                       }}
                     >
                       <i className="bx bx-badge-check d-block check-nav-icon mt-4 mb-2" />
-                      <p className="font-weight-bold mb-4">Confirmation</p>
+                      <p className="fw-bold mb-4">Confirmation</p>
                     </NavLink>
                   </NavItem>
                 </Nav>
@@ -126,9 +125,9 @@ const EcommerceCheckout = () => {
                       <TabPane tabId="1">
                         <div>
                           <CardTitle>Shipping information</CardTitle>
-                          <CardSubtitle className="mb-3">
+                          <p className="card-title-desc">
                             Fill all information below
-                          </CardSubtitle>
+                          </p>
                           <Form>
                             <FormGroup className="mb-4" row>
                               <Label
@@ -516,9 +515,9 @@ const EcommerceCheckout = () => {
                       >
                         <div>
                           <CardTitle>Payment information</CardTitle>
-                          <CardSubtitle className="mb-4">
+                          <p className="card-title-desc">
                             Fill all information below
-                          </CardSubtitle>
+                          </p>
                           <div>
                             <div className="form-check form-check-inline font-size-16">
                               <Input
@@ -527,6 +526,7 @@ const EcommerceCheckout = () => {
                                 id="customRadioInline1"
                                 name="customRadioInline1"
                                 className="form-check-input"
+                                defaultChecked
                               />
                               <Label
                                 className="form-check-label font-size-13"
@@ -557,7 +557,6 @@ const EcommerceCheckout = () => {
                                 type="radio"
                                 value="3"
                                 id="customRadioInline3"
-                                defaultChecked
                                 name="customRadioInline1"
                                 className="form-check-input"
                               />

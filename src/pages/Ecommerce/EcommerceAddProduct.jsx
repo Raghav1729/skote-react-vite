@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import {
   Button,
   Card,
-  CardBody,
-  CardSubtitle,
+  CardBody,  
   CardTitle,
   Col,
   Container,
@@ -69,9 +68,9 @@ const EcommerceAddProduct = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Basic Information</CardTitle>
-                  <CardSubtitle className="mb-4">
+                  <p className="card-title-desc mb-4">
                     Fill all information below
-                  </CardSubtitle>
+                  </p>
 
                   <Form>
                     <Row>
@@ -83,6 +82,7 @@ const EcommerceAddProduct = () => {
                             name="productname"
                             type="text"
                             className="form-control"
+                            placeholder="Product Name"
                           />
                         </div>
                         <div className="mb-3">
@@ -94,6 +94,7 @@ const EcommerceAddProduct = () => {
                             name="manufacturername"
                             type="text"
                             className="form-control"
+                            placeholder="Manufacturer Name"
                           />
                         </div>
                         <div className="mb-3">
@@ -105,6 +106,7 @@ const EcommerceAddProduct = () => {
                             name="manufacturerbrand"
                             type="text"
                             className="form-control"
+                            placeholder="Manufacturer Brand"
                           />
                         </div>
                         <div className="mb-3">
@@ -114,6 +116,7 @@ const EcommerceAddProduct = () => {
                             name="price"
                             type="text"
                             className="form-control"
+                            placeholder="Price"
                           />
                         </div>
                       </Col>
@@ -145,6 +148,7 @@ const EcommerceAddProduct = () => {
                             className="form-control mb-3"
                             id="productdesc"
                             rows="5"
+                            placeholder="Product Description"
                           />
                         </div>
                       </Col>
@@ -229,9 +233,9 @@ const EcommerceAddProduct = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Meta Data</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <p className="card-title-desc mb-3">
                     Fill all information below
-                  </CardSubtitle>
+                  </p>
 
                   <Form>
                     <Row>
@@ -243,6 +247,7 @@ const EcommerceAddProduct = () => {
                             name="productname"
                             type="text"
                             className="form-control"
+                            placeholder="Metatitle"
                           />
                         </div>
                         <div className="mb-3">
@@ -252,6 +257,7 @@ const EcommerceAddProduct = () => {
                             name="manufacturername"
                             type="text"
                             className="form-control"
+                            placeholder="Meta Keywords"
                           />
                         </div>
                       </Col>
@@ -265,6 +271,7 @@ const EcommerceAddProduct = () => {
                             className="form-control"
                             id="metadescription"
                             rows="5"
+                            placeholder="Meta Description"
                           />
                         </div>
                       </Col>

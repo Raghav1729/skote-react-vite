@@ -3,12 +3,7 @@ import avatar2 from "../../assets/images/users/avatar-2.jpg"
 import avatar3 from "../../assets/images/users/avatar-3.jpg"
 import avatar4 from "../../assets/images/users/avatar-4.jpg"
 import avatar5 from "../../assets/images/users/avatar-5.jpg"
-import avatar6 from "../../assets/images/users/avatar-6.jpg"
 import avatar7 from "../../assets/images/users/avatar-7.jpg"
-import avatar8 from "../../assets/images/users/avatar-8.jpg"
-
-
-
 
 const users = [
   {
@@ -63,7 +58,7 @@ const users = [
     designation: "UI/UX Designer",
     email: "shirley@skote.com",
     projects: "136",
-    tags: ["Photoshop", "UI/UX Designer"],
+    tags: ["Photoshop", "illustrator"],
   },
   {
     id: 7,
@@ -83,51 +78,6 @@ const users = [
     email: "colin@skote.com",
     projects: "136",
     tags: ["Php", "Java", "Python"],
-  },
-  {
-    id: 9,
-    name: "David McHenry",
-    designation: "UI/UX Designer",
-    color: "primary",
-    email: "david@skote.com",
-    projects: "125",
-    tags: ["Photoshop", "illustrator"],
-  },
-  {
-    id: 10,
-    img: avatar2,
-    name: "Frank Kirk",
-    designation: "Frontend Developer",
-    email: "frank@skote.com",
-    projects: "132",
-    tags: ["Html", "Css", "Php"],
-  },
-  {
-    id: 11,
-    img: avatar3,
-    name: "Rafael Morales",
-    designation: "Backend Developer",
-    email: "Rafael@skote.com",
-    projects: "1112",
-    tags: ["Php", "Java", "Python", "Html"],
-  },
-  {
-    id: 12,
-    name: "Mark Ellison",
-    designation: "Full Stack Developer",
-    color: "success",
-    email: "mark@skote.com",
-    projects: "121",
-    tags: ["Ruby", "Php", "UI/UX Designer"],
-  },
-  {
-    id: 13,
-    img: avatar4,
-    name: "Minnie Walter",
-    designation: "Frontend Developer",
-    email: "minnie@skote.com",
-    projects: "145",
-    tags: ["Html", "Css", "Java"],
   },
 ]
 const userProfile = {

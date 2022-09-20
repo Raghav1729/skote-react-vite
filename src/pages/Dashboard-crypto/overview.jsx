@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Col, Card, CardBody, Button } from "reactstrap";
 import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const Oerview = props => {
+const Oerview = ({ dataColors }) => {
+  const apexoverviewchartColors = getChartColorsArray(dataColors);
+
   const series = [
     {
       name: "BTC",
@@ -297,7 +300,7 @@ const Oerview = props => {
       tickAmount: 6,
     },
     tooltip: { x: { format: "dd MMM yyyy" } },
-    colors: ["#f1b44c"],
+    colors: apexoverviewchartColors,
     fill: {
       type: "gradient",
       gradient: {

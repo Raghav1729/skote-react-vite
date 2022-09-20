@@ -1,25 +1,24 @@
-import React from "react"
-import { Row, Col, Card, CardBody, CardTitle, Container } from "reactstrap"
+import React from "react";
+import { Row, Col, Card, CardBody, CardTitle, Container } from "reactstrap";
 
 // import charts
-import BarChart from "../AllCharts/chartist/barchart"
-import Bar from "../AllCharts/chartist/stackedbarchart"
-import DountChart from "../AllCharts/chartist/dountchart"
-import PieChart from "../AllCharts/chartist/piechart"
-import SmilAnimationsChart from "../AllCharts/chartist/smilanimations"
-import LineChart from "../AllCharts/chartist/linechart"
-import ChartBar from "../AllCharts/chartist/chartbar"
-import LineAreaChart from "../AllCharts/chartist/lineareachart"
+import BarChart from "../AllCharts/chartist/barchart";
+import Bar from "../AllCharts/chartist/stackedbarchart";
+import DountChart from "../AllCharts/chartist/dountchart";
+import PieChart from "../AllCharts/chartist/piechart";
+import SmilAnimationsChart from "../AllCharts/chartist/smilanimations";
+import LineChart from "../AllCharts/chartist/linechart";
+import ChartBar from "../AllCharts/chartist/chartbar";
+import LineAreaChart from "../AllCharts/chartist/lineareachart";
 
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb"
+import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 import "../../../node_modules/chartist/dist/chartist.css"
-import "../../assets/scss/chartist.scss"
-
+import "../../assets/scss/chartist.scss";
 const ChartistChart = () => {
   //meta title
-  document.title = "Chartist Charts | Skote - Vite React Admin & Dashboard Template"
+  document.title = "Chartist Charts | Skote - React Admin & Dashboard Template";
   return (
     <React.Fragment>
       <div className="page-content">
@@ -52,7 +51,7 @@ const ChartistChart = () => {
                       </div>
                     </Col>
                   </Row>
-                  <BarChart />
+                  <BarChart dataColors='["--bs-primary, --bs-success"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -81,7 +80,7 @@ const ChartistChart = () => {
                       </div>
                     </Col>
                   </Row>
-                  <Bar />
+                  <Bar dataColors='["--bs-warning, --bs-success, --bs-primary"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -114,7 +113,7 @@ const ChartistChart = () => {
                       </div>
                     </Col>
                   </Row>
-                  <DountChart />
+                  <DountChart dataColors='["--bs-pink, --bs-primary, --bs-success, --bs-warning, --bs-orange, --bs-cyan"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -143,7 +142,7 @@ const ChartistChart = () => {
                       </div>
                     </Col>
                   </Row>
-                  <PieChart />
+                  <PieChart dataColors='["--bs-warning, --bs-primary, --bs-success"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -176,7 +175,7 @@ const ChartistChart = () => {
                       </div>
                     </Col>
                   </Row>
-                  <SmilAnimationsChart />
+                  <SmilAnimationsChart dataColors='["--bs-primary, --bs-danger, --bs-warning, --bs-success"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -206,7 +205,7 @@ const ChartistChart = () => {
                     </Col>
                   </Row>
 
-                  <LineChart />
+                  <LineChart dataColors='["--bs-primary, --bs-success, --bs-warning"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -238,7 +237,7 @@ const ChartistChart = () => {
                     </Col>
                   </Row>
 
-                  <ChartBar />
+                  <ChartBar dataColors='["--bs-primary"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -267,7 +266,7 @@ const ChartistChart = () => {
                       </div>
                     </Col>
                   </Row>
-                  <LineAreaChart />
+                  <LineAreaChart dataColors='["--bs-primary-rgb, 0.2", "--bs-primary", "--bs-light-rgb, 0.2", "--bs-light"]' />
                 </CardBody>
               </Card>
             </Col>
@@ -275,7 +274,7 @@ const ChartistChart = () => {
         </Container>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default ChartistChart
+export default ChartistChart;

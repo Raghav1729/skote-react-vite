@@ -21,6 +21,9 @@ export * from "./crypto/actions"
 //invoices
 export * from "./invoices/actions"
 
+//jobs
+export * from "./jobs/actions"
+
 // projects
 export * from "./projects/actions"
 

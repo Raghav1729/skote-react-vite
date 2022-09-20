@@ -1,14 +1,18 @@
-import React from "react"
-import ChartistGraph from "react-chartist"
+import React from "react";
+import ChartistGraph from "react-chartist";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const piechart = () => {
+const piechart = ({ dataColors }) => {
+  var simplePieChartColors = getChartColorsArray(dataColors);
+
   const pieChartData = {
     series: [5, 3, 4],
-    labels: ["42%", "25%", "33%"]
-  }
+    labels: ["42%", "25%", "33%"],
+  };
   const pieChartOptions = {
-    showLabel: true
-  }
+    showLabel: true,
+    color: simplePieChartColors,
+  };
 
   return (
     <React.Fragment>
@@ -19,6 +23,6 @@ const piechart = () => {
         type={"Pie"}
       />
     </React.Fragment>
-  )
-}
-export default piechart
+  );
+};
+export default piechart;

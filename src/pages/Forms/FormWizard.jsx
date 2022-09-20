@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import MetaTags from "react-meta-tags"
 
 import {
   Card,
@@ -24,6 +23,10 @@ import { Link } from "react-router-dom"
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const FormWizard = () => {
+
+  //meta title
+  document.title="Form Wizard | Skote - Vite React Admin & Dashboard Template";
+
   const [activeTab, setactiveTab] = useState(1)
   const [activeTabVartical, setoggleTabVertical] = useState(1)
 
@@ -53,9 +56,10 @@ const FormWizard = () => {
 
   return (
     <React.Fragment>
-      <div className="page-content">        
+      <div className="page-content">
         <Container fluid={true}>
           <Breadcrumbs title="Forms" breadcrumbItem="Form Wizard" />
+
           <Row>
             <Col lg="12">
               <Card>
@@ -87,7 +91,7 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(2)}
                           >
-                            <span className="number ms-2">02</span> Company
+                            <span className="number">2.</span> Company
                             Document
                           </NavLink>
                         </NavItem>
@@ -101,7 +105,7 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(3)}
                           >
-                            <span className="number">03</span> Bank Details
+                            <span className="number">3.</span> Bank Details
                           </NavLink>
                         </NavItem>
                         <NavItem
@@ -114,13 +118,13 @@ const FormWizard = () => {
                             }}
                             disabled={!(passedSteps || []).includes(4)}
                           >
-                            <span className="number">04</span> Confirm Detail
+                            <span className="number">4.</span> Confirm Detail
                           </NavLink>
                         </NavItem>
                       </ul>
                     </div>
-                    <div className="content clearfix mt-4">
-                      <TabContent activeTab={activeTab}>
+                    <div className="content clearfix">
+                      <TabContent activeTab={activeTab} className="body">
                         <TabPane tabId={1}>
                           <Form>
                             <Row>

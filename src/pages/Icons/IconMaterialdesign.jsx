@@ -1,11 +1,11 @@
 import React, { useEffect } from "react"
 
-import { Container, Row, Col, Card, CardBody } from "reactstrap"
+import { Container, Row, Col, Card, CardBody, Badge } from "reactstrap"
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 
-const IconMaterialdesign = props => {
+const IconMaterialdesign = () => {
   useEffect(() => {
     function isNew(icon) {
       return icon.version === "5.0.45"
@@ -23474,7 +23474,7 @@ const IconMaterialdesign = props => {
   return (
     <React.Fragment>
       <div className="page-content">
-        <Container fluid>
+      <Container fluid>
           <Breadcrumbs title="Icons" breadcrumbItem="MDI" />
 
           <Row className="icons-demo-content">
@@ -23484,9 +23484,8 @@ const IconMaterialdesign = props => {
                   <h4 className="card-title">New Icons</h4>
                   <p className="card-title-desc mb-2">
                     Use{" "}
-                    <code>
-                      &lt;i className=&quot;mdi mdi-speedometer-slow&ldquo;&gt;&lt;/i&gt;
-                    </code>{" "}
+                    <code>&lt;i className="mdi mdi-speedometer-slow"&gt;&lt;/i&gt;</code>
+                     {" "} <Badge color="success">v 5.8.55</Badge>.{" "}
                     <span className="badge badge-success">v 5.0.45</span>.
                   </p>
 

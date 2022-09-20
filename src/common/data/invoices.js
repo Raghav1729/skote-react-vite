@@ -18,17 +18,17 @@ const invoiceList = [
       items: [
         {
           id: 1,
-          item: "Skote - Bootstrap 4 Admin Dashboard",
+          item: "Skote - Admin Dashboard Template",
           price: "$499.00",
         },
         {
           id: 2,
-          item: "Skote - Bootstrap 4 Landing Template",
+          item: "Skote - Landing Template",
           price: "$399.00",
         },
         {
           id: 3,
-          item: "Veltrix - Bootstrap 4 Admin Template",
+          item: "Veltrix - Admin Dashboard Template",
           price: "$499.00",
         },
       ],
@@ -77,7 +77,7 @@ const invoiceList = [
   },
   {
     id: 3,
-    image: "avatar2",
+    image: "avatar7",
     founder: "Joseph Flint",
     founderAt: "Skote",
     invoiceID: "14253",
@@ -115,7 +115,7 @@ const invoiceList = [
   },
   {
     id: 4,
-    image: "avatar2",
+    image: "avatar8",
     founder: "Larry Nielsen",
     founderAt: "Skote",
     invoiceID: "14254",
@@ -153,7 +153,7 @@ const invoiceList = [
   },
   {
     id: 5,
-    image: "avatar2",
+    image: "avatar5",
     founder: "Mark Evans",
     founderAt: "Skote",
     invoiceID: "14255",
@@ -229,7 +229,7 @@ const invoiceList = [
   },
   {
     id: 7,
-    image: "avatar2",
+    image: "avatar1",
     founder: "Stanley Bland",
     founderAt: "Skote",
     invoiceID: "14257",
@@ -305,7 +305,7 @@ const invoiceList = [
   },
   {
     id: 9,
-    image: "avatar2",
+    image: "avatar4",
     founder: "Louis Brandon",
     founderAt: "Skote",
     invoiceID: "14259",

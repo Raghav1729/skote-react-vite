@@ -36,7 +36,7 @@ const RecentProducts = ({ recentProducts }) => {
                             <StarRatings
                               rating={product.rating}
                               starRatedColor="#F1B44C"
-                              starEmptyColor="#2D363F"
+                              starEmptyColor="#74788d"
                               numberOfStars={5}
                               name="rating"
                               starDimension="14px"

@@ -76,6 +76,16 @@ export const GET_CRYPTO_ORDERS = "/crypto/orders"
 export const GET_INVOICES = "/invoices"
 export const GET_INVOICE_DETAIL = "/invoice"
 
+// JOBS
+export const GET_JOB_LIST = "/jobs";
+export const ADD_NEW_JOB_LIST = "/add/job";
+export const UPDATE_JOB_LIST = "/update/job";
+export const DELETE_JOB_LIST = "/delete/job";
+
+//Apply Jobs
+export const GET_APPLY_JOB = "/jobApply";
+export const DELETE_APPLY_JOB = "add/applyjob";
+
 //PROJECTS
 export const GET_PROJECTS = "/projects"
 export const GET_PROJECT_DETAIL = "/project"

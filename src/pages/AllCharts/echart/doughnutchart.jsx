@@ -1,7 +1,10 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Doughnut = () => {
+const Doughnut = ({ dataColors }) => {
+  const doughnutEChartColors = getChartColorsArray(dataColors);
+
   const options = {
     toolbox: {
       show: false,
@@ -15,10 +18,10 @@ const Doughnut = () => {
       x: "left",
       data: ["Laptop", "Tablet", "Mobile", "Others", "Desktop"],
       textStyle: {
-        color: ["#74788d"],
+        color: ["#8791af"],
       },
     },
-    color: ["#02a499", "#f8b425", "#ec4561", "#38a4f8", "#3c4ccf"],
+    color: doughnutEChartColors,
     series: [
       {
         name: "Total sales",
@@ -53,6 +56,7 @@ const Doughnut = () => {
       },
     ],
   };
+
   return (
     <React.Fragment>
       <ReactEcharts style={{ height: "350px" }} option={options} />

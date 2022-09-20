@@ -33,16 +33,11 @@ const Register = () => {
       password: Yup.string().required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
     }
   });
   return (
-    <React.Fragment>
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="bx bx-home h2" />
-        </Link>
-      </div>
+    <React.Fragment>      
       <div className="account-pages my-5 pt-sm-5">
         <Container>
           <Row className="justify-content-center">

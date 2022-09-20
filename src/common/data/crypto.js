@@ -1,4 +1,8 @@
-// import React from "react"
+import avatar2 from "../../assets/images/users/avatar-2.jpg"
+import avatar3 from "../../assets/images/users/avatar-3.jpg"
+import avatar8 from "../../assets/images/users/avatar-8.jpg"
+import avatar5 from "../../assets/images/users/avatar-5.jpg"
+import avatar1 from "../../assets/images/users/avatar-1.jpg"
 
 const wallet = {
   id: "#SK0234",
@@ -279,6 +283,40 @@ const cryptoOrders = [
     valueinUSD: "$ 1773.01",
     status: "completed",
   },
-]
+];
 
-export { wallet, cryptoOrders }
+const icoLandingTeam = [
+  {
+    id: 1,
+    img: avatar2,
+    author: "Mark Hurley",
+    post: "CEO & Lead",
+  },
+  {
+    id: 2,
+    img: avatar3,
+    author: "Calvin Smith",
+    post: "Blockchain developer",
+  },
+  {
+    id: 3,
+    img: avatar8,
+    author: "Vickie Sample",
+    post: "Designer",
+  },
+  {
+    id: 4,
+    img: avatar5,
+    author: "Alma Farley",
+    post: "App developer",
+  },
+  {
+    id: 6,
+    img: avatar1,
+    author: "Amy Hood",
+    post: "Designer",
+  },
+];
+
+
+export { wallet, cryptoOrders, icoLandingTeam }

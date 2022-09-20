@@ -10,11 +10,13 @@ import {
   CHANGE_PRELOADER,
   TOGGLE_LEFTMENU,
   SHOW_SIDEBAR,
+  CHANGE_LAYOUT_MODE
 } from "./actionTypes"
 
 //constants
 import {
   layoutTypes,
+  layoutModeTypes,
   layoutWidthTypes,
   topBarThemeTypes,
   leftBarThemeImageTypes,
@@ -24,6 +26,7 @@ import {
 
 const INIT_STATE = {
   layoutType: layoutTypes.VERTICAL,
+  layoutModeType: layoutModeTypes.LIGHT,
   layoutWidth: layoutWidthTypes.FLUID,
   leftSideBarTheme: leftSideBarThemeTypes.DARK,
   leftSideBarThemeImage: leftBarThemeImageTypes.NONE,
@@ -48,7 +51,11 @@ const Layout = (state = INIT_STATE, action) => {
         ...state,
         isPreloader: action.payload,
       }
-
+    case CHANGE_LAYOUT_MODE:
+      return {
+        ...state,
+        layoutModeType: action.payload,
+      }
     case CHANGE_LAYOUT_WIDTH:
       return {
         ...state,

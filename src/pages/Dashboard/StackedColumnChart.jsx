@@ -1,8 +1,10 @@
 import React from "react"
 import PropTypes from 'prop-types';
 import ReactApexChart from "react-apexcharts"
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const StackedColumnChart = ({ periodData }) => {
+const StackedColumnChart = ({ dataColors, periodData }) => {
+  const stackedColumnChartColors = getChartColorsArray(dataColors);
   const options = {
     chart: {
       stacked: !0,
@@ -43,7 +45,7 @@ const StackedColumnChart = ({ periodData }) => {
         show: true
       }
     },
-    colors: ["#556ee6", "#f1b44c", "#34c38f"],
+    colors: stackedColumnChartColors,
     legend: {
       position: "bottom"
     },

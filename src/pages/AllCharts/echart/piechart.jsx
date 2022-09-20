@@ -1,7 +1,9 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Pie = () => {
+const Pie = ({ dataColors }) => {
+  const PieEChartColors = getChartColorsArray(dataColors);
   const options = {
     toolbox: {
       show: false,
@@ -15,10 +17,10 @@ const Pie = () => {
       left: "left",
       data: ["Laptop", "Tablet", "Mobile", "Others", "Desktop"],
       textStyle: {
-        color: ["#74788d"],
+        color: ["#8791af"],
       },
     },
-    color: ["#02a499", "#f8b425", "#ec4561", "#38a4f8", "#3c4ccf"],
+    color: PieEChartColors,
     series: [
       {
         name: "Total sales",

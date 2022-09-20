@@ -38,52 +38,52 @@ const UiButtons = () => {
                   <div className="d-flex flex-wrap gap-2">
                     <Button
                       color="primary"
-                      className="btn btn-primary "
+                      className="btn btn-primary waves-effect waves-light"
                     >
                       Primary
                     </Button>
                     <Button
                       color="secondary"
-                      className="btn btn-secondary "
+                      className="btn btn-secondary waves-effect waves-light"
                     >
                       Secondary
                     </Button>
                     <Button
                       color="success"
-                      className="btn btn-success "
+                      className="btn btn-success waves-effect waves-light"
                     >
                       Success
                     </Button>
                     <Button
                       color="info"
-                      className="btn btn-info "
+                      className="btn btn-info waves-effect waves-light"
                     >
                       Info
                     </Button>
                     <Button
                       color="warning"
-                      className="btn btn-warning "
+                      className="btn btn-warning waves-effect waves-light"
                     >
                       Warning
                     </Button>
                     <Button
                       color="danger"
-                      className="btn btn-danger "
+                      className="btn btn-danger waves-effect waves-light"
                     >
                       Danger
                     </Button>
                     <Button
                       color="dark"
-                      className="btn btn-dark "
+                      className="btn btn-dark waves-effect waves-light"
                     >
                       Dark
                     </Button>
-                    <Button color="link" className="btn btn-link ">
+                    <Button color="link" className="btn btn-link waves-effect">
                       Link
                     </Button>
                     <Button
                       color="light"
-                      className="btn btn-light "
+                      className="btn btn-light waves-effect"
                     >
                       Light
                     </Button>
@@ -95,7 +95,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Outline buttons</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Replace the default modifier classes with the{" "}
                     <code className="highlighter-rouge">.btn-outline-*</code>{" "}
                     ones to remove all background images and colors on any
@@ -155,6 +155,27 @@ const UiButtons = () => {
               </Card>
             </Col>
           </Row>
+
+          <Row>
+            <Col xl={12}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="card-title">Soft Buttons</CardTitle>
+                  <p className="card-title-desc">Use class <code>.btn-soft*</code> for soft buttons.</p>
+                  <div className="d-flex flex-wrap gap-2">
+                    <Button type="button" className="btn btn-soft-primary waves-effect waves-light">Primary</Button>
+                    <Button type="button" className="btn btn-soft-secondary waves-effect waves-light">Secondary</Button>
+                    <Button type="button" className="btn btn-soft-success waves-effect waves-light">Success</Button>
+                    <Button type="button" className="btn btn-soft-info waves-effect waves-light">Info</Button>
+                    <Button type="button" className="btn btn-soft-warning waves-effect waves-light">Warning</Button>
+                    <Button type="button" className="btn btn-soft-danger waves-effect waves-light">Danger</Button>
+                    <Button type="button" className="btn btn-soft-dark waves-effect waves-light">Dark</Button>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
           <Row>
             <Col lg={6}>
               <Card>
@@ -206,10 +227,10 @@ const UiButtons = () => {
                     >
                       Dark
                     </Button>
-                    <Button color="link" className="btn-rounded ">
+                    <Button color="link" className="btn-rounded">
                       Link
                     </Button>
-                    <Button color="light" className="btn-rounded ">
+                    <Button color="light" className="btn-rounded">
                       Light
                     </Button>
                   </div>
@@ -450,7 +471,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Buttons Sizes</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Add <code>.btn-lg</code> or <code>.btn-sm</code> for
                     additional sizes.
                   </p>
@@ -489,7 +510,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Buttons width</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Add <code>.w-xs</code>, <code>.w-sm</code>,{" "}
                     <code>.w-md</code> and <code> .w-lg</code> className for
                     additional buttons width.
@@ -531,7 +552,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Button tags</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     The <code className="highlighter-rouge">.btn</code>
                     classes are designed to be used with the{" "}
                     <code className="highlighter-rouge">
@@ -582,7 +603,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Toggle states</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Add{" "}
                     <code className="highlighter-rouge">
                       data-toggle=&quot;button&ldquo;
@@ -611,6 +632,8 @@ const UiButtons = () => {
                     >
                       Single toggle
                     </Button>
+                    <Button type="button" color="primary" className="active">Active toggle button</Button>
+                    <Button type="button" color="primary" disabled>Disabled toggle button</Button>
                   </div>
                 </CardBody>
               </Card>
@@ -622,7 +645,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Block Buttons</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Create block level buttons—those that span the full width of
                     a parent—by adding{" "}
                     <code className="highlighter-rouge">.btn-block</code>.
@@ -640,7 +663,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Checkbox & Radio Buttons</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Bootstrap’s{" "}
                     <code className="highlighter-rouge">.button</code> styles
                     can be applied to other elements, such as{" "}
@@ -717,7 +740,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Button group</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Wrap a series of buttons with{" "}
                     <code className="highlighter-rouge">.btn</code> in{" "}
                     <code className="highlighter-rouge">.btn-group</code>.
@@ -767,7 +790,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Button toolbar</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Combine sets of button groups into button toolbars for more
                     complex components.Use utility className as needed to
                     space out groups, buttons, and more.
@@ -849,7 +872,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Sizing</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Instead of applying button sizing classes to every button in
                     a group, just add{" "}
                     <code className="highlighter-rouge">.btn-group-*</code> to
@@ -909,7 +932,7 @@ const UiButtons = () => {
               <Card>
                 <CardBody>
                   <CardTitle>Vertical variation</CardTitle>
-                  <p className="mb-3 card-title-desc">
+                  <p className="card-title-desc">
                     Make a set of buttons appear vertically stacked rather than
                     horizontally.Split button dropdowns are not supported here.
                   </p>

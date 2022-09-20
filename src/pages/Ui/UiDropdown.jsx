@@ -13,6 +13,10 @@ import {
   CardTitle,
   CardSubtitle,
   Container,
+  UncontrolledDropdown,
+  Input,
+  Label,
+  Form,  
 } from "reactstrap"
 
 //Import Breadcrumb
@@ -20,8 +24,8 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 
 const UiDropdown = () => {
 
-   //meta title
-   document.title = "Dropdowns | Skote - Vite React Admin & Dashboard Template";
+  //meta title
+  document.title = "Dropdowns | Skote - Vite React Admin & Dashboard Template";
 
   const [singlebtn, setSinglebtn] = useState(false)
   const [singlebtn1, setSinglebtn1] = useState(false)
@@ -56,25 +60,25 @@ const UiDropdown = () => {
           <Breadcrumbs title="UI Elements" breadcrumbItem="Dropdowns" />
 
           <Row>
-            <Col lg={6}>
+            <Col xl={6}>
               <Card>
                 <CardBody>
                   <CardTitle>Single button dropdowns</CardTitle>
-                  <CardSubtitle className="mb-4">
+                  <p className="card-title-desc">
                     Any single <code className="highlighter-rouge">.btn</code>{" "}
                     can be turned into a dropdown toggle with some markup
                     changes. Here’s how you can put them to work with either{" "}
                     <code className="highlighter-rouge">&lt;button&gt;</code>{" "}
                     elements:
-                  </CardSubtitle>
+                  </p>
                   <Row>
                     <Col sm={6}>
                       <Dropdown
                         isOpen={singlebtn}
                         toggle={() => setSinglebtn(!singlebtn)}
                       >
-                        <DropdownToggle tag="button" className="btn btn-secondary" >
-                          Dropdown button
+                        <DropdownToggle className="btn btn-secondary" caret>
+                          Dropdown button{" "}
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
@@ -90,7 +94,7 @@ const UiDropdown = () => {
                         toggle={() => setSinglebtn1(!singlebtn1)}
                         className="mt-4 mt-sm-0"
                       >
-                        <DropdownToggle className="btn btn-secondary" >
+                        <DropdownToggle className="btn btn-secondary" caret>
                           Dropdown Link <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
@@ -126,9 +130,11 @@ const UiDropdown = () => {
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
-                    </Dropdown>{" "}
-                    &nbsp;
+                    </Dropdown>
+
                     <Dropdown
                       isOpen={btnsecondary1}
                       toggle={() => setBtnsecondary1(!btnsecondary1)}
@@ -140,9 +146,11 @@ const UiDropdown = () => {
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
-                    </Dropdown>{" "}
-                    &nbsp;
+                    </Dropdown>
+
                     <Dropdown
                       isOpen={btnsuccess1}
                       toggle={() => setBtnsuccess1(!btnsuccess1)}
@@ -154,9 +162,11 @@ const UiDropdown = () => {
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
-                    &nbsp;
+
                     <Dropdown
                       isOpen={btnInfo1}
                       toggle={() => setBtnInfo1(!btnInfo1)}
@@ -168,9 +178,11 @@ const UiDropdown = () => {
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
-                    &nbsp;
+
                     <Dropdown
                       isOpen={btnWarning1}
                       toggle={() => setBtnWarning1(!btnWarning1)}
@@ -182,9 +194,11 @@ const UiDropdown = () => {
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
-                    &nbsp;
+
                     <Dropdown
                       isOpen={btnDanger1}
                       toggle={() => setBtnDanger1(!btnDanger1)}
@@ -196,6 +210,8 @@ const UiDropdown = () => {
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
                   </div>
@@ -222,15 +238,15 @@ const UiDropdown = () => {
                         <Button id="caret" color="primary">
                           Primary
                         </Button>
-                        <DropdownToggle  color="primary">
+                        <DropdownToggle caret color="primary">
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem header>Header</DropdownItem>
-                          <DropdownItem disabled>Action</DropdownItem>
-                          <DropdownItem>Another Action</DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem>Another Action</DropdownItem>
+                          <DropdownItem>Action</DropdownItem>
+                          <DropdownItem>Another action</DropdownItem>
+                          <DropdownItem>Something else here</DropdownItem>
+                          <div className="dropdown-divider"></div>
+                          <DropdownItem href="#">Separated link</DropdownItem>
                         </DropdownMenu>
                       </ButtonDropdown>
                     </div>
@@ -243,15 +259,15 @@ const UiDropdown = () => {
                         <Button id="caret" color="secondary">
                           Secondary
                         </Button>
-                        <DropdownToggle  color="secondary">
+                        <DropdownToggle caret color="secondary">
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem header>Header</DropdownItem>
-                          <DropdownItem disabled>Action</DropdownItem>
-                          <DropdownItem>Another Action</DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem>Another Action</DropdownItem>
+                          <DropdownItem>Action</DropdownItem>
+                          <DropdownItem>Another action</DropdownItem>
+                          <DropdownItem>Something else here</DropdownItem>
+                          <div className="dropdown-divider"></div>
+                          <DropdownItem href="#">Separated link</DropdownItem>
                         </DropdownMenu>
                       </ButtonDropdown>
                     </div>
@@ -264,15 +280,15 @@ const UiDropdown = () => {
                         <Button id="caret" color="success">
                           Success
                         </Button>
-                        <DropdownToggle  color="success">
+                        <DropdownToggle caret color="success">
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem header>Header</DropdownItem>
-                          <DropdownItem disabled>Action</DropdownItem>
-                          <DropdownItem>Another Action</DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem>Another Action</DropdownItem>
+                          <DropdownItem>Action</DropdownItem>
+                          <DropdownItem>Another action</DropdownItem>
+                          <DropdownItem>Something else here</DropdownItem>
+                          <div className="dropdown-divider"></div>
+                          <DropdownItem href="#">Separated link</DropdownItem>
                         </DropdownMenu>
                       </ButtonDropdown>
                     </div>
@@ -285,15 +301,15 @@ const UiDropdown = () => {
                         <Button id="caret" color="info">
                           Info
                         </Button>
-                        <DropdownToggle  color="info">
+                        <DropdownToggle caret color="info">
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem header>Header</DropdownItem>
-                          <DropdownItem disabled>Action</DropdownItem>
-                          <DropdownItem>Another Action</DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem>Another Action</DropdownItem>
+                          <DropdownItem>Action</DropdownItem>
+                          <DropdownItem>Another action</DropdownItem>
+                          <DropdownItem>Something else here</DropdownItem>
+                          <div className="dropdown-divider"></div>
+                          <DropdownItem href="#">Separated link</DropdownItem>
                         </DropdownMenu>
                       </ButtonDropdown>
                     </div>
@@ -307,15 +323,15 @@ const UiDropdown = () => {
                         <Button id="caret" color="warning">
                           Warning
                         </Button>
-                        <DropdownToggle  color="warning">
+                        <DropdownToggle caret color="warning">
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem header>Header</DropdownItem>
-                          <DropdownItem disabled>Action</DropdownItem>
-                          <DropdownItem>Another Action</DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem>Another Action</DropdownItem>
+                          <DropdownItem>Action</DropdownItem>
+                          <DropdownItem>Another action</DropdownItem>
+                          <DropdownItem>Something else here</DropdownItem>
+                          <div className="dropdown-divider"></div>
+                          <DropdownItem href="#">Separated link</DropdownItem>
                         </DropdownMenu>
                       </ButtonDropdown>
                     </div>
@@ -328,15 +344,15 @@ const UiDropdown = () => {
                         <Button id="caret" color="danger">
                           Danger
                         </Button>
-                        <DropdownToggle  color="danger">
+                        <DropdownToggle caret color="danger">
                           <i className="mdi mdi-chevron-down" />
                         </DropdownToggle>
                         <DropdownMenu>
-                          <DropdownItem header>Header</DropdownItem>
-                          <DropdownItem disabled>Action</DropdownItem>
-                          <DropdownItem>Another Action</DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem>Another Action</DropdownItem>
+                          <DropdownItem>Action</DropdownItem>
+                          <DropdownItem>Another action</DropdownItem>
+                          <DropdownItem>Something else here</DropdownItem>
+                          <div className="dropdown-divider"></div>
+                          <DropdownItem href="#">Separated link</DropdownItem>
                         </DropdownMenu>
                       </ButtonDropdown>
                     </div>
@@ -360,7 +376,7 @@ const UiDropdown = () => {
                       toggle={() => setDrp_secondary(!drp_secondary)}
                     >
                       <DropdownToggle
-                       
+                        caret
                         color="primary"
                         className="btn btn-primary btn-lg"
                       >
@@ -368,10 +384,11 @@ const UiDropdown = () => {
                         <i className="mdi mdi-chevron-down" />
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Another action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </div>{" "}
@@ -386,17 +403,18 @@ const UiDropdown = () => {
                         Large button &nbsp;
                       </Button>
                       <DropdownToggle
-                       
+                        caret
                         color="secondary"
                         className="btn btn-secondary btn-lg"
                       >
                         <i className="mdi mdi-chevron-down" />
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Another action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </div>{" "}
@@ -407,7 +425,7 @@ const UiDropdown = () => {
                       toggle={() => setDrp_secondary_sm(!drp_secondary_sm)}
                     >
                       <DropdownToggle
-                       
+                        caret
                         color="info"
                         className="btn btn-info btn-sm"
                       >
@@ -415,10 +433,11 @@ const UiDropdown = () => {
                         <i className="mdi mdi-chevron-down" />
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Another action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </div>{" "}
@@ -433,7 +452,7 @@ const UiDropdown = () => {
                         Small button &nbsp;
                       </Button>
                       <DropdownToggle
-                       
+                        caret
                         color="secondary"
                         className="btn btn-secondary btn-sm"
                       >
@@ -452,6 +471,207 @@ const UiDropdown = () => {
             </Col>
           </Row>
 
+
+          <Row>
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="card-title">Menu Content</CardTitle>
+                  <p className="card-title-desc">Example of dropdown menu Headers, Text, Forms content</p>
+
+                  <div className="d-flex flex-wrap gap-2">
+                    <UncontrolledDropdown
+                    >
+                      <DropdownToggle color="primary" type="button">
+                        Header <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <div className="dropdown-header noti-title">
+                          <h5 className="font-size-13 text-muted text-truncate mn-0">Welcome Jessie!</h5>
+                        </div>
+                        <DropdownItem href="#">Action</DropdownItem>
+                        <DropdownItem href="#">Another action</DropdownItem>
+                        <DropdownItem href="#">Something else here</DropdownItem>
+                        <div className="dropdown-divider"></div>
+                        <DropdownItem href="#">Separated link</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle type="button" className="btn btn-success">
+                        Text <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-md p-3">
+                        <p>
+                          Some example text that's free-flowing within the dropdown menu.
+                        </p>
+                        <p className="mb-0">
+                          And this is more example text.
+                        </p>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle type="button" className="btn btn-light">
+                        Forms <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-md p-4">
+                        <Form>
+                          <div className="mb-2">
+                            <Label className="form-label" htmlFor="exampleDropdownFormEmail">Email address</Label>
+                            <Input type="email" className="form-control" id="exampleDropdownFormEmail" placeholder="email@example.com" />
+                          </div>
+                          <div className="mb-2">
+                            <Label className="form-label" htmlFor="exampleDropdownFormPassword">Password</Label>
+                            <Input type="password" className="form-control" id="exampleDropdownFormPassword" placeholder="Password" />
+                          </div>
+                          <div className="mb-2">
+                            <div className="form-check custom-checkbox">
+                              <Input type="checkbox" className="form-check-input" id="rememberdropdownCheck" />
+                              <Label className="form-check-label" htmlFor="rememberdropdownCheck">Remember me</Label>
+                            </div>
+                          </div>
+                          <button type="submit" className="btn btn-primary">Sign in</button>
+                        </Form>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle>Dropdown Menu Dark</CardTitle>
+                  <p className="card-title-desc">Opt into darker dropdowns to match a dark navbar or custom style by adding <code>.dropdown-menu-dark</code> onto an existing <code>.dropdown-menu</code>. No changes are required to the dropdown items.</p>
+
+                  <UncontrolledDropdown>
+                    <DropdownToggle type="button" className="btn btn-secondary">
+                      Menu is right-aligned <i className="mdi mdi-chevron-down"></i>
+                    </DropdownToggle>
+                    <DropdownMenu className="dropdown-menu-dark">
+                      <DropdownItem href="#">Action</DropdownItem>
+                      <DropdownItem href="#">Another action</DropdownItem>
+                      <DropdownItem href="#">Something else here</DropdownItem>
+                    </DropdownMenu>
+                  </UncontrolledDropdown>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+
+          <Row>
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle>Menu Alignment</CardTitle>
+                  <p className="card-title-desc">
+                    Add{" "}
+                    <code className="highlighter-rouge">
+                      .dropdown-menu-end
+                    </code>{" "}
+                    to a{" "}
+                    <code className="highlighter-rouge">.dropdown-menu</code> to
+                    right align the dropdown menu.
+                  </p>
+                  <div className="d-flex flex-wrap gap-3">
+                    <UncontrolledDropdown>
+                      <DropdownToggle type="button" className="btn btn-secondary">
+                        Right-aligned menu example  <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-end">
+                        <DropdownItem href="#">Action</DropdownItem>
+                        <DropdownItem href="#">Another action</DropdownItem>
+                        <DropdownItem href="#">Something else here</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle type="button" className="btn btn-secondary">
+                        Left-aligned but right aligned when large screen <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-lg-end">
+                        <DropdownItem href="#">Action</DropdownItem>
+                        <DropdownItem href="#">Another action</DropdownItem>
+                        <DropdownItem href="#">Something else here</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle type="button" className="btn btn-secondary">
+                        Right-aligned but left aligned when large screen <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu className="dropdown-menu-lg-start">
+                        <DropdownItem href="#">Action</DropdownItem>
+                        <DropdownItem href="#">Another action</DropdownItem>
+                        <DropdownItem href="#">Something else Header</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+
+                  <CardTitle className="card-title">Auto Close Behavior</CardTitle>
+                  <p className="card-title-desc">By default, the dropdown menu is closed when clicking inside or outside the dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the dropdown.</p>
+
+                  <div className="d-flex gap-2 flex-wrap">
+                    <UncontrolledDropdown>
+                      <DropdownToggle className="btn btn-secondary" type="button" id="defaultDropdown">
+                        Default dropdown <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle className="btn btn-secondary" type="button" id="dropdownMenuClickableOutside">
+                        Clickable outside <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle className="btn btn-secondary" type="button" id="dropdownMenuClickableInside">
+                        Clickable inside <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+
+                    <UncontrolledDropdown>
+                      <DropdownToggle className="btn btn-secondary" type="button" id="dropdownMenuClickable" data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                        Manual close <i className="mdi mdi-chevron-down"></i>
+                      </DropdownToggle>
+                      <DropdownMenu>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                        <DropdownItem href="#">Menu item</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                  </div>
+
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
           <Row>
             <Col xl={6}>
               <Card>
@@ -464,18 +684,20 @@ const UiDropdown = () => {
                   </CardSubtitle>
                   <div className="d-flex gap-2 flex-wrap">
                     <Dropdown
-                      className="btn-group dropup"
+                      className="dropup"
                       isOpen={dropup1}
                       direction="up"
                       toggle={() => setDropup1(!dropup1)}
                     >
-                      <DropdownToggle className="btn btn-secondary">
+                      <DropdownToggle className="btn btn-info">
                         Dropup <i className="mdi mdi-chevron-up" />
                       </DropdownToggle>
                       <DropdownMenu>
                         <DropdownItem>Action</DropdownItem>
                         <DropdownItem>Another action</DropdownItem>
                         <DropdownItem>Something else here</DropdownItem>
+                        <DropdownItem divider />
+                        <DropdownItem href="#">Separated link</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
                     &nbsp;
@@ -484,105 +706,18 @@ const UiDropdown = () => {
                       isOpen={drp_up11}
                       toggle={() => setDrp_up11(!drp_up11)}
                     >
-                      <Button id="caret" color="secondary">
+                      <Button id="caret" color="info">
                         Split dropup
                       </Button>
-                      <DropdownToggle color="secondary">
+                      <DropdownToggle caret color="info">
                         <i className="mdi mdi-chevron-up" />
                       </DropdownToggle>
                       <DropdownMenu>
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Action action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                         <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
-                      </DropdownMenu>
-                    </ButtonDropdown>
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-
-            <Col lg={6}>
-              <Card>
-                <CardBody>
-                  <CardTitle>Menu alignment</CardTitle>
-                  <CardSubtitle className="mb-3">
-                    Add{" "}
-                    <code className="highlighter-rouge">
-                      .dropdown-menu-end
-                    </code>{" "}
-                    to a{" "}
-                    <code className="highlighter-rouge">.dropdown-menu</code> to
-                    right align the dropdown menu.
-                  </CardSubtitle>
-                  <ButtonDropdown
-                    isOpen={drop_align}
-                    direction="right"
-                    toggle={() => setDrop_align(!drop_align)}
-                  >
-                    <DropdownToggle
-                     
-                      color="secondary"
-                      className="btn btn-secondary"
-                    >
-                      Menu is right-aligned{" "}
-                      <i className="mdi mdi-chevron-down" />
-                    </DropdownToggle>
-                    <DropdownMenu className="dropdown-menu-end">
-                      <DropdownItem disabled>Action</DropdownItem>
-                      <DropdownItem>Another Action</DropdownItem>
-                      <DropdownItem divider />
-                      <DropdownItem>Another Action</DropdownItem>
-                    </DropdownMenu>
-                  </ButtonDropdown>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col lg={6}>
-              <Card>
-                <CardBody>
-                  <CardTitle>Dropright variation</CardTitle>
-                  <CardSubtitle className="mb-3">
-                    Trigger dropdown menus at the right of the elements by
-                    adding <code>.dropright</code> to the parent element.
-                  </CardSubtitle>
-
-                  <div className="d-flex gap-2 flex-wrap">
-                    <Dropdown
-                      isOpen={info_dropup1}
-                      direction="right"
-                      className="btn-group dropend"
-                      toggle={() => setInfo_dropup1(!info_dropup1)}
-                    >
-                      <DropdownToggle className="btn btn-info">
-                        Dropright <i className="mdi mdi-chevron-right" />
-                      </DropdownToggle>
-                      <DropdownMenu data-popper-placement="right-start">
-                        <DropdownItem>Action</DropdownItem>
-                        <DropdownItem>Another action</DropdownItem>
-                        <DropdownItem>Something else here</DropdownItem>
-                      </DropdownMenu>
-                    </Dropdown>
-                    <ButtonDropdown
-                      direction="right"
-                      isOpen={infodrp_up11}
-                      className="btn-group dropend"
-                      toggle={() => setInfodrp_up11(!infodrp_up11)}
-                    >
-                      <Button id="caret" color="info">
-                        Split dropright
-                      </Button>
-                      <DropdownToggle color="info" className="dropdown-toggle-split">
-                        <i className="mdi mdi-chevron-right" />
-                      </DropdownToggle>
-                      <DropdownMenu data-popper-placement="right-start">
-                        <DropdownItem>Action</DropdownItem>
-                        <DropdownItem>Another action</DropdownItem>
-                        <DropdownItem>Something else here</DropdownItem>
+                        <DropdownItem>Separated link</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </div>
@@ -617,24 +752,68 @@ const UiDropdown = () => {
                         <DropdownItem>Another Action</DropdownItem>
                       </DropdownMenu>
                     </Dropdown>
-                    <ButtonDropdown
-                      isOpen={infodrp_up1111}
-                      direction="left"
-                      className="btn-group dropstart"
-                      toggle={() => setInfodrp_up1111(!infodrp_up1111)}
+                    <UncontrolledDropdown>
+                      <div className="btn-group dropstart">
+                        <DropdownToggle type="button" className="btn btn-info waves-effect waves-light dropdown-toggle-split">
+                          <i className="mdi mdi-chevron-left"></i>
+                        </DropdownToggle>
+                        <DropdownMenu>
+                          <DropdownItem href="#">Action</DropdownItem>
+                          <DropdownItem href="#">Another action</DropdownItem>
+                          <DropdownItem href="#">Something else here</DropdownItem>
+                        </DropdownMenu>
+                      </div>
+
+                      <button type="button" className="btn btn-info waves-effect waves-light">
+                        Split dropstart
+                      </button>
+                    </UncontrolledDropdown>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle>Dropright variation</CardTitle>
+                  <CardSubtitle className="mb-3">
+                    Trigger dropdown menus at the right of the elements by
+                    adding <code>.dropright</code> to the parent element.
+                  </CardSubtitle>
+
+                  <div className="d-flex gap-2 flex-wrap">
+                    <Dropdown
+                      isOpen={info_dropup1}
+                      direction="right"
+                      className="btn-group dropend"
+                      toggle={() => setInfo_dropup1(!info_dropup1)}
                     >
-                      <DropdownToggle color="info">
-                        <i className="mdi mdi-chevron-left" />
+                      <DropdownToggle className="btn btn-info" caret>
+                        Dropright <i className="mdi mdi-chevron-right" />
                       </DropdownToggle>
+                      <DropdownMenu data-popper-placement="right-start">
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Another action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
+                      </DropdownMenu>
+                    </Dropdown>
+                    <ButtonDropdown
+                      direction="right"
+                      isOpen={infodrp_up11}
+                      className="btn-group dropend"
+                      toggle={() => setInfodrp_up11(!infodrp_up11)}
+                    >
                       <Button id="caret" color="info">
-                        Split dropleft
+                        Split dropright
                       </Button>
-                      <DropdownMenu data-popper-placement="left-start">
-                        <DropdownItem header>Header</DropdownItem>
-                        <DropdownItem disabled>Action</DropdownItem>
-                        <DropdownItem>Another Action</DropdownItem>
-                        <DropdownItem divider />
-                        <DropdownItem>Another Action</DropdownItem>
+                      <DropdownToggle caret color="info" className="dropdown-toggle-split">
+                        <i className="mdi mdi-chevron-right" />
+                      </DropdownToggle>
+                      <DropdownMenu data-popper-placement="right-start">
+                        <DropdownItem>Action</DropdownItem>
+                        <DropdownItem>Another action</DropdownItem>
+                        <DropdownItem>Something else here</DropdownItem>
                       </DropdownMenu>
                     </ButtonDropdown>
                   </div>

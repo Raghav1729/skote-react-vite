@@ -1,11 +1,15 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Guage = () => {
+const Guage = ({ dataColors }) => {
+  const guageEChartColors = getChartColorsArray(dataColors);
+
   const options = {
     tooltip: {
       formatter: "{a} <br/>{b} : {c}%",
     },
+    color: guageEChartColors,
     toolbox: {
       feature: {
         restore: {},
@@ -20,9 +24,9 @@ const Guage = () => {
         axisLine: {
           lineStyle: {
             color: [
-              [0.2, "#02a499"],
-              [0.8, "#3c4ccf"],
-              [1, "#ec4561"],
+              [0.2, "#34c38f"],
+              [0.8, "#556ee6"],
+              [1, "#f46a6a"],
             ],
             width: 20,
           },

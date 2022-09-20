@@ -16,7 +16,26 @@ import Countdown from "react-countdown";
 const renderer = ({ days, hours, minutes, seconds, completed }) => {
   if (completed) {
     // Render a completed state
-    return <span>You are good to go!</span>;
+    return (
+      <>
+        <div className="coming-box">
+          00
+          <span>Days</span>
+        </div>
+        <div className="coming-box">
+          00
+          <span>Hours</span>
+        </div>
+        <div className="coming-box">
+          00
+          <span>Minutes</span>
+        </div>
+        <div className="coming-box">
+          00
+          <span>Seconds</span>
+        </div>
+      </>
+    );
   } else {
     // Render a countdown
     return (
@@ -51,7 +70,7 @@ const Section = () => {
           <Row className="align-items-center">
             <Col lg="5">
               <div className="text-white-50">
-                <h1 className="text-white font-weight-semibold mb-3 hero-title">
+                <h1 className="text-white fw-semibold mb-3 hero-title">
                   Skote - Ico Landing for a cryptocurrency business
                 </h1>
                 <p className="font-size-14">
@@ -60,7 +79,7 @@ const Section = () => {
                 </p>
 
                 <div className="d-flex flex-wrap gap-2 mt-4">
-                  <Link to="#" className="btn btn-success me-1">
+                  <Link to="#" className="btn btn-success">
                     Get Whitepaper
                   </Link>
                   <Link to="#" className="btn btn-light">
@@ -79,7 +98,7 @@ const Section = () => {
                     <h5>Time left to Ico :</h5>
                     <div className="mt-4">
                       <div className="counter-number ico-countdown">
-                        <Countdown date="2021/12/31" renderer={renderer} />
+                        <Countdown date="2022/10/31" renderer={renderer} />
                       </div>
                     </div>
 

@@ -122,7 +122,7 @@ const CryptoWallet = () => {
                   </Col>
                 </Row>
 
-                <WalletOverView wallet={wallet} />
+                <WalletOverView dataColors='["--bs-warning", "--bs-primary", "--bs-info"]'/>
               </Col>
             </Row>
           )}

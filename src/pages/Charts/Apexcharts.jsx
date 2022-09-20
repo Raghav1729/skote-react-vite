@@ -20,7 +20,7 @@ import Breadcrumbs from "../../components/Common/Breadcrumb"
 const Apexchart = () => {
 
   //meta title
-  document.title="Apex Charts | Skote - Vite React Admin & Dashboard Template";
+  document.title="Apex Charts | Skote - React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
@@ -33,7 +33,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Line with Data Labels</CardTitle>
-                  <LineApexChart />
+                  <LineApexChart dataColors='["--bs-primary", "--bs-success"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -42,7 +42,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Dashed Line</CardTitle>
-                  <DashedLine />
+                  <DashedLine dataColors='["--bs-primary", "--bs-danger", "--bs-success"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -53,7 +53,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4"> Spline Area </CardTitle>
-                  <SplineArea />
+                  <SplineArea dataColors='["--bs-primary", "--bs-success"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -62,7 +62,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4"> Column Chart </CardTitle>
-                  <Apaexlinecolumn />
+                  <Apaexlinecolumn dataColors='["--bs-danger","--bs-primary", "--bs-success"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -75,7 +75,7 @@ const Apexchart = () => {
                   <CardTitle className="mb-4">
                     Column with Data Labels{" "}
                   </CardTitle>
-                  <ColumnWithDataLabels />
+                  <ColumnWithDataLabels dataColors='["--bs-primary"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -83,7 +83,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Bar Chart</CardTitle>
-                  <BarChart />
+                  <BarChart dataColors='["--bs-success"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -96,7 +96,7 @@ const Apexchart = () => {
                   <CardTitle className="mb-4">
                     Line, Column & Area Chart{" "}
                   </CardTitle>
-                  <LineColumnArea />
+                  <LineColumnArea dataColors='["--bs-danger","--bs-primary", "--bs-success"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -104,7 +104,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Radial Chart</CardTitle>
-                  <RadialChart />
+                  <RadialChart dataColors='["--bs-primary","--bs-success", "--bs-danger", "--bs-warning"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -115,7 +115,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Pie Chart </CardTitle>
-                  <PieChart />
+                  <PieChart dataColors='["--bs-success","--bs-primary", "--bs-danger","--bs-info", "--bs-warning"]'/>
                 </CardBody>
               </Card>
             </Col>
@@ -123,7 +123,7 @@ const Apexchart = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-4">Donut Chart</CardTitle>
-                  <DonutChart />
+                  <DonutChart dataColors='["--bs-success","--bs-primary", "--bs-danger","--bs-info", "--bs-warning"]'/>
                 </CardBody>
               </Card>
             </Col>

@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { Container, Row, Col } from "reactstrap";
 
 //Import Breadcrumb
@@ -17,7 +17,7 @@ import BuySell from "./buy-sell";
 //Bitcoin Chart
 const series1 = [
   { name: "BTC", data: [12, 14, 2, 47, 42, 15, 47, 75, 65, 19, 14] },
-]
+];
 const options1 = {
   chart: { sparkline: { enabled: !0 } },
   stroke: { curve: "smooth", width: 2 },
@@ -26,40 +26,48 @@ const options1 = {
     type: "gradient",
     gradient: {
       shadeIntensity: 1,
-      inverseColors: !1,
+      inverseColors: false,
       opacityFrom: 0.45,
       opacityTo: 0.05,
       stops: [25, 100, 100, 100],
     },
   },
-  tooltip: { fixed: { enabled: !1 }, x: { show: !1 }, marker: { show: !1 } },
-}
+  tooltip: {
+    fixed: { enabled: false },
+    x: { show: false },
+    marker: { show: false },
+  },
+};
 
 //Etherium Chart
 const series2 = [
   { name: "ETH", data: [25, 66, 41, 89, 63, 25, 44, 12, 36, 9, 54] },
-]
+];
 const options2 = {
   chart: { sparkline: { enabled: !0 } },
   stroke: { curve: "smooth", width: 2 },
-  colors: ["#3452e1"],
+  colors: ["#556ee6"],
   fill: {
     type: "gradient",
     gradient: {
       shadeIntensity: 1,
-      inverseColors: !1,
+      inverseColors: false,
       opacityFrom: 0.45,
       opacityTo: 0.05,
       stops: [25, 100, 100, 100],
     },
   },
-  tooltip: { fixed: { enabled: !1 }, x: { show: !1 }, marker: { show: !1 } },
-}
+  tooltip: {
+    fixed: { enabled: false },
+    x: { show: false },
+    marker: { show: false },
+  },
+};
 
 //LiteCoin Chart
 const series3 = [
   { name: "LTC", data: [35, 53, 93, 47, 54, 24, 47, 75, 65, 19, 14] },
-]
+];
 const options3 = {
   chart: { sparkline: { enabled: !0 } },
   stroke: { curve: "smooth", width: 2 },
@@ -68,14 +76,18 @@ const options3 = {
     type: "gradient",
     gradient: {
       shadeIntensity: 1,
-      inverseColors: !1,
+      inverseColors: false,
       opacityFrom: 0.45,
       opacityTo: 0.05,
       stops: [25, 100, 100, 100],
     },
   },
-  tooltip: { fixed: { enabled: !1 }, x: { show: !1 }, marker: { show: !1 } },
-}
+  tooltip: {
+    fixed: { enabled: false },
+    x: { show: false },
+    marker: { show: false },
+  },
+};
 
 const Dashboard = () => {
   const reports = [
@@ -83,36 +95,37 @@ const Dashboard = () => {
       title: "Bitcoin",
       icon: "mdi mdi-bitcoin",
       color: "warning",
-      value: "$ 57,986.76",
+      value: "$ 9134.39",
       desc: "+ 0.0012 ( 0.2 % )",
       series: series1,
       options: options1,
-      arrowUpDown : 'mdi mdi-arrow-up ms-1 text-success'
+      arrowUpDown: "mdi mdi-arrow-up ms-1 text-success",
     },
     {
       title: "Ethereum",
       icon: "mdi mdi-ethereum",
       color: "primary",
-      value: "$ 2,077.53",
+      value: "$ 245.44",
       desc: "- 4.102 ( 0.1 % )",
       series: series2,
       options: options2,
-      arrowUpDown : 'mdi mdi-arrow-down ms-1 text-danger'
+      arrowUpDown: "mdi mdi-arrow-down ms-1 text-danger",
     },
     {
       title: "litecoin",
       icon: "mdi mdi-litecoin",
       color: "info",
-      value: "$ 225.01",
+      value: "$ 63.61",
       desc: "+ 1.792 ( 0.1 % )",
       series: series3,
       options: options3,
-      arrowUpDown : 'mdi mdi-arrow-up ms-1 text-success'
+      arrowUpDown: "mdi mdi-arrow-up ms-1 text-success",
     },
   ];
 
   //meta title
-  document.title="Crypto Dashboard | Skote - Vite React Admin & Dashboard Template";
+  document.title =
+    "Crypto Dashboard | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
@@ -133,9 +146,9 @@ const Dashboard = () => {
           </Row>
 
           <Row>
-            <WalletBalance />
+            <WalletBalance dataColors='["--bs-primary", "--bs-warning", "--bs-info"]' />
 
-            <OverView />
+            <OverView dataColors='["--bs-warning"]' />
           </Row>
 
           <Row>
@@ -148,7 +161,7 @@ const Dashboard = () => {
         </Container>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

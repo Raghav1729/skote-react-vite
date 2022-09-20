@@ -16,7 +16,7 @@ const CardPricing = props => {
               </div>
               <div className="ms-3">
                 <i
-                  className={"bx " + props.pricing.icon + " h1 text-primary"}
+                  className={"bx " + props.pricing.icon + " h1 text-primary"} style={{lineHeight:1}}
                 />
               </div>
             </div>

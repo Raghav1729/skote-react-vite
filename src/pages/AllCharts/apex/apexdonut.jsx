@@ -1,7 +1,9 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const RadialChart = () => {
+const RadialChart = ({ dataColors }) => {
+  const apexRadialChartColors = getChartColorsArray(dataColors);
   const options = {
     plotOptions: {
       radialBar: {
@@ -17,8 +19,8 @@ const RadialChart = () => {
     },
     colors: ["rgb(2, 164, 153)"],
     labels: [""],
-  }
-  const series = [80]
+  };
+  const series = [80];
 
   return (
     <ReactApexChart
@@ -27,7 +29,7 @@ const RadialChart = () => {
       type="radialBar"
       height="143"
     />
-  )
-}
+  );
+};
 
-export default RadialChart
+export default RadialChart;

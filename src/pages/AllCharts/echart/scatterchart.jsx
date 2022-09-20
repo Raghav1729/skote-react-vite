@@ -1,15 +1,11 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Scatter = () => {
+const Scatter = ({ dataColors }) => {
+  const scatterEChartColors = getChartColorsArray(dataColors);
+
   const options = {
-    tooltip: {
-      trigger: "axis",
-      show: false,
-    },
-    toolbox: {
-      show: false,
-    },
     grid: {
       zlevel: 0,
       x: 50,
@@ -23,14 +19,24 @@ const Scatter = () => {
     xAxis: {
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(166, 176, 207, 0.1)",
         },
       },
     },
     yAxis: {
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(166, 176, 207, 0.1)",
         },
       },
     },
@@ -53,8 +59,9 @@ const Scatter = () => {
         type: "scatter",
       },
     ],
-    color: ["#3c4ccf"],
+    color: scatterEChartColors,
   };
+
   return (
     <React.Fragment>
       <ReactEcharts style={{ height: "350px" }} option={options} />

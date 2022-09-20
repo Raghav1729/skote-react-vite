@@ -30,7 +30,7 @@ const RightBar = () => {
             <div>
               <p className="text-muted">Categories</p>
 
-              <ul className="list-unstyled font-weight-medium">
+              <ul className="list-unstyled fw-medium">
                 <li>
                   <Link to="#" className="text-muted py-2 d-block">
                     <i className="mdi mdi-chevron-right me-1"></i> Design

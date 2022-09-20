@@ -12,12 +12,13 @@ import {
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiTypography = () => {
+
+  //meta title
   document.title = "Typography | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
       <div className="page-content">
-        
         <Container fluid={true}>
           <Breadcrumbs title="UI Elements" breadcrumbItem="Typography" />
           <Row>
@@ -49,34 +50,34 @@ const UiTypography = () => {
                   <h1 className="mb-3">
                     h1. Bootstrap heading{" "}
                     <small className="text-muted">
-                      Semibold 2.5rem (40px)
+                      2.03125rem (32.5px)
                     </small>
                   </h1>
                   <h2 className="mb-3">
                     h2. Bootstrap heading{" "}
-                    <small className="text-muted">Semibold 2rem (32px)</small>
+                    <small className="text-muted">1.625rem (26px)</small>
                   </h2>
                   <h3 className="mb-3">
                     h3. Bootstrap heading{" "}
                     <small className="text-muted">
-                      Semibold 1.75rem (28px)
+                      1.42188rem (22.75px)
                     </small>
                   </h3>
                   <h4 className="mb-3">
                     h4. Bootstrap heading{" "}
                     <small className="text-muted">
-                      Semibold 1.5rem (24px)
+                      1.21875rem (19.5px)
                     </small>
                   </h4>
                   <h5 className="mb-3">
                     h5. Bootstrap heading{" "}
                     <small className="text-muted">
-                      Semibold 1.25rem (20px)
+                      1.01563rem (16.25)
                     </small>
                   </h5>
                   <h6>
                     h6. Bootstrap heading{" "}
-                    <small className="text-muted">Semibold 1rem (16px)</small>
+                    <small className="text-muted">0.8125rem (13px)</small>
                   </h6>
                 </CardBody>
               </Card>
@@ -95,9 +96,9 @@ const UiTypography = () => {
                       </div>
                     </Col>
                     <Col sm="6">
-                      <div className="d-flex align-items-center">
-                        <div className="me-4">
-                          <h1 className="font-weight-semibold display-4 mb-0">Aa</h1>
+                      <div className="d-flex align-items-center mt-4 mt-sm-0">
+                        <div className="flex-shrink-0 me-4">
+                          <h1 className="fw-semibold display-4 mb-0">Aa</h1>
                         </div>
                         <div className="flex-grow-1">
                           <p className="text-muted mb-2">Font Weight</p>
@@ -325,6 +326,129 @@ const UiTypography = () => {
                       </dl>
                     </dd>
                   </dl>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Text transform</CardTitle>
+                  <p className="card-title-desc">Use <code>.text-lowercase</code>, <code>.text-uppercase</code>, or <code>.text-capitalize</code> to transform the text..
+                  </p>
+                  <div>
+                    <p className="text-lowercase">Lowercased text.</p>
+                    <p className="text-uppercase">Uppercased text.</p>
+                    <p className="text-capitalize mb-0">CapiTaliZed text.</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Text decoration</CardTitle>
+                  <p className="card-title-desc">Decorate text in components with text decoration classes.</p>
+                  <div>
+                    <p className="text-decoration-underline">This text has a line underneath it.</p>
+                    <p className="text-decoration-line-through">This text has a line going through it.</p>
+                    <a href="#" className="text-decoration-none">This link has its text decoration removed</a>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Font size</CardTitle>
+                  <p className="card-title-desc">Quickly change the font-size of text.</p>
+                  <div>
+                    <p className="fs-1">.fs-1 text</p>
+                    <p className="fs-2">.fs-2 text</p>
+                    <p className="fs-3">.fs-3 text</p>
+                    <p className="fs-4">.fs-4 text</p>
+                    <p className="fs-5">.fs-5 text</p>
+                    <p className="fs-6 mb-0">.fs-6 text</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Text wrapping and overflow</CardTitle>
+                  <p className="card-title-desc">Wrap text with a <code>.text-wrap</code> class.</p>
+
+                  <div className="mb-3">
+                    <div className="badge bg-primary text-wrap" style={{width: "6rem"}}>
+                      This text should wrap.
+                    </div>
+                  </div>
+
+                  <p className="card-title-desc">Prevent text from wrapping with a <code>.text-nowrap</code> class.</p>
+
+                  <div>
+                    <div className="text-nowrap bg-light border" style={{width: "8rem"}}>
+                      This text should overflow the parent.
+                    </div>
+                  </div>
+                </CardBody>
+              </Card>
+
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Word break</CardTitle>
+                  <p className="card-title-desc">Use <code>text-break</code> class to prevent long strings of text from breaking your components' layout.</p>
+
+                  <div>
+                    <p className="text-break mb-0">mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Font weight and italics</CardTitle>
+                  <p className="card-title-desc"><code>font-style</code> utilities are abbreviated as <code>.fst-*</code> and <code>font-weight</code> utilities are abbreviated as <code>.fw-*</code>.</p>
+
+                  <div>
+                    <p className="fw-bold">Bold text.</p>
+                    <p className="fw-bolder">Bolder weight text (relative to the parent element).</p>
+                    <p className="fw-semibold">Semibold weight text.</p>
+                    <p className="fw-normal">Normal weight text.</p>
+                    <p className="fw-light">Light weight text.</p>
+                    <p className="fw-lighter">Lighter weight text (relative to the parent element).</p>
+                    <p className="fst-italic">Italic text.</p>
+                    <p className="fst-normal mb-0">Text with normal font style</p>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <h4 className="card-title">Line height</h4>
+                  <p className="card-title-desc">Wrap text with a <code>.text-wrap</code> class.</p>
+
+                  <div>
+                    <p className="lh-1">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+                    <p className="lh-sm">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+                    <p className="lh-base">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+                    <p className="lh-lg mb-0">This is a long paragraph written to show how the line-height of an element is affected by our utilities. Classes are applied to the element itself or sometimes the parent element. These classes can be customized as needed with our utility API.</p>
+                  </div>
+
                 </CardBody>
               </Card>
             </Col>

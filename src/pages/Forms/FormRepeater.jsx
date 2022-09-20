@@ -62,7 +62,7 @@ const FormRepeater = () => {
                       {(formRows || []).map((formRow, key) => (
                         <Row key={key}>
                           <Col lg={2} className="mb-3">
-                            <label htmlFor="name">Name {formRow.id}</label>
+                            <label htmlFor="name">Name </label>
                             <input
                               type="text"
                               id="name"

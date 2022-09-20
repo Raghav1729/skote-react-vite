@@ -21,10 +21,11 @@ const CarouselPage = () => {
                         clients
                       </h4>
                       <div dir="ltr">
-                        <Carousel showThumbs={false} className="slider_css">
+                        <Carousel className="owl-carousel owl-theme auth-review-carousel slider_css" id="auth-review-carousel" 
+                        showThumbs={false}>
                           <div>
                             <div className="item">
-                              <div className="py-3">
+                              <div className="pb-5 pt-3">
                                 <p className="font-size-16 mb-4">
                                   &quot;Fantastic theme with a ton of options. If
                                   you just want the HTML to integrate with your
@@ -47,7 +48,7 @@ const CarouselPage = () => {
                           </div>
                           <div>
                             <div className="item">
-                              <div className="py-3">
+                              <div className="pb-5 pt-3">
                                 <p className="font-size-16 mb-4">
                                   &quot;If Every Vendor on Envato are as supportive
                                   as Themesbrand, Development with be a nice

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
 import { isEmpty } from "lodash";
 import { Col, Container, Row } from "reactstrap";
 
@@ -19,14 +18,14 @@ import Comments from "./comments";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 
-const ProjectsOverview = props => {
-  
+const ProjectsOverview = (props) => {
   //meta title
-  document.title="Project Overview | Skote - Vite React Admin & Dashboard Template";
+  document.title =
+    "Project Overview | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 
-  const { projectDetail } = useSelector(state => ({
+  const { projectDetail } = useSelector((state) => ({
     projectDetail: state.projects.projectDetail,
   }));
 
@@ -63,7 +62,7 @@ const ProjectsOverview = props => {
 
               <Row>
                 <Col lg="4">
-                  <OverviewChart options={options} series={series} />
+                  <OverviewChart dataColors='["--bs-primary"]' />
                 </Col>
 
                 <Col lg="4">

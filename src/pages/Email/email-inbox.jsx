@@ -55,9 +55,9 @@ import avatar6 from "../../assets/images/users/avatar-6.jpg";
 import { useSelector, useDispatch } from "react-redux";
 
 const EmailInbox = props => {
-  
+
   //meta title
-  document.title="Inbox | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Inbox | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 
@@ -103,7 +103,7 @@ const EmailInbox = props => {
                 <Button
                   type="button"
                   color="danger"
-                  
+
                   onClick={() => {
                     setmodal(!modal);
                   }}
@@ -224,7 +224,7 @@ const EmailInbox = props => {
 
                 <div className="mt-2">
                   <Link to="#" className="d-flex">
-                    <div className="flex-shrink-0 me-3">
+                    <div className="flex-shrink-0">
                       <img
                         className="d-flex me-3 rounded-circle"
                         src={avatar2}
@@ -321,16 +321,15 @@ const EmailInbox = props => {
                         editorClassName="editorClassName"
                       /> */}
                       <CKEditor
-                      editor={ClassicEditor}
-                      data="<p>Hello from CKEditor 5!</p>"
-                      onReady={editor => {
-                        // You can store the "editor" and use when it is needed.
-                        console.log('Editor is ready to use!', editor);
-                      }}
-                      onChange={(event, editor) => {
-                        const data = editor.getData();
-                      }}
-                    />
+                        editor={ClassicEditor}
+                        data="<p>Hello from CKEditor 5!</p>"
+                        onReady={editor => {
+                          // You can store the "editor" and use when it is needed.
+                        }}
+                        onChange={(event, editor) => {
+                          const data = editor.getData();
+                        }}
+                      />
                     </form>
                   </ModalBody>
                   <ModalFooter>
@@ -562,7 +561,7 @@ const EmailInbox = props => {
                         type="button"
                         color="success"
                         size="sm"
-                        
+
                       >
                         <i className="fa fa-chevron-left" />
                       </Button>
@@ -570,7 +569,7 @@ const EmailInbox = props => {
                         type="button"
                         color="success"
                         size="sm"
-                        
+
                       >
                         <i className="fa fa-chevron-right" />
                       </Button>

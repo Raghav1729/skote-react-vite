@@ -24,8 +24,12 @@ import crypto from "./crypto/reducer"
 //invoices
 import invoices from "./invoices/reducer"
 
+//jobs
+import JobReducer from "./jobs/reducer"
+
 //projects
 import projects from "./projects/reducer"
+
 
 //tasks
 import tasks from "./tasks/reducer"
@@ -55,6 +59,7 @@ const rootReducer = combineReducers({
   mails,
   crypto,
   invoices,
+  JobReducer,
   projects,
   tasks,
   contacts,

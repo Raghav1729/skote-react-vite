@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Alert,
   Col,
@@ -6,7 +6,6 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardSubtitle,
   UncontrolledAlert,
   Container,
 } from "reactstrap";
@@ -18,6 +17,9 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 const UiAlert = () => {
   //meta title
   document.title = "Alert | Skote - Vite React Admin & Dashboard Template";
+
+  const [show, setShow] = useState(false);
+
   return (
     <React.Fragment>
       <div className="page-content">
@@ -28,13 +30,13 @@ const UiAlert = () => {
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle className="mb-2">Default Alerts </CardTitle>
-                  <CardSubtitle className="mb-4">
+                  <CardTitle>Default Alerts </CardTitle>
+                  <p className="card-title-desc">
                     Alerts are available for any length of
                     text, as well as an optional dismiss button. For proper styling, use one
                     of the four <strong>required</strong> contextual classes (e.g., <code
                     >.alert-success</code>). For inline dismissal, use the alerts jQuery plugin.
-                  </CardSubtitle>
+                  </p>
 
                   <div >
                     <Alert color="primary">
@@ -64,12 +66,11 @@ const UiAlert = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-2">Link color </CardTitle>
-                  <CardSubtitle className="mb-4">
+                  <p className="card-title-desc">
                     Use the{" "}
                     <code className="highlighter-rouge">.alert-link</code>{" "}
-                    utility className to quickly provide matching colored links
-                    within any alert.
-                  </CardSubtitle>
+                    utility className quickly provide matching colored links within any alert.
+                  </p>
 
                   <div >
                     <Alert color="primary">
@@ -125,10 +126,10 @@ const UiAlert = () => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-2">Dismissing </CardTitle>
-                  <CardSubtitle className="mb-4">
+                  <p className="card-title-desc">
                     Add a dismiss button and the <code>.alert-dismissible</code> class, which adds extra padding
                     to the right of the alert and positions the <code>.btn-close</code> button.
-                  </CardSubtitle>
+                  </p>
 
                   <div >
                     <UncontrolledAlert color="primary">
@@ -221,7 +222,28 @@ const UiAlert = () => {
             <Col xl={6}>
               <Card>
                 <CardBody>
-                  <h4 className="card-title">Additional content</h4>
+                  <h4 className="card-title">Live Example</h4>
+                  <p className="card-title-desc">Click the button below to show an alert (hidden with inline styles to start),
+                    then dismiss (and destroy) it with the built-in close button.</p>
+                  <div className="">
+                    <div id="liveAlertPlaceholder">
+                      <Alert isOpen={show} toggle={() => {
+                        setShow(false)
+                      }}>
+                        Nice, you triggered this alert message!
+                      </Alert>
+                    </div>
+                    <button type="button" className="btn btn-primary" onClick={() => setShow(true)} id="liveAlertBtn">Show live alert</button>
+                  </div>
+
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="card-title">Additional content</CardTitle>
                   <p className="card-title-desc">Alerts can also contain additional HTML elements like headings, paragraphs and dividers.</p>
 
                   <div >

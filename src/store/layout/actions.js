@@ -9,6 +9,7 @@ import {
   SHOW_SIDEBAR,
   CHANGE_PRELOADER,
   TOGGLE_LEFTMENU,
+  CHANGE_LAYOUT_MODE
 } from "./actionTypes"
 
 export const changeLayout = layout => ({
@@ -19,6 +20,11 @@ export const changeLayout = layout => ({
 export const changePreloader = layout => ({
   type: CHANGE_PRELOADER,
   payload: layout,
+})
+
+export const changeLayoutMode = layoutMode => ({
+  type: CHANGE_LAYOUT_MODE,
+  payload: layoutMode,
 })
 
 export const changeLayoutWidth = width => ({

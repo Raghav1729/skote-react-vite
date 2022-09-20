@@ -1,7 +1,10 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const LineColumnArea = () => {
+const LineColumnArea = ({ dataColors }) => {
+  const lineColumnAreaColors = getChartColorsArray(dataColors);
+
   const series = [
     {
       name: "Team A",
@@ -18,7 +21,7 @@ const LineColumnArea = () => {
       type: "line",
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
     },
-  ]
+  ];
   const options = {
     chart: {
       stacked: false,
@@ -35,7 +38,7 @@ const LineColumnArea = () => {
         columnWidth: "50%",
       },
     },
-    colors: ["#f46a6a", "#556ee6", "#34c38f"],
+    colors: lineColumnAreaColors,
 
     fill: {
       opacity: [0.85, 0.25, 1],
@@ -81,16 +84,16 @@ const LineColumnArea = () => {
       y: {
         formatter: function (y) {
           if (typeof y !== "undefined") {
-            return y.toFixed(0) + " points"
+            return y.toFixed(0) + " points";
           }
-          return y
+          return y;
         },
       },
     },
     grid: {
       borderColor: "#f1f1f1",
     },
-  }
+  };
 
   return (
     <ReactApexChart
@@ -99,7 +102,7 @@ const LineColumnArea = () => {
       type="line"
       height="350"
     />
-  )
-}
+  );
+};
 
-export default LineColumnArea
+export default LineColumnArea;

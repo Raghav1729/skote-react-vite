@@ -1,7 +1,10 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Line = () => {
+const Line = ({ dataColors }) => {
+  const lineEChartColors = getChartColorsArray(dataColors);
+
   const options = {
     tooltip: {
       trigger: "axis",
@@ -17,35 +20,34 @@ const Line = () => {
     xAxis: {
       type: "category",
       data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      axisLable: {
-        color: "#ffffff",
-      },
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
         },
       },
     },
     yAxis: {
       type: "value",
-      axisLable: {
-        color: "#ffffff",
-      },
       axisLine: {
         lineStyle: {
-          color: "#74788d",
+          color: "#8791af",
+        },
+      },
+      splitLine: {
+        lineStyle: {
+          color: "rgba(166, 176, 207, 0.1)",
         },
       },
     },
     series: [
       {
-        data: [620, 832, 750, 934, 1290, 1330, 1400],
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
         type: "line",
       },
     ],
-    color: ["#556ee6"],
+    color: lineEChartColors,
     textStyle: {
-      color: ["#74788d"],
+      color: ["#8791af"],
     },
   };
   return (

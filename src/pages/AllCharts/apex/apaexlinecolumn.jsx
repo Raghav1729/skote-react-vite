@@ -1,7 +1,9 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Apaexlinecolumn = () => {
+const Apaexlinecolumn = ({ dataColors }) => {
+  const apaexlineColumnColors = getChartColorsArray(dataColors);
   const series = [
     {
       name: "Net Profit",
@@ -38,7 +40,7 @@ const Apaexlinecolumn = () => {
       colors: ["transparent"],
     },
 
-    colors: ["#34c38f", "#556ee6", "#f46a6a"],
+    colors: apaexlineColumnColors,
     xaxis: {
       categories: [
         "Feb",

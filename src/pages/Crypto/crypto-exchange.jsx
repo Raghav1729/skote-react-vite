@@ -343,19 +343,7 @@ const CryptoExchange = props => {
                         >
                           Sell
                         </NavLink>
-                      </NavItem>
-                      <NavItem>
-                        <NavLink
-                          className={classnames({
-                            active: activeTab === "3",
-                          })}
-                          onClick={() => {
-                            toggleTab("3")
-                          }}
-                        >
-                          Exchange Coin
-                        </NavLink>
-                      </NavItem>
+                      </NavItem>                      
                     </Nav>
 
                     <TabContent activeTab={activeTab} className="mt-4">
@@ -382,13 +370,13 @@ const CryptoExchange = props => {
 
                             <InputGroup className="mb-3">
                               <Label className="input-group-text">Price</Label>
-                              <Input type="text" className="form-control" />
+                              <Input type="text" className="form-control" placeholder="Price"/>
                               <Label className="input-group-text">$</Label>
                             </InputGroup>
 
                             <InputGroup className="mb-3">
                               <Label className="input-group-text">Total</Label>
-                              <Input type="text" className="form-control" />
+                              <Input type="text" className="form-control" placeholder="Total"/>
                             </InputGroup>
                           </div>
 
@@ -426,13 +414,13 @@ const CryptoExchange = props => {
 
                             <InputGroup className="mb-3">
                               <Label className="input-group-text">Price</Label>
-                              <Input type="text" className="form-control" />
+                              <Input type="text" className="form-control" placeholder="Price"/>
                               <Label className="input-group-text">$</Label>
                             </InputGroup>
 
                             <InputGroup className="mb-3">
                               <Label className="input-group-text">Total</Label>
-                              <Input type="text" className="form-control" />
+                              <Input type="text" className="form-control" placeholder="Total"/>
                             </InputGroup>
                           </div>
 
@@ -446,65 +434,7 @@ const CryptoExchange = props => {
                             </Button>
                           </div>
                         </div>
-                      </TabPane>
-                      <TabPane tabId="3" id="exchange-tab" role="tabpanel">
-                        <div className="float-right ms-2">
-                          <h5 className="font-size-14">
-                            <i className="bx bx-wallet text-primary font-size-16 align-middle me-1" />{" "}
-                            $4235.23
-                          </h5>
-                        </div>
-                        <h5 className="font-size-14 mb-4">Exchange Coin</h5>
-
-                        <div>
-                          <div className="form-group mb-3">
-                            <Label>Payment method :</Label>
-                            <select className="form-select">
-                              <option>Credit / Debit Card</option>
-                              <option>Paypal</option>
-                            </select>
-                          </div>
-
-                          <div>
-                            <Label>Add Amount :</Label>
-                            <InputGroup className="mb-3">
-                              <Label className="input-group-text">Amount</Label>
-                              <select
-                                className="form-select"
-                                style={{ maxWidth: "90px" }}
-                              >
-                                <option value="1" defaultValue>
-                                  BTC
-                                </option>
-                                <option value="2">ETH</option>
-                                <option value="3">LTC</option>
-                              </select>
-                              <Input type="text" className="form-control" />
-                            </InputGroup>
-
-                            <InputGroup className="mb-3">
-                              <Label className="input-group-text">Price</Label>
-                              <Input type="text" className="form-control" />
-                              <Label className="input-group-text">$</Label>
-                            </InputGroup>
-
-                            <InputGroup className="mb-3">
-                              <Label className="input-group-text">Total</Label>
-                              <Input type="text" className="form-control" />
-                            </InputGroup>
-                          </div>
-
-                          <div className="text-center">
-                            <Button
-                              type="button"
-                              color="secondary"
-                              className="w-md"
-                            >
-                              Exchange Coin
-                            </Button>
-                          </div>
-                        </div>
-                      </TabPane>
+                      </TabPane>                      
                     </TabContent>
                   </div>
                 </CardBody>

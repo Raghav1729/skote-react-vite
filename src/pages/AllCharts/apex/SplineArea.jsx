@@ -1,7 +1,10 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const Spinearea = () => {
+const Spinearea = ({ dataColors }) => {
+  const spineareaChartColors = getChartColorsArray(dataColors);
+
   const series = [
     {
       name: "series1",
@@ -11,7 +14,7 @@ const Spinearea = () => {
       name: "series2",
       data: [32, 60, 34, 46, 34, 52, 41],
     },
-  ]
+  ];
 
   const options = {
     dataLabels: {
@@ -22,7 +25,7 @@ const Spinearea = () => {
       width: 3,
     },
 
-    colors: ["#556ee6", "#34c38f"],
+    colors: spineareaChartColors,
     xaxis: {
       type: "datetime",
       categories: [
@@ -43,7 +46,7 @@ const Spinearea = () => {
         format: "dd/MM/yy HH:mm",
       },
     },
-  }
+  };
 
   return (
     <ReactApexChart
@@ -52,7 +55,7 @@ const Spinearea = () => {
       type="area"
       height="350"
     />
-  )
-}
+  );
+};
 
-export default Spinearea
+export default Spinearea;

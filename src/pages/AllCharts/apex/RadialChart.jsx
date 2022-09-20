@@ -1,8 +1,11 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const RadialChart = () => {
-  const series = [44, 55, 67, 83]
+const RadialChart = ({ dataColors }) => {
+  const radialChartColors = getChartColorsArray(dataColors);
+
+  const series = [44, 55, 67, 83];
   const options = {
     plotOptions: {
       radialBar: {
@@ -18,7 +21,7 @@ const RadialChart = () => {
             label: "Total",
             formatter: function (w) {
               // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-              return 249
+              return 249;
             },
           },
         },
@@ -26,17 +29,18 @@ const RadialChart = () => {
     },
 
     labels: ["Computer", "Tablet", "Laptop", "Mobile"],
-    colors: ["#556ee6", "#34c38f", "#f46a6a", "#f1b44c"],
-  }
+    colors: radialChartColors,
+  };
 
   return (
     <ReactApexChart
       options={options}
       series={series}
       type="radialBar"
-      height="380"
+      height="370"
+      className="apex-charts"
     />
-  )
-}
+  );
+};
 
-export default RadialChart
+export default RadialChart;

@@ -21,6 +21,8 @@ const Navbar = props => {
   const [task, settask] = useState(false);
   const [contact, setcontact] = useState(false);
   const [blog, setBlog] = useState(false);
+  const [job, setJob] = useState(false);
+  const [candidate, setCandidate] = useState(false);
   const [component, setcomponent] = useState(false);
   const [form, setform] = useState(false);
   const [table, settable] = useState(false);
@@ -45,7 +47,7 @@ const Navbar = props => {
     if (matchingMenuItem) {
       activateParentDropdown(matchingMenuItem);
     }
-  }); 
+  });
 
   function activateParentDropdown(item) {
     item.classList.add("active");
@@ -115,7 +117,10 @@ const Navbar = props => {
                     </Link>
                     <Link to="/blog" className="dropdown-item">
                       {props.t("Blog")}
-                    </Link> 
+                    </Link>
+                    <Link to="/dashboard-job" className="dropdown-item">
+                      {props.t("Jobs")}
+                    </Link>
                   </div>
                 </li>
 
@@ -126,7 +131,7 @@ const Navbar = props => {
                       e.preventDefault();
                       setui(!ui);
                     }}
-                    className="nav-link  arrow-none"
+                    className="nav-link dropdown-toggle arrow-none"
                   >
                     <i className="bx bx-tone me-2"></i>
                     {props.t("UI Elements")} <div className="arrow-down"></div>
@@ -172,8 +177,8 @@ const Navbar = props => {
                             {props.t("Modals")}
                           </Link>
                           <Link to="/ui-offcanvas" className="dropdown-item">
-                              {props.t("Offcanvas")}
-                            </Link>
+                            {props.t("Offcanvas")}
+                          </Link>
                           <Link to="/ui-rangeslider" className="dropdown-item">
                             {props.t("Range Slider")}
                           </Link>
@@ -188,26 +193,29 @@ const Navbar = props => {
                           </Link>
                           <Link to="/ui-placeholders" className="dropdown-item">
                             {props.t("Placeholders")}
-                          </Link>                          
+                          </Link>
+                          {/* <Link to="/ui-sweet-alert" className="dropdown-item">
+                              {props.t("Sweet-Alert")}
+                            </Link> */}
                           <Link
                             to="/ui-tabs-accordions"
                             className="dropdown-item"
                           >
                             {props.t("Tabs & Accordions")}
                           </Link>
-                          <Link to="/ui-typography" className="dropdown-item">
-                            {props.t("Typography")}
-                          </Link>
-                          <Link to="/ui-toasts" className="dropdown-item">
-                              {props.t("Toasts")}
-                            </Link>
-                          <Link to="/ui-video" className="dropdown-item">
-                            {props.t("Video")}
-                          </Link>
                         </div>
                       </Col>
                       <Col lg={4}>
                         <div>
+                          <Link to="/ui-typography" className="dropdown-item">
+                            {props.t("Typography")}
+                          </Link>
+                          <Link to="/ui-toasts" className="dropdown-item">
+                            {props.t("Toasts")}
+                          </Link>
+                          <Link to="/ui-video" className="dropdown-item">
+                            {props.t("Video")}
+                          </Link>
                           <Link to="/ui-general" className="dropdown-item">
                             {props.t("General")}
                           </Link>
@@ -220,9 +228,9 @@ const Navbar = props => {
                           <Link to="/ui-notifications" className="dropdown-item">
                             {props.t("Notifications")}
                           </Link>
-                          <Link to="/ui-breadcrumb" className="dropdown-item">
-                            {props.t("Breadcrumb")}
-                          </Link>                          
+                          <Link to="/ui-utilities" className="dropdown-item">
+                            {props.t("Utilities")}
+                          </Link>
                         </div>
                       </Col>
                     </Row>
@@ -510,6 +518,70 @@ const Navbar = props => {
                         </Link>
                       </div>
                     </div>
+
+                    <div className="dropdown">
+                      <Link
+                        to="/#"
+                        className="dropdown-item arrow-none"
+                        onClick={e => {
+                          e.preventDefault();
+                          setJob(!job);
+                        }}
+                      >
+                        {props.t("Jobs")} <div className="arrow-down"></div>
+                      </Link>
+                      <div
+                        className={classname("dropdown-menu", { show: job })}
+                      >
+                        <Link to="/job-list" className="dropdown-item">
+                          {props.t("Job List")}
+                        </Link>
+                        <Link to="/job-grid" className="dropdown-item">
+                          {props.t("Job Grid")}
+                        </Link>
+                        <Link to="/job-apply" className="dropdown-item">
+                          {props.t("Job Apply")}
+                        </Link>
+                        <Link to="/job-details" className="dropdown-item">
+                          {props.t("Job Details")}
+                        </Link>
+                        <Link to="/job-categories" className="dropdown-item">
+                          {props.t("Job Catogories")}
+                        </Link>
+
+                        <div className="dropdown">
+                          <Link
+                            className="dropdown-item dropdown-toggle arrow-none"
+                            to="/#"
+                            onClick={e => {
+                              e.preventDefault();
+                              setCandidate(!candidate);
+                            }}
+                          >
+                            <span key="t-candidate">Candidate</span>{" "}
+                            <div className="arrow-down"></div>
+                          </Link>
+                          <div
+                            className={classname("dropdown-menu", {
+                              show: candidate,
+                            })}
+                          >
+                            <Link
+                              to="/candidate-list"
+                              className="dropdown-item"
+                            >
+                              {props.t("List")}
+                            </Link>
+                            <Link
+                              to="/candidate-overview"
+                              className="dropdown-item"
+                            >
+                              {props.t("Overview")}
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </li>
 
@@ -572,9 +644,6 @@ const Navbar = props => {
                         <Link to="/form-mask" className="dropdown-item">
                           {props.t("Form Mask")}
                         </Link>
-                        <Link to="/dual-listbox" className="dropdown-item">
-                          {props.t("Transfer List")}
-                        </Link>
                       </div>
                     </div>
                     <div className="dropdown">
@@ -626,23 +695,23 @@ const Navbar = props => {
                           {" "}
                           {props.t("Apex charts")}
                         </Link>
-                        <Link to="/chartist-charts" className="dropdown-item">
+                        <Link to="/chartjs-charts" className="dropdown-item">
                           {" "}
                           {props.t("Chartjs Chart")}
                         </Link>
-                        <Link to="/e-charts" className="dropdown-item">
+                        <Link to="/chartist-charts" className="dropdown-item">
                           {" "}
-                          {props.t("E Chart")}
-                        </Link>
-                        <Link to="/sparkline-charts" className="dropdown-item">
-                          {" "}
-                          {props.t("Sparkline Chart")}
+                          {props.t("Chartist Chart")}
                         </Link>
                         <Link to="/charts-knob" className="dropdown-item">
                           {props.t("Knob Chart")}
                         </Link>
                         <Link to="/re-charts" className="dropdown-item">
                           {props.t("Re Chart")}
+                        </Link>
+                        <Link to="/sparkline-charts" className="dropdown-item">
+                          {" "}
+                          {props.t("Sparkline Chart")}
                         </Link>
                       </div>
                     </div>

@@ -1,12 +1,15 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const barchart = () => {
+const barchart = ({ dataColors }) => {
+  const spineareaChartColors = getChartColorsArray(dataColors);
+
   const series = [
     {
       data: [380, 430, 450, 475, 550, 584, 780, 1100, 1220, 1365],
     },
-  ]
+  ];
   const options = {
     chart: {
       toolbar: {
@@ -22,7 +25,7 @@ const barchart = () => {
       enabled: false,
     },
 
-    colors: ["#34c38f"],
+    colors: spineareaChartColors,
     grid: {
       borderColor: "#f1f1f1",
     },
@@ -40,11 +43,11 @@ const barchart = () => {
         "Germany",
       ],
     },
-  }
+  };
 
   return (
     <ReactApexChart options={options} series={series} type="bar" height="350" />
-  )
-}
+  );
+};
 
-export default barchart
+export default barchart;

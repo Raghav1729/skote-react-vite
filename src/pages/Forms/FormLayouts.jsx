@@ -315,13 +315,13 @@ const FormLayouts = props => {
 
                   <Form>
                     <div className="form-floating mb-3">
-                      <input type="text" className="form-control" id="floatingnameInput" placeholder="Enter Name" defaultValue="Maria Laird" />
+                      <input type="text" className="form-control" id="floatingnameInput" placeholder="Enter Name"/>
                       <label htmlFor="floatingnameInput">Name</label>
                     </div>
                     <Row>
                       <Col md={6}>
                         <div className="form-floating mb-3">
-                          <input type="email" className="form-control" id="floatingemailInput" placeholder="Enter Email address" defaultValue="name@example.com" />
+                          <input type="email" className="form-control" id="floatingemailInput" placeholder="Enter Email address"/>
                           <label htmlFor="floatingemailInput">Email address</label>
                         </div>
                       </Col>
@@ -353,6 +353,21 @@ const FormLayouts = props => {
                   </Form>
                 </CardBody>
               </Card>
+            </Col>
+
+            <Col lg={6}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h5 mb-4">Inline Forms With Hstack</CardTitle>
+                  <div className="hstack gap-3">
+                    <Input className="form-control me-auto" type="text" placeholder="Add your item here..."
+                      aria-label="Add your item here..."/>
+                      <button type="button" className="btn btn-secondary">Submit</button>
+                      <div className="vr"></div>
+                      <button type="button" className="btn btn-outline-danger">Reset</button>
+                  </div>
+                </CardBody>              
+              </Card>             
             </Col>
           </Row>
         </Container>

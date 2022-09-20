@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Button, Card, CardBody, Col, Container, Label, Row } from "reactstrap";
+import { Button, Card, CardBody, CardTitle, Col, Container, Label, Row } from "reactstrap";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 
@@ -8,8 +8,6 @@ import "toastr/build/toastr.min.css";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const UiNotifications = () => {
-   //meta title
-   document.title = "Notifications | Skote - Vite React Admin & Dashboard Template";
   const [showEasing, setshowEasing] = useState("swing");
   const [hideEasing, sethideEasing] = useState("linear");
   const [showMethod, setshowMethod] = useState("fadeIn");
@@ -120,6 +118,8 @@ const UiNotifications = () => {
             <Col lg="12">
               <Card>
                 <CardBody>
+                  <CardTitle>Notifications</CardTitle>
+                  <p className="card-title-desc">Toasts are lightweight notifications designed to mimic the push notifications</p>
                   <Row>
                     <Col xl="4">
                       <div className="control-group">

@@ -152,7 +152,7 @@ const CryptoBuySell = props => {
 
                                     <div className="card-radio">
                                       <div>
-                                        <i className="mdi mdi-bitcoin font-size-24 text-warning align-middle me-2" />
+                                        <i className="mdi mdi-bitcoin font-size-24 text-warning align-middle me-2" />{" "}
                                         <span>Bitcoin</span>
                                       </div>
                                     </div>
@@ -181,7 +181,7 @@ const CryptoBuySell = props => {
 
                                     <div className="card-radio">
                                       <div>
-                                        <i className="mdi mdi-ethereum font-size-24 text-primary align-middle me-2" />
+                                        <i className="mdi mdi-ethereum font-size-24 text-primary align-middle me-2" />{" "}
                                         <span>Ethereum</span>
                                       </div>
                                     </div>
@@ -208,7 +208,7 @@ const CryptoBuySell = props => {
 
                                     <div className="card-radio">
                                       <div>
-                                        <i className="mdi mdi-litecoin font-size-24 text-info align-middle me-2" />
+                                        <i className="mdi mdi-litecoin font-size-24 text-info align-middle me-2" />{" "}
                                         <span>litecoin</span>
                                       </div>
                                     </div>
@@ -239,7 +239,7 @@ const CryptoBuySell = props => {
                                   />
 
                                   <div className="card-radio">
-                                    <i className="fab fa-cc-mastercard font-size-24 text-primary align-middle me-2" />
+                                    <i className="fab fa-cc-mastercard font-size-24 text-primary align-middle me-2" />{" "}
 
                                     <span>Credit / Debit Card</span>
                                   </div>
@@ -258,7 +258,7 @@ const CryptoBuySell = props => {
                                   />
 
                                   <div className="card-radio">
-                                    <i className="fab fa-cc-paypal font-size-24 text-primary align-middle me-2" />
+                                    <i className="fab fa-cc-paypal font-size-24 text-primary align-middle me-2" />{" "}
 
                                     <span>Paypal</span>
                                   </div>
@@ -276,12 +276,12 @@ const CryptoBuySell = props => {
                                   <div className="input-group-prepend">
                                     <span className="input-group-text">Bitcoin</span>
                                   </div>
-                                  <input type="text" className="form-control form-control" />
+                                  <input type="text" className="form-control" placeholder="Bitcoin"/>
                                 </InputGroup>
                               </Col>
                               <Col sm="6">
                                 <InputGroup className="mb-2">
-                                  <input type="text" className="form-control text-sm-end form-control" />
+                                  <input type="text" className="form-control text-sm-end" placeholder="USD Amount"/>
                                   <span className="input-group-text">USD Amount</span>
                                 </InputGroup>
                               </Col>
@@ -320,7 +320,7 @@ const CryptoBuySell = props => {
 
                                     <div className="card-radio">
                                       <div>
-                                        <i className="mdi mdi-bitcoin font-size-24 text-warning align-middle me-2" />
+                                        <i className="mdi mdi-bitcoin font-size-24 text-warning align-middle me-2" />{" "}
                                         <span>Bitcoin</span>
                                       </div>
                                     </div>
@@ -348,7 +348,7 @@ const CryptoBuySell = props => {
 
                                     <div className="card-radio">
                                       <div>
-                                        <i className="mdi mdi-ethereum font-size-24 text-primary align-middle me-2" />
+                                        <i className="mdi mdi-ethereum font-size-24 text-primary align-middle me-2" />{" "}
                                         <span>Ethereum</span>
                                       </div>
                                     </div>
@@ -374,7 +374,7 @@ const CryptoBuySell = props => {
 
                                     <div className="card-radio">
                                       <div>
-                                        <i className="mdi mdi-litecoin font-size-24 text-info align-middle me-2" />
+                                        <i className="mdi mdi-litecoin font-size-24 text-info align-middle me-2" />{" "}
                                         <span>litecoin</span>
                                       </div>
                                     </div>

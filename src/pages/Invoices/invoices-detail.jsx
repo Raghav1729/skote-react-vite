@@ -62,17 +62,9 @@ const InvoiceDetail = props => {
                     </div>
                     <hr />
                     <Row>
-                      <Col xs="6">
-                        <address>
-                          <strong>
-                            <div className="mb-4">
-                              {/* <img
-                              className="rounded-circle avatar-sm"
-                              src={images[user.img]}
-                              alt=""
-                            /> */}
-                            </div>
-                          </strong>
+                      <Col sm="6">
+                        <address>                          
+                          <strong>Billed To:</strong>                          
                           <br />
                           {map(
                             invoiceDetail.billingAddress.split(","),
@@ -85,7 +77,7 @@ const InvoiceDetail = props => {
                           )}
                         </address>
                       </Col>
-                      <Col xs="6" className="text-end">
+                      <Col sm="6" className="text-sm-end">
                         <address>
                           <strong>Shipped To:</strong>
                           <br />
@@ -102,7 +94,7 @@ const InvoiceDetail = props => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col xs="6" className="mt-3">
+                      <Col sm="6" className="mt-3">
                         <address>
                           <strong>Payment Method:</strong>
                           <br />
@@ -111,7 +103,7 @@ const InvoiceDetail = props => {
                           {invoiceDetail.email}
                         </address>
                       </Col>
-                      <Col xs="6" className="mt-3 text-end">
+                      <Col sm="6" className="mt-3 text-sm-end">
                         <address>
                           <strong>Order Date:</strong>
                           <br />

@@ -9,6 +9,7 @@ import {
   CHANGE_SIDEBAR_TYPE,
   CHANGE_TOPBAR_THEME,
   SHOW_RIGHT_SIDEBAR,
+  CHANGE_LAYOUT_MODE
 } from "./actionTypes"
 
 import {
@@ -60,6 +61,18 @@ function* changeLayout({ payload: layout }) {
     }
     yield call(changeBodyAttribute, "data-layout", layout)
   } catch (error) {}
+}
+
+/**
+ * Changes the layout mode
+ * @param {*} param0
+ */
+ function* changeLayoutMode({ payload: mode }) {
+  try {
+      yield call(changeBodyAttribute, "data-layout-mode", mode);
+  } catch (error) {
+      // console.log(error);
+  }
 }
 
 /**
@@ -192,8 +205,13 @@ export function* watchShowRightSidebar() {
   yield takeEvery(SHOW_RIGHT_SIDEBAR, showRightSidebar)
 }
 
+export function* watchSChangeLayoutMode() {
+  yield takeEvery(CHANGE_LAYOUT_MODE, changeLayoutMode)
+}
+
 function* LayoutSaga() {
   yield all([
+    fork(watchSChangeLayoutMode),
     fork(watchChangeLayoutType),
     fork(watchChangeLayoutWidth),
     fork(watchChangeLeftSidebarTheme),

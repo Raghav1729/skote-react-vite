@@ -17,3 +17,6 @@ export const SHOW_RIGHT_SIDEBAR = "SHOW_RIGHT_SIDEBAR"
 
 // Preloader
 export const CHANGE_PRELOADER = "CHANGE_PRELOADER"
+
+// Layout mode
+export const CHANGE_LAYOUT_MODE = "CHANGE_LAYOUT_MODE";

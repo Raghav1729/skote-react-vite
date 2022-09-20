@@ -1,20 +1,20 @@
-import React, { useEffect } from "react"
-import { Container, Row, Col } from "reactstrap"
+import React, { useEffect } from "react";
+import { Container, Row, Col } from "reactstrap";
 
 //Import Breadcrumb
-import Breadcrumbs from "../../components/Common/Breadcrumb"
+import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 //Import Components
-import CardUser from "./card-user"
-import CardWelcome from "./card-welcome"
-import MiniWidget from "./mini-widget"
-import Earning from "./earning"
-import SalesAnalytics from "./sales-analytics"
-import TotalSellingProduct from "./total-selling-product"
-import Tasks from "./tasks"
-import ChatBox from "./chat-box"
+import CardUser from "./card-user";
+import CardWelcome from "./card-welcome";
+import MiniWidget from "./mini-widget";
+import Earning from "./earning";
+import SalesAnalytics from "./sales-analytics";
+import TotalSellingProduct from "./total-selling-product";
+import Tasks from "./tasks";
+import ChatBox from "./chat-box";
 
-const DashboardSaas = props => {
+const DashboardSaas = (props) => {
   const reports = [
     {
       icon: "bx bx-copy-alt",
@@ -43,8 +43,9 @@ const DashboardSaas = props => {
   ];
 
   //meta title
-  document.title="Saas Dashboard | Skote - Vite React Admin & Dashboard Template";
-  
+  document.title =
+    "Saas Dashboard | Skote - Vite React Admin & Dashboard Template";
+
   return (
     <React.Fragment>
       <div className="page-content">
@@ -69,10 +70,10 @@ const DashboardSaas = props => {
 
           <Row>
             {/* earning */}
-            <Earning />
+            <Earning dataColors='["--bs-primary"]' />
 
             {/* sales anytics */}
-            <SalesAnalytics />
+            <SalesAnalytics dataColors='["--bs-primary", "--bs-success", "--bs-danger"]' />
           </Row>
 
           <Row>
@@ -88,7 +89,7 @@ const DashboardSaas = props => {
         </Container>
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default DashboardSaas
+export default DashboardSaas;

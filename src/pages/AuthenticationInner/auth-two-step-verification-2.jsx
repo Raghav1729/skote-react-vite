@@ -1,19 +1,16 @@
 import React from "react"
 import CarouselPage from "./CarouselPage"
 
-//Verification code package
-import AuthCode from "react-auth-code-input"
-
 // import images
 import logodark from "../../assets/images/logo-dark.png"
 import logolight from "../../assets/images/logo-light.png"
-import { Col, Form, FormGroup, Label, Row } from "reactstrap"
+import { Col, Form, Input, Label, Row } from "reactstrap"
 import { Link } from "react-router-dom"
 
 const TwostepVerification2 = () => {
 
   //meta title
-  document.title="Two Step Verification 2 | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Two Step Verification 2 | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
@@ -53,50 +50,66 @@ const TwostepVerification2 = () => {
                           <h4>Verify your email</h4>
                           <p>
                             Please enter the 4 digit code sent to{" "}
-                            <span className="font-weight-semibold">
+                            <span className="fw-semibold">
                               example@abc.com
-                              </span>
+                            </span>
                           </p>
 
                           <Form>
                             <Row>
-                              <Col xs={12}>
-                                <FormGroup className="verification-2 mb-3">
-                                  <Label
-                                    htmlFor="digit1-input"
-                                    className="visually-hidden"
-                                  >
-                                    Dight 1
-                                    </Label>
-                                  <AuthCode
-                                    characters={4}
-                                    className="form-control form-control-lg text-center"
-                                    inputStyle={{
-                                      width: "50px",
-                                      height: "calc(1.5em + 1rem + 2px)",
-                                      padding: ".5rem 1rem",
-                                      borderRadius: "8px",
-                                      fontSize: "1.01562rem",
-                                      textAlign: "center",
-                                      marginRight: "15px",
-                                      border: "1px solid #ced4da",
-                                      textTransform: "uppercase",
-                                      
-                                    }}
-                                    onChange={() => null}
-                                  />
-                                </FormGroup>
+                              <Col className="col-3">
+                                <div className="mb-3">
+                                  <Label htmlFor="digit1-input" className="visually-hidden">Dight 1</Label>
+                                  <Input type="text"
+                                    className="form-control form-control-lg text-center two-step"
+                                    maxLength="1"
+                                    data-value="1"
+                                    id="digit1-input"/>
+                                </div>
+                              </Col>
+
+                              <Col className="col-3">
+                                <div className="mb-3">
+                                  <Label htmlFor="digit2-input" className="visually-hidden">Dight 2</Label>
+                                  <Input type="text"
+                                    className="form-control form-control-lg text-center two-step"
+                                    maxLength="1"
+                                    data-value="2"
+                                    id="digit2-input"/>
+                                </div>
+                              </Col>
+
+                              <Col className="col-3">
+                                <div className="mb-3">
+                                  <Label htmlFor="digit3-input" className="visually-hidden">Dight 3</Label>
+                                  <Input type="text"
+                                    className="form-control form-control-lg text-center two-step"
+                                    maxLength="1"
+                                    data-value="3"
+                                    id="digit3-input"/>
+                                </div>
+                              </Col>
+
+                              <Col className="col-3">
+                                <div className="mb-3">
+                                  <Label htmlFor="digit4-input" className="visually-hidden">Dight 4</Label>
+                                  <Input type="text"
+                                    className="form-control form-control-lg text-center two-step"
+                                    maxLength="1"
+                                    data-value="4"
+                                    id="digit4-input"/>
+                                </div>
                               </Col>
                             </Row>
                           </Form>
 
                           <div className="mt-4">
                             <Link
-                              to="dashboard"
+                              to="/dashboard"
                               className="btn btn-success w-md"
                             >
                               Confirm
-                              </Link>
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -106,8 +119,8 @@ const TwostepVerification2 = () => {
                       <p className="mb-0">
                         © {new Date().getFullYear()} Skote. Crafted with{" "}
                         <i className="mdi mdi-heart text-danger"></i> by
-                          Themesbrand
-                        </p>
+                        Themesbrand
+                      </p>
                     </div>
                   </div>
                 </div>

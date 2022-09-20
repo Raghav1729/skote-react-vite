@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Col, Container, Form, Row, Input, Label, FormFeedback } from "reactstrap";
 
@@ -12,9 +12,10 @@ import logolight from "../../assets/images/logo-light.png";
 import CarouselPage from "./CarouselPage";
 
 const Login2 = () => {
+  const [passwordShow, setPasswordShow] = useState(false);
 
   //meta title
-  document.title="Login 2 | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Login 2 | Skote - Vite React Admin & Dashboard Template";
 
   // Form validation 
   const validation = useFormik({
@@ -22,11 +23,11 @@ const Login2 = () => {
     enableReinitialize: true,
 
     initialValues: {
-      email: '',
+      username: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
+      username: Yup.string().required("Please Enter Your Username"),
       password: Yup.string().required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
@@ -77,37 +78,44 @@ const Login2 = () => {
                           }}
                         >
                           <div className="mb-3">
-                            <Label className="form-label">Email</Label>
+                            <Label className="form-label">Username</Label>
                             <Input
-                              name="email"
+                              name="username"
                               className="form-control"
-                              placeholder="Enter email"
-                              type="email"
+                              placeholder="Enter username"
+                              type="text"
                               onChange={validation.handleChange}
                               onBlur={validation.handleBlur}
-                              value={validation.values.email || ""}
+                              value={validation.values.username || ""}
                               invalid={
-                                validation.touched.email && validation.errors.email ? true : false
+                                validation.touched.username && validation.errors.username ? true : false
                               }
                             />
-                            {validation.touched.email && validation.errors.email ? (
-                              <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                            {validation.touched.username && validation.errors.username ? (
+                              <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
                             ) : null}
                           </div>
 
                           <div className="mb-3">
+                            <div className="float-end">
+                              <Link to="/auth-recoverpw-2" className="text-muted">Forgot password?</Link>
+                            </div>
                             <Label className="form-label">Password</Label>
-                            <Input
-                              name="password"
-                              value={validation.values.password || ""}
-                              type="password"
-                              placeholder="Enter Password"
-                              onChange={validation.handleChange}
-                              onBlur={validation.handleBlur}
-                              invalid={
-                                validation.touched.password && validation.errors.password ? true : false
-                              }
-                            />
+                            <div className="input-group auth-pass-inputgroup">
+                              <Input
+                                name="password"
+                                value={validation.values.password || ""}
+                                type={passwordShow ? "text" : "password"}
+                                placeholder="Enter Password"
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                invalid={
+                                  validation.touched.password && validation.errors.password ? true : false
+                                }
+                              />
+                              <button onClick={() => setPasswordShow(!passwordShow)} className="btn btn-light " type="button" id="password-addon">
+                                <i className="mdi mdi-eye-outline"></i></button>
+                            </div>
                             {validation.touched.password && validation.errors.password ? (
                               <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
                             ) : null}
@@ -148,7 +156,7 @@ const Login2 = () => {
                               <li className="list-inline-item">
                                 <Link
                                   to="#"
-                                  className="social-list-item bg-primary text-white border-primary"
+                                  className="social-list-item bg-primary text-white border-primary me-1"
                                 >
                                   <i className="mdi mdi-facebook"></i>
                                 </Link>
@@ -156,7 +164,7 @@ const Login2 = () => {
                               <li className="list-inline-item">
                                 <Link
                                   to="#"
-                                  className="social-list-item bg-info text-white border-info"
+                                  className="social-list-item bg-info text-white border-info me-1"
                                 >
                                   <i className="mdi mdi-twitter"></i>
                                 </Link>

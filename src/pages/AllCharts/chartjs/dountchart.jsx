@@ -1,20 +1,22 @@
-import React from "react"
-import { Doughnut } from "react-chartjs-2"
+import React from "react";
+import { Doughnut } from "react-chartjs-2";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const DountChart = () => {
+const DountChart = ({ dataColors }) => {
+  var doughnutChartColors = getChartColorsArray(dataColors);
   const data = {
     labels: ["Desktops", "Tablets"],
     datasets: [
       {
         data: [300, 210],
-        backgroundColor: ["#556ee6", "#ebeff2"],
-        hoverBackgroundColor: ["#556ee6", "#ebeff2"],
+        backgroundColor: doughnutChartColors,
+        hoverBackgroundColor: doughnutChartColors,
         hoverBorderColor: "#fff",
       },
     ],
-  }
+  };
 
-  return <Doughnut width={474} height={260} data={data} />
-}
+  return <Doughnut width={751} height={260} data={data} />;
+};
 
-export default DountChart
+export default DountChart;

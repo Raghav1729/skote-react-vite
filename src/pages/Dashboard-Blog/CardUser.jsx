@@ -1,10 +1,81 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Card, CardBody, Col, Row } from "reactstrap";
 import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const CardUser = props => {
-  const { options, series } = props;
+const CardUser = ({ dataColors }) => {
+  const apexcardUserColors = getChartColorsArray(dataColors);
+
+  const series = [
+    {
+      name: "Current",
+      data: [18, 21, 45, 36, 65, 47, 51, 32, 40, 28, 31, 26],
+    },
+    {
+      name: "Previous",
+      data: [30, 11, 22, 18, 32, 23, 58, 45, 30, 36, 15, 34],
+    },
+  ];
+
+  const options = {
+    chart: {
+      height: 350,
+      type: "area",
+      toolbar: {
+        show: false,
+      },
+    },
+    colors: apexcardUserColors,
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      curve: "smooth",
+      width: 2,
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        shadeIntensity: 1,
+        inverseColors: false,
+        opacityFrom: 0.45,
+        opacityTo: 0.05,
+        stops: [20, 100, 100, 100],
+      },
+    },
+    xaxis: {
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
+    },
+
+    markers: {
+      size: 3,
+      strokeWidth: 3,
+
+      hover: {
+        size: 4,
+        sizeOffset: 2,
+      },
+    },
+    legend: {
+      position: "top",
+      horizontalAlign: "right",
+    },
+  };
+
   return (
     <React.Fragment>
       <Col xl={8}>
@@ -140,7 +211,7 @@ const CardUser = props => {
 
 CardUser.propTypes = {
   options: PropTypes.any,
-  series: PropTypes.any
+  series: PropTypes.any,
 };
 
 export default CardUser;

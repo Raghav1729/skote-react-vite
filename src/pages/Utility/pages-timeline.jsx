@@ -1,39 +1,42 @@
-import React, { useState } from "react"
+import React from "react"
 import { Row, Col, Card, CardBody, CardTitle } from "reactstrap"
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 
-const PagesTimeline = () => {
-  const [step1, setStep1] = useState(true)
-  const [step2, setStep2] = useState(false)
+//swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from "swiper";
+import "../../../node_modules/swiper/swiper.scss";
+
+const PagesTimeline = () => { 
   const statuses = [
     {
       id: 1,
       stausTitle: "Ordered",
       iconClass: "bx-copy-alt",
-      description: "New common language will be more simple than existing.",
+      description: "New common language will be more simple and regular than the existing.",
     },
     {
       id: 2,
       stausTitle: "Packed",
       iconClass: "bx-package",
       description:
-        "To an English person, it will seem like simplified English existence.",
+        "To achieve this, it would be necessary to have uniform grammar.",
     },
     {
       id: 3,
       stausTitle: "Shipped",
       iconClass: "bx-car",
       description:
-        "It will be as simple as occidental in fact it will be Cambridge",
+        "It will be as simple as Occidental in fact, it will be Occidental..",
     },
     {
       id: 4,
       stausTitle: "Delivered",
       iconClass: "bx-badge-check",
       description:
-        "To an English person, it will seem like simplified English existence.",
+        "To an English person, it will seem like simplified English.",
     },
   ];
 
@@ -54,187 +57,172 @@ const PagesTimeline = () => {
                   <CardTitle className="mb-4">Horizontal Timeline</CardTitle>
 
                   <div className="hori-timeline">
-                    <div
+                    <Swiper
+                      slidesPerView={1}
+                      // spaceBetween={10}
+                      navigation
+                      pagination={{
+                        clickable: true,
+                      }}
+                      breakpoints={{
+                        678: {
+                          slidesPerView: 2,
+                        },
+                        992: {
+                          slidesPerView: 3,
+                        },
+                        1400: {
+                          slidesPerView: 4,
+                        }
+                      }}                     
+                      loop={true}
+                      modules={[Pagination, Navigation]}
                       className="owl-carousel owl-theme  navs-carousel events"
                       id="timeline-carousel"
                     >
-                      {step1 ? (
-                        <>
-                          <div
-                            className="item event-list"
-                            style={{ display: "inline-table" }}
-                          >
-                            <div>
-                              <div className="event-date">
-                                <div className="text-primary mb-1">
-                                  12 September
-                                </div>
-                                <h5 className="mb-4">First event</h5>
-                              </div>
-                              <div className="event-down-icon">
-                                <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
-                              </div>
-
-                              <div className="mt-3 px-3">
-                                <p className="text-muted">
-                                  It will be as simple as occidental in fact it
-                                  will be Cambridge
-                                </p>
-                              </div>
+                      <SwiperSlide
+                        className="item event-list"
+                        style={{ display: "inline-table" }}
+                      >
+                        <div>
+                          <div className="event-date">
+                            <div className="text-primary mb-1">
+                              12 September
                             </div>
+                            <h5 className="mb-4">First event</h5>
+                          </div>
+                          <div className="event-down-icon">
+                            <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
                           </div>
 
-                          <div
-                            className="item event-list"
-                            style={{ display: "inline-table" }}
-                          >
-                            <div>
-                              <div className="event-date">
-                                <div className="text-primary mb-1">
-                                  06 October
-                                </div>
-                                <h5 className="mb-4">Second event</h5>
-                              </div>
-                              <div className="event-down-icon">
-                                <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
-                              </div>
+                          <div className="mt-3 px-3">
+                            <p className="text-muted">
+                              It will be as simple as occidental in fact it
+                              will be Cambridge
+                            </p>
+                          </div>
+                        </div>
+                      </SwiperSlide>
 
-                              <div className="mt-3 px-3">
-                                <p className="text-muted">
-                                  To an English person, it will seem like
-                                  simplified English existence.
-                                </p>
-                              </div>
+                      <SwiperSlide
+                        className="item event-list"
+                        style={{ display: "inline-table" }}
+                      >
+                        <div>
+                          <div className="event-date">
+                            <div className="text-primary mb-1">
+                              06 October
                             </div>
+                            <h5 className="mb-4">Second event</h5>
+                          </div>
+                          <div className="event-down-icon">
+                            <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
                           </div>
 
-                          <div
-                            className="item event-list active"
-                            style={{ display: "inline-table" }}
-                          >
-                            <div>
-                              <div className="event-date">
-                                <div className="text-primary mb-1">
-                                  25 October
-                                </div>
-                                <h5 className="mb-4">Third event</h5>
-                              </div>
-                              <div className="event-down-icon">
-                                <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
-                              </div>
-
-                              <div className="mt-3 px-3">
-                                <p className="text-muted">
-                                  For science, music, sport, etc, Europe uses
-                                  the same vocabulary.
-                                </p>
-                              </div>
-                            </div>
+                          <div className="mt-3 px-3">
+                            <p className="text-muted">
+                              To an English person, it will seem like
+                              simplified English existence.
+                            </p>
                           </div>
-                        </>
-                      ) : null}
+                        </div>
+                      </SwiperSlide>
 
-                      {step2 ? (
-                        <>
-                          <div
-                            className="item event-list"
-                            style={{ display: "inline-table" }}
-                          >
-                            <div>
-                              <div className="event-date">
-                                <div className="text-primary mb-1">
-                                  04 November
-                                </div>
-                                <h5 className="mb-4">Fourth event</h5>
-                              </div>
-                              <div className="event-down-icon">
-                                <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
-                              </div>
-
-                              <div className="mt-3 px-3">
-                                <p className="text-muted">
-                                  New common language will be more simple than
-                                  existing.
-                                </p>
-                              </div>
+                      <SwiperSlide
+                        className="item event-list active"
+                        style={{ display: "inline-table" }}
+                      >
+                        <div>
+                          <div className="event-date">
+                            <div className="text-primary mb-1">
+                              25 October
                             </div>
+                            <h5 className="mb-4">Third event</h5>
+                          </div>
+                          <div className="event-down-icon">
+                            <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
                           </div>
 
-                          <div
-                            className="item event-list"
-                            style={{ display: "inline-table" }}
-                          >
-                            <div>
-                              <div className="event-date">
-                                <div className="text-primary mb-1">
-                                  19 November
-                                </div>
-                                <h5 className="mb-4">Sixth event</h5>
-                              </div>
-                              <div className="event-down-icon">
-                                <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
-                              </div>
+                          <div className="mt-3 px-3">
+                            <p className="text-muted">
+                              For science, music, sport, etc, Europe uses
+                              the same vocabulary.
+                            </p>
+                          </div>
+                        </div>
+                      </SwiperSlide>
 
-                              <div className="mt-3 px-3">
-                                <p className="text-muted">
-                                  It will be as simple as occidental in fact it
-                                  will be Cambridge
-                                </p>
-                              </div>
+                      <SwiperSlide
+                        className="item event-list active"
+                        style={{ display: "inline-table" }}
+                      >
+                        <div>
+                          <div className="event-date">
+                            <div className="text-primary mb-1">
+                              04 November
                             </div>
+                            <h5 className="mb-4">Fourth event</h5>
+                          </div>
+                          <div className="event-down-icon">
+                            <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
                           </div>
 
-                          <div
-                            className="item event-list"
-                            style={{ display: "inline-table" }}
-                          >
-                            <div>
-                              <div className="event-date">
-                                <div className="text-primary mb-1">
-                                  21 December
-                                </div>
-                                <h5 className="mb-4">Seventh event</h5>
-                              </div>
-                              <div className="event-down-icon">
-                                <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
-                              </div>
-
-                              <div className="mt-3 px-3">
-                                <p className="text-muted">
-                                  To an English person, it will seem like
-                                  simplified English existence.
-                                </p>
-                              </div>
-                            </div>
+                          <div className="mt-3 px-3">
+                            <p className="text-muted">
+                              New common language will be more simple than existing.
+                            </p>
                           </div>
-                        </>
-                      ) : null}
+                        </div>
+                      </SwiperSlide>
 
-                      <div className="owl-nav" style={{ textAlign: "center" }}>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setStep1(true)
-                            setStep2(false)
-                          }}
-                          className="border-0"
-                          disabled={step1}
-                        >
-                          <i className="mdi mdi-chevron-left" />
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setStep1(false)
-                            setStep2(true)
-                          }}
-                          className="border-0"
-                          disabled={step2}
-                        >
-                          <i className="mdi mdi-chevron-right" />
-                        </button>
-                      </div>
-                    </div>
+                      <SwiperSlide
+                        className="item event-list"
+                        style={{ display: "inline-table" }}
+                      >
+                        <div>
+                          <div className="event-date">
+                            <div className="text-primary mb-1">
+                              19 November
+                            </div>
+                            <h5 className="mb-4">Sixth event</h5>
+                          </div>
+                          <div className="event-down-icon">
+                            <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
+                          </div>
+
+                          <div className="mt-3 px-3">
+                            <p className="text-muted">
+                              It will be as simple as occidental in fact it
+                              will be Cambridge
+                            </p>
+                          </div>
+                        </div>
+                      </SwiperSlide>
+
+                      <SwiperSlide
+                        className="item event-list"
+                        style={{ display: "inline-table" }}
+                      >
+                        <div>
+                          <div className="event-date">
+                            <div className="text-primary mb-1">
+                              21 December
+                            </div>
+                            <h5 className="mb-4">Seventh event</h5>
+                          </div>
+                          <div className="event-down-icon">
+                            <i className="bx bx-down-arrow-circle h1 text-primary down-arrow-icon" />
+                          </div>
+
+                          <div className="mt-3 px-3">
+                            <p className="text-muted">
+                              To an English person, it will seem like
+                              simplified English existence.
+                            </p>
+                          </div>
+                        </div>
+                      </SwiperSlide>               
+                    </Swiper>
                   </div>
                 </CardBody>
               </Card>

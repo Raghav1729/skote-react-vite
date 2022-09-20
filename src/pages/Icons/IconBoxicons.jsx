@@ -1,81 +1,3464 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 import { Row, Col, Card, CardBody, CardTitle, Container } from "reactstrap"
 
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb"
 
-var icons =
-  '{"data":[{"name":"shape-polygon","slug":"shape-polygon-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"donate-blood","slug":"donate-blood-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"donate-blood","slug":"donate-blood-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"donate-heart","slug":"donate-heart-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"donate-heart","slug":"donate-heart-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"door-open","slug":"door-open-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"door-open","slug":"door-open-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"diamond","slug":"diamond-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"crop","slug":"crop-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"credit-card-front","slug":"credit-card-front-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"credit-card-front","slug":"credit-card-front-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"copyright","slug":"copyright-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"cookie","slug":"cookie-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"cookie","slug":"cookie-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"comment-detail","slug":"comment-detail-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment-add","slug":"comment-add-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment-minus","slug":"comment-minus-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment-minus","slug":"comment-minus-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment-edit","slug":"comment-edit-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment-edit","slug":"comment-edit-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment-x","slug":"comment-x-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment-x","slug":"comment-x-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment-error","slug":"comment-error-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment-check","slug":"comment-check-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment-check","slug":"comment-check-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-detail","slug":"message-square-detail-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-detail","slug":"message-square-detail-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-add","slug":"message-square-add-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-add","slug":"message-square-add-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-edit","slug":"message-square-edit-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-edit","slug":"message-square-edit-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-minus","slug":"message-square-minus-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-minus","slug":"message-square-minus-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-x","slug":"message-square-x-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-x","slug":"message-square-x-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-error","slug":"message-square-error-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-error","slug":"message-square-error-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square-check","slug":"message-square-check-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-check","slug":"message-square-check-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-detail","slug":"message-detail-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-detail","slug":"message-detail-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-add","slug":"message-add-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-add","slug":"message-add-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-edit","slug":"message-edit-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-edit","slug":"message-edit-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-minus","slug":"message-minus-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-minus","slug":"message-minus-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-x","slug":"message-x-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-x","slug":"message-x-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-error","slug":"message-error-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-error","slug":"message-error-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-check","slug":"message-check-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-check","slug":"message-check-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-detail","slug":"message-rounded-detail-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-detail","slug":"message-rounded-detail-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-add","slug":"message-rounded-add-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-add","slug":"message-rounded-add-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-edit","slug":"message-rounded-edit-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-edit","slug":"message-rounded-edit-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-minus","slug":"message-rounded-minus-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-minus","slug":"message-rounded-minus-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-x","slug":"message-rounded-x-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-x","slug":"message-rounded-x-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-error","slug":"message-rounded-error-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-error","slug":"message-rounded-error-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded-check","slug":"message-rounded-check-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-check","slug":"message-rounded-check-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-detail","slug":"message-alt-detail-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-detail","slug":"message-alt-detail-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-edit","slug":"message-alt-edit-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-edit","slug":"message-alt-edit-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-minus","slug":"message-alt-minus-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-minus","slug":"message-alt-minus-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-x","slug":"message-alt-x-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-x","slug":"message-alt-x-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-error","slug":"message-alt-error-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-error","slug":"message-alt-error-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-check","slug":"message-alt-check-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-check","slug":"message-alt-check-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt-add","slug":"message-alt-add-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-add","slug":"message-alt-add-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"dev-to","slug":"dev-to-logo","category_id":100,"type_of_icon":"LOGO"},{"name":"envelope-open","slug":"envelope-open-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"envelope-open","slug":"envelope-open-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"home-smile","slug":"home-smile-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"home-smile","slug":"home-smile-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"refresh","slug":"refresh-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"meteor","slug":"meteor-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"meteor","slug":"meteor-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"bullseye","slug":"bullseye-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"outline","slug":"outline-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"trim","slug":"trim-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"merge","slug":"merge-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"minus-back","slug":"minus-back-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"exclude","slug":"exclude-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"intersect","slug":"intersect-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"minus-front","slug":"minus-front-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"unite","slug":"unite-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"coin-stack","slug":"coin-stack-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"coin-stack","slug":"coin-stack-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"coin","slug":"coin-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"coin","slug":"coin-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"church","slug":"church-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"church","slug":"church-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"chevron-right-square","slug":"chevron-right-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-right-square","slug":"chevron-right-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-left-square","slug":"chevron-left-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-left-square","slug":"chevron-left-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-up-square","slug":"chevron-up-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-up-square","slug":"chevron-up-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-down-square","slug":"chevron-down-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-down-square","slug":"chevron-down-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-right-circle","slug":"chevron-right-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-right-circle","slug":"chevron-right-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-left-circle","slug":"chevron-left-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-left-circle","slug":"chevron-left-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-up-circle","slug":"chevron-up-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-up-circle","slug":"chevron-up-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-down-circle","slug":"chevron-down-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-down-circle","slug":"chevron-down-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"line-chart-down","slug":"line-chart-down-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"shield-x","slug":"shield-x-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"shield-x","slug":"shield-x-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"caret-down-square","slug":"caret-down-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-down-square","slug":"caret-down-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-left-square","slug":"caret-left-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-left-square","slug":"caret-left-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-up-square","slug":"caret-up-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-up-square","slug":"caret-up-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-right-square","slug":"caret-right-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-right-square","slug":"caret-right-square-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-down-circle","slug":"caret-down-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-up-circle","slug":"caret-up-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-left-circle","slug":"caret-left-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-right-circle","slug":"caret-right-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"car-battery","slug":"car-battery-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"cart-add","slug":"cart-add-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"cart-download","slug":"cart-download-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"backpack","slug":"backpack-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"camera-movie","slug":"camera-movie-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"camera-movie","slug":"camera-movie-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"camera-home","slug":"camera-home-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"camera-home","slug":"camera-home-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"calendar-star","slug":"calendar-star-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-star","slug":"calendar-star-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"calendar-exclamation","slug":"calendar-exclamation-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-exclamation","slug":"calendar-exclamation-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"vector","slug":"vector-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"vector","slug":"vector-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"network-chart","slug":"network-chart-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"network-chart","slug":"network-chart-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"chair","slug":"chair-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"cctv","slug":"cctv-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"cctv","slug":"cctv-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"drink","slug":"drink-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"eraser","slug":"eraser-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"capsule","slug":"capsule-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"color-fill","slug":"color-fill-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"vial","slug":"vial-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"wine","slug":"wine-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"calendar-heart","slug":"calendar-heart-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-heart","slug":"calendar-heart-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"window-alt","slug":"window-alt-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"window-alt","slug":"window-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"braille","slug":"braille-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"border-outer","slug":"border-outer-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"brain","slug":"brain-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"brain","slug":"brain-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"bracket","slug":"bracket-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"book-add","slug":"book-add-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book-add","slug":"book-add-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"book-heart","slug":"book-heart-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book-heart","slug":"book-heart-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"book-alt","slug":"book-alt-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"book-alt","slug":"book-alt-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"bong","slug":"bong-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"bong","slug":"bong-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"bone","slug":"bone-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"bone","slug":"bone-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"binoculars","slug":"binoculars-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"blanket","slug":"blanket-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"blanket","slug":"blanket-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"barcode-reader","slug":"barcode-reader-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"basketball","slug":"basketball-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"task-x","slug":"task-x-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"baseball","slug":"baseball-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"shopping-bags","slug":"shopping-bags-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"medal","slug":"medal-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"medal","slug":"medal-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"right-arrow-alt","slug":"right-arrow-alt-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"left-arrow-alt","slug":"left-arrow-alt-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"down-arrow-alt","slug":"down-arrow-alt-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"up-arrow-alt","slug":"up-arrow-alt-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"guitar-amp","slug":"guitar-amp-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"chevron-left","slug":"chevron-left-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-right","slug":"chevron-right-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-up","slug":"chevron-up-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevron-down","slug":"chevron-down-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevrons-down","slug":"chevrons-down-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevrons-up","slug":"chevrons-up-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevrons-right","slug":"chevrons-right-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chevrons-left","slug":"chevrons-left-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"alarm-exclamation","slug":"alarm-exclamation-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"alarm-exclamation","slug":"alarm-exclamation-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"alarm-snooze","slug":"alarm-snooze-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"alarm-snooze","slug":"alarm-snooze-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"abacus","slug":"abacus-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"game","slug":"game-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"game","slug":"game-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"thermometer","slug":"thermometer-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"tachometer","slug":"tachometer-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"tachometer","slug":"tachometer-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"sticker","slug":"sticker-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"sticker","slug":"sticker-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"file-archive","slug":"file-archive-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"spray-can","slug":"spray-can-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"spray-can","slug":"spray-can-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"webcam","slug":"webcam-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"webcam","slug":"webcam-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"dice-6","slug":"dice-6-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"dice-6","slug":"dice-6-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"dice-5","slug":"dice-5-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"dice-5","slug":"dice-5-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"dice-4","slug":"dice-4-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"dice-4","slug":"dice-4-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"dice-3","slug":"dice-3-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"dice-3","slug":"dice-3-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"dice-2","slug":"dice-2-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"dice-2","slug":"dice-2-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"dice-1","slug":"dice-1-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"dice-1","slug":"dice-1-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"border-inner","slug":"border-inner-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"border-none","slug":"border-none-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"glasses-alt","slug":"glasses-alt-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"glasses","slug":"glasses-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"calendar-week","slug":"calendar-week-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-week","slug":"calendar-week-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"scan","slug":"scan-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"pizza","slug":"pizza-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"florist","slug":"florist-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"shapes","slug":"shapes-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"ev-station","slug":"ev-station-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"edit-location","slug":"edit-location-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"book-reader","slug":"book-reader-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book-reader","slug":"book-reader-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"arrow-to-bottom","slug":"arrow-to-bottom-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-to-bottom","slug":"arrow-to-bottom-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-to-top","slug":"arrow-to-top-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-to-top","slug":"arrow-to-top-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-to-left","slug":"arrow-to-left-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-to-left","slug":"arrow-to-left-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-to-right","slug":"arrow-to-right-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-to-right","slug":"arrow-to-right-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-from-right","slug":"arrow-from-right-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-from-right","slug":"arrow-from-right-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-from-left","slug":"arrow-from-left-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-from-left","slug":"arrow-from-left-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-from-bottom","slug":"arrow-from-bottom-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-from-bottom","slug":"arrow-from-bottom-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"arrow-from-top","slug":"arrow-from-top-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"arrow-from-top","slug":"arrow-from-top-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"current-location","slug":"current-location-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"been-here","slug":"been-here-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"been-here","slug":"been-here-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"radiation","slug":"radiation-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"low-vision","slug":"low-vision-solid","category_id":94,"type_of_icon":"SOLID"},{"name":"low-vision","slug":"low-vision-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"mask","slug":"mask-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"mask","slug":"mask-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"wifi-0","slug":"wifi-0-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"wifi-1","slug":"wifi-1-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"wifi-2","slug":"wifi-2-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"traffic-cone","slug":"traffic-cone-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"traffic-cone","slug":"traffic-cone-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"recycle","slug":"recycle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"layer-minus","slug":"layer-minus-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"layer-minus","slug":"layer-minus-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"layer-plus","slug":"layer-plus-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"layer-plus","slug":"layer-plus-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"info-square","slug":"info-square-solid","category_id":94,"type_of_icon":"SOLID"},{"name":"info-square","slug":"info-square-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"home-heart","slug":"home-heart-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"home-heart","slug":"home-heart-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"heart-square","slug":"heart-square-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"heart-square","slug":"heart-square-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"heart-circle","slug":"heart-circle-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"heart-circle","slug":"heart-circle-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"flag-checkered","slug":"flag-checkered-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"file-import","slug":"file-import-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-export","slug":"file-export-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"piano","slug":"piano-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"microchip","slug":"microchip-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"microchip","slug":"microchip-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"pointer","slug":"pointer-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"pointer","slug":"pointer-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"washer","slug":"washer-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"dryer","slug":"dryer-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"chess","slug":"chess-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"coffee-togo","slug":"coffee-togo-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"coffee-togo","slug":"coffee-togo-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"car-crash","slug":"car-crash-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"car-mechanic","slug":"car-mechanic-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"car-garage","slug":"car-garage-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"car-wash","slug":"car-wash-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"calendar-edit","slug":"calendar-edit-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-edit","slug":"calendar-edit-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"cabinet","slug":"cabinet-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"cabinet","slug":"cabinet-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bus-school","slug":"bus-school-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"bus-school","slug":"bus-school-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"bomb","slug":"bomb-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"bomb","slug":"bomb-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"bible","slug":"bible-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"bible","slug":"bible-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"beer","slug":"beer-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"beer","slug":"beer-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"baseball","slug":"baseball-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"badge-dollar","slug":"badge-dollar-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"atom","slug":"atom-regular","category_id":113,"type_of_icon":"REGULAR"},{"name":"arch","slug":"arch-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"arch","slug":"arch-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"location-plus","slug":"location-plus-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"location-plus","slug":"location-plus-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"shape-triangle","slug":"shape-triangle-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"shape-square","slug":"shape-square-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"video-recording","slug":"video-recording-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"video-recording","slug":"video-recording-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"notepad","slug":"notepad-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"notepad","slug":"notepad-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"bug-alt","slug":"bug-alt-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"bug-alt","slug":"bug-alt-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"mouse-alt","slug":"mouse-alt-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"mouse-alt","slug":"mouse-alt-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"edit-alt","slug":"edit-alt-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"edit-alt","slug":"edit-alt-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"chat","slug":"chat-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"chat","slug":"chat-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"book-content","slug":"book-content-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book-content","slug":"book-content-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"message-square-dots","slug":"message-square-dots-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square","slug":"message-square-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-square-dots","slug":"message-square-dots-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-square","slug":"message-square-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"slideshow","slug":"slideshow-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"slideshow","slug":"slideshow-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bank","slug":"bank-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"wallet-alt","slug":"wallet-alt-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"wallet-alt","slug":"wallet-alt-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"memory-card","slug":"memory-card-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"memory-card","slug":"memory-card-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"devices","slug":"devices-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"message-rounded-dots","slug":"message-rounded-dots-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded-dots","slug":"message-rounded-dots-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-dots","slug":"message-dots-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-dots","slug":"message-dots-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"bar-chart-alt-2","slug":"bar-chart-alt-2-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"bar-chart-alt-2","slug":"bar-chart-alt-2-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"store-alt","slug":"store-alt-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"store-alt","slug":"store-alt-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"buildings","slug":"buildings-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"buildings","slug":"buildings-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"home-circle","slug":"home-circle-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"home-circle","slug":"home-circle-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"money","slug":"money-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"file-pdf","slug":"file-pdf-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"yin-yang","slug":"yin-yang-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"walk","slug":"walk-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"ship","slug":"ship-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"factory","slug":"factory-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"tree","slug":"tree-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"plane","slug":"plane-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"user-rectangle","slug":"user-rectangle-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"eyedropper","slug":"eyedropper-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"cloud-lightning","slug":"cloud-lightning-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"cloud-rain","slug":"cloud-rain-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"eraser","slug":"eraser-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"repeat","slug":"repeat-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"magic-wand","slug":"magic-wand-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"hotel","slug":"hotel-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"color-fill","slug":"color-fill-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"capsule","slug":"capsule-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"flask","slug":"flask-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"font-family","slug":"font-family-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"joystick-button","slug":"joystick-button-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"joystick-button","slug":"joystick-button-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"paint","slug":"paint-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"unlink","slug":"unlink-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"direction-right","slug":"direction-right-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"directions","slug":"directions-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"megaphone","slug":"megaphone-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"keyboard","slug":"keyboard-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"brush","slug":"brush-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"brush","slug":"brush-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"coffee-alt","slug":"coffee-alt-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"rotate-left","slug":"rotate-left-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"badge-check","slug":"badge-check-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"badge-check","slug":"badge-check-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"show-alt","slug":"show-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"landmark","slug":"landmark-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"gas-pump","slug":"gas-pump-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"caret-down","slug":"caret-down-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-right","slug":"caret-right-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-up","slug":"caret-up-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"caret-left","slug":"caret-left-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"calendar-event","slug":"calendar-event-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"user-badge","slug":"user-badge-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"right-arrow-square","slug":"right-arrow-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"down-arrow-square","slug":"down-arrow-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"up-arrow-square","slug":"up-arrow-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"left-arrow-square","slug":"left-arrow-square-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"ambulance","slug":"ambulance-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"flickr-square","slug":"flickr-square-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"whatsapp-square","slug":"whatsapp-square-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"squarespace","slug":"squarespace-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"medium-old","slug":"medium-old-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"mailchimp","slug":"mailchimp-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"wix","slug":"wix-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"trello","slug":"trello-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"spotify","slug":"spotify-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"soundcloud","slug":"soundcloud-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"snapchat","slug":"snapchat-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"less","slug":"less-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"flickr","slug":"flickr-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"shopify","slug":"shopify-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"jsfiddle","slug":"jsfiddle-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"css3","slug":"css3-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"microsoft","slug":"microsoft-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"yahoo","slug":"yahoo-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"bootstrap","slug":"bootstrap-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"redux","slug":"redux-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"mastercard","slug":"mastercard-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"visa","slug":"visa-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"baidu","slug":"baidu-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"chrome","slug":"chrome-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"dailymotion","slug":"dailymotion-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"joomla","slug":"joomla-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"internet-explorer","slug":"internet-explorer-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"paypal","slug":"paypal-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"edge","slug":"edge-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"stripe","slug":"stripe-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"telegram","slug":"telegram-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"wordpress","slug":"wordpress-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"periscope","slug":"periscope-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"react","slug":"react-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"bing","slug":"bing-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"vuejs","slug":"vuejs-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"kickstarter","slug":"kickstarter-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"nodejs","slug":"nodejs-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"javascript","slug":"javascript-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"firefox","slug":"firefox-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"stack-overflow","slug":"stack-overflow-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"magento","slug":"magento-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"product-hunt","slug":"product-hunt-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"html5","slug":"html5-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"git","slug":"git-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"quora","slug":"quora-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"yelp","slug":"yelp-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"airbnb","slug":"airbnb-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"opera","slug":"opera-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"invision","slug":"invision-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"foursquare","slug":"foursquare-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"sass","slug":"sass-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"wikipedia","slug":"wikipedia-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"unsplash","slug":"unsplash-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"digg","slug":"digg-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"amazon","slug":"amazon-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"ebay","slug":"ebay-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"drupal","slug":"drupal-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"dropbox","slug":"dropbox-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"discourse","slug":"discourse-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"deviantart","slug":"deviantart-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"digitalocean","slug":"digitalocean-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"creative-commons","slug":"creative-commons-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"codepen","slug":"codepen-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"angular","slug":"angular-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"500px","slug":"500px-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"magnet","slug":"magnet-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"magnet","slug":"magnet-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"rewind-circle","slug":"rewind-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"card","slug":"card-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"card","slug":"card-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"help-circle","slug":"help-circle-solid","category_id":94,"type_of_icon":"SOLID"},{"name":"help-circle","slug":"help-circle-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"test-tube","slug":"test-tube-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"note","slug":"note-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"note","slug":"note-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"sort-down","slug":"sort-down-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"sort-up","slug":"sort-up-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"id-card","slug":"id-card-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"badge","slug":"badge-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"badge","slug":"badge-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"grid-small","slug":"grid-small-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"grid-vertical","slug":"grid-vertical-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"grid-horizontal","slug":"grid-horizontal-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"flame","slug":"flame-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"move-vertical","slug":"move-vertical-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"move-horizontal","slug":"move-horizontal-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"stats","slug":"stats-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"equalizer","slug":"equalizer-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"disc","slug":"disc-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"disc","slug":"disc-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"minus-square","slug":"minus-square-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"plus-square","slug":"plus-square-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"x-square","slug":"x-square-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"analyse","slug":"analyse-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"microphone-alt","slug":"microphone-alt-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"image-alt","slug":"image-alt-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"search-alt","slug":"search-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"messenger","slug":"messenger-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"skull","slug":"skull-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"dollar-circle","slug":"dollar-circle-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"dollar-circle","slug":"dollar-circle-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"film","slug":"film-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"football","slug":"football-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"ball","slug":"ball-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"ball","slug":"ball-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"edit","slug":"edit-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"circle","slug":"circle-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"transfer","slug":"transfer-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"fingerprint","slug":"fingerprint-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"font-color","slug":"font-color-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"highlight","slug":"highlight-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"file-blank","slug":"file-blank-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-blank","slug":"file-blank-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"strikethrough","slug":"strikethrough-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"pocket","slug":"pocket-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"vk","slug":"vk-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"windows","slug":"windows-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"play-store","slug":"play-store-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"android","slug":"android-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"apple","slug":"apple-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"bell-ring","slug":"bell-ring-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"photo-album","slug":"photo-album-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"photo-album","slug":"photo-album-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"code-block","slug":"code-block-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"font-size","slug":"font-size-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"handicap","slug":"handicap-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"dialpad","slug":"dialpad-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"wind","slug":"wind-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"water","slug":"water-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"swim","slug":"swim-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"restaurant","slug":"restaurant-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"key","slug":"key-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"box","slug":"box-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"box","slug":"box-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"menu-alt-right","slug":"menu-alt-right-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"menu-alt-left","slug":"menu-alt-left-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"video-plus","slug":"video-plus-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"video-plus","slug":"video-plus-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"list-ol","slug":"list-ol-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"planet","slug":"planet-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"planet","slug":"planet-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"hotel","slug":"hotel-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"movie","slug":"movie-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"movie","slug":"movie-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"taxi","slug":"taxi-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"taxi","slug":"taxi-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"train","slug":"train-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"train","slug":"train-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"bath","slug":"bath-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"bath","slug":"bath-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"bed","slug":"bed-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"bed","slug":"bed-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"area","slug":"area-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"bot","slug":"bot-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"area","slug":"area-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"bot","slug":"bot-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"dumbbell","slug":"dumbbell-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"check-double","slug":"check-double-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"bus","slug":"bus-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"bus","slug":"bus-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"star-half","slug":"star-half-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"checkbox-checked","slug":"checkbox-checked-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"checkbox","slug":"checkbox-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"check-circle","slug":"check-circle-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"check-circle","slug":"check-circle-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"rocket","slug":"rocket-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"rocket","slug":"rocket-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"certification","slug":"certification-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"certification","slug":"certification-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"blogger","slug":"blogger-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"pinterest","slug":"pinterest-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"reddit","slug":"reddit-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"discord","slug":"discord-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"twitch","slug":"twitch-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"slack","slug":"slack-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"slack-old","slug":"slack-old-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"skype","slug":"skype-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"medium-square","slug":"medium-square-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"medium","slug":"medium-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"linkedin-square","slug":"linkedin-square-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"google-plus-circle","slug":"google-plus-circle-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"google-plus","slug":"google-plus-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"slider-alt","slug":"slider-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"file-plus","slug":"file-plus-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"dashboard","slug":"dashboard-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"conversation","slug":"conversation-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"battery-low","slug":"battery-low-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"folder-open","slug":"folder-open-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"zap","slug":"zap-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"x-circle","slug":"x-circle-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"wrench","slug":"wrench-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"widget","slug":"widget-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"watch","slug":"watch-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"watch-alt","slug":"watch-alt-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"wallet","slug":"wallet-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"volume","slug":"volume-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"volume-mute","slug":"volume-mute-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"volume-low","slug":"volume-low-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"volume-full","slug":"volume-full-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"videos","slug":"videos-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"video","slug":"video-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"video-off","slug":"video-off-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"user","slug":"user-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-plus","slug":"user-plus-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-minus","slug":"user-minus-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-detail","slug":"user-detail-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-circle","slug":"user-circle-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"upvote","slug":"upvote-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"up-arrow-circle","slug":"up-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"truck","slug":"truck-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"trophy","slug":"trophy-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"trash","slug":"trash-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"trash-alt","slug":"trash-alt-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"torch","slug":"torch-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"toggle-right","slug":"toggle-right-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"toggle-left","slug":"toggle-left-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"to-top","slug":"to-top-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"terminal","slug":"terminal-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"tennis-ball","slug":"tennis-ball-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"tag","slug":"tag-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"tag-x","slug":"tag-x-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"t-shirt","slug":"t-shirt-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"sun","slug":"sun-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"store","slug":"store-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"star","slug":"star-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"spreadsheet","slug":"spreadsheet-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"sad","slug":"sad-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"meh","slug":"meh-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"happy","slug":"happy-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"show","slug":"show-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"shopping-bag","slug":"shopping-bag-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"shopping-bag-alt","slug":"shopping-bag-alt-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"shield","slug":"shield-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"share","slug":"share-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"share-alt","slug":"share-alt-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"server","slug":"server-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"send","slug":"send-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"select-multiple","slug":"select-multiple-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"sort-alt","slug":"sort-alt-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"save","slug":"save-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"ruler","slug":"ruler-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"right-arrow-circle","slug":"right-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"report","slug":"report-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"rename","slug":"rename-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"radio","slug":"radio-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"quote-right","slug":"quote-right-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"quote-left","slug":"quote-left-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"purchase-tag","slug":"purchase-tag-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"printer","slug":"printer-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"plus-circle","slug":"plus-circle-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"plug","slug":"plug-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"playlist","slug":"playlist-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"pin","slug":"pin-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"pie-chart","slug":"pie-chart-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"pie-chart-alt","slug":"pie-chart-alt-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"phone","slug":"phone-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"phone-outgoing","slug":"phone-outgoing-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"phone-incoming","slug":"phone-incoming-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"phone-call","slug":"phone-call-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"pencil","slug":"pencil-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"pen","slug":"pen-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"paste","slug":"paste-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"paper-plane","slug":"paper-plane-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"package","slug":"package-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"news","slug":"news-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"navigation","slug":"navigation-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"music","slug":"music-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"mouse","slug":"mouse-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"moon","slug":"moon-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"minus-circle","slug":"minus-circle-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"microphone","slug":"microphone-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"microphone-off","slug":"microphone-off-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message","slug":"message-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-rounded","slug":"message-rounded-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"map","slug":"map-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"map-alt","slug":"map-alt-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"lock","slug":"lock-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"lock-open","slug":"lock-open-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"like","slug":"like-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"left-arrow-circle","slug":"left-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"layer","slug":"layer-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"joystick","slug":"joystick-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"joystick-alt","slug":"joystick-alt-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"info-circle","slug":"info-circle-solid","category_id":94,"type_of_icon":"SOLID"},{"name":"inbox","slug":"inbox-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"image","slug":"image-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"hourglass","slug":"hourglass-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"hot","slug":"hot-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"home","slug":"home-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"hide","slug":"hide-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"heart","slug":"heart-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"hdd","slug":"hdd-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"group","slug":"group-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"grid-alt","slug":"grid-alt-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"gift","slug":"gift-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"flag","slug":"flag-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"flag-alt","slug":"flag-alt-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"first-aid","slug":"first-aid-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"filter-alt","slug":"filter-alt-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"file","slug":"file-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-image","slug":"file-image-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"error","slug":"error-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"error-circle","slug":"error-circle-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"envelope","slug":"envelope-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"eject","slug":"eject-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"duplicate","slug":"duplicate-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"droplet","slug":"droplet-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"drink","slug":"drink-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"downvote","slug":"downvote-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"download","slug":"download-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"down-arrow-circle","slug":"down-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"dock-top","slug":"dock-top-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"dock-right","slug":"dock-right-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"dock-left","slug":"dock-left-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"dock-bottom","slug":"dock-bottom-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"dislike","slug":"dislike-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"discount","slug":"discount-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"detail","slug":"detail-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"cube","slug":"cube-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"crown","slug":"crown-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"coupon","slug":"coupon-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"copy","slug":"copy-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"contact","slug":"contact-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"collection","slug":"collection-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"cog","slug":"cog-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"coffee","slug":"coffee-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"cloud","slug":"cloud-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"cloud-upload","slug":"cloud-upload-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"cloud-download","slug":"cloud-download-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"chip","slug":"chip-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"chart","slug":"chart-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"cart","slug":"cart-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"cart-alt","slug":"cart-alt-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"car","slug":"car-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"captions","slug":"captions-solid","category_id":94,"type_of_icon":"SOLID"},{"name":"calculator","slug":"calculator-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"buoy","slug":"buoy-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"bulb","slug":"bulb-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"building","slug":"building-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"bug","slug":"bug-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"briefcase-alt","slug":"briefcase-alt-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"briefcase","slug":"briefcase-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"bookmark-star","slug":"bookmark-star-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book-open","slug":"book-open-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"bookmark-plus","slug":"bookmark-plus-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"bookmark","slug":"bookmark-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book-bookmark","slug":"book-bookmark-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"book","slug":"book-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"bolt","slug":"bolt-solid","category_id":123,"type_of_icon":"SOLID"},{"name":"bell-off","slug":"bell-off-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"bell","slug":"bell-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"battery-full","slug":"battery-full-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"battery-charging","slug":"battery-charging-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"battery","slug":"battery-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"barcode","slug":"barcode-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"bar-chart-square","slug":"bar-chart-square-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"award","slug":"award-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"folder-plus","slug":"folder-plus-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"folder","slug":"folder-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"camera-off","slug":"camera-off-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"camera","slug":"camera-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"archive","slug":"archive-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"album","slug":"album-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"alarm-off","slug":"alarm-off-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"alarm","slug":"alarm-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"adjust","slug":"adjust-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"cart-alt","slug":"cart-alt-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"car","slug":"car-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"loader-alt","slug":"loader-alt-regular","category_id":112,"type_of_icon":"REGULAR"},{"name":"loader-circle","slug":"loader-circle-regular","category_id":112,"type_of_icon":"REGULAR"},{"name":"wrench","slug":"wrench-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"alarm-off","slug":"alarm-off-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"facebook-square","slug":"facebook-square-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"bitcoin","slug":"bitcoin-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"layout","slug":"layout-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"dock-left","slug":"dock-left-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"dock-top","slug":"dock-top-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"dock-right","slug":"dock-right-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"dock-bottom","slug":"dock-bottom-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"world","slug":"world-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"linkedin","slug":"linkedin-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"selection","slug":"selection-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"paper-plane","slug":"paper-plane-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"slider","slug":"slider-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"loader","slug":"loader-regular","category_id":112,"type_of_icon":"REGULAR"},{"name":"chalkboard","slug":"chalkboard-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"trash-alt","slug":"trash-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"grid-alt","slug":"grid-alt-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"command","slug":"command-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"window-close","slug":"window-close-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"notification-off","slug":"notification-off-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"plug","slug":"plug-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"infinite","slug":"infinite-regular","category_id":113,"type_of_icon":"REGULAR"},{"name":"carousel","slug":"carousel-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"hourglass","slug":"hourglass-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"briefcase-alt","slug":"briefcase-alt-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"wallet","slug":"wallet-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"station","slug":"station-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"collection","slug":"collection-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"tv","slug":"tv-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"closet","slug":"closet-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"paperclip","slug":"paperclip-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"expand","slug":"expand-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"pen","slug":"pen-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"purchase-tag","slug":"purchase-tag-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"images","slug":"images-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"pie-chart-alt","slug":"pie-chart-alt-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"news","slug":"news-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"downvote","slug":"downvote-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"upvote","slug":"upvote-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"vimeo","slug":"vimeo-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"globe-alt","slug":"globe-alt-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"store","slug":"store-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"hdd","slug":"hdd-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"skip-previous-circle","slug":"skip-previous-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"skip-next-circle","slug":"skip-next-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"chip","slug":"chip-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"cast","slug":"cast-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"body","slug":"body-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"phone-outgoing","slug":"phone-outgoing-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"phone-incoming","slug":"phone-incoming-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"collapse","slug":"collapse-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"rename","slug":"rename-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"rotate-right","slug":"rotate-right-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"horizontal-center","slug":"horizontal-center-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"ruler","slug":"ruler-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"import","slug":"import-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"calendar-alt","slug":"calendar-alt-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"battery","slug":"battery-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"server","slug":"server-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"task","slug":"task-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"folder-open","slug":"folder-open-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"film","slug":"film-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"aperture","slug":"aperture-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"dribbble","slug":"dribbble-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"behance","slug":"behance-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"phone-call","slug":"phone-call-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"tumblr","slug":"tumblr-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"whatsapp","slug":"whatsapp-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"youtube","slug":"youtube-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"up-arrow","slug":"up-arrow-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"undo","slug":"undo-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"twitter","slug":"twitter-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"timer","slug":"timer-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"support","slug":"support-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"subdirectory-right","slug":"subdirectory-right-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"subdirectory-left","slug":"subdirectory-left-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"right-arrow","slug":"right-arrow-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"revision","slug":"revision-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"repost","slug":"repost-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"reply","slug":"reply-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"reply-all","slug":"reply-all-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"redo","slug":"redo-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"radar","slug":"radar-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"poll","slug":"poll-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"list-check","slug":"list-check-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"like","slug":"like-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"left-arrow","slug":"left-arrow-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"joystick-alt","slug":"joystick-alt-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"instagram","slug":"instagram-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"history","slug":"history-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"google","slug":"google-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"github","slug":"github-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"flag","slug":"flag-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"first-aid","slug":"first-aid-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"facebook","slug":"facebook-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"export","slug":"export-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"down-arrow","slug":"down-arrow-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"dislike","slug":"dislike-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"crown","slug":"crown-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"barcode","slug":"barcode-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"user","slug":"user-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"user-x","slug":"user-x-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"user-plus","slug":"user-plus-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"user-minus","slug":"user-minus-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"user-circle","slug":"user-circle-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"user-check","slug":"user-check-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"underline","slug":"underline-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"trophy","slug":"trophy-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"trash","slug":"trash-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"text","slug":"text-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"sun","slug":"sun-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"star","slug":"star-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"sort","slug":"sort-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"shuffle","slug":"shuffle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"shopping-bag","slug":"shopping-bag-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"shield","slug":"shield-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"shield-alt","slug":"shield-alt-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"share","slug":"share-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"share-alt","slug":"share-alt-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"select-multiple","slug":"select-multiple-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"screenshot","slug":"screenshot-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"save","slug":"save-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"pulse","slug":"pulse-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"power-off","slug":"power-off-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"plus","slug":"plus-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"pin","slug":"pin-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"pencil","slug":"pencil-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"paste","slug":"paste-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"paragraph","slug":"paragraph-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"package","slug":"package-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"notification","slug":"notification-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"shield-quarter","slug":"shield-quarter-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"move","slug":"move-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"mouse","slug":"mouse-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"minus","slug":"minus-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"microphone-off","slug":"microphone-off-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"log-out","slug":"log-out-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"log-in","slug":"log-in-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"link-external","slug":"link-external-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"joystick","slug":"joystick-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"italic","slug":"italic-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"home-alt","slug":"home-alt-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"heading","slug":"heading-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"hash","slug":"hash-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"group","slug":"group-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"git-repo-forked","slug":"git-repo-forked-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"git-pull-request","slug":"git-pull-request-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"git-merge","slug":"git-merge-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"git-compare","slug":"git-compare-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"git-commit","slug":"git-commit-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"git-branch","slug":"git-branch-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"font","slug":"font-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"filter","slug":"filter-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"file","slug":"file-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"edit","slug":"edit-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"diamond","slug":"diamond-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"detail","slug":"detail-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"cut","slug":"cut-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"cube","slug":"cube-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"crop","slug":"crop-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"credit-card","slug":"credit-card-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"columns","slug":"columns-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"cog","slug":"cog-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"cloud-snow","slug":"cloud-snow-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"cloud-rain","slug":"cloud-rain-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"cloud-lightning","slug":"cloud-lightning-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"cloud-light-rain","slug":"cloud-light-rain-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"cloud-drizzle","slug":"cloud-drizzle-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"check","slug":"check-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"cart","slug":"cart-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"calculator","slug":"calculator-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"bold","slug":"bold-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"award","slug":"award-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"anchor","slug":"anchor-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"album","slug":"album-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"adjust","slug":"adjust-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"x","slug":"x-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"table","slug":"table-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"duplicate","slug":"duplicate-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"windows","slug":"windows-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"window","slug":"window-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"window-open","slug":"window-open-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"wifi","slug":"wifi-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"voicemail","slug":"voicemail-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"video-off","slug":"video-off-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"usb","slug":"usb-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"upload","slug":"upload-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"alarm","slug":"alarm-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"tennis-ball","slug":"tennis-ball-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"target-lock","slug":"target-lock-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"tag","slug":"tag-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"tab","slug":"tab-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"spreadsheet","slug":"spreadsheet-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"sitemap","slug":"sitemap-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"sidebar","slug":"sidebar-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"send","slug":"send-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"pie-chart","slug":"pie-chart-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"phone","slug":"phone-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"navigation","slug":"navigation-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"mobile","slug":"mobile-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"mobile-alt","slug":"mobile-alt-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"message","slug":"message-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-rounded","slug":"message-rounded-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"map","slug":"map-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"map-alt","slug":"map-alt-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"lock","slug":"lock-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"lock-open","slug":"lock-open-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"list-minus","slug":"list-minus-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"list-ul","slug":"list-ul-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"list-plus","slug":"list-plus-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"link","slug":"link-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"link-alt","slug":"link-alt-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"layer","slug":"layer-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"laptop","slug":"laptop-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"home","slug":"home-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"heart","slug":"heart-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"headphone","slug":"headphone-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"devices","slug":"devices-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"globe","slug":"globe-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"gift","slug":"gift-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"envelope","slug":"envelope-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"download","slug":"download-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"dots-vertical","slug":"dots-vertical-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"dots-vertical-rounded","slug":"dots-vertical-rounded-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"dots-horizontal","slug":"dots-horizontal-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"dots-horizontal-rounded","slug":"dots-horizontal-rounded-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"dollar","slug":"dollar-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"directions","slug":"directions-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"desktop","slug":"desktop-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"data","slug":"data-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"compass","slug":"compass-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"crosshair","slug":"crosshair-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"terminal","slug":"terminal-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"cloud","slug":"cloud-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"cloud-upload","slug":"cloud-upload-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"cloud-download","slug":"cloud-download-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chart","slug":"chart-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"calendar","slug":"calendar-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"calendar-x","slug":"calendar-x-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"calendar-minus","slug":"calendar-minus-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"calendar-check","slug":"calendar-check-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"calendar-plus","slug":"calendar-plus-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"buoy","slug":"buoy-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"bulb","slug":"bulb-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"bluetooth","slug":"bluetooth-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"bug","slug":"bug-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"building","slug":"building-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"broadcast","slug":"broadcast-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"briefcase","slug":"briefcase-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bookmark-plus","slug":"bookmark-plus-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"bookmark-minus","slug":"bookmark-minus-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"book","slug":"book-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"book-bookmark","slug":"book-bookmark-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"block","slug":"block-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"basketball","slug":"basketball-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"bar-chart","slug":"bar-chart-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bar-chart-square","slug":"bar-chart-square-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bar-chart-alt","slug":"bar-chart-alt-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"at","slug":"at-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"archive","slug":"archive-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"zoom-out","slug":"zoom-out-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"zoom-in","slug":"zoom-in-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"x-circle","slug":"x-circle-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"volume","slug":"volume-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"volume-mute","slug":"volume-mute-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"volume-low","slug":"volume-low-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"volume-full","slug":"volume-full-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"video","slug":"video-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"vertical-center","slug":"vertical-center-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"up-arrow-circle","slug":"up-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"trending-up","slug":"trending-up-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"trending-down","slug":"trending-down-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"toggle-right","slug":"toggle-right-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"toggle-left","slug":"toggle-left-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"time","slug":"time-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"sync","slug":"sync-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"stopwatch","slug":"stopwatch-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"stop","slug":"stop-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"stop-circle","slug":"stop-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"skip-previous","slug":"skip-previous-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"skip-next","slug":"skip-next-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"show","slug":"show-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"search","slug":"search-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"rss","slug":"rss-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"right-top-arrow-circle","slug":"right-top-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"right-indent","slug":"right-indent-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"right-down-arrow-circle","slug":"right-down-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"right-arrow-circle","slug":"right-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"reset","slug":"reset-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"rewind","slug":"rewind-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"rectangle","slug":"rectangle-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"radio-circle","slug":"radio-circle-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"radio-circle-marked","slug":"radio-circle-marked-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"question-mark","slug":"question-mark-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"plus-circle","slug":"plus-circle-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"play","slug":"play-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"play-circle","slug":"play-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"pause","slug":"pause-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"pause-circle","slug":"pause-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"moon","slug":"moon-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"minus-circle","slug":"minus-circle-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"microphone","slug":"microphone-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"menu","slug":"menu-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"left-top-arrow-circle","slug":"left-top-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"left-indent","slug":"left-indent-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"left-down-arrow-circle","slug":"left-down-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"left-arrow-circle","slug":"left-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"last-page","slug":"last-page-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"key","slug":"key-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"align-justify","slug":"align-justify-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"info-circle","slug":"info-circle-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"image","slug":"image-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"hide","slug":"hide-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"fullscreen","slug":"fullscreen-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"folder","slug":"folder-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"folder-plus","slug":"folder-plus-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"folder-minus","slug":"folder-minus-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"first-page","slug":"first-page-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"fast-forward","slug":"fast-forward-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"fast-forward-circle","slug":"fast-forward-circle-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"exit-fullscreen","slug":"exit-fullscreen-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"error","slug":"error-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"error-circle","slug":"error-circle-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"down-arrow-circle","slug":"down-arrow-circle-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"copyright","slug":"copyright-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"copy","slug":"copy-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"coffee","slug":"coffee-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"code","slug":"code-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"code-curly","slug":"code-curly-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"clipboard","slug":"clipboard-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"chevrons-left","slug":"chevrons-left-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevrons-right","slug":"chevrons-right-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevrons-up","slug":"chevrons-up-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevrons-down","slug":"chevrons-down-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-right","slug":"chevron-right-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-left","slug":"chevron-left-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-up","slug":"chevron-up-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"chevron-down","slug":"chevron-down-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"checkbox-square","slug":"checkbox-square-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"checkbox","slug":"checkbox-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"checkbox-checked","slug":"checkbox-checked-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"captions","slug":"captions-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"camera","slug":"camera-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"camera-off","slug":"camera-off-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"bullseye","slug":"bullseye-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bookmarks","slug":"bookmarks-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"bookmark","slug":"bookmark-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"bell","slug":"bell-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"bell-plus","slug":"bell-plus-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"bell-off","slug":"bell-off-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"bell-minus","slug":"bell-minus-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"arrow-back","slug":"arrow-back-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"align-right","slug":"align-right-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"align-middle","slug":"align-middle-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"align-left","slug":"align-left-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"vial","slug":"vial-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"comment-error","slug":"comment-error-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"music","slug":"music-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"redbubble","slug":"redbubble-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"patreon","slug":"patreon-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"gitlab","slug":"gitlab-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"etsy","slug":"etsy-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"figma","slug":"figma-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"audible","slug":"audible-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"algolia","slug":"algolia-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"adobe","slug":"adobe-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"wink-tongue","slug":"wink-tongue-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"upside-down","slug":"upside-down-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"happy-alt","slug":"happy-alt-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"laugh","slug":"laugh-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"meh-blank","slug":"meh-blank-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"cool","slug":"cool-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"tired","slug":"tired-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"happy-beaming","slug":"happy-beaming-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"shocked","slug":"shocked-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"happy","slug":"happy-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"sad","slug":"sad-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"sleepy","slug":"sleepy-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"confused","slug":"confused-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"meh-alt","slug":"meh-alt-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"meh","slug":"meh-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"smile","slug":"smile-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"wink-smile","slug":"wink-smile-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"dizzy","slug":"dizzy-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"happy-heart-eyes","slug":"happy-heart-eyes-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"angry","slug":"angry-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"upside-down","slug":"upside-down-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"laugh","slug":"laugh-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"meh-blank","slug":"meh-blank-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"happy-beaming","slug":"happy-beaming-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"shocked","slug":"shocked-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"sleepy","slug":"sleepy-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"confused","slug":"confused-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"wink-smile","slug":"wink-smile-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"dizzy","slug":"dizzy-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"happy-heart-eyes","slug":"happy-heart-eyes-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"angry","slug":"angry-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"smile","slug":"smile-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"tired","slug":"tired-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"cool","slug":"cool-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"happy-alt","slug":"happy-alt-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"wink-tongue","slug":"wink-tongue-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"meh-alt","slug":"meh-alt-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"business","slug":"business-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"camera-plus","slug":"camera-plus-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"food-menu","slug":"food-menu-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"food-menu","slug":"food-menu-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"food-tag","slug":"food-tag-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"offer","slug":"offer-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"clinic","slug":"clinic-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"female-sign","slug":"female-sign-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"male-sign","slug":"male-sign-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"female","slug":"female-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"male","slug":"male-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"hand-left","slug":"hand-left-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"hand-down","slug":"hand-down-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"hand-right","slug":"hand-right-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"hand-up","slug":"hand-up-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"clinic","slug":"clinic-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"baby-carriage","slug":"baby-carriage-solid","category_id":94,"type_of_icon":"SOLID"},{"name":"health","slug":"health-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"tone","slug":"tone-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"pinterest-alt","slug":"pinterest-alt-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"imdb","slug":"imdb-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"jquery","slug":"jquery-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"facebook-circle","slug":"facebook-circle-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"shekel","slug":"shekel-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"yen","slug":"yen-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"won","slug":"won-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"pound","slug":"pound-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"euro","slug":"euro-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"rupee","slug":"rupee-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"caret-right-circle","slug":"caret-right-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-left-circle","slug":"caret-left-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-down-circle","slug":"caret-down-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"caret-up-circle","slug":"caret-up-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"ruble","slug":"ruble-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"lira","slug":"lira-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"bitcoin","slug":"bitcoin-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"tone","slug":"tone-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"bolt-circle","slug":"bolt-circle-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"bolt-circle","slug":"bolt-circle-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"city","slug":"city-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"cake","slug":"cake-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"cake","slug":"cake-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"spa","slug":"spa-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"spa","slug":"spa-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"dish","slug":"dish-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"dish","slug":"dish-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"fridge","slug":"fridge-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"fridge","slug":"fridge-regular","category_id":108,"type_of_icon":"REGULAR"},{"name":"image-add","slug":"image-add-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"image-add","slug":"image-add-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"image-alt","slug":"image-alt-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"space-bar","slug":"space-bar-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"alarm-add","slug":"alarm-add-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"alarm-add","slug":"alarm-add-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"archive-out","slug":"archive-out-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"archive-out","slug":"archive-out-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"archive-in","slug":"archive-in-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"archive-in","slug":"archive-in-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"add-to-queue","slug":"add-to-queue-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"add-to-queue","slug":"add-to-queue-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"border-radius","slug":"border-radius-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"check-shield","slug":"check-shield-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"check-shield","slug":"check-shield-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"label","slug":"label-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"label","slug":"label-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"file-find","slug":"file-find-regular","category_id":106,"type_of_icon":"REGULAR"},{"name":"face","slug":"face-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"face","slug":"face-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"file-find","slug":"file-find-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"extension","slug":"extension-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"extension","slug":"extension-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"exit","slug":"exit-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"exit","slug":"exit-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"brush-alt","slug":"brush-alt-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"conversation","slug":"conversation-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"sort-z-a","slug":"sort-z-a-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"sort-a-z","slug":"sort-a-z-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"printer","slug":"printer-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"radio","slug":"radio-regular","category_id":114,"type_of_icon":"REGULAR"},{"name":"layout","slug":"layout-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"quote-alt-right","slug":"quote-alt-right-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"quote-alt-left","slug":"quote-alt-left-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"mobile-vibration","slug":"mobile-vibration-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"fast-forward-circle","slug":"fast-forward-circle-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"rewind-circle","slug":"rewind-circle-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"carousel","slug":"carousel-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"customize","slug":"customize-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"customize","slug":"customize-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"calendar-event","slug":"calendar-event-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-check","slug":"calendar-check-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-x","slug":"calendar-x-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-minus","slug":"calendar-minus-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-plus","slug":"calendar-plus-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar-alt","slug":"calendar-alt-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"calendar","slug":"calendar-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"brush-alt","slug":"brush-alt-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"briefcase-alt-2","slug":"briefcase-alt-2-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"briefcase-alt-2","slug":"briefcase-alt-2-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"bookmark-minus","slug":"bookmark-minus-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"bookmarks","slug":"bookmarks-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"instagram-alt","slug":"instagram-alt-logo","category_id":97,"type_of_icon":"LOGO"},{"name":"time-five","slug":"time-five-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"time-five","slug":"time-five-regular","category_id":120,"type_of_icon":"REGULAR"},{"name":"pie-chart-alt-2","slug":"pie-chart-alt-2-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"pie-chart-alt-2","slug":"pie-chart-alt-2-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"time","slug":"time-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"timer","slug":"timer-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"stopwatch","slug":"stopwatch-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"gas-pump","slug":"gas-pump-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"compass","slug":"compass-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"user-check","slug":"user-check-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-x","slug":"user-x-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"grid","slug":"grid-solid","category_id":111,"type_of_icon":"SOLID"},{"name":"zoom-out","slug":"zoom-out-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"zoom-in","slug":"zoom-in-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"search","slug":"search-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"bell-minus","slug":"bell-minus-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"bell-plus","slug":"bell-plus-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"folder-minus","slug":"folder-minus-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"mobile","slug":"mobile-solid","category_id":103,"type_of_icon":"SOLID"},{"name":"data","slug":"data-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"skip-next-circle","slug":"skip-next-circle-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"skip-previous-circle","slug":"skip-previous-circle-solid","category_id":114,"type_of_icon":"SOLID"},{"name":"chalkboard","slug":"chalkboard-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"school","slug":"school-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"institution","slug":"institution-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"left-down-arrow-circle","slug":"left-down-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"left-top-arrow-circle","slug":"left-top-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"right-down-arrow-circle","slug":"right-down-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"right-top-arrow-circle","slug":"right-top-arrow-circle-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"down-arrow","slug":"down-arrow-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"up-arrow","slug":"up-arrow-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"left-arrow","slug":"left-arrow-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"right-arrow","slug":"right-arrow-solid","category_id":96,"type_of_icon":"SOLID"},{"name":"rectangle","slug":"rectangle-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"mobile-vibration","slug":"mobile-vibration-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"mobile-landscape","slug":"mobile-landscape-regular","category_id":103,"type_of_icon":"REGULAR"},{"name":"border-all","slug":"border-all-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"border-bottom","slug":"border-bottom-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"border-top","slug":"border-top-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"border-left","slug":"border-left-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"border-right","slug":"border-right-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"dialpad-alt","slug":"dialpad-alt-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"filter-alt","slug":"filter-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"brightness","slug":"brightness-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"brightness","slug":"brightness-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"brightness-half","slug":"brightness-half-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"brightness-half","slug":"brightness-half-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"paint","slug":"paint-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"wifi-off","slug":"wifi-off-regular","category_id":115,"type_of_icon":"REGULAR"},{"name":"credit-card","slug":"credit-card-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"credit-card-alt","slug":"credit-card-alt-solid","category_id":107,"type_of_icon":"SOLID"},{"name":"credit-card-alt","slug":"credit-card-alt-regular","category_id":107,"type_of_icon":"REGULAR"},{"name":"band-aid","slug":"band-aid-solid","category_id":109,"type_of_icon":"SOLID"},{"name":"band-aid","slug":"band-aid-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"hive","slug":"hive-regular","category_id":113,"type_of_icon":"REGULAR"},{"name":"map-pin","slug":"map-pin-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"map-pin","slug":"map-pin-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"line-chart","slug":"line-chart-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"receipt","slug":"receipt-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"receipt","slug":"receipt-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"purchase-tag-alt","slug":"purchase-tag-alt-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"purchase-tag-alt","slug":"purchase-tag-alt-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"basket","slug":"basket-solid","category_id":104,"type_of_icon":"SOLID"},{"name":"basket","slug":"basket-regular","category_id":104,"type_of_icon":"REGULAR"},{"name":"palette","slug":"palette-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"palette","slug":"palette-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"plane-alt","slug":"plane-alt-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"component","slug":"component-solid","category_id":100,"type_of_icon":"SOLID"},{"name":"traffic-barrier","slug":"traffic-barrier-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"no-entry","slug":"no-entry-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"no-entry","slug":"no-entry-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"message-alt-dots","slug":"message-alt-dots-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt-dots","slug":"message-alt-dots-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"message-alt","slug":"message-alt-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"message-alt","slug":"message-alt-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"check-square","slug":"check-square-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"check-square","slug":"check-square-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"notification-off","slug":"notification-off-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"notification","slug":"notification-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"log-out","slug":"log-out-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"log-in","slug":"log-in-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"log-out-circle","slug":"log-out-circle-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"log-out-circle","slug":"log-out-circle-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"log-in-circle","slug":"log-in-circle-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"log-in-circle","slug":"log-in-circle-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"circle","slug":"circle-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"doughnut-chart","slug":"doughnut-chart-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"doughnut-chart","slug":"doughnut-chart-regular","category_id":99,"type_of_icon":"REGULAR"},{"name":"building-house","slug":"building-house-solid","category_id":98,"type_of_icon":"SOLID"},{"name":"building-house","slug":"building-house-regular","category_id":98,"type_of_icon":"REGULAR"},{"name":"accessibility","slug":"accessibility-regular","category_id":94,"type_of_icon":"REGULAR"},{"name":"user-voice","slug":"user-voice-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-voice","slug":"user-voice-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"cuboid","slug":"cuboid-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"cuboid","slug":"cuboid-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"cube-alt","slug":"cube-alt-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"cube-alt","slug":"cube-alt-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"polygon","slug":"polygon-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"polygon","slug":"polygon-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"square-rounded","slug":"square-rounded-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"square-rounded","slug":"square-rounded-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"square","slug":"square-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"square","slug":"square-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"error-alt","slug":"error-alt-solid","category_id":95,"type_of_icon":"SOLID"},{"name":"error-alt","slug":"error-alt-regular","category_id":95,"type_of_icon":"REGULAR"},{"name":"shield-alt-2","slug":"shield-alt-2-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"shield-alt-2","slug":"shield-alt-2-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"paint-roll","slug":"paint-roll-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"paint-roll","slug":"paint-roll-regular","category_id":102,"type_of_icon":"REGULAR"},{"name":"droplet-half","slug":"droplet-half-solid","category_id":102,"type_of_icon":"SOLID"},{"name":"droplet","slug":"droplet-regular","category_id":123,"type_of_icon":"REGULAR"},{"name":"street-view","slug":"street-view-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"plus-medical","slug":"plus-medical-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"search-alt-2","slug":"search-alt-2-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"search-alt-2","slug":"search-alt-2-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"bowling-ball","slug":"bowling-ball-solid","category_id":119,"type_of_icon":"SOLID"},{"name":"bowling-ball","slug":"bowling-ball-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"dna","slug":"dna-regular","category_id":109,"type_of_icon":"REGULAR"},{"name":"cycling","slug":"cycling-regular","category_id":119,"type_of_icon":"REGULAR"},{"name":"shape-circle","slug":"shape-circle-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"down-arrow-alt","slug":"down-arrow-alt-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"up-arrow-alt","slug":"up-arrow-alt-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"right-arrow-alt","slug":"right-arrow-alt-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"left-arrow-alt","slug":"left-arrow-alt-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"hourglass-bottom","slug":"hourglass-bottom-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"hourglass-top","slug":"hourglass-top-solid","category_id":120,"type_of_icon":"SOLID"},{"name":"lock-open-alt","slug":"lock-open-alt-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"lock-open-alt","slug":"lock-open-alt-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"lock-alt","slug":"lock-alt-solid","category_id":116,"type_of_icon":"SOLID"},{"name":"lock-alt","slug":"lock-alt-regular","category_id":116,"type_of_icon":"REGULAR"},{"name":"graduation","slug":"graduation-solid","category_id":124,"type_of_icon":"SOLID"},{"name":"cylinder","slug":"cylinder-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"cylinder","slug":"cylinder-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"pyramid","slug":"pyramid-solid","category_id":118,"type_of_icon":"SOLID"},{"name":"pyramid","slug":"pyramid-regular","category_id":118,"type_of_icon":"REGULAR"},{"name":"wine","slug":"wine-solid","category_id":108,"type_of_icon":"SOLID"},{"name":"comment-dots","slug":"comment-dots-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment-dots","slug":"comment-dots-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"comment","slug":"comment-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment","slug":"comment-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"traffic","slug":"traffic-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"landscape","slug":"landscape-solid","category_id":117,"type_of_icon":"SOLID"},{"name":"landscape","slug":"landscape-regular","category_id":117,"type_of_icon":"REGULAR"},{"name":"adjust-alt","slug":"adjust-alt-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"id-card","slug":"id-card-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"parking","slug":"parking-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"plane-land","slug":"plane-land-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"plane-take-off","slug":"plane-take-off-solid","category_id":121,"type_of_icon":"SOLID"},{"name":"book-open","slug":"book-open-regular","category_id":124,"type_of_icon":"REGULAR"},{"name":"analyse","slug":"analyse-solid","category_id":99,"type_of_icon":"SOLID"},{"name":"file-gif","slug":"file-gif-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-jpg","slug":"file-jpg-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-png","slug":"file-png-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-txt","slug":"file-txt-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-md","slug":"file-md-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-json","slug":"file-json-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-js","slug":"file-js-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-css","slug":"file-css-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"comment-add","slug":"comment-add-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"comment-detail","slug":"comment-detail-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"file-html","slug":"file-html-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"file-doc","slug":"file-doc-solid","category_id":106,"type_of_icon":"SOLID"},{"name":"transfer-alt","slug":"transfer-alt-regular","category_id":96,"type_of_icon":"REGULAR"},{"name":"copy-alt","slug":"copy-alt-solid","category_id":110,"type_of_icon":"SOLID"},{"name":"copy-alt","slug":"copy-alt-regular","category_id":110,"type_of_icon":"REGULAR"},{"name":"run","slug":"run-regular","category_id":121,"type_of_icon":"REGULAR"},{"name":"user-pin","slug":"user-pin-solid","category_id":122,"type_of_icon":"SOLID"},{"name":"user-pin","slug":"user-pin-regular","category_id":122,"type_of_icon":"REGULAR"},{"name":"quote-single-right","slug":"quote-single-right-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"quote-single-left","slug":"quote-single-left-solid","category_id":101,"type_of_icon":"SOLID"},{"name":"grid","slug":"grid-regular","category_id":111,"type_of_icon":"REGULAR"},{"name":"code-alt","slug":"code-alt-regular","category_id":100,"type_of_icon":"REGULAR"},{"name":"mail-send","slug":"mail-send-regular","category_id":101,"type_of_icon":"REGULAR"},{"name":"ghost","slug":"ghost-solid","category_id":105,"type_of_icon":"SOLID"},{"name":"ghost","slug":"ghost-regular","category_id":105,"type_of_icon":"REGULAR"},{"name":"direction-left","slug":"direction-left-solid","category_id":121,"type_of_icon":"SOLID"}]}'
-
-
-icons = JSON.parse(icons)
-var solid = ""
-var regularIcon = ""
-var logos = ""
-
-const IconBoxicons = props => {
-  useEffect(() => {
-    icons.data.forEach(function (val) {
-      switch (val.type_of_icon) {
-        case "SOLID":
-          logos +=
-            '<div class="col-xl-3 col-lg-4 col-sm-6"><i class="bx bxs-' +
-            val.name +
-            '"></i> bx bxs-' +
-            val.name +
-            "</div>"
-          break
-        case "LOGO":
-          solid +=
-            '<div class="col-xl-3 col-lg-4 col-sm-6"><i class="bx bxl-' +
-            val.name +
-            '"></i> bx bxl-' +
-            val.name +
-            "</div>"
-          break
-        case "REGULAR":
-          regularIcon +=
-            '<div class="col-xl-3 col-lg-4 col-sm-6"><i class="bx bx-' +
-            val.name +
-            '"></i> bx bx-' +
-            val.name +
-            "</div>"
-          break
-        default:  
-          return;
-      }
-    })
-    document.getElementById("solid").innerHTML = solid
-    document.getElementById("logos").innerHTML = logos
-    document.getElementById("regularIcon").innerHTML = regularIcon
-  })
-
+const IconBoxicons = () => {
+ 
   //meta title
   document.title = "Boxicons | Skote - Vite React Admin & Dashboard Template";
 
   return (
     <React.Fragment>
       <div className="page-content">
-        <Container fluid={true}>
+      <Container fluid={true}>
           <Breadcrumbs title="Icons" breadcrumbItem="Boxicons" />
           <Row>
-            <Col>
+            <Col className="col-12">
               <Card>
                 <CardBody>
-                  <CardTitle>Examples</CardTitle>
-                  <p className="card-subtitle mb-4 shweta">
-                    Use class <code>&lt;i class=&quot;bx bx-**&ldquo;&gt;&lt;/i&gt;</code>
-                  </p>
+                  <CardTitle className="h4">Examples</CardTitle>
+                  <p className="card-subtitle mb-4">Use class <code>&lt;i className="bx bx-**"&quot;&gt;&lt;/i&gt;</code></p>
 
                   <h5>Regular</h5>
-                  <Row className="icon-demo-content" id="regularIcon"></Row>
+                  <Row className="icon-demo-content">
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sticker"></i> bx bx-sticker
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shield-quarter"></i> bx bx-shield-quarter
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-upside-down"></i> bx bx-upside-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-laugh"></i> bx bx-laugh
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-meh-blank"></i> bx bx-meh-blank
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-happy-beaming"></i> bx bx-happy-beaming
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shocked"></i> bx bx-shocked
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sleepy"></i> bx bx-sleepy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-confused"></i> bx bx-confused
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wink-smile"></i> bx bx-wink-smile
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dizzy"></i> bx bx-dizzy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-happy-heart-eyes"></i> bx bx-happy-heart-eyes
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-angry"></i> bx bx-angry
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-smile"></i> bx bx-smile
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-tired"></i> bx bx-tired
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cool"></i> bx bx-cool
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-happy-alt"></i> bx bx-happy-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wink-tongue"></i> bx bx-wink-tongue
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-meh-alt"></i> bx bx-meh-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-food-menu"></i> bx bx-food-menu
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-food-tag"></i> bx bx-food-tag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-female-sign"></i> bx bx-female-sign
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-male-sign"></i> bx bx-male-sign
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-female"></i> bx bx-female
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-male"></i> bx bx-male
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-clinic"></i> bx bx-clinic
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-health"></i> bx bx-health
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shekel"></i> bx bx-shekel
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-yen"></i> bx bx-yen
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-won"></i> bx bx-won
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pound"></i> bx bx-pound
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-euro"></i> bx bx-euro
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rupee"></i> bx bx-rupee
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-ruble"></i> bx bx-ruble
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-lira"></i> bx bx-lira
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bitcoin"></i> bx bx-bitcoin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-tone"></i> bx bx-tone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bolt-circle"></i> bx bx-bolt-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cake"></i> bx bx-cake
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-spa"></i> bx bx-spa
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dish"></i> bx bx-dish
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-fridge"></i> bx bx-fridge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-image-add"></i> bx bx-image-add
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-image-alt"></i> bx bx-image-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-space-bar"></i> bx bx-space-bar
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx- alarm-add"></i> bx bx-alarm-add
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-archive-out"></i> bx bx-archive-out
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-archive-in"></i> bx bx-archive-in
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-add-to-queue"></i> bx bx-add-to-queue
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-border-radius"></i> bx bx-border-radius
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-check-shield"></i> bx bx-check-shield
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-label"></i> bx bx-label
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-file-find"></i> bx bx-file-find
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-face"></i> bx bx-face
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-extension"></i> bx bx-extension
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-exit"></i> bx bx-exit
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-conversation"></i> bx bx-conversation
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sort-z-a"></i> bx bx-sort-z-a
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sort-a-z"></i> bx bx-sort-a-z
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-printer"></i> bx bx-printer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-radio"></i> bx bx-radio
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-customize"></i> bx bx-customize
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-brush-alt"></i> bx bx-brush-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-briefcase-alt-2"></i> bx bx-briefcase-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-time-five"></i> bx bx-time-five
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pie-chart-alt-2"></i> bx bx-pie-chart-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-gas-pump"></i> bx bx-gas-pump
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mobile-vibration"></i> bx bx-mobile-vibration
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mobile-landscape"></i> bx bx-mobile-landscape
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-border-all"></i> bx bx-border-all
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-border-bottom"></i> bx bx-border-bottom
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-border-top"></i> bx bx-border-top
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-border-left"></i> bx bx-border-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-border-right"></i> bx bx-border-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dialpad-alt"></i> bx bx-dialpad-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-filter-alt"></i> bx bx-filter-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-brightness"></i> bx bx-brightness
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-brightness-half"></i> bx bx-brightness-half
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wifi-off"></i> bx bx-wifi-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-credit-card-alt"></i> bx bx-credit-card-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-band-aid"></i> bx bx-band-aid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-hive"></i> bx bx-hive
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-map-pin"></i> bx bx-map-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-line-chart"></i> bx bx-line-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-receipt"></i> bx bx-receipt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-purchase-tag-alt"></i> bx bx-purchase-tag-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-basket"></i> bx bx-basket
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-palette"></i> bx bx-palette
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-no-entry"></i> bx bx-no-entry
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-alt-dots"></i> bx bx-message-alt-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-alt"></i> bx bx-message-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-check-square"></i> bx bx-check-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-log-out-circle"></i> bx bx-log-out-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-log-in-circle"></i> bx bx-log-in-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-doughnut-chart"></i> bx bx-doughnut-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-building-house"></i> bx bx-building-house
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-accessibility"></i> bx bx-accessibility
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-voice"></i> bx bx-user-voice
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cuboid"></i> bx bx-cuboid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cube-alt"></i> bx bx-cube-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-polygon"></i> bx bx-polygon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-square-rounded"></i> bx bx-square-rounded
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-square"></i> bx bx-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-error-alt"></i> bx bx-error-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shield-alt-2"></i> bx bx-shield-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-paint-roll"></i> bx bx-paint-roll
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-droplet"></i> bx bx-droplet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-street-view"></i> bx bx-street-view
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-plus-medical"></i> bx bx-plus-medical
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-search-alt-2"></i> bx bx-search-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bowling-ball"></i> bx bx-bowling-ball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dna"></i> bx bx-dna
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cycling"></i> bx bx-cycling
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shape-circle"></i> bx bx-shape-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-down-arrow-alt"></i> bx bx-down-arrow-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-up-arrow-alt"></i> bx bx-up-arrow-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-right-arrow-alt"></i> bx bx-right-arrow-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-left-arrow-alt"></i> bx bx-left-arrow-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-lock-open-alt"></i> bx bx-lock-open-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-lock-alt"></i> bx bx-lock-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cylinder"></i> bx bx-cylinder
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pyramid"></i> bx bx-pyramid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-comment-dots"></i> bx bx-comment-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-comment"></i> bx bx-comment
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-landscape"></i> bx bx-landscape
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-book-open"></i> bx bx-book-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-transfer-alt"></i> bx bx-transfer-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-copy-alt"></i> bx bx-copy-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-run"></i> bx bx-run
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-pin"></i> bx bx-user-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-grid"></i> bx bx-grid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-code-alt"></i> bx bx-code-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mail-send"></i> bx bx-mail-send
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-ghost"></i> bx bx-ghost
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shape-triangle"></i> bx bx-shape-triangle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shape-square"></i> bx bx-shape-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-video-recording"></i> bx bx-video-recording
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-notepad"></i> bx bx-notepad
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bug-alt"></i> bx bx-bug-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mouse-alt"></i> bx bx-mouse-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-edit-alt"></i> bx bx-edit-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chat"></i> bx bx-chat
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-book-content"></i> bx bx-book-content
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-square-dots"></i> bx bx-message-square-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-square"></i> bx bx-message-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-slideshow"></i> bx bx-slideshow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wallet-alt"></i> bx bx-wallet-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-memory-card"></i> bx bx-memory-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-rounded-dots"></i> bx bx-message-rounded-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-dots"></i> bx bx-message-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bar-chart-alt-2"></i> bx bx-bar-chart-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-store-alt"></i> bx bx-store-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-buildings"></i> bx bx-buildings
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-home-circle"></i> bx bx-home-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-money"></i> bx bx-money
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-walk"></i> bx bx-walk
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-repeat"></i> bx bx-repeat
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-font-family"></i> bx bx-font-family
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-joystick-button"></i> bx bx-joystick-button
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-paint"></i> bx bx-paint
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-unlink"></i> bx bx-unlink
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-brush"></i> bx bx-brush
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rotate-left"></i> bx bx-rotate-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-badge-check"></i> bx bx-badge-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-show-alt"></i> bx bx-show-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-caret-down"></i> bx bx-caret-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-caret-right"></i> bx bx-caret-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-caret-up"></i> bx bx-caret-up
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-caret-left"></i> bx bx-caret-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar-event"></i> bx bx-calendar-event
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-magnet"></i> bx bx-magnet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rewind-circle"></i> bx bx-rewind-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-card"></i> bx bx-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-help-circle"></i> bx bx-help-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-test-tube"></i> bx bx-test-tube
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-note"></i> bx bx-note
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sort-down"></i> bx bx-sort-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sort-up"></i> bx bx-sort-up
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-id-card"></i> bx bx-id-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-badge"></i> bx bx-badge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-grid-small"></i> bx bx-grid-small
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-grid-vertical"></i> bx bx-grid-vertical
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-grid-horizontal"></i> bx bx-grid-horizontal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-move-vertical"></i> bx bx-move-vertical
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-move-horizontal"></i> bx bx-move-horizontal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-stats"></i> bx bx-stats
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-equalizer"></i> bx bx-equalizer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-disc"></i> bx bx-disc
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-analyse"></i> bx bx-analyse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-search-alt"></i> bx bx-search-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dollar-circle"></i> bx bx-dollar-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-football"></i> bx bx-football
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-ball"></i> bx bx-ball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-circle"></i> bx bx-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-transfer"></i> bx bx-transfer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-fingerprint"></i> bx bx-fingerprint
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-font-color"></i> bx bx-font-color
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-highlight"></i> bx bx-highlight
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-file-blank"></i> bx bx-file-blank
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-strikethrough"></i> bx bx-strikethrough
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-photo-album"></i> bx bx-photo-album
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-code-block"></i> bx bx-code-block
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-font-size"></i> bx bx-font-size
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-handicap"></i> bx bx-handicap
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dialpad"></i> bx bx-dialpad
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wind"></i> bx bx-wind
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-water"></i> bx bx-water
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-swim"></i> bx bx-swim
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-restaurant"></i> bx bx-restaurant
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-box"></i> bx bx-box
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-menu-alt-right"></i> bx bx-menu-alt-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-menu-alt-left"></i> bx bx-menu-alt-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-video-plus"></i> bx bx-video-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-list-ol"></i> bx bx-list-ol
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-planet"></i> bx bx-planet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-hotel"></i> bx bx-hotel
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-movie"></i> bx bx-movie
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-taxi"></i> bx bx-taxi
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-train"></i> bx bx-train
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bath"></i> bx bx-bath
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bed"></i> bx bx-bed
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-area"></i> bx bx-area
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bot"></i> bx bx-bot
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dumbbell"></i> bx bx-dumbbell
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-check-double"></i> bx bx-check-double
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bus"></i> bx bx-bus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-check-circle"></i> bx bx-check-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rocket"></i> bx bx-rocket
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-certification"></i> bx bx-certification
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-slider-alt"></i> bx bx-slider-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sad"></i> bx bx-sad
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-meh"></i> bx bx-meh
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-happy"></i> bx bx-happy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cart-alt"></i> bx bx-cart-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-car"></i> bx bx-car
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-loader-alt"></i> bx bx-loader-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-loader-circle"></i> bx bx-loader-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wrench"></i> bx bx-wrench
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-alarm-off"></i> bx bx-alarm-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-layout"></i> bx bx-layout
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dock-left"></i> bx bx-dock-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dock-top"></i> bx bx-dock-top
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dock-right"></i> bx bx-dock-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dock-bottom"></i> bx bx-dock-bottom
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dock-bottom"></i> bx bx-dock-bottom
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-world"></i> bx bx-world
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-selection"></i> bx bx-selection
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-paper-plane"></i> bx bx-paper-plane
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-slider"></i> bx bx-slider
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-loader"></i> bx bx-loader
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chalkboard"></i> bx bx-chalkboard
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-trash-alt"></i> bx bx-trash-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-grid-alt"></i> bx bx-grid-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-command"></i> bx bx-command
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-window-close"></i> bx bx-window-close
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-notification-off"></i> bx bx-notification-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-plug"></i> bx bx-plug
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-infinite"></i> bx bx-infinite
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-carousel"></i> bx bx-carousel
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-hourglass"></i> bx bx-hourglass
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-briefcase-alt"></i> bx bx-briefcase-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wallet"></i> bx bx-wallet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-station"></i> bx bx-station
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-collection"></i> bx bx-collection
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-tv"></i> bx bx-tv
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-closet"></i> bx bx-closet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-paperclip"></i> bx bx-paperclip
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-expand"></i> bx bx-expand
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pen"></i> bx bx-pen
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-purchase-tag"></i> bx bx-purchase-tag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-images"></i> bx bx-images
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pie-chart-alt"></i> bx bx-pie-chart-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-news"></i> bx bx-news
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-downvote"></i> bx bx-downvote
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-upvote"></i> bx bx-upvote
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-globe-alt"></i> bx bx-globe-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-store"></i> bx bx-store
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-hdd"></i> bx bx-hdd
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-skip-previous-circle"></i> bx bx-skip-previous-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-skip-next-circle"></i> bx bx-skip-next-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chip"></i> bx bx-chip
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cast"></i> bx bx-cast
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-body"></i> bx bx-body
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-phone-outgoing"></i> bx bx-phone-outgoing
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-phone-incoming"></i> bx bx-phone-incoming
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-collapse"></i> bx bx-collapse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rename"></i> bx bx-rename
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rotate-right"></i> bx bx-rotate-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-horizontal-center"></i> bx bx-horizontal-center
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-ruler"></i> bx bx-ruler
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-import"></i> bx bx-import
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar-alt"></i> bx bx-calendar-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-battery"></i> bx bx-battery
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-server"></i> bx bx-server
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-task"></i> bx bx-task
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-folder-open"></i> bx bx-folder-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-film"></i> bx bx-film
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-aperture"></i> bx bx-aperture
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-phone-call"></i> bx bx-phone-call
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-up-arrow"></i> bx bx-up-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-undo"></i> bx bx-undo
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-timer"></i> bx bx-timer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-support"></i> bx bx-support
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-subdirectory-right"></i> bx bx-subdirectory-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-right-arrow"></i> bx bx-
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-"></i> bx bx-right-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-revision"></i> bx bx-revision
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-repost"></i> bx bx-repost
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-reply"></i> bx bx-reply
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-reply-all"></i> bx bx-reply-all
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-redo"></i> bx bx-redo
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-radar"></i> bx bx-radar
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-poll"></i> bx bx-poll
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-list-check"></i> bx bx-list-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-like"></i> bx bx-like
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-left-arrow"></i> bx bx-left-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-joystick-alt"></i> bx bx-joystick-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-history"></i> bx bx-history
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-flag"></i> bx bx-flag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-first-aid"></i> bx bx-first-aid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-export"></i> bx bx-export
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-down-arrow"></i> bx bx-down-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dislike"></i> bx bx-dislike
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-crown"></i> bx bx-crown
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-barcode"></i> bx bx-barcode
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user"></i> bx bx-user
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-x"></i> bx bx-user-x
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-plus"></i> bx bx-user-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-minus"></i> bx bx-user-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-circle"></i> bx bx-user-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-user-check"></i> bx bx-user-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-underline"></i> bx bx-underline
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-trophy"></i> bx bx-trophy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-trash"></i> bx bx-trash
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-text"></i> bx bx-text
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sun"></i> bx bx-sun
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-star"></i> bx bx-star
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sort"></i> bx bx-sort
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shuffle"></i> bx bx-shuffle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shopping-bag"></i> bx bx-shopping-bag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shield"></i> bx bx-shield
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-shield-alt"></i> bx bx-shield-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-share"></i> bx bx-share
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-share-alt"></i> bx bx-share-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-select-multiple"></i> bx bx-select-multiple
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-screenshot"></i> bx bx-screenshot
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-save"></i> bx bx-save
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pulse"></i> bx bx-pulse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-power-off"></i> bx bx-power-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-plus"></i> bx bx-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pin"></i> bx bx-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pencil"></i> bx bx-pencil
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pin"></i> bx bx-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pencil"></i> bx bx-pencil
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-paste"></i> bx bx-paste
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-paragraph"></i> bx bx-paragraph
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-package"></i> bx bx-package
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-notification"></i> bx bx-notification
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-music"></i> bx bx-music
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-move"></i> bx bx-move
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mouse"></i> bx bx-mouse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-minus"></i> bx bx-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-microphone-off"></i> bx bx-microphone-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-log-out"></i> bx bx-log-out
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-log-in"></i> bx bx-log-in
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-link-external"></i> bx bx-link-external
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-joystick"></i> bx bx-joystick
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-italic"></i> bx bx-italic
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-home-alt"></i> bx bx-home-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-heading"></i> bx bx-heading
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-hash"></i> bx bx-hash
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-group"></i> bx bx-group
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-git-repo-forked"></i> bx bx-git-repo-forked
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-git-pull-request"></i> bx bx-git-pull-request
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-git-merge"></i> bx bx-git-merge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-git-compare"></i> bx bx-git-compare
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-git-commit"></i> bx bx-git-commit
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-git-branch"></i> bx bx-git-branch
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-font"></i> bx bx-font
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-filter"></i> bx bx-filter
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-file"></i> bx bx-file
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-edit"></i> bx bx-edit
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-diamond"></i> bx bx-diamond
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-detail"></i> bx bx-detail
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cut"></i> bx bx-cut
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cube"></i> bx bx-cube
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-crop"></i> bx bx-crop
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-credit-card"></i> bx bx-credit-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-columns"></i> bx bx-columns
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cog"></i> bx bx-cog
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-snow"></i> bx bx-cloud-snow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-rain"></i> bx bx-cloud-rain
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-lightning"></i> bx bx-cloud-lightning
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-light-rain"></i> bx bx-cloud-light-rain
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-drizzle"></i> bx bx-cloud-drizzle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-check"></i> bx bx-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cart"></i> bx bx-cart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calculator"></i> bx bx-calculator
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bold"></i> bx bx-bold
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-award"></i> bx bx-award
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-anchor"></i> bx bx-anchor
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-album"></i> bx bx-album
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-adjust"></i> bx bx-adjust
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-x"></i> bx bx-x
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-table"></i> bx bx-table
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-duplicate"></i> bx bx-duplicate
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-windows"></i> bx bx-windows
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-window"></i> bx bx-window
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-window-open"></i> bx bx-window-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-wifi"></i> bx bx-wifi
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-voicemail"></i> bx bx-voicemail
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-video-off"></i> bx bx-video-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-usb"></i> bx bx-usb
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-upload"></i> bx bx-upload
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-alarm"></i> bx bx-alarm
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-tennis-ball"></i> bx bx-tennis-ball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-target-lock"></i> bx bx-target-lock
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-tag"></i> bx bx-tag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-tab"></i> bx bx-tab
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-spreadsheet"></i> bx bx-spreadsheet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sitemap"></i> bx bx-sitemap
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sidebar"></i> bx bx-sidebar
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-send"></i> bx bx-send
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pie-chart"></i> bx bx-pie-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-phone"></i> bx bx-phone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-navigation"></i> bx bx-navigation
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mobile"></i> bx bx-mobile
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-mobile-alt"></i> bx bx-mobile-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message"></i> bx bx-message
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-message-rounded"></i> bx bx-message-rounded
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-map"></i> bx bx-map
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-map-alt"></i> bx bx-map-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-lock"></i> bx bx-lock
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-lock-open"></i> bx bx-lock-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-list-minus"></i> bx bx-list-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-list-ul"></i> bx bx-list-ul
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-list-plus"></i> bx bx-list-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-link"></i> bx bx-link
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-link-alt"></i> bx bx-link-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-layer"></i> bx bx-layer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-laptop"></i> bx bx-laptop
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-home"></i> bx bx-home
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-heart"></i> bx bx-heart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-headphone"></i> bx bx-headphone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-devices"></i> bx bx-devices
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-globe"></i> bx bx-globe
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-gift"></i> bx bx-gift
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-envelope"></i> bx bx-envelope
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-download"></i> bx bx-download
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dots-vertical"></i> bx bx-dots-vertical
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dots-vertical-rounded"></i> bx bx-dots-vertical-rounded
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dots-horizontal"></i> bx bx-dots-horizontal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dots-horizontal-rounded"></i> bx bx-dots-horizontal-rounded
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-dollar"></i> bx bx-dollar
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-directions"></i> bx bx-directions
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-desktop"></i> bx bx-desktop
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-data"></i> bx bx-data
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-compass"></i> bx bx-compass
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-crosshair"></i> bx bx-crosshair
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-terminal"></i> bx bx-terminal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud"></i> bx bx-cloud
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-upload"></i> bx bx-cloud-upload
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-cloud-download"></i> bx bx-cloud-download
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chart"></i> bx bx-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar"></i> bx bx-calendar
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar-x"></i> bx bx-calendar-x
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar-minus"></i> bx bx-calendar-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar-check"></i> bx bx-calendar-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-calendar-plus"></i> bx bx-calendar-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-buoy"></i> bx bx-buoy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bulb"></i> bx bx-bulb
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bluetooth"></i> bx bx-bluetooth
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bug"></i> bx bx-bug
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-building"></i> bx bx-building
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-broadcast"></i> bx bx-broadcast
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-briefcase"></i> bx bx-briefcase
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bookmark-plus"></i> bx bx-bookmark-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bookmark-minus"></i> bx bx-bookmark-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-"></i> bx bx-
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-book"></i> bx bx-book
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-book-bookmark"></i> bx bx-book-bookmark
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-block"></i> bx bx-block
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-basketball"></i> bx bx-basketball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bar-chart"></i> bx bx-bar-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bar-chart-square"></i> bx bx-bar-chart-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bar-chart-alt"></i> bx bx-bar-chart-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-at"></i> bx bx-at
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-archive"></i> bx bx-archive
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-zoom-out"></i> bx bx-zoom-out
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-zoom-in"></i> bx bx-zoom-in
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-x-circle"></i> bx bx-x-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-volume"></i> bx bx-volume
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-volume-mute"></i> bx bx-volume-mute
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-volume-low"></i> bx bx-volume-low
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-volume-full"></i> bx bx-volume-full
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-video"></i> bx bx-video
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-vertical-center"></i> bx bx-vertical-center
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-up-arrow-circle"></i> bx bx-up-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-trending-up"></i> bx bx-trending-up
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-trending-down"></i> bx bx-trending-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-toggle-right"></i> bx bx-toggle-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-toggle-left"></i> bx bx-toggle-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-time"></i> bx bx-time
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-sync"></i> bx bx-sync
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-stopwatch"></i> bx bx-stopwatch
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-stop"></i> bx bx-stop
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-stop-circle"></i> bx bx-stop-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-skip-previous"></i> bx bx-skip-previous
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-skip-next"></i> bx bx-skip-next
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-show"></i> bx bx-show
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-search"></i> bx bx-search
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rss"></i> bx bx-rss
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-right-top-arrow-circle"></i> bx bx-right-top-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-right-indent"></i> bx bx-right-indent
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-right-down-arrow-circle"></i> bx bx-right-down-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-right-arrow-circle"></i> bx bx-right-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-reset"></i> bx bx-reset
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rewind"></i> bx bx-rewind
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-rectangle"></i> bx bx-rectangle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-radio-circle"></i> bx bx-radio-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-radio-circle-marked"></i> bx bx-radio-circle-marked
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-question-mark"></i> bx bx-question-mark
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-plus-circle"></i> bx bx-plus-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-play"></i> bx bx-play
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-play-circle"></i> bx bx-play-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pause"></i> bx bx-pause
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-pause-circle"></i> bx bx-pause-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-moon"></i> bx bx-moon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-minus-circle"></i> bx bx-minus-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-microphone"></i> bx bx-microphone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-menu"></i> bx bx-menu
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-left-top-arrow-circle"></i> bx bx-left-top-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-left-indent"></i> bx bx-left-indent
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-left-down-arrow-circle"></i> bx bx-left-down-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-left-arrow-circle"></i> bx bx-left-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-last-page"></i> bx bx-last-page
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-key"></i> bx bx-key
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-align-justify"></i> bx bx-align-justify
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-info-circle"></i> bx bx-info-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-image"></i> bx bx-image
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-hide"></i> bx bx-hide
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-fullscreen"></i> bx bx-fullscreen
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-folder"></i> bx bx-folder
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-folder-plus"></i> bx bx-folder-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-folder-minus"></i> bx bx-folder-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-first-page"></i> bx bx-first-page
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-fast-forward"></i> bx bx-fast-forward
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-fast-forward-circle"></i> bx bx-fast-forward-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-exit-fullscreen"></i> bx bx-exit-fullscreen
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-error"></i> bx bx-error
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-error-circle"></i> bx bx-error-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-down-arrow-circle"></i> bx bx-down-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-copyright"></i> bx bx-copyright
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-copy"></i> bx bx-copy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-coffee"></i> bx bx-coffee
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-code"></i> bx bx-code
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-code-curly"></i> bx bx-code-curly
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-clipboard"></i> bx bx-clipboard
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevrons-left"></i> bx bx-chevrons-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevrons-right"></i> bx bx-chevrons-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevrons-up"></i> bx bx-chevrons-up
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevrons-down"></i> bx bx-chevrons-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevron-right"></i> bx bx-chevron-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevron-left"></i> bx bx-chevron-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevron-up"></i> bx bx-chevron-up
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-chevron-down"></i> bx bx-chevron-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-checkbox-square"></i> bx bx-checkbox-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-checkbox"></i> bx bx-checkbox
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-checkbox-checked"></i> bx bx-checkbox-checked
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-captions"></i> bx bx-captions
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-camera"></i> bx bx-camera
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-camera-off"></i> bx bx-camera-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bullseye"></i> bx bx-bullseye
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bookmarks"></i> bx bx-bookmarks
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bookmark"></i> bx bx-bookmark
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bell"></i> bx bx-bell
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bell-plus"></i> bx bx-bell-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bell-off"></i> bx bx-bell-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-bell-minus"></i> bx bx-bell-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-arrow-back"></i> bx bx-arrow-back
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-align-right"></i> bx bx-align-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-align-middle"></i> bx bx-align-middle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bx-align-left"></i> bx bx-align-left
+                    </Col>
+                  </Row>
 
                   <h5 className="mt-5">Solid Icons</h5>
-                  <Row className="icon-demo-content" id="solid"></Row>
+                  <Row className="icon-demo-content">
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-wink-tongue"></i> bx bxs-wink-tongue
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-upside-down"></i> bx bxs-upside-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-happy-alt"></i> bx bxs-happy-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-laugh"></i> bx bxs-laugh
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-meh-blank"></i> bx bxs-meh-blank
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cool"></i> bx bxs-cool
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-tired"></i> bx bxs-tired
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-happy-beaming"></i> bx bxs-happy-beaming
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-shocked"></i> bx bxs-shocked
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-happy"></i> bx bxs-happy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-sad"></i> bx bxs-sad
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-sleepy"></i> bx bxs-sleepy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-confused"></i> bx bxs-confused
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-meh-alt"></i> bx bxs-meh-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-meh"></i> bx bxs-meh
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-smile"></i> bx bxs-smile
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-wink-smile"></i> bx bxs-wink-smile
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dizzy"></i> bx bxs-dizzy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-happy-heart-eyes"></i> bx bxs-happy-heart-eyes
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-angry"></i> bx bxs-angry
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-business"></i> bx bxs-business
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-camera-plus"></i> bx bxs-camera-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-food-menu"></i> bx bxs-food-menu
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-offer"></i> bx bxs-offer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-clinic"></i> bx bxs-clinic
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hand-left"></i> bx bxs-hand-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hand-down"></i> bx bxs-hand-down
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hand-right"></i> bx bxs-hand-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hand-up"></i> bx bxs-hand-up
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-baby-carriage"></i> bx bxs-baby-carriage
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-caret-left-circle"></i> bx bxs-caret-left-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-caret-right-circle"></i> bx bxs-caret-right-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-caret-down-circle"></i> bx bxs-caret-down-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-caret-up-circle"></i> bx bxs-caret-up-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-tone"></i> bx bxs-tone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bolt-circle"></i> bx bxs-bolt-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-city"></i> bx bxs-city
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cake"></i> bx bxs-cake
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-spa"></i> bx bxs-spa
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dish"></i> bx bxs-dish
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-fridge"></i> bx bxs-fridge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-image-add"></i> bx bxs-image-add
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-alarm-add"></i> bx bxs-alarm-add
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-archive-out"></i> bx bxs-archive-out
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-archive-in"></i> bx bxs-archive-in
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-add-to-queue"></i> bx bxs-add-to-queue
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-check-shield"></i> bx bxs-check-shield
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-label"></i> bx bxs-label
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-face"></i> bx bxs-face
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-find"></i> bx bxs-file-find
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-extension"></i> bx bxs-extension
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-exit"></i> bx bxs-exit
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-brush-alt"></i> bx bxs-brush-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-layout"></i> bx bxs-layout
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-quote-alt-right"></i> bx bxs-quote-alt-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-quote-alt-left"></i> bx bxs-quote-alt-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-mobile-vibration"></i> bx bxs-mobile-vibration
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-fast-forward-circle"></i> bx bxs-fast-forward-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-rewind-circle"></i> bx bxs-rewind-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-carousel"></i> bx bxs-carousel
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-customize"></i> bx bxs-customize
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar-event"></i> bx bxs-calendar-event
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar-check"></i> bx bxs-calendar-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar-x"></i> bx bxs-calendar-x
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar-minus"></i> bx bxs-calendar-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar-plus"></i> bx bxs-calendar-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar-alt"></i> bx bxs-calendar-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calendar"></i> bx bxs-calendar
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-briefcase-alt-2"></i> bx bxs-briefcase-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bookmark-minus"></i> bx bxs-bookmark-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bookmarks"></i> bx bxs-bookmarks
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-time-five"></i> bx bxs-time-five
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pie-chart-alt-2"></i> bx bxs-pie-chart-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-time"></i> bx bxs-time
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-timer"></i> bx bxs-timer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-stopwatch"></i> bx bxs-stopwatch
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-compass"></i> bx bxs-compass
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-check"></i> bx bxs-user-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-x"></i> bx bxs-user-x
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-grid"></i> bx bxs-grid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-zoom-out"></i> bx bxs-zoom-out
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-zoom-in"></i> bx bxs-zoom-in
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-search"></i> bx bxs-search
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bell-minus"></i> bx bxs-bell-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bell-plus"></i> bx bxs-bell-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-folder-minus"></i> bx bxs-folder-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-mobile"></i> bx bxs-mobile
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-data"></i> bx bxs-data
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-skip-next-circle"></i> bx bxs-skip-next-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-skip-previous-circle"></i> bx bxs-skip-previous-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-chalkboard"></i> bx bxs-chalkboard
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-school"></i> bx bxs-school
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-institution"></i> bx bxs-institution
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-left-down-arrow-circle"></i> bx bxs-left-down-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-left-top-arrow-circle"></i> bx bxs-left-top-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-right-down-arrow-circle"></i> bx bxs-right-down-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-right-top-arrow-circle"></i> bx bxs-right-top-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-down-arrow"></i> bx bxs-down-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-up-arrow"></i> bx bxs-up-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-left-arrow"></i> bx bxs-left-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-right-arrow"></i> bx bxs-right-arrow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-rectangle"></i> bx bxs-rectangle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-brightness"></i> bx bxs-brightness
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-brightness-half"></i> bx bxs-brightness-half
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-paint"></i> bx bxs-paint
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-credit-card"></i> bx bxs-credit-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-credit-card-alt"></i> bx bxs-credit-card-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-band-aid"></i> bx bxs-band-aid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-map-pin"></i> bx bxs-map-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-receipt"></i> bx bxs-receipt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-purchase-tag-alt"></i> bx bxs-purchase-tag-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-basket"></i> bx bxs-basket
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-palette"></i> bx bxs-palette
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plane-alt"></i> bx bxs-plane-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-component"></i> bx bxs-component
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-traffic-barrier"></i> bx bxs-traffic-barrier
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-no-entry"></i> bx bxs-no-entry
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-alt-dots"></i> bx bxs-message-alt-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-alt"></i> bx bxs-message-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-check-square"></i> bx bxs-check-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-notification-off"></i> bx bxs-notification-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-notification"></i> bx bxs-notification
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-log-out"></i> bx bxs-log-out
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-log-in"></i> bx bxs-log-in
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-log-out-circle"></i> bx bxs-log-out-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-log-in-circle"></i> bx bxs-log-in-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-circle"></i> bx bxs-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-doughnut-chart"></i> bx bxs-doughnut-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-building-house"></i> bx bxs-building-house
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-comment-error"></i> bx bxs-comment-error
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-voice"></i> bx bxs-user-voice
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cuboid"></i> bx bxs-cuboid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cube-alt"></i> bx bxs-cube-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-polygon"></i> bx bxs-polygon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-square-rounded"></i> bx bxs-square-rounded
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-square"></i> bx bxs-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-error-alt"></i> bx bxs-error-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-shield-alt-2"></i> bx bxs-shield-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-paint-roll"></i> bx bxs-paint-roll
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-comment-add"></i> bx bxs-comment-add
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-droplet-half"></i> bx bxs-droplet-half
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-search-alt-2"></i> bx bxs-search-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bowling-ball"></i> bx bxs-bowling-ball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hourglass-bottom"></i> bx bxs-hourglass-bottom
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hourglass-top"></i> bx bxs-hourglass-top
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-lock-open-alt"></i> bx bxs-lock-open-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-lock-alt"></i> bx bxs-lock-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-graduation"></i> bx bxs-graduation
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-vial"></i> bx bxs-vial
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cylinder"></i> bx bxs-cylinder
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pyramid"></i> bx bxs-pyramid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-wine"></i> bx bxs-wine
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-comment-detail"></i> bx bxs-comment-detail
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-comment-dots"></i> bx bxs-comment-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-comment"></i> bx bxs-comment
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-traffic"></i> bx bxs-traffic
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-landscape"></i> bx bxs-landscape
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-adjust-alt"></i> bx bxs-adjust-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-id-card"></i> bx bxs-id-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-parking"></i> bx bxs-parking
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plane-land"></i> bx bxs-plane-land
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plane-take-off"></i> bx bxs-plane-take-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-analyse"></i> bx bxs-analyse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-gif"></i> bx bxs-file-gif
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-jpg"></i> bx bxs-file-jpg
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-png"></i> bx bxs-file-png
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-txt"></i> bx bxs-file-txt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-md"></i> bx bxs-file-md
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-json"></i> bx bxs-file-json
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-js"></i> bx bxs-file-js
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-css"></i> bx bxs-file-css
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-html"></i> bx bxs-file-html
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-copy-alt"></i> bx bxs-copy-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-doc"></i> bx bxs-file-doc
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-pin"></i> bx bxs-user-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-quote-single-right"></i> bx bxs-quote-single-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-quote-single-left"></i> bx bxs-quote-single-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-ghost"></i> bx bxs-ghost
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-direction-left"></i> bx bxs-direction-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-video-recording"></i> bx bxs-video-recording
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-notepad"></i> bx bxs-notepad
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bug-alt"></i> bx bxs-bug-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-mouse-alt"></i> bx bxs-mouse-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-edit-alt"></i> bx bxs-edit-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-chat"></i> bx bxs-chat
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-book-content"></i> bx bxs-book-content
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-square-dots"></i> bx bxs-message-square-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-square"></i> bx bxs-message-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-slideshow"></i> bx bxs-slideshow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bank"></i> bx bxs-bank
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-wallet-alt"></i> bx bxs-wallet-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-memory-card"></i> bx bxs-memory-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-devices"></i> bx bxs-devices
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-rounded-dots"></i> bx bxs-message-rounded-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-dots"></i> bx bxs-message-dots
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bar-chart-alt-2"></i> bx bxs-bar-chart-alt-2
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-store-alt"></i> bx bxs-store-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-buildings"></i> bx bxs-buildings
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-home-circle"></i> bx bxs-home-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-pdf"></i> bx bxs-file-pdf
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-yin-yang"></i> bx bxs-yin-yang
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-ship"></i> bx bxs-ship
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-factory"></i> bx bxs-factory
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-tree"></i> bx bxs-tree
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plane"></i> bx bxs-plane
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-rectangle"></i> bx bxs-user-rectangle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-eyedropper"></i> bx bxs-eyedroppers
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cloud-lightning"></i> bx bxs-cloud-lightning
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cloud-rain"></i> bx bxs-cloud-rain
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-eraser"></i> bx bxs-eraser
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-magic-wand"></i> bx bxs-magic-wand
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hotel"></i> bx bxs-hotel
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-color-fill"></i> bx bxs-color-fill
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-capsule"></i> bx bxs-capsule
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-flask"></i> bx bxs-flask
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-joystick-button"></i> bx bxs-joystick-button
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-direction-right"></i> bx bxs-direction-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-directions"></i> bx bxs-directions
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-megaphone"></i> bx bxs-megaphone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-keyboard"></i> bx bxs-keyboard
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-brush"></i> bx bxs-brush
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-coffee-alt"></i> bx bxs-coffee-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-badge-check"></i> bx bxs-badge-check
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-landmark"></i> bx bxs-landmark
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-gas-pump"></i> bx bxs-gas-pump
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-badge"></i> bx bxs-user-badge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-right-arrow-square"></i> bx bxs-right-arrow-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-down-arrow-square"></i> bx bxs-down-arrow-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-up-arrow-square"></i> bx bxs-up-arrow-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-left-arrow-square"></i> bx bxs-left-arrow-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-ambulance"></i> bx bxs-ambulance
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-magnet"></i> bx bxs-magnet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-card"></i> bx bxs-card
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-help-circle"></i> bx bxs-help-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-note"></i> bx bxs-note
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-badge"></i> bx bxs-badge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-flame"></i> bx bxs-flame
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-disc"></i> bx bxs-disc
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-minus-square"></i> bx bxs-minus-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plus-square"></i> bx bxs-plus-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-x-square"></i> bx bxs-x-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs- microphone-alt"></i> bx bxs-microphone-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-image-alt"></i> bx bxs-image-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-skull"></i> bx bxs-skull
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dollar-circle"></i> bx bxs-dollar-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-film"></i> bx bxs-film
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-ball"></i> bx bxs-ball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-edit"></i> bx bxs-edit
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-blank"></i> bx bxs-file-blank
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bell-ring"></i> bx bxs-bell-ring
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-photo-album"></i> bx bxs-photo-album
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-key"></i> bx bxs-key
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-video-plus"></i> bx bxs-video-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-box"></i> bx bxs-box
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-planet"></i> bx bxs-planet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-movie"></i> bx bxs-movie
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-taxi"></i> bx bxs-taxi
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-train"></i> bx bxs-train
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bath"></i> bx bxs-bath
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bed"></i> bx bxs-bed
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-area"></i> bx bxs-area
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bot"></i> bx bxs-bot
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bus"></i> bx bxs-bus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-star-half"></i> bx bxs-star-half
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-checkbox-checked"></i> bx bxs-checkbox-checked
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-checkbox"></i> bx bxs-checkbox
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-check-circle"></i> bx bxs-check-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-rocket"></i> bx bxs-rocket
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-certification"></i> bx bxs-certification
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-plus"></i> bx bxs-file-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dashboard"></i> bx bxs-dashboard
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-conversation"></i> bx bxs-conversation
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-battery-low"></i> bx bxs-battery-low
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-folder-open"></i> bx bxs-folder-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-zap"></i> bx bxs-zap
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-x-circle"></i> bx bxs-x-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-wrench"></i> bx bxs-wrench
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-widget"></i> bx bxs-widget
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-watch"></i> bx bxs-watch
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-watch-alt"></i> bx bxs-watch-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-wallet"></i> bx bxs-wallet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-volume"></i> bx bxs-volume
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-volume-mute"></i> bx bxs-volume-mute
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-volume-low"></i> bx bxs-volume-low
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-volume-full"></i> bx bxs-volume-full
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-videos"></i> bx bxs-videos
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-video"></i> bx bxs-video
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-video-off"></i> bx bxs-video-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user"></i> bx bxs-user
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-plus"></i> bx bxs-user-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-minus"></i> bx bxs-user-minus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-detail"></i> bx bxs-user-detail
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-user-circle"></i> bx bxs-user-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-upvote"></i> bx bxs-upvote
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-up-arrow-circle"></i> bx bxs-up-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-truck"></i> bx bxs-truck
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-trophy"></i> bx bxs-trophy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-trash"></i> bx bxs-trash
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-trash-alt"></i> bx bxs-trash-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-torch"></i> bx bxs-torch
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-toggle-right"></i> bx bxs-toggle-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-to-top"></i> bx bxs-to-top
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-terminal"></i> bx bxs-terminal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-tennis-ball"></i> bx bxs-tennis-ball
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-tag"></i> bx bxs-tag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-tag-x"></i> bx bxs-tag-x
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-t-shirt"></i> bx bxs-t-shirt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-sun"></i> bx bxs-sun
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-store"></i> bx bxs-store
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-star"></i> bx bxs-star
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-spreadsheet"></i> bx bxs-spreadsheet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-show"></i> bx bxs-show
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-shopping-bag"></i> bx bxs-shopping-bag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-shopping-bag-alt"></i> bx bxs-shopping-bag-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-shield"></i> bx bxs-shield
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-share"></i> bx bxs-share
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-share-alt"></i> bx bxs-share-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-server"></i> bx bxs-server
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-send"></i> bx bxs-send
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-select-multiple"></i> bx bxs-select-multiple
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-sort-alt"></i> bx bxs-sort-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-save"></i> bx bxs-save
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-ruler"></i> bx bxs-ruler
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-right-arrow-circle"></i> bx bxs-right-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-report"></i> bx bxs-report
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-rename"></i> bx bxs-rename
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-radio"></i> bx bxs-radio
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-quote-right"></i> bx bxs-quote-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-quote-left"></i> bx bxs-quote-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-purchase-tag"></i> bx bxs-purchase-tag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-printer"></i> bx bxs-printer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plus-circle"></i> bx bxs-plus-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-plug"></i> bx bxs-plug
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-playlist"></i> bx bxs-playlist
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pin"></i> bx bxs-pin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pie-chart"></i> bx bxs-pie-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pie-chart-alt"></i> bx bxs-pie-chart-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-phone"></i> bx bxs-phone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-phone-outgoing"></i> bx bxs-phone-outgoing
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-phone-incoming"></i> bx bxs-phone-incoming
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-phone-call"></i> bx bxs-phone-call
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pencil"></i> bx bxs-pencil
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-pen"></i> bx bxs-pen
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-paste"></i> bx bxs-paste
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-paper-plane"></i> bx bxs-paper-plane
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-package"></i> bx bxs-package
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-news"></i> bx bxs-news
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-navigation"></i> bx bxs-navigation
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-music"></i> bx bxs-music
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-mouse"></i> bx bxs-mouse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-moon"></i> bx bxs-moon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-minus-circle"></i> bx bxs-minus-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-microphone"></i> bx bxs-microphone
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-microphone-off"></i> bx bxs-microphone-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message"></i> bx bxs-message
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-message-rounded"></i> bx bxs-message-rounded
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-map"></i> bx bxs-map
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-map-alt"></i> bx bxs-map-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-lock"></i> bx bxs-lock
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-lock-open"></i> bx bxs-lock-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-like"></i> bx bxs-like
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-left-arrow-circle"></i> bx bxs-left-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-layer"></i> bx bxs-layer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-joystick"></i> bx bxs-joystick
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-joystick-alt"></i> bx bxs-joystick-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-info-circle"></i> bx bxs-info-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-inbox"></i> bx bxs-inbox
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-image"></i> bx bxs-image
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hourglass"></i> bx bxs-hourglass
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hot"></i> bx bxs-hot
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-home"></i> bx bxs-home
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hide"></i> bx bxs-hide
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-heart"></i> bx bxs-heart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-hdd"></i> bx bxs-hdd
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-group"></i> bx bxs-group
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-grid-alt"></i> bx bxs-grid-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-gift"></i> bx bxs-gift
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-flag"></i> bx bxs-flag
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-flag-alt"></i> bx bxs-flag-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-first-aid"></i> bx bxs-first-aid
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-filter-alt"></i> bx bxs-filter-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file"></i> bx bxs-file
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file"></i> bx bxs-file
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-file-image"></i> bx bxs-file-image
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-error"></i> bx bxs-error
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-error-circle"></i> bx bxs-error-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-envelope"></i> bx bxs-envelope
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-eject"></i> bx bxs-eject
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-duplicate"></i> bx bxs-duplicate
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-droplet"></i> bx bxs-droplet
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-drink"></i> bx bxs-drink
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-downvote"></i> bx bxs-downvote
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-download"></i> bx bxs-download
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-down-arrow-circle"></i> bx bxs-down-arrow-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dock-top"></i> bx bxs-dock-top
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dock-right"></i> bx bxs-dock-right
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dock-left"></i> bx bxs-dock-left
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dock-bottom"></i> bx bxs-dock-bottom
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-dislike"></i> bx bxs-dislike
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-discount"></i> bx bxs-discount
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-detail"></i> bx bxs-detail
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cube"></i> bx bxs-cube
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-crown"></i> bx bxs-crown
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-coupon"></i> bx bxs-coupon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-copy"></i> bx bxs-copy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-contact"></i> bx bxs-contact
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-collection"></i> bx bxs-collection
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cog"></i> bx bxs-cog
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-coffee"></i> bx bxs-coffee
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cloud"></i> bx bxs-cloud
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cloud-upload"></i> bx bxs-cloud-upload
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cloud-download"></i> bx bxs-cloud-download
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-chip"></i> bx bxs-chip
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-chart"></i> bx bxs-chart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cart"></i> bx bxs-cart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-cart-alt"></i> bx bxs-cart-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-car"></i> bx bxs-car
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-captions"></i> bx bxs-captions
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-calculator"></i> bx bxs-calculator
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-buoy"></i> bx bxs-buoy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bulb"></i> bx bxs-bulb
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-building"></i> bx bxs-building
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bug"></i> bx bxs-bug
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-briefcase-alt"></i> bx bxs-briefcase-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-briefcase"></i> bx bxs-briefcase
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bookmark-star"></i> bx bxs-bookmark-star
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-book-open"></i> bx bxs-book-open
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bookmark-plus"></i> bx bxs-bookmark-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bookmark"></i> bx bxs-bookmark
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-book"></i> bx bxs-book
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bolt"></i> bx bxs-bolt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bell-off"></i> bx bxs-bell-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bell"></i> bx bxs-bell
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-battery-full"></i> bx bxs-battery-full
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-battery-charging"></i> bx bxs-battery-charging
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-battery"></i> bx bxs-battery
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-barcode"></i> bx bxs-barcode
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-bar-chart-square"></i> bx bxs-bar-chart-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-award"></i> bx bxs-award
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-folder-plus"></i> bx bxs-folder-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-folder"></i> bx bxs-folder
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-camera-off"></i> bx bxs-camera-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-camera"></i> bx bxs-camera
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-archive"></i> bx bxs-archive
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-album"></i> bx bxs-album
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-alarm-off"></i> bx bxs-alarm-off
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-alarm"></i> bx bxs-alarm
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxs-adjust"></i> bx bxs-adjust
+                    </Col>
+                  </Row>
 
                   <h4 className="mt-5">Logos</h4>
-                  <Row className="icon-demo-content" id="logos"></Row>
+                  <Row className="icon-demo-content">
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-redbubble"></i> bx bxl-redbubble
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-patreon"></i> bx bxl-patreon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-gitlab"></i> bx bxl-gitlab
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-etsy"></i> bx bxl-etsy
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-figma"></i> bx bxl-figma
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-audible"></i> bx bxl-audible
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-algolia"></i> bx bxl-algolia
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-adobe"></i> bx bxl-adobe
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-pinterest-alt"></i> bx bxl-pinterest-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-imdb"></i> bx bxl-imdb
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-jquery"></i> bx bxl-jquery
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-facebook-circle"></i> bx bxl-facebook-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-instagram-alt"></i> bx bxl-instagram-alt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-flickr-square"></i> bx bxl-flickr-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-whatsapp-square"></i> bx bxl-whatsapp-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-squarespace"></i> bx bxl-squarespace
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-medium-old"></i> bx bxl-medium-old
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-mailchimp"></i> bx bxl-mailchimp
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-wix"></i> bx bxl-wix
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-trello"></i> bx bxl-trello
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-spotify"></i> bx bxl-spotify
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-soundcloud"></i> bx bxl-soundcloud
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-snapchat"></i> bx bxl-snapchat
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-less"></i> bx bxl-less
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-flickr"></i> bx bxl-flickr
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-shopify"></i> bx bxl-shopify
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-jsfiddle"></i> bx bxl-jsfiddle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-css3"></i> bx bxl-css3
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-microsoft"></i> bx bxl-microsoft
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-yahoo"></i> bx bxl-yahoo
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-bootstrap"></i> bx bxl-bootstrap
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-redux"></i> bx bxl-redux
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-mastercard"></i> bx bxl-mastercard
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-visa"></i> bx bxl-visa
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-baidu"></i> bx bxl-baidu
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-chrome"></i> bx bxl-chrome
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-dailymotion"></i> bx bxl-dailymotion
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-joomla"></i> bx bxl-joomla
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-internet-explorer"></i> bx bxl-internet-explorer
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-paypal"></i> bx bxl-paypal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-edge"></i> bx bxl-edge
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-stripe"></i> bx bxl-stripe
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-telegram"></i> bx bxl-telegram
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-wordpress"></i> bx bxl-wordpress
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-periscope"></i> bx bxl-periscope
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-react"></i> bx bxl-react
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-bing"></i> bx bxl-bing
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-vuejs"></i> bx bxl-vuejs
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-kickstarter"></i> bx bxl-kickstarter
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-nodejs"></i> bx bxl-nodejs
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-javascript"></i> bx bxl-javascript
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-firefox"></i> bx bxl-firefox
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-stack-overflow"></i> bx bxl-stack-overflow
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-magento"></i> bx bxl-magento
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-product-hunt"></i> bx bxl-product-hunt
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-html5"></i> bx bxl-html5
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-git"></i> bx bxl-git
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-quora"></i> bx bxl-quora
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-yelp"></i> bx bxl-yelp
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-airbnb"></i> bx bxl-airbnb
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-opera"></i> bx bxl-opera
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-invision"></i> bx bxl-invision
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-foursquare"></i> bx bxl-foursquare
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-sass"></i> bx bxl-sass
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-wikipedia"></i> bx bxl-wikipedia
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-unsplash"></i> bx bxl-unsplash
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-digg"></i> bx bxl-digg
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-amazon"></i> bx bxl-amazon
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-ebay"></i> bx bxl-ebay
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-drupal"></i> bx bxl-drupal
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-dropbox"></i> bx bxl-dropbox
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-discourse"></i> bx bxl-discourse
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-deviantart"></i> bx bxl-deviantart
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-digitalocean"></i> bx bxl-digitalocean
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-creative-commons"></i> bx bxl-creative-commons
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-codepen"></i> bx bxl-codepen
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-angular"></i> bx bxl-angular
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-messenger"></i> bx bxl-messenger
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-pocket"></i> bx bxl-pocket
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-vk"></i> bx bxl-vk
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-windows"></i> bx bxl-windows
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-play-store"></i> bx bxl-play-store
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-android"></i> bx bxl-android
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-apple"></i> bx bxl-apple
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-blogger"></i> bx bxl-blogger
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-pinterest"></i> bx bxl-pinterest
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-reddit"></i> bx bxl-reddit
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-discord"></i> bx bxl-discord
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-twitch"></i> bx bxl-twitch
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-slack"></i> bx bxl-slack
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-slack-old"></i> bx bxl-slack-old
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-skype"></i> bx bxl-skype
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-medium-square"></i> bx bxl-medium-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-medium"></i> bx bxl-medium
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-linkedin-square"></i> bx bxl-linkedin-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-google-plus-circle"></i> bx bxl-google-plus-circle
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-google-plus"></i> bx bxl-google-plus
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-facebook-square"></i> bx bxl-facebook-square
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-bitcoin"></i> bx bxl-bitcoin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-linkedin"></i> bx bxl-linkedin
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-vimeo"></i> bx bxl-vimeo
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-dribbble"></i> bx bxl-dribbble
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-behance"></i> bx bxl-behance
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-tumblr"></i> bx bxl-tumblr
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-whatsapp"></i> bx bxl-whatsapp
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-youtube"></i> bx bxl-youtube
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-twitter"></i> bx bxl-twitter
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-instagram"></i> bx bxl-instagram
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-google"></i> bx bxl-google
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-github"></i> bx bxl-github
+                    </Col>
+                    <Col xl={3} lg={4} sm={6}>
+                      <i className="bx bxl-facebook"></i> bx bxl-facebook
+                    </Col>
+                  </Row>
                 </CardBody>
               </Card>
             </Col>

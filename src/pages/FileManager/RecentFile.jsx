@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownToggle,
   UncontrolledDropdown,
+  DropdownItem,
 } from "reactstrap"
 
 
@@ -86,7 +87,7 @@ const RecentFile = props => {
         </div>
         <hr className="mt-2" />
 
-        <div className="table-responsive file-manager">
+        <div className="table-responsive">
           <Table className="table align-middle table-nowrap table-hover mb-0">
             <thead>
               <tr>
@@ -98,38 +99,23 @@ const RecentFile = props => {
               </tr>
             </thead>
             <tbody>
-              {recentfile.map((recentfile, key) => (
+              {recentfile.map((item, key) => (
                 <tr key={key}>
+                  <td><Link to="#" className="text-dark fw-medium"><i className={item.icon}></i> {item.file}</Link></td>
+                  <td>{item.date}</td>
+                  <td>{item.size} KB</td>
                   <td>
-                    <Link to="#" className="text-dark fw-medium">
-                      <i className={recentfile.icon}></i> {recentfile.file}
-                    </Link>
-                  </td>
-                  <td>{recentfile.date}</td>
-                  <td>{recentfile.size} KB</td>
-                  <td>
-                    <UncontrolledDropdown className="mb-2" direction="left">
-                      <DropdownToggle
-                        color="white"
-                        className="btn font-size-16 btn-link text-muted mt-n2"
-                      >
+                    <UncontrolledDropdown>
+                      <DropdownToggle tag="a" className="font-size-16 text-muted" role="button">
                         <i className="mdi mdi-dots-horizontal"></i>
                       </DropdownToggle>
 
                       <DropdownMenu className="dropdown-menu-end">
-                        <Link className="dropdown-item" to="#">
-                          Open
-                        </Link>
-                        <Link className="dropdown-item" to="#">
-                          Edit
-                        </Link>
-                        <Link className="dropdown-item" to="#">
-                          Rename
-                        </Link>
+                        <DropdownItem href="#">Open</DropdownItem>
+                        <DropdownItem href="#">Edit</DropdownItem>
+                        <DropdownItem href="#">Rename</DropdownItem>
                         <div className="dropdown-divider"></div>
-                        <Link className="dropdown-item" to="#">
-                          Remove
-                        </Link>
+                        <DropdownItem href="#">Remove</DropdownItem>
                       </DropdownMenu>
                     </UncontrolledDropdown>
                   </td>

@@ -47,8 +47,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Chat = props => {
 
-   //meta title
-   document.title="Chat | Skote - Vite React Admin & Dashboard Template";
+  //meta title
+  document.title = "Chat | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 
@@ -74,7 +74,7 @@ const Chat = props => {
   const [activeTab, setactiveTab] = useState("1");
   const [Chat_Box_Username, setChat_Box_Username] = useState("Steven Franklin");
   // eslint-disable-next-line no-unused-vars
-  const [Chat_Box_User_Status, setChat_Box_User_Status] = useState("online");
+  const [Chat_Box_User_Status, setChat_Box_User_Status] = useState("Active Now");
   const [curMessage, setcurMessage] = useState("");
 
   useEffect(() => {
@@ -188,25 +188,30 @@ const Chat = props => {
                             {currentUser.name}
                           </h5>
                           <p className="text-muted mb-0">
-                            <i className="mdi mdi-circle text-success align-middle me-1" />
+                            <i className="mdi mdi-circle text-success align-middle me-2" />
                             Active
                           </p>
                         </div>
 
-                        <Dropdown
-                          isOpen={menu1}
-                          toggle={() => setMenu1(!menu1)}
-                          className="float-end ms-2"
-                        >
-                          <DropdownToggle tag="i" className="text-muted">
-                            <i className="mdi mdi-dots-horizontal font-size-18"></i>
-                          </DropdownToggle>
-                          <DropdownMenu>
-                            <DropdownItem href="#">Action</DropdownItem>
-                            <DropdownItem href="#">Another action</DropdownItem>
-                            <DropdownItem href="#">Something else</DropdownItem>
-                          </DropdownMenu>
-                        </Dropdown>
+                        <div>
+                          <Dropdown
+                            isOpen={menu1}
+                            toggle={() => setMenu1(!menu1)}
+                            className="chat-noti-dropdown active"
+                          >
+                            <DropdownToggle
+                              tag="a"
+                              className="btn"
+                            >
+                              <i className="bx bx-bell bx-tada"></i>
+                            </DropdownToggle>
+                            <DropdownMenu className="dropdown-menu-end">
+                              <DropdownItem href="#">Action</DropdownItem>
+                              <DropdownItem href="#">Another action</DropdownItem>
+                              <DropdownItem href="#">Something else</DropdownItem>
+                            </DropdownMenu>
+                          </Dropdown>
+                        </div>
                       </div>
                     </div>
 
@@ -303,13 +308,21 @@ const Chat = props => {
                                             }
                                           />
                                         </div>
-                                        <div className="align-self-center me-3">
-                                          <img
-                                            src={images[chat.image]}
-                                            className="rounded-circle avatar-xs"
-                                            alt=""
-                                          />
-                                        </div>
+                                        {chat.isImg ?
+                                          <div className="avatar-xs align-self-center me-3">
+                                            <span className="avatar-title rounded-circle bg-primary bg-soft text-primary">
+                                              {chat.profile}
+                                            </span>
+                                          </div>
+                                          :
+                                          <div className="align-self-center me-3">
+                                            <img
+                                              src={chat.image}
+                                              className="rounded-circle avatar-xs"
+                                              alt=""
+                                            />
+                                          </div>
+                                        }
 
                                         <div className="flex-grow-1 overflow-hidden">
                                           <h5 className="text-truncate font-size-14 mb-1">
@@ -430,8 +443,8 @@ const Chat = props => {
                           <p className="text-muted mb-0">
                             <i
                               className={
-                                Chat_Box_User_Status === "online"
-                                  ? "mdi mdi-circle text-success align-middle me-1"
+                                Chat_Box_User_Status === "Active Now"
+                                  ? "mdi mdi-circle text-success align-middle me-2"
                                   : Chat_Box_User_Status === "intermediate"
                                     ? "mdi mdi-circle text-warning align-middle me-1"
                                     : "mdi mdi-circle align-middle me-1"
@@ -543,13 +556,12 @@ const Chat = props => {
                                     <UncontrolledDropdown>
                                       <DropdownToggle
                                         href="#"
-                                        className="btn nav-btn"
-                                        tag="i"
+                                        tag="a" className="dropdown-toggle"
                                       >
                                         <i className="bx bx-dots-vertical-rounded" />
                                       </DropdownToggle>
                                       <DropdownMenu>
-                                        <DropdownItem href="#">
+                                        <DropdownItem onClick={(e) => copyMsg(e.target)} href="#">
                                           Copy
                                         </DropdownItem>
                                         <DropdownItem href="#">
@@ -558,9 +570,10 @@ const Chat = props => {
                                         <DropdownItem href="#">
                                           Forward
                                         </DropdownItem>
-                                        <DropdownItem href="#">
+                                        <DropdownItem onClick={(e) => toggle_deleMsg(e.target)} href="#">
                                           Delete
                                         </DropdownItem>
+
                                       </DropdownMenu>
                                     </UncontrolledDropdown>
                                     <div className="ctext-wrap">
@@ -568,12 +581,7 @@ const Chat = props => {
                                         {message.sender}
                                       </div>
                                       <p>{message.message}</p>
-                                      <p className="chat-time mb-0">
-                                        <i className="bx bx-time-five align-middle me-1" />
-                                        {moment(message.createdAt).format(
-                                          "DD-MM-YY hh:mm"
-                                        )}
-                                      </p>
+                                      <p className="chat-time mb-0"><i className="bx bx-time-five align-middle me-1"></i> {message.time}</p>
                                     </div>
                                   </div>
                                 </li>

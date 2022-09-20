@@ -9,7 +9,7 @@
 
 .avatar-sm {
   height: 3rem;
-  width: 3rem;
+  width: 3rem !important;
 }
 
 .avatar-md {
@@ -45,7 +45,7 @@
   flex-wrap: wrap;
   .avatar-group-item {
     margin-left: -12px;
-    border: 2px solid $card-bg;
+    border: 2px solid var(--#{$prefix}custom-white);
     border-radius: 50%;
     transition: all 0.2s;
     &:hover{

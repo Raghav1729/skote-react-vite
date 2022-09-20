@@ -37,9 +37,9 @@ const productsData = [
     category: "T-shirts",
     rating: 5,
     oldPrice: 500,
-    newPrice: 405,
+    newPrice: 450,
     isOffer: true,
-    offer: 10,
+    offer: 25,
     reviews: 0,
     subImage: [product1, product7, product8],
     specification: [
@@ -71,14 +71,13 @@ const productsData = [
   {
     id: 2,
     image: "product2",
-    name: "Black color T-shirt",
+    name: "Light blue T-shirt",
     link: "#",
     category: "T-shirts",
-    rating: 5,
+    rating: 4,
     oldPrice: 225,
     newPrice: 175,
-    isOffer: true,
-    offer: 20,
+    isOffer: false,
     reviews: 0,
     subImage: [product2a, product2b, product2c],
     specification: [
@@ -109,14 +108,14 @@ const productsData = [
   {
     id: 3,
     image: "product3",
-    name: "Printed T-shirt",
+    name: "Black Color T-shirt",
     link: "#",
     category: "T-shirts",
     rating: 4,
     oldPrice: 177,
     newPrice: 152,
     isOffer: true,
-    offer: 14,
+    offer: 20,
     reviews: 0,
     subImage: [product3a, product3b, product3c],
     specification: [
@@ -147,14 +146,12 @@ const productsData = [
   {
     id: 4,
     image: "product4",
-    name: "Smiley Plain T-shirt",
+    name: "Hoodie (Blue)",
     link: "#",
     category: "Hoodies",
-    rating: 3,
+    rating: 4,
     oldPrice: 150,
     newPrice: 145,
-    isOffer: true,
-    offer: 5,
     reviews: 0,
     subImage: [product4a, product4b, product4c],
     specification: [
@@ -185,14 +182,14 @@ const productsData = [
   {
     id: 5,
     image: "product5",
-    name: "Full sleeve T-Shirt",
+    name: "Half sleeve T-Shirt",
     link: "#",
     category: "T-shirts",
-    rating: 1,
+    rating: 4,
     oldPrice: 177,
     newPrice: 152,
-    isOffer: false,
-    offer: 0,
+    isOffer: true,
+    offer: 22,
     reviews: 5,
     subImage: [product5a, product5b, product5c],
     specification: [
@@ -221,14 +218,14 @@ const productsData = [
   {
     id: 6,
     image: "product6",
-    name: "Sky blue color T-shirt",
+    name: "Green color T-shirt",
     link: "#",
     category: "T-shirts",
-    rating: 5,
+    rating: 4,
     oldPrice: 200,
     newPrice: 100,
     isOffer: true,
-    offer: 50,
+    offer: 28,
     reviews: 10,
     subImage: [product6a, product6b, product6c],
     specification: [
@@ -271,16 +268,16 @@ const recentProducts = [
   {
     id: 2,
     img: "img4",
-    name: "Phone patterned cases",
+    name: "Smiley Plain T-shirt",
     link: "",
-    rating: 3,
+    rating: 4,
     oldPrice: 150,
     newPrice: 145,
   },
   {
     id: 3,
     img: "img6",
-    name: "Phone Dark Patterned cases",
+    name: "Sky blue color T-shirt",
     link: "",
     rating: 4,
     oldPrice: 138,
@@ -757,7 +754,7 @@ let productComments = [
     commentId: 1,
     user: {
       name: "Brian",
-      profile: "avatar1",
+      profile: "avatar2",
     },
     comment:
       "If several languages coalesce, the grammar of the resulting language.",
@@ -768,7 +765,7 @@ let productComments = [
     commentId: 2,
     user: {
       name: "Denver",
-      profile: "avatar2",
+      profile: "avatar4",
     },
     comment:
       "To an English person, it will seem like simplified English, as a skeptical Cambridge",
@@ -780,7 +777,7 @@ let productComments = [
         replyId: 1,
         user: {
           name: "Henry",
-          profile: "avatar1",
+          profile: "avatar5",
         },
         comment:
           "Their separate existence is a myth. For science, music, sport, etc.",

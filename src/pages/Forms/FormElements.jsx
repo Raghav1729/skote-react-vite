@@ -348,6 +348,12 @@ const FormElements = () => {
                         <Input type="range" className="form-range" id="customRange1" />
                       </div>
                     </Col>
+                    <Col lg={6}>
+                      <div>
+                        <Label htmlFor="disabledRange" className="form-label">Disabled Eange</Label>
+                        <Input type="range" className="form-range" id="disabledRange" disabled />
+                      </div>
+                    </Col>
                   </Row>
 
                   <Row className="mt-2">

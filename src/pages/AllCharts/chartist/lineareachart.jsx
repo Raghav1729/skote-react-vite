@@ -1,15 +1,18 @@
-import React from "react"
-import ChartistGraph from "react-chartist"
+import React from "react";
+import ChartistGraph from "react-chartist";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const lineareachart = () => {
+const lineareachart = ({ dataColors }) => {
+  var lineareaChartColors = getChartColorsArray(dataColors);
   const lineChartData = {
     labels: [1, 2, 3, 4, 5, 6, 7, 8],
-    series: [[5, 9, 7, 8, 5, 3, 5, 4]]
-  }
+    series: [[5, 9, 7, 8, 5, 3, 5, 4]],
+  };
   const lineChartOptions = {
     low: 0,
-    showArea: true
-  }
+    showArea: true,
+    color: lineareaChartColors,
+  };
   return (
     <React.Fragment>
       <ChartistGraph
@@ -19,6 +22,6 @@ const lineareachart = () => {
         type={"Line"}
       />
     </React.Fragment>
-  )
-}
-export default lineareachart
+  );
+};
+export default lineareachart;

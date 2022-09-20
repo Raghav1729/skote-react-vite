@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Redux
 import { Link } from "react-router-dom";
@@ -15,21 +15,22 @@ import logo from "../../assets/images/logo.svg";
 import lightlogo from "../../assets/images/logo-light.svg";
 
 const Login = () => {
+  const [show, setShow] = useState(false);
 
   //meta title
-  document.title="Login | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Login | Skote - Vite React Admin & Dashboard Template";
 
-// Form validation 
+  // Form validation 
   const validation = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed
     enableReinitialize: true,
 
     initialValues: {
-      email: '',
+      username: '',
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Please Enter Your Email"),
+      username: Yup.string().required("Please Enter Your username"),
       password: Yup.string().required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
@@ -37,12 +38,7 @@ const Login = () => {
     }
   });
   return (
-    <React.Fragment>
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="bx bx-home h2" />
-        </Link>
-      </div>
+    <React.Fragment>      
       <div className="account-pages my-5 pt-sm-5">
         <Container>
           <Row className="justify-content-center">
@@ -97,37 +93,41 @@ const Login = () => {
                       }}
                     >
                       <div className="mb-3">
-                        <Label className="form-label">Email</Label>
+                        <Label className="form-label">Username</Label>
                         <Input
-                          name="email"
+                          name="username"
                           className="form-control"
-                          placeholder="Enter email"
-                          type="email"
+                          placeholder="Enter username"
+                          type="text"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
-                          value={validation.values.email || ""}
+                          value={validation.values.username || ""}
                           invalid={
-                            validation.touched.email && validation.errors.email ? true : false
+                            validation.touched.username && validation.errors.username ? true : false
                           }
                         />
-                        {validation.touched.email && validation.errors.email ? (
-                          <FormFeedback type="invalid">{validation.errors.email}</FormFeedback>
+                        {validation.touched.username && validation.errors.username ? (
+                          <FormFeedback type="invalid">{validation.errors.username}</FormFeedback>
                         ) : null}
                       </div>
 
                       <div className="mb-3">
                         <Label className="form-label">Password</Label>
-                        <Input
-                          name="password"
-                          value={validation.values.password || ""}
-                          type="password"
-                          placeholder="Enter Password"
-                          onChange={validation.handleChange}
-                          onBlur={validation.handleBlur}
-                          invalid={
-                            validation.touched.password && validation.errors.password ? true : false
-                          }
-                        />
+                        <div className="input-group auth-pass-inputgroup">
+                          <Input
+                            name="password"
+                            value={validation.values.password || ""}
+                            type={show ? "text" : "password"}
+                            placeholder="Enter Password"
+                            onChange={validation.handleChange}
+                            onBlur={validation.handleBlur}
+                            invalid={
+                              validation.touched.password && validation.errors.password ? true : false
+                            }
+                          />
+                          <button onClick={() => setShow(!show)} className="btn btn-light " type="button" id="password-addon">
+                            <i className="mdi mdi-eye-outline"></i></button>
+                        </div>
                         {validation.touched.password && validation.errors.password ? (
                           <FormFeedback type="invalid">{validation.errors.password}</FormFeedback>
                         ) : null}

@@ -50,7 +50,7 @@ const LatestTranaction = props => {
         filterable: true,
         disableFilters: true,
         Cell: cellProps => {
-          return <input type="checkbox" />;
+          return <input type="checkbox" className="form-check-input" />;
         },
       },
       {

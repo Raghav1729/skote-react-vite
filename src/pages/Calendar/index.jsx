@@ -33,6 +33,10 @@ import {
 
 import DeleteModal from "./DeleteModal";
 
+//import Images
+import verification from "../../assets/images/verification-img.png";
+
+
 //css
 import "@fullcalendar/bootstrap/main.css";
 
@@ -48,7 +52,7 @@ import BootstrapTheme from "@fullcalendar/bootstrap";
 const Calender = props => {
 
   //meta title
-  document.title = "Calendar | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Full Calendar | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 
@@ -267,261 +271,264 @@ const Calender = props => {
       <div className="page-content">
         <Container fluid={true}>
           {/* Render Breadcrumb */}
-          <Breadcrumbs title="Skote" breadcrumbItem="Calendar" />
+          <Breadcrumbs title="Calendar" breadcrumbItem="Calendar" />
           <Row>
             <Col className="col-12">
-              <Card>
-                <CardBody>
-                  <Row>
-                    <Col lg={3}>
-                      <Button
-                        color="primary"
-                        className="font-16 btn-block"
-                        onClick={toggleCategory}
-                      >
-                        <i className="mdi mdi-plus-circle-outline me-1" />
-                        Create New Event
-                      </Button>
+              <Row>
+                <Col lg={3}>
+                  <Card>
+                    <CardBody>
+                      <div className="d-grid">
+                        <Button
+                          color="primary"
+                          className="font-16 btn-block"
+                          onClick={toggleCategory}
+                        >
+                          <i className="mdi mdi-plus-circle-outline me-1" />
+                          Create New Event
+                        </Button>
+                      </div>
 
-                      <div id="external-events" className="mt-3">
+                      <div id="external-events" className="mt-2">
+                        <br />
                         <p className="text-muted">
                           Drag and drop your event or click in the calendar
                         </p>
                         {categories &&
                           categories.map((category, i) => (
                             <div
-                              className={`${category.type} external-event text-white p-1 mb-2`}
+                              className={`${category.type} external-event fc-event text-white`}
                               key={"cat-" + category.id}
                               draggable
                               onDrag={event => onDrag(event, category)}
                             >
-                              <i className="mdi mdi-checkbox-blank-circle me-2 vertical-middle" />
+                              <i className="mdi mdi-checkbox-blank-circle font-size-11 me-2" />
                               {category.title}
                             </div>
                           ))}
                       </div>
 
-                      <div className="mt-5 d-none d-xl-block">
-                        <h5 className="text-center">How It Works ?</h5>
+                      <Row className="justify-content-center mt-5">
+                        <img src={verification} alt="" className="img-fluid d-block" />
+                      </Row>
+                    </CardBody>
+                  </Card>
+                </Col>
 
-                        <ul className="ps-3">
-                          <li className="text-muted mb-3">
-                            It has survived not only five centuries, but also
-                            the leap into electronic typesetting, remaining
-                            essentially unchanged.
-                          </li>
-                          <li className="text-muted mb-3">
-                            Richard McClintock, a Latin professor at
-                            Hampden-Sydney College in Virginia, looked up one of
-                            the more obscure Latin words, consectetur, from a
-                            Lorem Ipsum passage.
-                          </li>
-                          <li className="text-muted mb-3">
-                            It has survived not only five centuries, but also
-                            the leap into electronic typesetting, remaining
-                            essentially unchanged.
-                          </li>
-                        </ul>
-                      </div>
-                    </Col>
-                    <Col className="col-lg-9">
-                      {/* fullcalendar control */}
-                      <FullCalendar
-                        plugins={[
-                          BootstrapTheme,
-                          dayGridPlugin,
-                          interactionPlugin,
-                        ]}
-                        slotDuration={"00:15:00"}
-                        handleWindowResize={true}
-                        themeSystem="bootstrap"
-                        headerToolbar={{
-                          left: "prev,next today",
-                          center: "title",
-                          right: "dayGridMonth,dayGridWeek,dayGridDay",
+                <Col className="col-lg-9">
+                  {/* fullcalendar control */}
+                  <FullCalendar
+                    plugins={[
+                      BootstrapTheme,
+                      dayGridPlugin,
+                      interactionPlugin,
+                    ]}
+                    slotDuration={"00:15:00"}
+                    handleWindowResize={true}
+                    themeSystem="bootstrap"
+                    headerToolbar={{
+                      left: "prev,next today",
+                      center: "title",
+                      right: "dayGridMonth,dayGridWeek,dayGridDay",
+                    }}
+                    events={events}
+                    editable={true}
+                    droppable={true}
+                    selectable={true}
+                    dateClick={handleDateClick}
+                    eventClick={handleEventClick}
+                    drop={onDrop}
+                  />
+
+                  {/* New/Edit event modal */}
+                  <Modal
+                    isOpen={modal}
+                    className={props.className}
+                    centered
+                  >
+                    <ModalHeader toggle={toggle} tag="h5" className="py-3 px-4 border-bottom-0">
+                      {!!isEdit ? "Edit Event" : "Add Event"}
+                    </ModalHeader>
+                    <ModalBody className="p-4">
+                      <Form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          validation.handleSubmit();
+                          return false;
                         }}
-                        events={events}
-                        editable={true}
-                        droppable={true}
-                        selectable={true}
-                        dateClick={handleDateClick}
-                        eventClick={handleEventClick}
-                        drop={onDrop}
-                      />
-
-                      {/* New/Edit event modal */}
-                      <Modal isOpen={modal} className={props.className}>
-                        <ModalHeader toggle={toggle} tag="h4">
-                          {!!isEdit ? "Edit Event" : "Add Event"}
-                        </ModalHeader>
-                        <ModalBody>
-                          <Form
-                            onSubmit={(e) => {
-                              e.preventDefault();
-                              validation.handleSubmit();
-                              return false;
-                            }}
-                          >
-                            <Row form>
-                              <Col className="col-12 mb-3">
-                                <Label className="form-label">Event Name</Label>
-                                <Input
-                                  name="title"
-                                  type="text"
-                                  // value={event ? event.title : ""}
-                                  onChange={validation.handleChange}
-                                  onBlur={validation.handleBlur}
-                                  value={validation.values.title || ""}
-                                  invalid={
-                                    validation.touched.title && validation.errors.title ? true : false
-                                  }
-                                />
-                                {validation.touched.title && validation.errors.title ? (
-                                  <FormFeedback type="invalid">{validation.errors.title}</FormFeedback>
-                                ) : null}
-                              </Col>
-                              <Col className="col-12 mb-3">
-                                <Label className="form-label">Select Category</Label>
-                                <Input
-                                  type="select"
-                                  name="category"
-                                  // value={event ? event.category : "bg-primary"}
-                                  onChange={validation.handleChange}
-                                  onBlur={validation.handleBlur}
-                                  value={validation.values.category || ""}
-                                  invalid={
-                                    validation.touched.category && validation.errors.category ? true : false
-                                  }
-                                >
-                                  <option value="bg-danger">Danger</option>
-                                  <option value="bg-success">Success</option>
-                                  <option value="bg-primary">Primary</option>
-                                  <option value="bg-info">Info</option>
-                                  <option value="bg-dark">Dark</option>
-                                  <option value="bg-warning">Warning</option>
-                                </Input>
-                                {validation.touched.category && validation.errors.category ? (
-                                  <FormFeedback type="invalid">{validation.errors.category}</FormFeedback>
-                                ) : null}
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <div className="text-end">
-                                  <button
-                                    type="button"
-                                    className="btn btn-light me-2"
-                                    onClick={toggle}
-                                  >
-                                    Close
-                                  </button>
-                                  {!!isEdit && (
-                                    <button
-                                      type="button"
-                                      className="btn btn-danger me-2"
-                                      onClick={() => setDeleteModal(true)}
-                                    >
-                                      Delete
-                                    </button>
-                                  )}
-                                  <button
-                                    type="submit"
-                                    className="btn btn-success save-event"
-                                  >
-                                    Save
-                                  </button>
-                                </div>
-                              </Col>
-                            </Row>
-                          </Form>
-                        </ModalBody>
-                      </Modal>
-
-                      <Modal
-                        isOpen={modalcategory}
-                        toggle={toggleCategory}
-                        className={props.className}
                       >
-                        <ModalHeader toggle={toggleCategory} tag="h4">
-                          Add a category
-                        </ModalHeader>
-                        <ModalBody>
-                          <Form
-                            onSubmit={(e) => {
-                              e.preventDefault();
-                              categoryValidation.handleSubmit();
-                              return false;
-                            }}
-                          >
-                            <Row form>
-                              <Col className="col-12 mb-3">
-                                <Label className="form-label">Event Name</Label>
-                                <Input
-                                  name="title"
-                                  type="text"
-                                  // value={event ? event.title : ""}
-                                  onChange={categoryValidation.handleChange}
-                                  onBlur={categoryValidation.handleBlur}
-                                  value={categoryValidation.values.title || ""}
-                                  invalid={
-                                    categoryValidation.touched.title && categoryValidation.errors.title ? true : false
-                                  }
-                                />
-                                {categoryValidation.touched.title && categoryValidation.errors.title ? (
-                                  <FormFeedback type="invalid">{categoryValidation.errors.title}</FormFeedback>
-                                ) : null}
-                              </Col>
-                              <Col className="col-12 mb-3">
-                                <Label className="form-label">Select Category</Label>
-                                <Input
-                                  type="select"
-                                  name="category"
-                                  // value={event ? event.category : "bg-primary"}
-                                  onChange={categoryValidation.handleChange}
-                                  onBlur={categoryValidation.handleBlur}
-                                  value={categoryValidation.values.category || ""}
-                                  invalid={
-                                    categoryValidation.touched.category && categoryValidation.errors.category ? true : false
-                                  }
-                                >
-                                  <option value="bg-danger">Danger</option>
-                                  <option value="bg-success">Success</option>
-                                  <option value="bg-primary">Primary</option>
-                                  <option value="bg-info">Info</option>
-                                  <option value="bg-dark">Dark</option>
-                                  <option value="bg-warning">Warning</option>
-                                </Input>
-                                {categoryValidation.touched.category && categoryValidation.errors.category ? (
-                                  <FormFeedback type="invalid">{categoryValidation.errors.category}</FormFeedback>
-                                ) : null}
-                              </Col>
-                            </Row>
-                            <Row>
-                              <Col>
-                                <div className="text-end">
-                                  <button
-                                    type="button"
-                                    className="btn btn-light me-2"
-                                    onClick={toggleCategory}
-                                  >
-                                    Close
-                                  </button>
-                                  <button
-                                    type="submit"
-                                    className="btn btn-success save-event"
-                                  >
-                                    Save
-                                  </button>
-                                </div>
-                              </Col>
-                            </Row>
-                          </Form>
-                        </ModalBody>
-                      </Modal>
-                    </Col>
-                  </Row>
-                </CardBody>
-              </Card>
+                        <Row>
+                          <Col className="col-12">
+                            <div className="mb-3">
+                              <Label className="form-label">Event Name</Label>
+                              <Input
+                                name="title"
+                                type="text"
+                                // value={event ? event.title : ""}
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.title || ""}
+                                invalid={
+                                  validation.touched.title && validation.errors.title ? true : false
+                                }
+                              />
+                              {validation.touched.title && validation.errors.title ? (
+                                <FormFeedback type="invalid">{validation.errors.title}</FormFeedback>
+                              ) : null}
+                            </div>
+                          </Col>
+                          <Col className="col-12">
+                            <div className="mb-3">
+                              <Label className="form-label">Category</Label>
+                              <Input
+                                type="select"
+                                name="category"
+                                // value={event ? event.category : "bg-primary"}
+                                onChange={validation.handleChange}
+                                onBlur={validation.handleBlur}
+                                value={validation.values.category || ""}
+                                invalid={
+                                  validation.touched.category && validation.errors.category ? true : false
+                                }
+                              >
+                                <option value="bg-danger">Danger</option>
+                                <option value="bg-success">Success</option>
+                                <option value="bg-primary">Primary</option>
+                                <option value="bg-info">Info</option>
+                                <option value="bg-dark">Dark</option>
+                                <option value="bg-warning">Warning</option>
+                              </Input>
+                              {validation.touched.category && validation.errors.category ? (
+                                <FormFeedback type="invalid">{validation.errors.category}</FormFeedback>
+                              ) : null}
+                            </div>
+                          </Col>
+                        </Row>
+
+                        <Row className="mt-2">
+                          <Col className="col-6">
+                            {!!isEdit && (
+                              <button
+                                type="button"
+                                className="btn btn-danger me-2"
+                                onClick={() => setDeleteModal(true)}
+                              >
+                                Delete
+                              </button>
+                            )}
+                          </Col>
+                          <Col className="col-6 text-end">
+                            <button
+                              type="button"
+                              className="btn btn-light me-2"
+                              onClick={toggle}
+                            >
+                              Close
+                            </button>
+                            <button type="submit"
+                              className="btn btn-success"
+                              id="btn-save-event"
+                            >
+                              Save
+                            </button>
+                          </Col>
+                        </Row>
+                      </Form>
+                    </ModalBody>
+                  </Modal>
+
+                  <Modal
+                    isOpen={modalcategory}
+                    toggle={toggleCategory}
+                    className={props.className}
+                    centered
+                  >
+                    <ModalHeader toggle={toggleCategory} tag="h5">
+                      Add Event
+                    </ModalHeader>
+                    <ModalBody className="p-4">
+                      <Form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          categoryValidation.handleSubmit();
+                          return false;
+                        }}
+                      >
+                        <Row>
+                          <Col className="col-12">
+                            <div className="mb-3">
+                              <Label className="form-label">Event Name</Label>
+                              <Input
+                                name="title"
+                                type="text"
+                                // value={event ? event.title : ""}
+                                placeholder="Insert Event Name"
+                                onChange={categoryValidation.handleChange}
+                                onBlur={categoryValidation.handleBlur}
+                                value={categoryValidation.values.title || ""}
+                                invalid={
+                                  categoryValidation.touched.title && categoryValidation.errors.title ? true : false
+                                }
+                              />
+                              {categoryValidation.touched.title && categoryValidation.errors.title ? (
+                                <FormFeedback type="invalid">{categoryValidation.errors.title}</FormFeedback>
+                              ) : null}
+                            </div>
+                          </Col>
+                          <Col className="col-12">
+                            <div className="mb-3">
+                              <Label className="form-label">Category</Label>
+                              <Input
+                                type="select"
+                                name="category"
+                                placeholder="All Day Event"
+                                onChange={categoryValidation.handleChange}
+                                onBlur={categoryValidation.handleBlur}
+                                value={categoryValidation.values.category || ""}
+                                invalid={
+                                  categoryValidation.touched.category && categoryValidation.errors.category ? true : false
+                                }
+                              >
+                                <option value="bg-danger">Danger</option>
+                                <option value="bg-success">Success</option>
+                                <option value="bg-primary">Primary</option>
+                                <option value="bg-info">Info</option>
+                                <option value="bg-dark">Dark</option>
+                                <option value="bg-warning">Warning</option>
+                              </Input>
+                              {categoryValidation.touched.category && categoryValidation.errors.category ? (
+                                <FormFeedback type="invalid">{categoryValidation.errors.category}</FormFeedback>
+                              ) : null}
+                            </div>
+                          </Col>
+                        </Row>
+
+                        <Row className="mt-2">
+                          <Col className="col-6">
+                            <button type="button" className="btn btn-danger" id="btn-delete-event">Delete</button>
+                          </Col>
+                          <Col className="col-6 text-end">
+                            <button
+                              type="button"
+                              className="btn btn-light me-1"
+                              onClick={toggleCategory}
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="submit"
+                              className="btn btn-success"
+                              id="btn-save-event"
+                            >
+                              Save
+                            </button>
+                          </Col>
+                        </Row>
+                      </Form>
+                    </ModalBody>
+                  </Modal>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Container>

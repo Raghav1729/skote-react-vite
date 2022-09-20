@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Col,
   Container,
-  Pagination,
   PaginationItem,
   PaginationLink,
   Row,
@@ -57,7 +56,7 @@ const ProjectsGrid = props => {
 
           <Row>
             <Col lg="12">
-              <Pagination className="pagination pagination-rounded justify-content-end mb-2">
+              <ul className="pagination pagination-rounded justify-content-center mt-2 mb-5">
                 <PaginationItem disabled={page === 1}>
                   <PaginationLink
                     previous
@@ -82,7 +81,7 @@ const ProjectsGrid = props => {
                     onClick={() => handlePageClick(page + 1)}
                   />
                 </PaginationItem>
-              </Pagination>
+              </ul>
             </Col>
           </Row>
         </Container>

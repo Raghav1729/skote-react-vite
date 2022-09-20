@@ -16,7 +16,7 @@ const Pages404 = () => {
           <Row>
             <Col lg="12">
               <div className="text-center mb-5">
-                <h1 className="display-2 font-weight-medium">
+                <h1 className="display-2 fw-medium">
                   4<i className="bx bx-buoy bx-spin text-primary display-3" />
                   4
                 </h1>

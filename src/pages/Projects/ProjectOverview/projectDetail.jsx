@@ -12,8 +12,8 @@ const ProjectDetail = ({ project }) => {
           <img src={img1} alt="" className="avatar-sm me-4" />
 
           <div className="flex-grow-1 overflow-hidden">
-            <h5 className="text-truncate font-size-15">{project.name}</h5>
-            <p className="text-muted">{project.description}</p>
+            <h5 className="text-truncate font-size-15">Skote Dashboard UI</h5>
+            <p className="text-muted">Separate existence is a myth. For science, music, sport, etc.</p>
           </div>
         </div>
 
@@ -39,7 +39,7 @@ const ProjectDetail = ({ project }) => {
               <h5 className="font-size-14">
                 <i className="bx bx-calendar me-1 text-primary" /> Start Date
               </h5>
-              <p className="text-muted mb-0">{project.startDate}</p>
+              <p className="text-muted mb-0">08 Sept, 2019</p>
             </div>
           </Col>
 
@@ -49,7 +49,7 @@ const ProjectDetail = ({ project }) => {
                 <i className="bx bx-calendar-check me-1 text-primary" /> Due
                 Date
               </h5>
-              <p className="text-muted mb-0">{project.dueDate}</p>
+              <p className="text-muted mb-0">12 Oct, 2019</p>
             </div>
           </Col>
         </Row>

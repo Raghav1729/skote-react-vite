@@ -13,7 +13,7 @@ const ActivityComp = () => {
               <div className="event-timeline-dot">
                 <i className="bx bx-right-arrow-circle font-size-18" />
               </div>
-              <div className="d-flex">
+              <div className="flex-shrink-0 d-flex">
                 <div className="me-3">
                   <h5 className="font-size-14">
                     22 Nov{" "}
@@ -31,7 +31,7 @@ const ActivityComp = () => {
                 <i className="bx bx-right-arrow-circle font-size-18" />
               </div>
               <div className="d-flex">
-                <div className="me-3">
+                <div className="flex-shrink-0 me-3">
                   <h5 className="font-size-14">
                     17 Nov{" "}
                     <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2" />
@@ -49,7 +49,7 @@ const ActivityComp = () => {
               <div className="event-timeline-dot">
                 <i className="bx bxs-right-arrow-circle font-size-18 bx-fade-right" />
               </div>
-              <div className="d-flex">
+              <div className="flex-shrink-0 d-flex">
                 <div className="me-3">
                   <h5 className="font-size-14">
                     15 Nov{" "}
@@ -61,14 +61,14 @@ const ActivityComp = () => {
                 </div>
               </div>
             </li>
-            <li className="event-list">
+            <li className="event-list active">
               <div className="event-timeline-dot">
-                <i className="bx bx-right-arrow-circle font-size-18" />
+                <i className="bx bxs-right-arrow-circle font-size-18 bx-fade-right" />
               </div>
-              <div className="d-flex">
+              <div className="flex-shrink-0 d-flex">
                 <div className="me-3">
                   <h5 className="font-size-14">
-                    12 Nov{" "}
+                    22 Nov{" "}
                     <i className="bx bx-right-arrow-alt font-size-16 text-primary align-middle ms-2" />
                   </h5>
                 </div>

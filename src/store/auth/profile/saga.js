@@ -15,20 +15,20 @@ const fireBaseBackend = getFirebaseBackend()
 
 function* editProfile({ payload: { user } }) {
   try {
-    if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
+    if (import.meta.env.VITE_APP_DEFAULTAUTH === "firebase") {
       const response = yield call(
         fireBaseBackend.editProfileAPI,
         user.username,
         user.idx
       )
       yield put(profileSuccess(response))
-    } else if (process.env.REACT_APP_DEFAULTAUTH === "jwt") {
+    } else if (import.meta.env.VITE_APP_DEFAULTAUTH === "jwt") {
       const response = yield call(postJwtProfile, "/post-jwt-profile", {
         username: user.username,
         idx: user.idx,
       })
       yield put(profileSuccess(response))
-    } else if (process.env.REACT_APP_DEFAULTAUTH === "fake") {
+    } else if (import.meta.env.VITE_APP_DEFAULTAUTH === "fake") {
       console.log("response", user)
       const response = yield call(postFakeProfile, {
         username: user.username,

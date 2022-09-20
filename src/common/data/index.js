@@ -1,7 +1,7 @@
 // import React from "react"
-import { cryptoOrders, wallet } from "./crypto"
+import { cryptoOrders, wallet, icoLandingTeam } from "./crypto"
 import { invoiceList } from "./invoices"
-import { projects } from "./projects"
+import { projects, projectListData, OverviewTeamMember } from "./projects"
 import { tasks } from "./tasks"
 import {
   inboxmails,
@@ -26,6 +26,8 @@ import { chats, contacts, groups, messages } from "./chat"
 import { calenderDefaultCategories, events } from "./calender"
 import { users, userProfile } from "./contacts"
 import { yearData, monthData, weekData } from "./dashboard"
+
+import { jobs, jobListCandidate, jobApply } from "./job"
 
 import {
   janTopSellingData,
@@ -55,6 +57,7 @@ export {
   recentProducts,
   comments,
   wallet,
+  icoLandingTeam,
   inboxmails,
   importantmails,
   draftmails,
@@ -64,6 +67,8 @@ export {
   cryptoOrders,
   invoiceList,
   projects,
+  projectListData,
+  OverviewTeamMember,
   tasks,
   users,
   userProfile,
@@ -79,5 +84,8 @@ export {
   novEarningData,
   octEarningData,
   chatData,
-  productComments
+  productComments,
+  jobs,
+  jobListCandidate,
+  jobApply,
 }

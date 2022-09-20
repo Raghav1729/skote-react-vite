@@ -1,11 +1,14 @@
 import React from "react";
 import ReactEcharts from "echarts-for-react";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const LineBar = () => {
+const LineBar = ({ dataColors }) => {
+  const spineareaChartColors = getChartColorsArray(dataColors);
+
   const options = {
     grid: {
       zlevel: 0,
-      x: 50,
+      x: 80,
       x2: 50,
       y: 30,
       y2: 30,
@@ -23,18 +26,25 @@ const LineBar = () => {
       },
     },
     toolbox: {
+      orient: "center",
+      left: 0,
+      top: 20,
       feature: {
-        dataView: { show: true, readOnly: false },
-        magicType: { show: true, type: ["line", "bar"] },
-        restore: { show: true },
-        saveAsImage: { show: true },
+        dataView: { show: true, readOnly: false, title: "Data View" },
+        magicType: {
+          show: true,
+          type: ["line", "bar"],
+          title: { line: "For line chart", bar: "For bar chart" },
+        },
+        restore: { show: true, title: "restore" },
+        saveAsImage: { show: true, title: "Download Image" },
       },
     },
-    color: ["#3c4ccf", "#02a499", "#38a4f8"],
+    color: spineareaChartColors,
     legend: {
       data: ["Evaporation", "Precipitation", "Average temperature"],
       textStyle: {
-        color: ["#74788d"],
+        color: ["#8791af"],
       },
     },
     xAxis: [
@@ -46,7 +56,7 @@ const LineBar = () => {
         },
         axisLine: {
           lineStyle: {
-            color: "#74788d",
+            color: "#8791af",
           },
         },
       },
@@ -58,13 +68,18 @@ const LineBar = () => {
         min: 0,
         max: 250,
         interval: 50,
-        axisLabel: {
-          formatter: "{value} ml",
-        },
         axisLine: {
           lineStyle: {
-            color: "#74788d",
+            color: "#8791af",
           },
+        },
+        splitLine: {
+          lineStyle: {
+            color: "rgba(166, 176, 207, 0.1)",
+          },
+        },
+        axisLabel: {
+          formatter: "{value} ml",
         },
       },
       {
@@ -73,8 +88,18 @@ const LineBar = () => {
         min: 0,
         max: 25,
         interval: 5,
+        axisLine: {
+          lineStyle: {
+            color: "#8791af",
+          },
+        },
+        splitLine: {
+          lineStyle: {
+            color: "rgba(166, 176, 207, 0.1)",
+          },
+        },
         axisLabel: {
-          formatter: "{value} °C",
+          formatter: "{value} Ã‚Â°C",
         },
       },
     ],
@@ -100,6 +125,7 @@ const LineBar = () => {
       color: ["#74788d"],
     },
   };
+
   return (
     <React.Fragment>
       <ReactEcharts style={{ height: "350px" }} option={options} />

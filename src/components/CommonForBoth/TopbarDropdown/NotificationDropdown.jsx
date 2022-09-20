@@ -24,7 +24,7 @@ const NotificationDropdown = props => {
         tag="li"
       >
         <DropdownToggle
-          className="btn header-item noti-icon "
+          className="btn header-item noti-icon position-relative"
           tag="button"
           id="page-header-notifications-dropdown"
         >
@@ -49,13 +49,13 @@ const NotificationDropdown = props => {
 
           <SimpleBar style={{ height: "230px" }}>
             <Link to="" className="text-reset notification-item">
-              <div className="media">
+              <div className="d-flex">
                 <div className="avatar-xs me-3">
                   <span className="avatar-title bg-primary rounded-circle font-size-16">
                     <i className="bx bx-cart" />
                   </span>
                 </div>
-                <div className="media-body">
+                <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">
                     {props.t("Your order is placed")}
                   </h6>
@@ -72,13 +72,13 @@ const NotificationDropdown = props => {
               </div>
             </Link>
             <Link to="" className="text-reset notification-item">
-              <div className="media">
+              <div className="d-flex">
                 <img
                   src={avatar3}
                   className="me-3 rounded-circle avatar-xs"
                   alt="user-pic"
                 />
-                <div className="media-body">
+                <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">James Lemire</h6>
                   <div className="font-size-12 text-muted">
                     <p className="mb-1">
@@ -93,13 +93,13 @@ const NotificationDropdown = props => {
               </div>
             </Link>
             <Link to="" className="text-reset notification-item">
-              <div className="media">
+              <div className="d-flex">
                 <div className="avatar-xs me-3">
                   <span className="avatar-title bg-success rounded-circle font-size-16">
                     <i className="bx bx-badge-check" />
                   </span>
                 </div>
-                <div className="media-body">
+                <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">
                     {props.t("Your item is shipped")}
                   </h6>
@@ -117,13 +117,13 @@ const NotificationDropdown = props => {
             </Link>
 
             <Link to="" className="text-reset notification-item">
-              <div className="media">
+              <div className="d-flex">
                 <img
                   src={avatar4}
                   className="me-3 rounded-circle avatar-xs"
                   alt="user-pic"
                 />
-                <div className="media-body">
+                <div className="flex-grow-1">
                   <h6 className="mt-0 mb-1">Salena Layfield</h6>
                   <div className="font-size-12 text-muted">
                     <p className="mb-1">

@@ -17,7 +17,7 @@ import Candlestick from "../AllCharts/echart/candlestickchart"
 const EChart = () => {
   
   //meta title
-  document.title = "E Charts | Skote - Vite React Admin & Dashboard Template"
+  document.title = "E Charts | Skote - React Admin & Dashboard Template"
 
   return (
     <React.Fragment>
@@ -31,7 +31,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Line Chart</CardTitle>
                   <div id="line-chart" className="e-chart">
-                    <Line />
+                    <Line dataColors='["--bs-success"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -41,7 +41,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Mix Line-Bar</CardTitle>
                   <div id="mix-line-bar" className="e-chart">
-                    <LineBar />
+                    <LineBar dataColors='["--bs-success","--bs-primary", "--bs-danger"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -53,7 +53,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Doughnut Chart</CardTitle>
                   <div id="doughnut-chart" className="e-chart">
-                    <Doughnut />
+                    <Doughnut dataColors='["--bs-primary","--bs-warning", "--bs-danger","--bs-info", "--bs-success"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -63,7 +63,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Pie Chart</CardTitle>
                   <div id="pie-chart" className="e-chart">
-                    <Pie />
+                    <Pie dataColors='["--bs-primary","--bs-warning", "--bs-danger","--bs-info", "--bs-success"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -75,7 +75,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Scatter Chart</CardTitle>
                   <div id="scatter-chart" className="e-chart">
-                    <Scatter />
+                    <Scatter dataColors='["--bs-success"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -85,7 +85,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Bubble Chart</CardTitle>
                   <div id="bubble-chart" className="e-chart">
-                    <Bubble />
+                    <Bubble dataColors='["--bs-primary-rgb", "--bs-success-rgb"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -97,7 +97,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Candlestick Chart</CardTitle>
                   <div id="candlestick-chart" className="e-chart">
-                    <Candlestick />
+                    <Candlestick dataColors='["--bs-primary","--bs-success"]'/>
                   </div>
                 </CardBody>
               </Card>
@@ -107,7 +107,7 @@ const EChart = () => {
                 <CardBody>
                   <CardTitle>Gauge Chart</CardTitle>
                   <div id="gauge-chart" className="e-chart">
-                    <Gauge />
+                    <Gauge dataColors='["--bs-success","--bs-primary","--bs-danger"]'/>
                   </div>
                 </CardBody>
               </Card>

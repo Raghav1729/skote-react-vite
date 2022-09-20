@@ -32,12 +32,7 @@ const LockScreen = () => {
     }
   });
   return (
-    <React.Fragment>
-      <div className="home-btn d-none d-sm-block">
-        <Link to="/" className="text-dark">
-          <i className="fas fa-home h2" />
-        </Link>
-      </div>
+    <React.Fragment>      
       <div className="account-pages my-5 pt-sm-5">
         <Container>
           <Row className="justify-content-center">
@@ -93,7 +88,7 @@ const LockScreen = () => {
                         <Input
                           name="password"
                           className="form-control"
-                          placeholder="Enter Password"
+                          placeholder="Enter password"
                           type="password"
                           onChange={validation.handleChange}
                           onBlur={validation.handleBlur}
@@ -134,7 +129,7 @@ const LockScreen = () => {
                   </Link>{" "}
                 </p>
                 <p>
-                  © 2021 Skote. Crafted with{" "}
+                  © {(new Date().getFullYear())} Skote. Crafted with{" "}
                   <i className="mdi mdi-heart text-danger" /> by Themesbrand
                 </p>
               </div>

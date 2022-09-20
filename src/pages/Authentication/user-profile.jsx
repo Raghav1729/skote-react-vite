@@ -29,9 +29,11 @@ import avatar from "../../assets/images/users/avatar-1.jpg";
 // actions
 import { editProfile, resetProfileFlag } from "../../store/actions";
 
-const UserProfile = () => {
-  
-  document.title="User Profile | Skote - Vite React Admin & Dashboard Template";
+const UserProfile = (props) => {
+
+  //meta title
+  document.title = "Profile | Skote - React Admin & Dashboard Template";
+
   const dispatch = useDispatch();
 
   const [email, setemail] = useState("");
@@ -42,17 +44,17 @@ const UserProfile = () => {
     error: state.Profile.error,
     success: state.Profile.success,
   }));
-
   useEffect(() => {
     if (localStorage.getItem("authUser")) {
       const obj = JSON.parse(localStorage.getItem("authUser"));
-      if (process.env.REACT_APP_DEFAULTAUTH === "firebase") {
+      if (import.meta.env.VITE_APP_DEFAULTAUTH === "firebase") {
+        console.log("hh", import.meta.env.VITE_APP_DEFAULTAUTH)
         setname(obj.displayName);
         setemail(obj.email);
         setidx(obj.uid);
       } else if (
-        process.env.REACT_APP_DEFAULTAUTH === "fake" ||
-        process.env.REACT_APP_DEFAULTAUTH === "jwt"
+        import.meta.env.VITE_APP_DEFAULTAUTH === "fake" ||
+        import.meta.env.VITE_APP_DEFAULTAUTH === "jwt"
       ) {
         setname(obj.username);
         setemail(obj.email);
@@ -70,7 +72,7 @@ const UserProfile = () => {
 
     initialValues: {
       username: name || '',
-      idx : idx || '',
+      idx: idx || '',
     },
     validationSchema: Yup.object({
       username: Yup.string().required("Please Enter Your UserName"),
@@ -80,10 +82,9 @@ const UserProfile = () => {
     }
   });
 
-
   return (
     <React.Fragment>
-      <div className="page-content">        
+      <div className="page-content">
         <Container fluid>
           {/* Render Breadcrumb */}
           <Breadcrumb title="Skote" breadcrumbItem="Profile" />

@@ -1,7 +1,9 @@
-import React from "react"
-import { Radar } from "react-chartjs-2"
+import React from "react";
+import { Radar } from "react-chartjs-2";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const RadarChart = () => {
+const RadarChart = ({ dataColors }) => {
+  var radarChartColors = getChartColorsArray(dataColors);
   const data = {
     labels: [
       "Eating",
@@ -15,28 +17,28 @@ const RadarChart = () => {
     datasets: [
       {
         label: "Desktops",
-        backgroundColor: "rgba(52, 195, 143, 0.2)",
-        borderColor: "#34c38f",
-        pointBackgroundColor: "#34c38f",
+        backgroundColor: radarChartColors[0],
+        borderColor: radarChartColors[1],
+        pointBackgroundColor: radarChartColors[1],
         pointBorderColor: "#fff",
         pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "#34c38f",
+        pointHoverBorderColor: radarChartColors[1],
         data: [65, 59, 90, 81, 56, 55, 40],
       },
       {
         label: "Tablets",
-        backgroundColor: "rgba(85, 110, 230, 0.2)",
-        borderColor: "#556ee6",
-        pointBackgroundColor: "#556ee6",
+        backgroundColor: radarChartColors[2],
+        borderColor: radarChartColors[3],
+        pointBackgroundColor: radarChartColors[3],
         pointBorderColor: "#fff",
         pointHoverBackgroundColor: "#fff",
-        pointHoverBorderColor: "#556ee6",
+        pointHoverBorderColor: radarChartColors[3],
         data: [28, 48, 40, 19, 96, 27, 100],
       },
     ],
-  }
+  };
 
-  return <Radar width={474} height={300} data={data} />
-}
+  return <Radar width={751} height={300} data={data} />;
+};
 
-export default RadarChart
+export default RadarChart;

@@ -162,6 +162,48 @@ const UiColors = () => {
                 </CardBody>
               </Card>
             </Col>
+            <Col xl={3} md={6}>
+                <Card>
+                    <CardBody className="text-center">
+                        <div className="rounded overflow-hidden">
+            
+                            <div className="bg-primary bg-opacity-75 p-4">
+                                <h5 className="my-2">bg-opacity-75</h5>
+                            </div>
+                            <div className="bg-primary bg-opacity-50 p-4">
+                                <h5 className="my-2">bg-opacity-50</h5>
+                            </div>
+                            <div className="bg-primary bg-opacity-25 p-4">
+                                <h5 className="my-2">bg-opacity-25</h5>
+                            </div>
+                            <div className="bg-primary bg-opacity-10 p-4">
+                                <h5 className="my-2">bg-opacity-10</h5>
+                            </div>
+                        </div>
+                        <h5 className="mb-0 mt-3 text-muted">bg Opacity</h5>
+                    </CardBody>
+                </Card>
+            </Col>
+
+            <Col xl={3} md={6}>
+              <Card>
+                    <div className="card-body text-center">
+                        <div className="rounded overflow-hidden">
+            
+                            <div className="p-4">
+                                <h5 className="my-2 text-primary text-opacity-75">text-opacity-75</h5>
+                            </div>
+                            <div className="p-4">
+                                <h5 className="my-2 text-primary text-opacity-50">text-opacity-50</h5>
+                            </div>
+                            <div className="p-4">
+                                <h5 className="my-2 text-primary text-opacity-25">text-opacity-25</h5>
+                            </div>
+                        </div>
+                        <h5 className="mb-0 mt-3 text-muted">text Opacity</h5>
+                    </div>
+                </Card>
+            </Col>
           </Row>
         </Container>
       </div>

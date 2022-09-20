@@ -9,10 +9,13 @@ import { getEarningChartsData } from "../../store/actions";
 //redux
 import { useSelector, useDispatch } from "react-redux";
 
-function Earning(props) {
-  const dispatch = useDispatch();
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-  const { earningChartData } = useSelector(state => ({
+const Earning = ({ dataColors }) => {
+  const dispatch = useDispatch();
+  const apexlineColors = getChartColorsArray(dataColors);
+
+  const { earningChartData } = useSelector((state) => ({
     earningChartData: state.DashboardSaas.earningChartData,
   }));
 
@@ -31,7 +34,7 @@ function Earning(props) {
     dataLabels: {
       enabled: !1,
     },
-    colors: ["#556ee6"],
+    colors: apexlineColors,
     stroke: {
       curve: "smooth",
       width: 3,
@@ -53,7 +56,7 @@ function Earning(props) {
   }, [dispatch]);
 
   const [seletedMonth, setSeletedMonth] = useState("jan");
-  const onChangeMonth = value => {
+  const onChangeMonth = (value) => {
     setSeletedMonth(value);
     dispatch(getEarningChartsData(value));
   };
@@ -132,6 +135,6 @@ function Earning(props) {
       </Col>
     </React.Fragment>
   );
-}
+};
 
 export default Earning;

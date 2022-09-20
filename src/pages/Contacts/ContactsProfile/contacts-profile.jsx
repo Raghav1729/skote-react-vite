@@ -32,10 +32,9 @@ import profile1 from "/src/assets/images/profile-img.png";
 import ApexRevenue from "../ApexRevenue";
 import { getUserProfile } from "/src/store/actions";
 
-const ContactsProfile = props => {
-
+const ContactsProfile = (props) => {
   //meta title
-  document.title="Profile | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Profile | Skote - Vite React Admin & Dashboard Template";
 
   const { userProfile, onGetUserProfile } = props;
   // eslint-disable-next-line no-unused-vars
@@ -60,7 +59,7 @@ const ContactsProfile = props => {
         accessor: "id",
         disableFilters: true,
         filterable: true,
-        Cell: cellProps => {
+        Cell: (cellProps) => {
           return <Idno {...cellProps} />;
         },
       },
@@ -69,7 +68,7 @@ const ContactsProfile = props => {
         accessor: "name",
         disableFilters: true,
         filterable: true,
-        Cell: cellProps => {
+        Cell: (cellProps) => {
           return <Name {...cellProps} />;
         },
       },
@@ -78,7 +77,7 @@ const ContactsProfile = props => {
         accessor: "startDate",
         disableFilters: true,
         filterable: true,
-        Cell: cellProps => {
+        Cell: (cellProps) => {
           return <Pdate {...cellProps} />;
         },
       },
@@ -87,7 +86,7 @@ const ContactsProfile = props => {
         accessor: "deadline",
         disableFilters: true,
         filterable: true,
-        Cell: cellProps => {
+        Cell: (cellProps) => {
           return <Ddate {...cellProps} />;
         },
       },
@@ -96,7 +95,7 @@ const ContactsProfile = props => {
         accessor: "budget",
         disableFilters: true,
         filterable: true,
-        Cell: cellProps => {
+        Cell: (cellProps) => {
           return <Budget {...cellProps} />;
         },
       },
@@ -207,7 +206,7 @@ const ContactsProfile = props => {
               <Card>
                 <CardBody>
                   <CardTitle className="mb-5">Experience</CardTitle>
-                  <div >
+                  <div>
                     <ul className="verti-timeline list-unstyled">
                       {map(userProfile.experiences, (experience, i) => (
                         <li
@@ -276,7 +275,7 @@ const ContactsProfile = props => {
                 <CardBody>
                   <CardTitle className="mb-4">Revenue</CardTitle>
                   <div id="revenue-chart">
-                    <ApexRevenue />
+                    <ApexRevenue dataColors='["--bs-primary"]' />
                   </div>
                 </CardBody>
               </Card>
@@ -310,7 +309,7 @@ const mapStateToProps = ({ contacts }) => ({
   userProfile: contacts.userProfile,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onGetUserProfile: () => dispatch(getUserProfile()),
 });
 

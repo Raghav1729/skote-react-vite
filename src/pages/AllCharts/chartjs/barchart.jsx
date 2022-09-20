@@ -1,21 +1,23 @@
-import React from "react"
-import { Bar } from "react-chartjs-2"
+import React from "react";
+import { Bar } from "react-chartjs-2";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const BarChart = () => {
+const BarChart = ({ dataColors }) => {
+  var barChartColor = getChartColorsArray(dataColors);
   const data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
       {
         label: "Sales Analytics",
-        backgroundColor: "rgba(52, 195, 143, 0.8)",
-        borderColor: "rgba(52, 195, 143, 0.8)",
+        backgroundColor: barChartColor[0],
+        borderColor: barChartColor[0],
         borderWidth: 1,
-        hoverBackgroundColor: "rgba(52, 195, 143, 0.9)",
-        hoverBorderColor: "rgba(52, 195, 143, 0.9)",
+        hoverBackgroundColor: barChartColor[1],
+        hoverBorderColor: barChartColor[1],
         data: [65, 59, 81, 45, 56, 80, 50, 20],
       },
     ],
-  }
+  };
 
   const option = {
     scales: {
@@ -25,9 +27,9 @@ const BarChart = () => {
         },
       ],
     },
-  }
+  };
 
-  return <Bar width={474} height={300} data={data} options={option} />
-}
+  return <Bar width={751} height={300} data={data} options={option} />;
+};
 
-export default BarChart
+export default BarChart;

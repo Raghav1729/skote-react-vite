@@ -72,10 +72,9 @@ const CardProject = ({ projects }) => {
                               <div className="avatar-xs">
                                 <span
                                   className={
-                                    "avatar-title rounded-circle bg-soft bg-" +
+                                    "avatar-title rounded-circle bg-" +
                                     team.color +
-                                    " text-" +
-                                    team.color +
+                                    " text-white" +                                   
                                     " font-size-16"
                                   }
                                 >
@@ -103,13 +102,13 @@ const CardProject = ({ projects }) => {
                   <Badge className={"bg-" + project.color}>
                     {project.status}
                   </Badge>
-                </li>
+                </li>{" "}
                 <li className="list-inline-item me-3" id="dueDate">
                   <i className="bx bx-calendar me-1" /> {project.dueDate}
                   <UncontrolledTooltip placement="top" target="dueDate">
                     Due Date
                   </UncontrolledTooltip>
-                </li>
+                </li>{" "}
                 <li className="list-inline-item me-3" id="comments">
                   <i className="bx bx-comment-dots me-1" />{" "}
                   {project.commentsCount}

@@ -6,7 +6,6 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardSubtitle,
   CardText,
   Button,
   Modal,
@@ -15,6 +14,8 @@ import {
   Container,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import { Map, InfoWindow, GoogleApiWrapper } from "google-maps-react"
+import { connect } from "react-redux";
 
 //Lightbox
 import Lightbox from "react-image-lightbox";
@@ -37,7 +38,10 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 const images = [img1, img2, img3, img4, img5, img6];
 const imageZoom = [img3, img7];
 
-const UiLightbox = () => {
+const LoadingContainer = () => <div>Loading...</div>
+
+const UiLightbox = (props) => {
+  const selectedPlace = {}
 
   //meta title
   document.title = "Lightbox | Skote - Vite React Admin & Dashboard Template";
@@ -50,7 +54,10 @@ const UiLightbox = () => {
   const [isOpen, setisOpen] = useState(false);
   const [isOpen1, setisOpen1] = useState(false);
   const [modal, setmodal] = useState(false);
-
+  const [map, setMap] = useState(false);
+  function tog_map() {
+    setMap(!map);
+  }
   return (
     <React.Fragment>
       <div className="page-content">
@@ -117,17 +124,17 @@ const UiLightbox = () => {
           ) : null}
 
           <Row>
-            <Col lg={6}>
+            <Col xl={6}>
               <Card>
                 <CardBody>
                   <CardTitle>Single image lightbox</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <p className="card-title-desc">
                     Three simple popups with different scaling settings.
-                  </CardSubtitle>
+                  </p>
                   <Row>
                     <Col className="col-6">
                       <div>
-                        <h5 className="mt-0 font-14 m-b-15">
+                        <h5 className="mt-0 font-size-14">
                           Fits (Horz/Vert)
                         </h5>
                         <img
@@ -165,14 +172,14 @@ const UiLightbox = () => {
               </Card>
             </Col>
 
-            <Col lg={6}>
+            <Col xl={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Lightbox gallery</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Lightbox gallery</CardTitle>
+                  <p className="card-title-desc">
                     In this example lazy-loading of images is enabled for the
                     next image based on move direction.{" "}
-                  </CardSubtitle>
+                  </p>
                   <div className="popup-gallery d-flex flex-wrap">
                     <div className="img-fluid float-left">
                       <img
@@ -250,10 +257,10 @@ const UiLightbox = () => {
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Zoom Gallery</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Zoom Gallery</CardTitle>
+                  <p className="card-title-desc">
                     Zoom effect works only with images.
-                  </CardSubtitle>
+                  </p>
 
                   <div className="zoom-gallery">
                     <img
@@ -284,16 +291,16 @@ const UiLightbox = () => {
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Popup with video or map</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Popup with video or map</CardTitle>
+                  <p className="card-title-desc">
                     In this example lazy-loading of images is enabled for the
                     next image based on move direction.{" "}
-                  </CardSubtitle>
+                  </p>
 
                   <Row>
                     <Col>
                       <Button
-                        className="btn btn-secondary"
+                        className="btn btn-secondary me-1"
                         onClick={() => {
                           setisOpen(!isOpen);
                         }}
@@ -301,13 +308,20 @@ const UiLightbox = () => {
                         Open Youtube Video
                       </Button>{" "}
                       <Button
-                        className="btn btn-secondary"
+                        className="btn btn-secondary me-1"
                         onClick={() => {
                           setisOpen1(!isOpen1);
                         }}
                       >
                         Open Vimeo Video
                       </Button>{" "}
+                      <Button
+                        onClick={() => {
+                          tog_map()
+                        }}
+                        className="popup-gmaps btn btn-secondary mo-mb-2">
+                        Open Google Map
+                      </Button>
                       <ModalVideo
                         videoId="L61p2uyiMSo"
                         channel="youtube"
@@ -324,6 +338,37 @@ const UiLightbox = () => {
                           setisOpen1(false);
                         }}
                       />
+                      <Modal
+                        centered
+                        isOpen={map}
+                        size="lg"
+                        toggle={() => {
+                          tog_map()
+                        }}
+                      >
+                        <ModalHeader toggle={tog_map}>
+                          Google Map
+                        </ModalHeader>
+                        <ModalBody>
+                          <div
+                            id="gmaps-markers"
+                            className="gmaps"
+                            style={{ position: "relative" }}
+                          >
+                            <Map
+                              google={props.google}
+                              zoom={14}
+                              style={{ width: "100%", height: "100%" }}
+                            >
+                              <InfoWindow>
+                                <div>
+                                  <h1>{selectedPlace.name}</h1>
+                                </div>
+                              </InfoWindow>
+                            </Map>
+                          </div>
+                        </ModalBody>
+                      </Modal>
                     </Col>
                   </Row>
                 </CardBody>
@@ -331,7 +376,7 @@ const UiLightbox = () => {
 
               <Card>
                 <CardBody>
-                  <CardTitle className="mb-4">Popup with form</CardTitle>
+                  <CardTitle className="h4 mb-4">Popup with form</CardTitle>
                   <div>
                     <Link
                       onClick={() => {
@@ -345,16 +390,18 @@ const UiLightbox = () => {
                   </div>
 
                   <Modal
-                    size="lg"
+                    size="xl"
                     isOpen={modal}
                     toggle={() => {
                       setmodal(!modal);
                     }}
+                    centered
                   >
                     <ModalHeader
                       toggle={() => {
                         setmodal(!modal);
                       }}
+                      className="h4"
                     >
                       Form
                     </ModalHeader>
@@ -429,4 +476,13 @@ const UiLightbox = () => {
   );
 };
 
-export default UiLightbox;
+export default connect(
+  null,
+  {}
+)(
+  GoogleApiWrapper({
+    apiKey: "AIzaSyAbvyBxmMbFhrzP9Z8moyYr6dCr-pzjhBE",
+    LoadingContainer: LoadingContainer,
+    v: "3",
+  })(UiLightbox)
+)

@@ -57,7 +57,7 @@ const CardInvoice = ({ data }) => {
                   <ul className="list-inline mb-0">
                     <li className="list-inline-item me-3">
                       <h5 className="font-size-14" id="amountTooltip">
-                        <i className="bx bx-money me-1 text-muted" />$
+                        <i className="bx bx-money me-1 text-muted" /> ${" "}
                         {data.invoicePrice}
                         <UncontrolledTooltip
                           placement="top"
@@ -66,10 +66,10 @@ const CardInvoice = ({ data }) => {
                           Amount
                         </UncontrolledTooltip>
                       </h5>
-                    </li>
+                    </li>{" "}
                     <li className="list-inline-item">
                       <h5 className="font-size-14" id="duedateTooltip">
-                        <i className="bx bx-calendar me-1 text-muted" />
+                        <i className="bx bx-calendar me-1 text-muted" />{" "}
                         {data.date}
                         <UncontrolledTooltip
                           placement="top"

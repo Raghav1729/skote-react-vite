@@ -1,5 +1,17 @@
 import React, { useState } from "react";
-import { Button, Card, CardBody, Col, Container, Form, FormGroup, Input, InputGroup, Label, Row } from "reactstrap";
+import {
+  Button,
+  Card,
+  CardBody,
+  Col,
+  Container,
+  Form,
+  FormGroup,
+  Input,
+  InputGroup,
+  Label,
+  Row,
+} from "reactstrap";
 
 import { SketchPicker } from "react-color";
 import ColorPicker from "@vtaits/react-color-picker";
@@ -29,7 +41,7 @@ const Offsymbol = () => {
         height: "100%",
         fontSize: 12,
         color: "#fff",
-        paddingRight: 2
+        paddingRight: 2,
       }}
     >
       {" "}
@@ -48,7 +60,7 @@ const OnSymbol = () => {
         height: "100%",
         fontSize: 12,
         color: "#fff",
-        paddingRight: 2
+        paddingRight: 2,
       }}
     >
       {" "}
@@ -63,17 +75,17 @@ const optionGroup = [
     options: [
       { label: "Mustard", value: "Mustard" },
       { label: "Ketchup", value: "Ketchup" },
-      { label: "Relish", value: "Relish" }
-    ]
+      { label: "Relish", value: "Relish" },
+    ],
   },
   {
     label: "Camping",
     options: [
       { label: "Tent", value: "Tent" },
       { label: "Flashlight", value: "Flashlight" },
-      { label: "Toilet Paper", value: "Toilet Paper" }
-    ]
-  }
+      { label: "Toilet Paper", value: "Toilet Paper" },
+    ],
+  },
 ];
 
 const optionGroup1 = [
@@ -82,17 +94,17 @@ const optionGroup1 = [
     options: [
       { label: "Mustard", value: "Mustard" },
       { label: "Ketchup", value: "Ketchup" },
-      { label: "Relish", value: "Relish" }
-    ]
+      { label: "Relish", value: "Relish" },
+    ],
   },
   {
     label: "Camping",
     options: [
       { label: "Tent", value: "Tent" },
       { label: "Flashlight", value: "Flashlight" },
-      { label: "Toilet Paper", value: "Toilet Paper" }
-    ]
-  }
+      { label: "Toilet Paper", value: "Toilet Paper" },
+    ],
+  },
 ];
 
 const optionGroup2 = [
@@ -101,27 +113,27 @@ const optionGroup2 = [
     options: [
       { label: "Mustard", value: "Mustard" },
       { label: "Ketchup", value: "Ketchup" },
-      { label: "Relish", value: "Relish" }
-    ]
+      { label: "Relish", value: "Relish" },
+    ],
   },
   {
     label: "Camping",
     options: [
       { label: "Tent", value: "Tent" },
       { label: "Flashlight", value: "Flashlight" },
-      { label: "Toilet Paper", value: "Toilet Paper" }
-    ]
-  }
+      { label: "Toilet Paper", value: "Toilet Paper" },
+    ],
+  },
 ];
 
 const FormAdvanced = () => {
+  //meta title
+  document.title =
+    "Form Advanced | Skote - Vite React Admin & Dashboard Template";
 
-   //meta title
-   document.title = "Form Advanced | Skote - Vite React Admin & Dashboard Template"
-
-  const [sq1, setsq1] = useState(false);
-  const [sq2, setsq2] = useState(false);
-  const [sq3, setsq3] = useState(false);
+  const [sq1, setsq1] = useState(true);
+  const [sq2, setsq2] = useState(true);
+  const [sq3, setsq3] = useState(true);
   const [color, setcolor] = useState("red");
   const [colorRgb, setcolorRgb] = useState("red");
   const [colorCust, setcolorCust] = useState("red");
@@ -165,6 +177,7 @@ const FormAdvanced = () => {
 
   const [data_attr, setdata_attr] = useState(56);
   const [postfix, setpostfix] = useState(20);
+  const [withpostfix, setwithpostfix] = useState(20);
   const [empty_val, setempty_val] = useState(0);
   const [not_attr, setnot_attr] = useState(15);
   const [explicit_val, setexplicit_val] = useState(33);
@@ -177,16 +190,16 @@ const FormAdvanced = () => {
   const [selectedMulti2, setselectedMulti2] = useState(null);
   const [selectedMulti3, setselectedMulti3] = useState(null);
 
-  const onDrag = c1 => {
+  const onDrag = (c1) => {
     setcolor(c1);
   };
-  const onDragRgb = c1 => {
+  const onDragRgb = (c1) => {
     setcolorRgb(c1);
   };
-  const onDragCust = c1 => {
+  const onDragCust = (c1) => {
     setcolorCust(c1);
   };
-  const handleHor = color => {
+  const handleHor = (color) => {
     setcolorHor(color.hex);
   };
 
@@ -194,7 +207,7 @@ const FormAdvanced = () => {
     setdisplay_RGBA(!display_RGBA);
   }
 
-  const onSwatchHover_RGBA = color => {
+  const onSwatchHover_RGBA = (color) => {
     const format =
       "rgba(" +
       color.rgb.r +
@@ -307,7 +320,7 @@ const FormAdvanced = () => {
       "September",
       "October",
       "November",
-      "December"
+      "December",
     ];
     const d = new Date();
     const current_month = months[d.getMonth()];
@@ -327,7 +340,7 @@ const FormAdvanced = () => {
       "Sep",
       "Oct",
       "Nov",
-      "Dec"
+      "Dec",
     ];
     const d = new Date();
     const current_month_short = months[d.getMonth()];
@@ -342,7 +355,7 @@ const FormAdvanced = () => {
       "Wednesday",
       "Thursday",
       "Friday",
-      "Saturday"
+      "Saturday",
     ];
     const d = new Date();
     const current_day = day[d.getDay()];
@@ -398,7 +411,7 @@ const FormAdvanced = () => {
                               handleSelectGroup();
                             }}
                             options={optionGroup}
-                            classNamePrefix="select2-selection"
+                            className="select2-selection"
                           />
                         </div>
                         <div className="mb-3">
@@ -412,12 +425,12 @@ const FormAdvanced = () => {
                               handleMulti();
                             }}
                             options={optionGroup}
-                            classNamePrefix="select2-selection"
+                            className="select2-selection"
                           />
                         </div>
 
                         <div>
-                          <Label>Disable</Label>
+                          <Label>Search Disable</Label>
                           <Select
                             value={selectedMulti1}
                             isMulti={true}
@@ -425,38 +438,34 @@ const FormAdvanced = () => {
                               handleMulti1();
                             }}
                             options={optionGroup}
-                            classNamePrefix="select2-selection"
-                            isDisabled={true}
+                            className="select2-selection"
+                            // isDisabled={true}
                           />
                         </div>
                       </Col>
 
                       <Col lg="6">
                         <div className="mb-3 ajax-select mt-3 mt-lg-0 select2-container">
-                          <Label>Loading</Label>
+                          <Label>Ajax (remote data)</Label>
                           <Select
                             value={selectedMulti2}
-                            isMulti={true}
                             onChange={() => {
                               handleMulti2();
                             }}
                             options={optionGroup1}
-                            classNamePrefix="select2-selection"
+                            className="select2-selection"
                             isLoading={true}
                           />
                         </div>
                         <div className="mb-3 templating-select select2-container">
-                          <label className="control-label">Animated</label>
+                          <label className="control-label">Templating</label>
                           <Select
                             value={selectedMulti3}
-                            isMulti={true}
                             onChange={() => {
                               handleMulti3();
                             }}
                             options={optionGroup2}
-                            classNamePrefix="select2-selection"
-                            closeMenuOnSelect={false}
-                            components={animatedComponents}
+                            className="select2-selection"
                           />
                         </div>
                       </Col>
@@ -500,9 +509,10 @@ const FormAdvanced = () => {
                     </div>
 
                     <div className="mb-3">
-                      <Label>With custom options - RGBA</Label>
+                      <Label>Show Alpha</Label>
                       <Input
                         type="text"
+                        id="colorpicker-showalpha"
                         className="colorpicker-rgba form-control"
                         value={colorRGBA}
                         onClick={handleRGBA}
@@ -540,7 +550,7 @@ const FormAdvanced = () => {
                               style={{
                                 height: "16px",
                                 width: "16px",
-                                background: colorRgb
+                                background: colorRgb,
                               }}
                             />
                           </span>
@@ -608,7 +618,7 @@ const FormAdvanced = () => {
                           options={{
                             enableTime: true,
                             noCalendar: true,
-                            dateFormat: "H:i"
+                            dateFormat: "H:i",
                           }}
                         />
                         <div className="input-group-append">
@@ -629,7 +639,7 @@ const FormAdvanced = () => {
                             enableTime: true,
                             noCalendar: true,
                             dateFormat: "H:i",
-                            time_24hr: true
+                            time_24hr: true,
                           }}
                         />
                         <div className="input-group-append">
@@ -650,7 +660,7 @@ const FormAdvanced = () => {
                           options={{
                             enableTime: true,
                             noCalendar: true,
-                            dateFormat: "H:i"
+                            dateFormat: "H:i",
                           }}
                         />
                         <div className="input-group-append">
@@ -682,7 +692,7 @@ const FormAdvanced = () => {
                           options={{
                             altInput: true,
                             altFormat: "F j, Y",
-                            dateFormat: "Y-m-d"
+                            dateFormat: "Y-m-d",
                           }}
                         />
                       </InputGroup>
@@ -696,7 +706,7 @@ const FormAdvanced = () => {
                           options={{
                             altInput: true,
                             altFormat: "F j, Y",
-                            dateFormat: "Y-m-d"
+                            dateFormat: "Y-m-d",
                           }}
                         />
                       </InputGroup>
@@ -712,7 +722,7 @@ const FormAdvanced = () => {
                             altInput: true,
                             altFormat: "F j, Y",
                             mode: "multiple",
-                            dateFormat: "Y-m-d"
+                            dateFormat: "Y-m-d",
                           }}
                         />
                       </div>
@@ -726,7 +736,7 @@ const FormAdvanced = () => {
                           placeholder="dd M,yyyy"
                           options={{
                             mode: "range",
-                            dateFormat: "Y-m-d"
+                            dateFormat: "Y-m-d",
                           }}
                         />
                       </InputGroup>
@@ -741,7 +751,7 @@ const FormAdvanced = () => {
                           inline: true,
                           altInput: true,
                           altFormat: "F j, Y",
-                          dateFormat: "Y-m-d"
+                          dateFormat: "Y-m-d",
                         }}
                       />
                     </div>
@@ -770,7 +780,7 @@ const FormAdvanced = () => {
                     type="text"
                     maxLength="25"
                     name="defaultconfig"
-                    onChange={e => {
+                    onChange={(e) => {
                       threshholdDefault(e);
                     }}
                     id="defaultconfig"
@@ -790,7 +800,7 @@ const FormAdvanced = () => {
                     <Input
                       type="text"
                       maxLength={max_len}
-                      onChange={e => {
+                      onChange={(e) => {
                         threshholdchange(e);
                       }}
                       name="thresholdconfig"
@@ -812,22 +822,12 @@ const FormAdvanced = () => {
                     <Input
                       type="text"
                       maxLength="25"
-                      onChange={e => {
+                      onChange={(e) => {
                         optionchange(e);
                       }}
                       name="alloptions"
                       id="alloptions"
                     />
-                    {disbadge ? (
-                      <span className="badgecount">
-                        You Types{" "}
-                        <span className="badge bg-success">
-                          {optioncount}
-                        </span>{" "}
-                        out of <span className="badge bg-success">25</span>{" "}
-                        chars available
-                      </span>
-                    ) : null}
                   </div>
 
                   <div className="mt-3">
@@ -840,7 +840,7 @@ const FormAdvanced = () => {
                     <Input
                       type="text"
                       maxLength="25"
-                      onChange={e => {
+                      onChange={(e) => {
                         placementchange(e);
                       }}
                       name="placement"
@@ -865,7 +865,7 @@ const FormAdvanced = () => {
                     <Input
                       type="textarea"
                       id="textarea"
-                      onChange={e => {
+                      onChange={(e) => {
                         textareachange(e);
                       }}
                       maxLength="225"
@@ -960,6 +960,45 @@ const FormAdvanced = () => {
                         </span>
                       </InputGroup>
                     </div>
+
+                    <div className="mb-3">
+                      <Label>With prefix</Label>
+                      <InputGroup>
+                        <span
+                          className="input-group-btn input-group-prepend"
+                          onClick={() => {
+                            setwithpostfix(withpostfix - 1);
+                          }}
+                        >
+                          <Button type="button" color="primary">
+                            <i className="mdi mdi-minus" />
+                          </Button>
+                        </span>
+                        <span className="input-group-append">
+                          <span className="input-group-text">$</span>
+                        </span>
+                        <Input
+                          type="number"
+                          className="form-control"
+                          value={withpostfix}
+                          placeholder="number"
+                          readOnly
+                        />
+                        <span className="input-group-append"></span>
+                        <span className="input-group-append">
+                          <Button
+                            type="button"
+                            onClick={() => {
+                              setwithpostfix(withpostfix + 1);
+                            }}
+                            color="primary"
+                          >
+                            <i className="mdi mdi-plus" />
+                          </Button>
+                        </span>
+                      </InputGroup>
+                    </div>
+
                     <div className="mb-3">
                       <Label>Init with empty value:</Label>
                       <InputGroup>
@@ -1187,10 +1226,8 @@ const FormAdvanced = () => {
                               type="checkbox"
                               id="square-switch1"
                               switch="none"
-                              checked={sq1}
-                              onChange={() => {
-                                setsq1(!sq1);
-                              }}
+                              defaultChecked={sq1}
+                              onChange={() => setsq1(!sq1)}
                             />
                             <label
                               htmlFor="square-switch1"
@@ -1203,10 +1240,8 @@ const FormAdvanced = () => {
                               type="checkbox"
                               id="square-switch2"
                               switch="info"
-                              checked={sq2}
-                              onChange={() => {
-                                setsq2(!sq2);
-                              }}
+                              defaultChecked={sq2}
+                              onChange={() => setsq2(!sq2)}
                             />
                             <label
                               htmlFor="square-switch2"
@@ -1219,10 +1254,8 @@ const FormAdvanced = () => {
                               type="checkbox"
                               id="square-switch3"
                               switch="bool"
-                              checked={sq3}
-                              onChange={() => {
-                                setsq3(!sq3);
-                              }}
+                              defaultChecked={sq3}
+                              onChange={() => setsq3(!sq3)}
                             />
                             <label
                               htmlFor="square-switch3"
@@ -1255,7 +1288,7 @@ const FormAdvanced = () => {
                               placeholder="Pick a date"
                               options={{
                                 altInput: true,
-                                dateFormat: "d-m-y"
+                                dateFormat: "d-m-y",
                               }}
                             />
                             <div className="input-group-append">

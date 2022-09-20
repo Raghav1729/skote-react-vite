@@ -28,7 +28,7 @@ const productListvar = [
     id: 1,
     img: img1,
     name: "Half sleeve T-shirt",
-    color: "Green",
+    color: "Maroon",
     price: "450",
     data_attr: 2,
     total: 900,
@@ -36,16 +36,16 @@ const productListvar = [
   {
     id: 2,
     img: img2,
-    name: "Black color T-shirt",
-    color: "Black",
+    name: "Light blue T-shirt",
+    color: "Light blue",
     price: "225",
-    data_attr: 6,
+    data_attr: 1,
     total: 225,
   },
   {
     id: 3,
     img: img3,
-    name: "Printed T-shirt",
+    name: "Black Color T-shirt",
     color: "Black",
     price: "152",
     data_attr: 2,
@@ -54,7 +54,7 @@ const productListvar = [
   {
     id: 4,
     img: img4,
-    name: "Smiley Plain T-shirt",
+    name: "Hoodie (Blue)",
     color: "Blue",
     price: "145",
     data_attr: 2,
@@ -63,16 +63,16 @@ const productListvar = [
   {
     id: 5,
     img: img5,
-    name: "Full sleeve T-Shirt",
+    name: "Half sleeve T-Shirt",
     color: "Light orange",
     price: "138",
-    data_attr: 8,
+    data_attr: 1,
     total: 138,
   },
   {
     id: 6,
     img: img6,
-    name: "Sky blue color T-shirt",
+    name: "Green color T-shirt",
     color: "Green",
     price: "152",
     data_attr: 2,
@@ -244,7 +244,7 @@ const EcommerceCart = () => {
                         </div>
 
                         <div>
-                          <i className="bx bx-chip h1 text-warning" />
+                          <i className="bx bx-chip h1 text-warning" style={{lineHeight:1}}/>
                         </div>
                       </div>
 

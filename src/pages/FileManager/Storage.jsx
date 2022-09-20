@@ -1,11 +1,57 @@
-import React from "react"
-import { Link } from "react-router-dom"
-import PropTypes from "prop-types"
-import { Card, CardBody } from "reactstrap"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { Card, CardBody } from "reactstrap";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../components/Common/ChartsDynamicColor";
 
-const Storage = (props) => {
-  const { options, series } = props
+const Storage = ({ dataColors }) => {
+  const apexfileManagerChartColors = getChartColorsArray(dataColors);
+  const series = [76];
+  const options = {
+    chart: {
+      height: 150,
+      type: "radialBar",
+      sparkline: {
+        enabled: true,
+      },
+    },
+    colors: apexfileManagerChartColors,
+    plotOptions: {
+      radialBar: {
+        startAngle: -90,
+        endAngle: 90,
+        track: {
+          background: "#e7e7e7",
+          strokeWidth: "97%",
+          margin: 5, // margin is in pixels
+        },
+
+        hollow: {
+          size: "60%",
+        },
+
+        dataLabels: {
+          name: {
+            show: false,
+          },
+          value: {
+            offsetY: -2,
+            fontSize: "16px",
+          },
+        },
+      },
+    },
+    grid: {
+      padding: {
+        top: -10,
+      },
+    },
+    stroke: {
+      dashArray: 3,
+    },
+    labels: ["Storage"],
+  };
   return (
     <React.Fragment>
       <Card className="filemanager-sidebar ms-lg-2">
@@ -150,13 +196,12 @@ const Storage = (props) => {
         </CardBody>
       </Card>
     </React.Fragment>
-  )
-}
-
+  );
+};
 
 Storage.propTypes = {
   options: PropTypes.any,
-  series: PropTypes.any
-}
+  series: PropTypes.any,
+};
 
-export default Storage
+export default Storage;

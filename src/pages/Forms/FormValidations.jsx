@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   Row,
   Col,
@@ -23,17 +24,20 @@ import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const FormValidations = () => {
 
+   //meta title
+   document.title="Form Validation | Skote - Vite React Admin & Dashboard Template";
+
   // Form validation 
   const validation = useFormik({
     // enableReinitialize : use this flag when initial values needs to be changed
     enableReinitialize: true,
 
     initialValues: {
-      firstname: '',
-      lastname: '',
-      city: '',
+      firstname: 'Mark',
+      lastname: 'Otto',
+      city: 'City',
       state: '',
-      zip: '',
+      zip: 'Zip',
     },
     validationSchema: Yup.object({
       firstname: Yup.string().required("Please Enter Your First Name"),
@@ -114,6 +118,7 @@ const FormValidations = () => {
     initialValues: {
       min_Length: '',
       max_Length: '',
+      range_Length: '',
       min_Value: '',
       max_Value: '',
       range_Value: '',
@@ -126,6 +131,10 @@ const FormValidations = () => {
       max_Length: Yup.string()
         .max(6, "Must be exactly 6 digits")
         .required("Max 6 chars"),
+        range_Length: Yup.string().required(
+          "range between 5 to 10"
+        ).min(5, "This value should be between 5 and 10")
+        .max(10, "This value should be between 5 and 10"),
       min_Value: Yup.string().required("Min Value 6").test('val', 'This value should be greater than or equal to 6', val => val >= 6),
       max_Value: Yup.string().required("Max Value 6").matches(/^[0-6]+$/, "This value should be lower than or equal to 6."),
       range_Value: Yup.string().required(
@@ -207,8 +216,8 @@ const FormValidations = () => {
   return (
     <React.Fragment>
       <div className="page-content">
-      <Breadcrumbs title="Forms" breadcrumbItem="Form Validation" />
         <Container fluid={true}>
+          <Breadcrumbs title="Forms" breadcrumbItem="Form Validation" />
           <Row>
             <Col xl="6">
               <Card>
@@ -271,27 +280,7 @@ const FormValidations = () => {
                       </Col>
                     </Row>
                     <Row>
-                      <Col md="4">
-                        <FormGroup className="mb-3">
-                          <Label htmlFor="validationCustom03">City</Label>
-                          <Input
-                            name="city"
-                            placeholder="City"
-                            type="text"
-                            className="form-control"
-                            onChange={validation.handleChange}
-                            onBlur={validation.handleBlur}
-                            value={validation.values.city || ""}
-                            invalid={
-                              validation.touched.city && validation.errors.city ? true : false
-                            }
-                          />
-                          {validation.touched.city && validation.errors.city ? (
-                            <FormFeedback type="invalid">{validation.errors.city}</FormFeedback>
-                          ) : null}
-                        </FormGroup>
-                      </Col>
-                      <Col md="4">
+                    <Col md="4">
                         <FormGroup className="mb-3">
                           <Label htmlFor="validationCustom04">State</Label>
                           <Input
@@ -312,6 +301,27 @@ const FormValidations = () => {
                           ) : null}
                         </FormGroup>
                       </Col>
+                      <Col md="4">
+                        <FormGroup className="mb-3">
+                          <Label htmlFor="validationCustom03">City</Label>
+                          <Input
+                            name="city"
+                            placeholder="City"
+                            type="text"
+                            className="form-control"
+                            onChange={validation.handleChange}
+                            onBlur={validation.handleBlur}
+                            value={validation.values.city || ""}
+                            invalid={
+                              validation.touched.city && validation.errors.city ? true : false
+                            }
+                          />
+                          {validation.touched.city && validation.errors.city ? (
+                            <FormFeedback type="invalid">{validation.errors.city}</FormFeedback>
+                          ) : null}
+                        </FormGroup>
+                      </Col>
+                      
                       <Col md="4">
                         <FormGroup className="mb-3">
                           <Label htmlFor="validationCustom05">Zip</Label>
@@ -769,6 +779,23 @@ const FormValidations = () => {
                       ) : null}
                     </div>
                     <div className="mb-3">
+                      <Label className="form-label">Range Length</Label>
+                      <Input
+                        name="range_Length"
+                        placeholder="Text between 5 - 10 chars length"
+                        type="number"
+                        onChange={rangeValidation.handleChange}
+                        onBlur={rangeValidation.handleBlur}
+                        value={rangeValidation.values.range_Length || ""}
+                        invalid={
+                          rangeValidation.touched.range_Length && rangeValidation.errors.range_Length ? true : false
+                        }
+                      />
+                      {rangeValidation.touched.range_Length && rangeValidation.errors.range_Length ? (
+                        <FormFeedback type="invalid">{rangeValidation.errors.range_Length}</FormFeedback>
+                      ) : null}
+                    </div>
+                    <div className="mb-3">
                       <Label className="form-label">Min Value</Label>
                       <Input
                         name="min_Value"
@@ -786,6 +813,7 @@ const FormValidations = () => {
                         <FormFeedback type="invalid">{rangeValidation.errors.min_Value}</FormFeedback>
                       ) : null}
                     </div>
+                    
                     <div className="mb-3">
                       <Label className="form-label">Max Value</Label>
                       <Input
@@ -805,10 +833,11 @@ const FormValidations = () => {
                       ) : null}
                     </div>
                     <div className="mb-3">
-                      <Label className="form-label">Range Length</Label>
+                      <Label className="form-label">Range Value</Label>
                       <Input
                         name="range_Value"
-                        placeholder="Text between 5 - 10 chars length"
+                        placeholder="Number between 6 - 100"
+                        max={6}
                         type="number"
                         onChange={rangeValidation.handleChange}
                         onBlur={rangeValidation.handleBlur}

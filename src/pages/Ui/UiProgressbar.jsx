@@ -192,7 +192,7 @@ const UiProgressbar = () => {
                       <Progress striped color="primary" value={25}></Progress>
                     </div>
 
-                    <div className="mb-4">
+                    <div>
                       <Progress striped color="success" value={40}></Progress>
                     </div>
 

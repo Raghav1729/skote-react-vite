@@ -25,15 +25,15 @@ const BasicTable = () => {
           <Breadcrumbs title="Tables" breadcrumbItem="Basic Tables" />
 
           <Row>
-            <Col md={6}>
+            <Col xl={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Basic example</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Basic example</CardTitle>
+                  <p className="card-title-desc">
                     For basic styling—light padding and only horizontal
                     dividers—add the base className <code>.table</code> to any
                     <code>&lt;table&gt;</code>.
-                  </CardSubtitle>
+                  </p>
 
                   <div className="table-responsive">
                     <Table className="table mb-0">
@@ -74,11 +74,11 @@ const BasicTable = () => {
             <Col xl={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Dark table</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Dark table</CardTitle>
+                  <p className="card-title-desc">
                     You can also invert the colors—with light text on dark
                     backgrounds—with <code>.table-dark</code>.
-                  </CardSubtitle>
+                  </p>
 
                   <div className="table-responsive">
                     <Table className="table table-dark mb-0">
@@ -118,11 +118,11 @@ const BasicTable = () => {
           </Row>
 
           <Row>
-            <Col xl={6}>
+            <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Table head</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Table head</CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     Use one of two modifier className to make{" "}
                     <code>&lt;thead&gt;</code>s appear light or dark gray.
                   </CardSubtitle>
@@ -163,11 +163,11 @@ const BasicTable = () => {
               </Card>
             </Col>
 
-            <Col xl={6}>
+            <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Striped rows</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Striped rows</CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     Use <code>.table-striped</code> to add zebra-striping to any
                     table row within the <code>&lt;tbody&gt;</code>.
                   </CardSubtitle>
@@ -210,11 +210,56 @@ const BasicTable = () => {
           </Row>
 
           <Row>
+            <Col xl={12}>
+              <Card>
+                <CardBody>
+                  <CardTitle className="h4">Striped columns</CardTitle>
+                  <p className="card-title-desc">Use <code>.table-striped-columns</code>
+                    to add zebra-striping to any table column.</p>
+                  <div className="table-responsive">
+                    <Table className="table table-striped-columns mb-0">
+
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Bordered table</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Bordered table</CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     Add <code>.table-bordered</code> for borders on all sides of
                     the table and cells.
                   </CardSubtitle>
@@ -258,8 +303,8 @@ const BasicTable = () => {
             <Col xl={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Borderless table</CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Borderless table</CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     {" "}
                     Add <code>.table-borderless</code> for a table without
                     borders.
@@ -267,6 +312,92 @@ const BasicTable = () => {
 
                   <div className="table-responsive">
                     <Table className="table table-borderless mb-0">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+                  <h4 className="card-title">Table Border color</h4>
+                  <p className="card-title-desc">Add <code>.table-bordered</code> & <code>.border-*</code>
+                    for colored borders on all sides of the table and cells.</p>
+                  <div className="table-responsive">
+                    <Table className="table table-bordered border-primary mb-0">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>Mark</td>
+                          <td>Otto</td>
+                          <td>@mdo</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>Jacob</td>
+                          <td>Thornton</td>
+                          <td>@fat</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>Larry</td>
+                          <td>the Bird</td>
+                          <td>@twitter</td>
+                        </tr>
+                      </tbody>
+                    </Table>
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+
+            <Col xl={6}>
+              <Card>
+                <CardBody>
+                  <h4 className="card-title">Table Border color</h4>
+                  <p className="card-title-desc">Add <code>.table-bordered</code> & <code>.border-*</code> for colored borders on all sides of the table and cells.</p>
+
+                  <div className="table-responsive">
+                    <Table className="table table-bordered border-success mb-0">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -429,8 +560,8 @@ const BasicTable = () => {
             <Col xl={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Hoverable </CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Hoverable </CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     Add <code>.table-hover</code> to enable a hover state on
                     table rows within a <code>&lt;tbody&gt;</code>.
                   </CardSubtitle>
@@ -474,8 +605,8 @@ const BasicTable = () => {
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Small table </CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Small table </CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     {" "}
                     Add <code>.table-sm</code> to make tables more compact by
                     cutting cell padding in half.
@@ -533,8 +664,8 @@ const BasicTable = () => {
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Contextual className </CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Contextual className </CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     Use contextual className to color table rows or individual
                     cells.
                   </CardSubtitle>
@@ -594,8 +725,8 @@ const BasicTable = () => {
             <Col lg={6}>
               <Card>
                 <CardBody>
-                  <CardTitle>Captions </CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Captions </CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     A <code>&lt;caption&gt;</code> functions like a heading for
                     a table. It helps users with screen readers to find a table
                     and understand what it’s about and decide if they want to
@@ -644,8 +775,8 @@ const BasicTable = () => {
             <Col lg={12}>
               <Card>
                 <CardBody>
-                  <CardTitle>Responsive table </CardTitle>
-                  <CardSubtitle className="mb-3">
+                  <CardTitle className="h4">Responsive table </CardTitle>
+                  <CardSubtitle className="card-title-desc">
                     Create responsive tables by wrapping any <code>.table</code>{" "}
                     in <code>.table-responsive</code>
                     to make them scroll horizontally on small devices (under

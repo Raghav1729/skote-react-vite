@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardBody, Col, Container, Row } from 'reactstrap';
 
+//Import Breadcrumb
+import Breadcrumbs from "../../components/Common/Breadcrumb";
+
 //import images
 import smallImage from "../../assets/images/small/img-1.jpg";
 
@@ -10,10 +13,11 @@ const UiPlaceholders = () => {
     //meta title
     document.title = "Placeholders | Skote - Vite React Admin & Dashboard Template";
 
-    return (
+    return (    
         <React.Fragment>
             <div className="page-content">
                 <Container fluid={true}>
+                    <Breadcrumbs title="Ui Elements" breadcrumbItem="Placeholders" />
                     <Row>
                         <Col xl={6}>
                             <Card>
@@ -36,21 +40,21 @@ const UiPlaceholders = () => {
                                         </Col>
 
                                         <Col lg={5}>
-                                            <Card className="shadow-none border mb-0" aria-hidden="true">
-                                                <img src={smallImage} className="card-img-top" alt="..." />
-                                                <CardBody>
-                                                    <h5 className="card-title placeholder-glow">
-                                                        <span className="placeholder col-6"></span>
-                                                    </h5>
-                                                    <p className="card-text placeholder-glow">
-                                                        <span className="placeholder col-7"></span>
-                                                        <span className="placeholder col-4"></span>
-                                                        <span className="placeholder col-4"></span>
-                                                        <span className="placeholder col-6"></span>
-                                                        <span className="placeholder col-8"></span>
-                                                    </p>
-                                                    <Link to="#" tabIndex="-1" className="btn btn-primary disabled placeholder col-6"></Link>
-                                                </CardBody>
+                                            <Card className="card shadow-none border mb-0" aria-hidden="true">
+                                                <img src={smallImage} className="card-img-top" alt="..."/>
+                                                    <CardBody>
+                                                        <h5 className="card-title placeholder-glow">
+                                                            <span className="placeholder col-6"></span>
+                                                        </h5>
+                                                        <p className="card-text placeholder-glow">
+                                                            <span className="placeholder col-7"></span>
+                                                            <span className="placeholder col-4"></span>
+                                                            <span className="placeholder col-4"></span>
+                                                            <span className="placeholder col-6"></span>
+                                                            <span className="placeholder col-8"></span>
+                                                        </p>
+                                                        <Link to="#" className="btn btn-primary disabled placeholder col-6"></Link>
+                                                    </CardBody>
                                             </Card>
                                         </Col>
                                     </Row>
@@ -69,7 +73,7 @@ const UiPlaceholders = () => {
                                             <span className="placeholder col-6"></span>
                                         </p>
 
-                                        <Link to="#" tabIndex="-1" className="btn btn-primary disabled placeholder col-4" aria-hidden="true"></Link>
+                                        <Link to="#" className="btn btn-primary disabled placeholder col-4" aria-hidden="true"></Link>
                                     </div>
                                 </CardBody>
                             </Card>
@@ -80,8 +84,8 @@ const UiPlaceholders = () => {
                                     <p className="card-title-desc">You can change the <code>width</code> through grid column classes, width utilities, or inline styles.</p>
 
                                     <div>
-                                        <span className="placeholder col-6"></span>
-                                        <span className="placeholder w-75"></span>
+                                        <span className="placeholder col-6"></span> 
+                                        <span className="placeholder w-75"></span><br/>
                                         <span className="placeholder" style={{ width: "25%" }}></span>
                                     </div>
                                 </CardBody>

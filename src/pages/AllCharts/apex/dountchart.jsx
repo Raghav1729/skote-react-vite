@@ -1,11 +1,14 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const dountchart = () => {
-  const series = [44, 55, 41, 17, 15]
+const dountchart = ({ dataColors }) => {
+  const dountApexChartColors = getChartColorsArray(dataColors);
+
+  const series = [44, 55, 41, 17, 15];
   const options = {
     labels: ["Series 1", "Series 2", "Series 3", "Series 4", "Series 5"],
-    colors: ["#34c38f", "#556ee6", "#f46a6a", "#50a5f1", "#f1b44c"],
+    colors: dountApexChartColors,
     legend: {
       show: true,
       position: "bottom",
@@ -29,16 +32,16 @@ const dountchart = () => {
         },
       },
     ],
-  }
+  };
 
   return (
     <ReactApexChart
       options={options}
       series={series}
       type="donut"
-      height="380"
+      height="320"
     />
-  )
-}
+  );
+};
 
-export default dountchart
+export default dountchart;

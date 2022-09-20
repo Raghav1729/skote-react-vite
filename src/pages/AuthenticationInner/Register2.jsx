@@ -32,7 +32,7 @@ const Register2 = () => {
       password: Yup.string().required("Please Enter Your Password"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      // console.log(values);
     }
   });
   return (
@@ -121,7 +121,7 @@ const Register2 = () => {
                             <Input
                               name="password"
                               type="password"
-                              placeholder="Enter Password"
+                              placeholder="Enter password"
                               onChange={validation.handleChange}
                               onBlur={validation.handleBlur}
                               value={validation.values.password || ""}
@@ -143,9 +143,9 @@ const Register2 = () => {
                             </p>
                           </div>
 
-                          <div className="mt-4">
+                          <div className="mt-4 d-grid">
                             <button
-                              className="btn btn-primary btn-block "
+                              className="btn btn-primary waves-effect waves-light "
                               type="submit"
                             >
                               Register
@@ -164,7 +164,7 @@ const Register2 = () => {
                               <li className="list-inline-item">
                                 <Link
                                   to="#"
-                                  className="social-list-item bg-primary text-white border-primary"
+                                  className="social-list-item bg-primary text-white border-primary me-1"
                                 >
                                   <i className="mdi mdi-facebook"></i>
                                 </Link>
@@ -172,7 +172,7 @@ const Register2 = () => {
                               <li className="list-inline-item">
                                 <Link
                                   to="#"
-                                  className="social-list-item bg-info text-white border-info"
+                                  className="social-list-item bg-info text-white border-info me-1"
                                 >
                                   <i className="mdi mdi-twitter"></i>
                                 </Link>
@@ -194,7 +194,7 @@ const Register2 = () => {
                             Already have an account ?{" "}
                             <Link
                               to="pages-login-2"
-                              className="font-weight-medium text-primary"
+                              className="fw-medium text-primary"
                             >
                               {" "}
                               Login

@@ -16,9 +16,7 @@ import avatar1 from "../../assets/images/users/avatar-1.jpg"
 function CardUser(props) {
   const [settingsMenu, setSettingsMenu] = useState(false)
   //Setting Menu
-  const toggleSettings = () => {
-    setSettingsMenu(settingsMenu)
-  }
+
 
   return (
     <React.Fragment>
@@ -81,7 +79,9 @@ function CardUser(props) {
                   <div className="clearfix mt-4 mt-lg-0">
                     <Dropdown
                       isOpen={settingsMenu}
-                      toggle={toggleSettings}
+                      toggle={() => {
+                        setSettingsMenu(!settingsMenu)
+                      }}
                       className="float-end"
                     >
                       <DropdownToggle tag="button" className="btn btn-primary">

@@ -1,7 +1,10 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const DashedLine = () => {
+const DashedLine = ({ dataColors }) => {
+  const dashedLineChartColors = getChartColorsArray(dataColors);
+
   const series = [
     {
       name: "Session Duration",
@@ -15,10 +18,10 @@ const DashedLine = () => {
       name: "Total Visits",
       data: [89, 56, 74, 98, 72, 38, 64, 46, 84, 58, 46, 49],
     },
-  ]
+  ];
   const options = {
     chart: { zoom: { enabled: !1 }, toolbar: { show: !1 } },
-    colors: ["#556ee6", "#f46a6a", "#34c38f"],
+    colors: dashedLineChartColors,
     dataLabels: { enabled: !1 },
     stroke: { width: [3, 4, 3], curve: "straight", dashArray: [0, 8, 5] },
     title: { text: "Page Statistics", align: "left" },
@@ -44,28 +47,28 @@ const DashedLine = () => {
         {
           title: {
             formatter: function (e) {
-              return e + " (mins)"
+              return e + " (mins)";
             },
           },
         },
         {
           title: {
             formatter: function (e) {
-              return e + " per session"
+              return e + " per session";
             },
           },
         },
         {
           title: {
             formatter: function (e) {
-              return e
+              return e;
             },
           },
         },
       ],
     },
     grid: { borderColor: "#f1f1f1" },
-  }
+  };
 
   return (
     <ReactApexChart
@@ -73,8 +76,9 @@ const DashedLine = () => {
       series={series}
       type="line"
       height="380"
+      className="apex-charts"
     />
-  )
-}
+  );
+};
 
-export default DashedLine
+export default DashedLine;

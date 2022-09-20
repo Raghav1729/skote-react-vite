@@ -18,7 +18,7 @@ import profileImg from "../../assets/images/profile-img.png";
 import logoImg from "../../assets/images/logo.svg";
 
 const Register = props => {
-  document.title="Register | Skote - Vite React Admin & Dashboard Template";
+  document.title = "Register | Skote - Vite React Admin & Dashboard Template";
 
   const dispatch = useDispatch();
 
@@ -46,7 +46,6 @@ const Register = props => {
     registrationError: state.Account.registrationError,
     loading: state.Account.loading,
   }));
-  console.log("user",user);
 
   useEffect(() => {
     dispatch(apiError(""));
@@ -57,7 +56,7 @@ const Register = props => {
 
       <div className="home-btn d-none d-sm-block">
         <Link to="/" className="text-dark">
-          <i className="fas fa-home h2" />
+          <i className="bx bx-home h2" />
         </Link>
       </div>
       <div className="account-pages my-5 pt-sm-5">

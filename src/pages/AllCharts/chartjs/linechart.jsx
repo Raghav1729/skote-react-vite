@@ -1,7 +1,9 @@
-import React from "react"
-import { Line } from "react-chartjs-2"
+import React from "react";
+import { Line } from "react-chartjs-2";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const LineChart = () => {
+const LineChart = ({ dataColors }) => {
+  var lineChartColor = getChartColorsArray(dataColors);
   const data = {
     labels: [
       "January",
@@ -20,17 +22,17 @@ const LineChart = () => {
         label: "Sales Analytics",
         fill: true,
         lineTension: 0.5,
-        backgroundColor: "rgba(85, 110, 230, 0.2)",
-        borderColor: "#556ee6",
+        backgroundColor: lineChartColor[0],
+        borderColor: lineChartColor[1],
         borderCapStyle: "butt",
         borderDash: [],
         borderDashOffset: 0.0,
         borderJoinStyle: "miter",
-        pointBorderColor: "#556ee6",
+        pointBorderColor: lineChartColor[1],
         pointBackgroundColor: "#fff",
         pointBorderWidth: 1,
         pointHoverRadius: 5,
-        pointHoverBackgroundColor: "#556ee6",
+        pointHoverBackgroundColor: lineChartColor[1],
         pointHoverBorderColor: "#fff",
         pointHoverBorderWidth: 2,
         pointRadius: 1,
@@ -59,7 +61,7 @@ const LineChart = () => {
         data: [80, 23, 56, 65, 23, 35, 85, 25, 92, 36],
       },
     ],
-  }
+  };
   var option = {
     scales: {
       yAxes: [
@@ -72,9 +74,9 @@ const LineChart = () => {
         },
       ],
     },
-  }
+  };
 
-  return <Line width={474} height={300} data={data} options={option} />
-}
+  return <Line width={751} height={300} data={data} options={option} />;
+};
 
-export default LineChart
+export default LineChart;

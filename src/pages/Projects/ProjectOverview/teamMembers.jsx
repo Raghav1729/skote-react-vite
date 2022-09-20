@@ -2,10 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Card, CardBody, CardTitle, Table } from "reactstrap"
 import { Link } from "react-router-dom"
-import { map } from "lodash"
-import images from "/src/assets/images"
 
-const TeamMembers = ({ team }) => {
+import { OverviewTeamMember } from "../../../common/data";
+
+const TeamMembers = () => {
   return (
     <Card>
       <CardBody>
@@ -13,47 +13,31 @@ const TeamMembers = ({ team }) => {
 
         <div className="table-responsive">
           <Table className="table align-middle table-nowrap">
-            <tbody>
-              {map(team, (member, k) => (
-                <tr key={"_member_" + k}>
+            {OverviewTeamMember.map((item, key) => (
+              <tbody key={key}>
+                <tr>
+
                   <td style={{ width: "50px" }}>
-                    {member.img !== "Null" ? (
-                      <img
-                        src={images[member.img]}
-                        className="rounded-circle avatar-xs"
-                        alt=""
-                      />
-                    ) : (
+                    {item.img ?
+                      <img src={item.img} className="rounded-circle avatar-xs" alt="" />
+                      :
                       <div className="avatar-xs">
                         <span className="avatar-title rounded-circle bg-primary text-white font-size-16">
-                          {member.name.charAt(0)}
+                          {item.profile}
                         </span>
                       </div>
-                    )}
+                    }
                   </td>
-                  <td>
-                    <h5 className="font-size-14 m-0">
-                      <Link to="" className="text-dark">
-                        {member.fullname}
-                      </Link>
-                    </h5>
-                  </td>
+                  <td><h5 className="font-size-14 m-0"><Link to="#" className="text-dark">{item.title}</Link></h5></td>
                   <td>
                     <div>
-                      {map(member.skills, (skill, key) => (
-                        <Link
-                          to="#"
-                          className="badge bg-primary bg-soft text-primary font-size-11 me-1"
-                          key={"_skill_" + key}
-                        >
-                          {skill.name}
-                        </Link>
-                      ))}
+                      <Link to="#" className="badge bg-primary bg-soft text-primary font-size-11 me-1">{item.label_1}</Link>
+                      <Link to="#" className="badge bg-primary bg-soft text-primary font-size-11">{item.label_2}</Link>
                     </div>
                   </td>
                 </tr>
-              ))}
-            </tbody>
+              </tbody>
+            ))}
           </Table>
         </div>
       </CardBody>

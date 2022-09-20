@@ -1,13 +1,16 @@
-import React from "react"
-import ReactApexChart from "react-apexcharts"
+import React from "react";
+import ReactApexChart from "react-apexcharts";
+import getChartColorsArray from "../../../components/Common/ChartsDynamicColor";
 
-const ColumnWithDataLabels = () => {
+const ColumnWithDataLabels = ({ dataColors }) => {
+  const spineareaChartColors = getChartColorsArray(dataColors);
+
   const series = [
     {
       name: "Inflation",
       data: [2.5, 3.2, 5.0, 10.1, 4.2, 3.8, 3, 2.4, 4.0, 1.2, 3.5, 0.8],
     },
-  ]
+  ];
   const options = {
     chart: {
       toolbar: {
@@ -24,7 +27,7 @@ const ColumnWithDataLabels = () => {
     dataLabels: {
       enabled: true,
       formatter: function (val) {
-        return val + "%"
+        return val + "%";
       },
       offsetY: -20,
       style: {
@@ -33,7 +36,7 @@ const ColumnWithDataLabels = () => {
       },
     },
 
-    colors: ["#556ee6"],
+    colors: spineareaChartColors,
     grid: {
       borderColor: "#f1f1f1",
     },
@@ -101,7 +104,7 @@ const ColumnWithDataLabels = () => {
       labels: {
         show: false,
         formatter: function (val) {
-          return val + "%"
+          return val + "%";
         },
       },
     },
@@ -114,9 +117,15 @@ const ColumnWithDataLabels = () => {
         color: "#444",
       },
     },
-  }
+  };
   return (
-    <ReactApexChart options={options} series={series} type="bar" height={350} />
-  )
-}
-export default ColumnWithDataLabels
+    <ReactApexChart
+      options={options}
+      series={series}
+      type="bar"
+      height={350}
+      className="apex-charts"
+    />
+  );
+};
+export default ColumnWithDataLabels;

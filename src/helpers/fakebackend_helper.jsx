@@ -180,6 +180,12 @@ export const getInvoices = () => get(url.GET_INVOICES)
 export const getInvoiceDetail = id =>
   get(`${url.GET_INVOICE_DETAIL}/${id}`, { params: { id } })
 
+  // get jobs
+export const getJobList = () => get(url.GET_JOB_LIST);
+
+// get Apply Jobs
+export const getApplyJob = () => get(url.GET_APPLY_JOB);
+
 // get project
 export const getProjects = () => get(url.GET_PROJECTS)
 
@@ -201,6 +207,18 @@ export const updateUser = user => put(url.UPDATE_USER, user)
 
 // delete user
 export const deleteUser = user => del(url.DELETE_USER, { headers: { user } })
+
+// add jobs
+export const addNewJobList = job => post(url.ADD_NEW_JOB_LIST, job);
+
+// update jobs
+export const updateJobList = job => put(url.UPDATE_JOB_LIST, job);
+
+// delete jobs
+export const deleteJobList = job => del(url.DELETE_JOB_LIST, { headers: { job } });
+
+// Delete Apply Jobs
+export const deleteApplyJob = data => del(url.DELETE_APPLY_JOB, { headers: { data } });
 
 /** PROJECT */
 // add user
